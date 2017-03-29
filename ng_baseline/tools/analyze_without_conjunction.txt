@@ -1,0 +1,4278 @@
+[
+    {
+        "score": 0,
+        "sentence": "<M0> string the by preceded is character a wherein lines",
+        "prediction": "(<M0>).*(.).*",
+        "truth": ".*(<M0>).*(.).*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "end the at letter lower-case a with lines",
+        "prediction": "([<LOW>])+",
+        "truth": "(.*)([<LOW>])"
+    },
+    {
+        "score": 1,
+        "sentence": ". thrice least at <M0> preceding letter small a with items",
+        "prediction": "([<LOW>].*<M0>.*){3,}",
+        "truth": "([<LOW>].*<M0>.*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": "times zero than less no character a by preceded is letter lower-case a where lines",
+        "prediction": "(.).*([<LOW>].*..*).*",
+        "truth": "(.).*(([<LOW>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the of 5 than less with lines",
+        "prediction": "~((<M0>){5,})",
+        "truth": "~(.*(<M0>){5,}.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "end the at letter capital a with line a",
+        "prediction": ".*([<CAP>])|([<CAP>]).*",
+        "truth": "~((.*)([<LOW>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "number a after vowel a with ending letter",
+        "prediction": "([<NUM>]).*((.*)([<VOW>])).*",
+        "truth": "((.*)([<NUM>])).*([<VOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "end the at letter capital a have that lines",
+        "prediction": ".*([<CAP>])|([<CAP>]).*",
+        "truth": "(.*)([<CAP>])"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string in ending not character a without lines",
+        "prediction": "~((.)&(<M0>))",
+        "truth": "~((.)&((.*)(<M0>)))"
+    },
+    {
+        "score": 1,
+        "sentence": "number a by followed vowel a with lines have times 6 least at",
+        "prediction": "([<VOW>].*[<NUM>].*){6,}",
+        "truth": "([<VOW>].*[<NUM>].*){6,}"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> containing with ending lines",
+        "prediction": "(.*)(.*(<M0>)+.*)",
+        "truth": "(.*)(.*<M0>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 4 least at character a preceding <M0> with terminating items",
+        "prediction": "(.*)(<M0>.*..*)",
+        "truth": "((.*)(<M0>)).*((.){4,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 5 least at letter a preceding numeral a with items",
+        "prediction": "([<NUM>].*[<LET>].*){5,}",
+        "truth": "([<NUM>].*[<LET>].*){5,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". vowel a with beginning items",
+        "prediction": "([<VOW>]).*(([<VOW>])+).*",
+        "truth": "(([<VOW>])(.*))*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital a by followed character a of combinations 7 least at have that lines",
+        "prediction": "(..*[<CAP>].*){7,}",
+        "truth": "(..*[<CAP>].*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the by once least at preceded letter capital a with lines",
+        "prediction": "(<M0>).*(([<CAP>])+).*",
+        "truth": "((<M0>)+).*([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M0> preceding numeral a with terminating items",
+        "prediction": "(.*)([<NUM>].*<M0>.*)",
+        "truth": "((.*)([<NUM>])).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a with <M0> string in ending lines",
+        "prediction": "(.*)(.*(<M0>)+.*)",
+        "truth": "((.*)(<M0>))&(([<LET>])+)"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel by followed <M0> string the with starting not lines",
+        "prediction": "((~(<M0>)).*([<VOW>]).*)(.*)",
+        "truth": "~((<M0>.*[<VOW>].*)(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "times zero least at character a only with lines",
+        "prediction": "(.)*",
+        "truth": "(.*..*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at letter lower-case with starting not lines",
+        "prediction": "~((([<LOW>])(.*))+)",
+        "truth": "~((([<LOW>])+)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter lower-case a by followed <M0> with lines",
+        "prediction": "(<M0>).*([<LOW>].*[<LET>].*).*",
+        "truth": "(<M0>.*[<LET>].*)|(.*[<LOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "them in characters no have that lines",
+        "prediction": "~(.*..*)",
+        "truth": "~(.)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string by followed vowel with ending not lines",
+        "prediction": "(.*)([<VOW>].*<M0>.*)",
+        "truth": "~((.*)([<VOW>].*<M0>.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> by followed letter a with lines",
+        "prediction": "([<LET>].*<M0>.*).*([<VOW>]).*",
+        "truth": "[<LET>].*<M0>.*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 4 least at <M0> string ending the with lines",
+        "prediction": "(.*)((<M0>){4,})",
+        "truth": "(.*(.*)(<M0>).*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": ". vowel a preceding <M0> preceding numeral a with items",
+        "prediction": "([<NUM>]).*(<M0>.*[<VOW>].*).*",
+        "truth": "([<NUM>]).*(<M0>.*[<VOW>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by followed letter lower-case a with end that lines",
+        "prediction": "(.*)([<LOW>].*..*)",
+        "truth": "((.*)([<LOW>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a by preceded letter case lower a containing lines",
+        "prediction": "([<VOW>]).*([<LOW>]).*",
+        "truth": ".*[<VOW>].*[<LOW>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 6 least at number a preceding letter a with lines",
+        "prediction": "([<LET>]).*(([<NUM>]){6,}).*",
+        "truth": "([<LET>].*[<NUM>].*){6,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines all",
+        "prediction": ".*([<NUM>])|([<LOW>]).*",
+        "truth": "~(([<NUM>].*[<VOW>].*)*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a preceding time 7 least at vowel a with items",
+        "prediction": "(([<VOW>]){7,}).*([<LET>]).*",
+        "truth": "(([<VOW>]){7,}).*([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter capital a with ending vowel a with lines",
+        "prediction": "(([<VOW>])+)&((.*)([<CAP>]))",
+        "truth": "([<VOW>]).*((.*)([<CAP>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel 1 least at by followed letter capital a with lines",
+        "prediction": "([<CAP>].*[<VOW>].*)+",
+        "truth": "([<CAP>].*[<VOW>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter any with items",
+        "prediction": ".*([<LOW>])|([<CAP>]).*",
+        "truth": ".*([<LOW>])&([<LET>])&([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M1> preceding <M0> preceding vowel a with items",
+        "prediction": "([<VOW>]).*(<M0>.*<M1>.*).*",
+        "truth": "([<VOW>]).*(<M0>.*<M1>.*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital a , <M0> having not lines",
+        "prediction": "~((<M0>)&([<CAP>]))",
+        "truth": "~((<M0>)&([<CAP>])&([<LET>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "number a with end that character a containing lines",
+        "prediction": "(.).*((.*)([<NUM>])).*",
+        "truth": "(.).*((.*)([<NUM>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 4 least at numeral a preceding character a with items",
+        "prediction": "(.).*(([<NUM>]){4,}).*",
+        "truth": "(..*[<NUM>].*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter small a preceding times 6 least at numeral a with items",
+        "prediction": "(([<NUM>]){6,}).*([<LOW>]).*",
+        "truth": "(([<NUM>]){6,}).*([<LOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "number a with starting , <M0> containing lines",
+        "prediction": "((<M0>)(.*))&(([<NUM>])(.*))",
+        "truth": "(.*<M0>.*)&(([<NUM>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines all",
+        "prediction": ".*([<NUM>])|([<LOW>]).*",
+        "truth": "((.*)([<VOW>])).*(([<LET>])*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines in <M0> with starting string",
+        "prediction": "((<M0>)+)(.*)",
+        "truth": "(<M0>)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "times 3 least at letter capital a after <M0> string the with lines",
+        "prediction": "(([<CAP>]){3,}).*(<M0>).*",
+        "truth": "(([<CAP>]){3,}).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the of 3 than less only with lines",
+        "prediction": "(.*<M0>.*){3,}",
+        "truth": "~((<M0>){4,})"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a by preceded vowel a containing lines",
+        "prediction": "([<LET>]).*([<VOW>]).*",
+        "truth": "(([<LET>])(.*)).*([<VOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel without lines",
+        "prediction": "~(.*([<VOW>])+.*)",
+        "truth": "~([<VOW>])"
+    },
+    {
+        "score": 1,
+        "sentence": ". vowel a preceding times 6 least at letter a with items",
+        "prediction": "(([<LET>]){6,}).*([<VOW>]).*",
+        "truth": "(([<LET>]){6,}).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a without lines",
+        "prediction": "~(.*([<VOW>])+.*)",
+        "truth": "~((.*[<VOW>].*)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a by followed <M0> don't that lines",
+        "prediction": "(~(<M0>)).*([<LOW>]).*",
+        "truth": "\\b~(<M0>.*[<LOW>].*)\\b"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case with ends",
+        "prediction": "(.*)(.*([<LOW>])+.*)",
+        "truth": "(.*)(([<LOW>])+)"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a by followed number a without lines",
+        "prediction": "~([<NUM>].*[<VOW>].*)",
+        "truth": "~([<NUM>].*[<VOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "times 4 least at letter lower-case a by followed letter a with ending lines",
+        "prediction": "(.*)([<LET>].*[<LOW>].*)",
+        "truth": "((.*)([<LET>].*[<LOW>].*)){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": ". time 1 least at <M0> string the by followed number a containing lines",
+        "prediction": "([<NUM>].*<M0>.*)+",
+        "truth": "([<NUM>]).*((.*<M0>.*)+).*"
+    },
+    {
+        "score": 0,
+        "sentence": "number a with ending lined",
+        "prediction": "(.*)(([<NUM>])+)",
+        "truth": "(.*)(([<NUM>])*)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> lower-case a having not lines",
+        "prediction": "~(([<LOW>])&(<M0>))",
+        "truth": "~(([<LOW>])|((<M0>).*([<CAP>]).*))"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital a by followed letter lower-case a with end that lines",
+        "prediction": "(.*)([<LOW>].*[<CAP>].*)",
+        "truth": "((.*)([<LOW>])).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string by followed letter a once least at with lines",
+        "prediction": "([<LET>].*<M0>.*)+",
+        "truth": "(.*[<LET>].*<M0>.*.*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a by followed character a with lines",
+        "prediction": "(.).*([<VOW>]).*",
+        "truth": ".*..*[<VOW>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at followed vowel letter capital with lines",
+        "prediction": "([<CAP>].*[<VOW>].*)+",
+        "truth": "([<VOW>].*[<CAP>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital a by followed letter a have that lines",
+        "prediction": "([<LET>]).*([<CAP>]).*",
+        "truth": "[<LET>].*[<CAP>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at letter lower-case a with ending lines",
+        "prediction": "(.*)(([<LOW>])+)",
+        "truth": "(.*)((.*[<LOW>].*)+)"
+    },
+    {
+        "score": 1,
+        "sentence": ". thrice least at letter a preceding vowel a with items",
+        "prediction": "([<VOW>].*[<LET>].*){3,}",
+        "truth": "([<VOW>].*[<LET>].*){3,}"
+    },
+    {
+        "score": 1,
+        "sentence": "times zero least at character a after number a with lines",
+        "prediction": "(.).*(([<NUM>])*).*",
+        "truth": "(.).*(([<NUM>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> with items",
+        "prediction": "(<M0>).*(~([<NUM>])).*",
+        "truth": "((<M0>)*)&(.*<M1>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "character a by followed letter capital a without lines",
+        "prediction": "(~([<CAP>])).*(.).*",
+        "truth": "~([<CAP>].*..*)"
+    },
+    {
+        "score": 0,
+        "sentence": "character a by ending <M0> string the with lines",
+        "prediction": "(<M0>).*((.*)(.)).*",
+        "truth": "~((.*)(<M0>.*..*))"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a by followed number a have that lines",
+        "prediction": "([<NUM>]).*([<LET>]).*",
+        "truth": ".*[<NUM>].*[<LET>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a by followed <M0> string the having lines",
+        "prediction": "(<M0>).*([<LET>]).*",
+        "truth": ".*<M0>.*[<LET>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": ". twice least at , letter a preceding numeral a with items",
+        "prediction": "([<NUM>].*[<LET>].*){2,}",
+        "truth": "([<NUM>]).*(([<LET>]){2,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". numbers in ending lines",
+        "prediction": "(.*)(\\b([<NUM>])+\\b)",
+        "truth": "((.*)([<LET>])).*([<NUM>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 2 least at letter lower-case a after character a with lines",
+        "prediction": "([<LOW>].*..*){2,}",
+        "truth": "([<LOW>]).*((.){2,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a after number a with ending lines",
+        "prediction": "(.*)([<VOW>].*[<NUM>].*)",
+        "truth": "((.*)([<VOW>])).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a by followed once least at <M0> string the with finishing lines",
+        "prediction": "(.*)((<M0>.*[<VOW>].*)+)",
+        "truth": "((.*)((<M0>)+)).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding <M0> without items",
+        "prediction": "~(<M0>.*..*)",
+        "truth": "~(<M0>.*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M0> preceding letter small with items",
+        "prediction": "([<LOW>]).*(<M0>).*",
+        "truth": "[<LOW>].*<M0>.*"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the as well as , character a , letter a with lines",
+        "prediction": "(([<LET>])&(.)&(<M0>)).*(<M0>).*",
+        "truth": ".*([<LET>])&(.)&(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a by followed vowel a contain that lines",
+        "prediction": "([<VOW>].*[<LOW>].*).*([<LOW>]).*",
+        "truth": "([<VOW>]).*(.*[<LOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 4 <M0> with starting lines",
+        "prediction": "((<M0>){4,})(.*)",
+        "truth": "(([<LET>].*<M0>.*){4,})(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a with character a in starting lines",
+        "prediction": "((.)(.*)).*([<VOW>]).*",
+        "truth": "((.)(.*)).*(.*[<VOW>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string containing not with ending lines",
+        "prediction": "(.*)((<M0>)|(~([<NUM>])))",
+        "truth": "(.*)(.*~(<M0>).*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". numeral a preceding <M0> preceding vowel a with items",
+        "prediction": "([<VOW>]).*(<M0>.*[<NUM>].*).*",
+        "truth": "([<VOW>].*<M0>.*).*([<NUM>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". letters any without lines",
+        "prediction": "~(([<LET>])+)",
+        "truth": "~(([<CAP>])&([<LET>])&([<VOW>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "letter capital a in starting not lines",
+        "prediction": "(~([<CAP>]))(.*)",
+        "truth": "~(([<CAP>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter lower-case after vowels with lines",
+        "prediction": "([<LOW>]).*(([<VOW>])+).*",
+        "truth": ".*([<LOW>]).*([<VOW>]).*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a with lines",
+        "prediction": ".*([<LET>])|([<LOW>]).*",
+        "truth": "(([<CAP>])+)|(.*[<LET>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "number a with start not lines",
+        "prediction": "(~([<NUM>]))(.*)",
+        "truth": "(\\b~([<NUM>])\\b)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 5 least at , letter any with items",
+        "prediction": "(([<LOW>]){5,}).*([<CAP>]).*",
+        "truth": "(([<CAP>])|([<LOW>])){5,}"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter case upper an preceding letter small a with terminating items",
+        "prediction": "(.*)([<LOW>].*[<CAP>].*)",
+        "truth": "(.*)([<LOW>].*[<CAP>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a with starting once least at characters with lines",
+        "prediction": "((.)+)(.*)",
+        "truth": "((.)+)&(([<LOW>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> with end that lines",
+        "prediction": "(.*)(\\b(<M0>)+\\b)",
+        "truth": "~(\\b(.*)(<M0>)\\b)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a preceding <M0> with terminating items",
+        "prediction": "(.*)(<M0>.*[<LET>].*)",
+        "truth": "(.*)(<M0>.*[<LET>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines all",
+        "prediction": ".*([<NUM>])|([<LOW>]).*",
+        "truth": "(.*([<LOW>])|(<M0>)|(<M1>).*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "times 4 least at letter a with starting lines",
+        "prediction": "(([<LET>]){4,})(.*)",
+        "truth": "(([<LET>]){4,})(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at character a with finishing lines",
+        "prediction": "(.*)((.)+)",
+        "truth": "(.*)((.*..*)+)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter small a preceding vowel a preceding <M0> with items",
+        "prediction": "(<M0>).*([<VOW>].*[<LOW>].*).*",
+        "truth": "(<M0>.*[<VOW>].*).*([<LOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "twice least at vowel a by preceded letter lowercase a containing lines",
+        "prediction": "([<VOW>].*[<LOW>].*){2,}",
+        "truth": "([<VOW>]).*(([<LOW>]){2,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at occuring <M0> string the by followed number a contain which lines the",
+        "prediction": "([<NUM>].*<M0>.*)+",
+        "truth": "([<NUM>].*<M0>.*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string by followed character a with ending not lines",
+        "prediction": "~((.*)(..*<M0>.*)",
+        "truth": "~((.*)(..*<M0>.*))"
+    },
+    {
+        "score": 0,
+        "sentence": ". vowel starting a without items",
+        "prediction": "~(([<VOW>])(.*))",
+        "truth": "~((([<VOW>])*)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "character a of <U> up <U> letter upper-case an with lines",
+        "prediction": ".*(.)+.*",
+        "truth": ".*([<CAP>]).*(.).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a preceding <M0> preceding letter uppercase an with items",
+        "prediction": "([<CAP>]).*(<M0>.*[<LET>].*).*",
+        "truth": "([<CAP>].*<M0>.*).*([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter case lower a by followed letter a with beginning lines",
+        "prediction": "(([<LET>])(.*)).*([<LOW>]).*",
+        "truth": "(([<LET>])(.*)).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a by followed letter a with finishing lines",
+        "prediction": "(.*)([<LET>].*[<VOW>].*)",
+        "truth": "(.*)(.*([<LET>]).*([<VOW>]).*.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding letter case upper an preceding letter a with items",
+        "prediction": "([<LET>]).*([<CAP>].*..*).*",
+        "truth": "([<LET>]).*([<CAP>].*..*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> only containing lines",
+        "prediction": ".*(<M0>)+.*",
+        "truth": ".*([<LET>])&(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital a by followed , vowel a , <M0> string the , letter a contain lines",
+        "prediction": "(([<LET>])&(<M0>)&([<VOW>])).*([<CAP>]).*",
+        "truth": "(([<LET>])&(<M0>)&([<VOW>])).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". thrice least at <M0> preceding letter a with items",
+        "prediction": "([<LET>].*<M0>.*){3,}",
+        "truth": "([<LET>]).*((<M0>){3,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<U> are lines",
+        "prediction": ".*([<NUM>])|(.).*",
+        "truth": "~(([<LET>])|(.))"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 4 least at letter a preceding vowel a with items",
+        "prediction": "([<VOW>].*[<LET>].*){4,}",
+        "truth": "([<VOW>].*[<LET>].*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a then vowel a with lines",
+        "prediction": "([<VOW>].*[<LET>].*)+",
+        "truth": ".*[<VOW>].*[<LET>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a by followed letter capital a without lines",
+        "prediction": "(~([<CAP>])).*([<LET>]).*",
+        "truth": "~([<CAP>].*[<LET>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 5 least at letter small a with items",
+        "prediction": "(([<LOW>]){5,}).*([<NUM>]).*",
+        "truth": "(([<LOW>]){5,})(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "times 6 least at letter a by followed <M0> string the containing lines",
+        "prediction": "(<M0>.*[<LET>].*){6,}",
+        "truth": "(<M0>).*(([<LET>]){6,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at number a with end that lines",
+        "prediction": "(.*)(([<NUM>])+)",
+        "truth": "(.*)(([<NUM>])+)"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding letter case upper an with items",
+        "prediction": "([<CAP>]).*((.)*).*",
+        "truth": "([<CAP>]).*((.)*).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter small a preceding <M0> preceding numeral a with items",
+        "prediction": "([<NUM>]).*(<M0>.*[<LOW>].*).*",
+        "truth": "([<NUM>]).*(<M0>.*[<LOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 7 least at character a <U> numeral a with items",
+        "prediction": "(([<NUM>])|(.)){7,}",
+        "truth": "([<NUM>].*..*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "times 3 least at <M0> string the after letter capital a have that lines",
+        "prediction": "(<M0>).*(([<CAP>]){3,}).*",
+        "truth": "(<M0>).*(([<CAP>]){3,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a containing letter a with lines",
+        "prediction": ".*([<LET>])+.*",
+        "truth": "(([<LET>])+)&(.*[<VOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the not but letter capital a with ending lines",
+        "prediction": "(.*)(([<CAP>])&(<M0>))",
+        "truth": "((.*)([<CAP>]))|(~(<M0>))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the follow that characters with lines",
+        "prediction": ".*..*<M0>.*.*",
+        "truth": "(<M0>.*..*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by preceded is number a once least at wherein lines",
+        "prediction": "(.).*(([<NUM>])+).*",
+        "truth": "(..*[<NUM>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "times 7 <M0> with ending lines",
+        "prediction": "(.*)((<M0>){7,})",
+        "truth": "(.*(.*)(<M0>).*){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": "number a with lines",
+        "prediction": "([<NUM>])+",
+        "truth": "(.*~([<NUM>]).*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "number a by followed <M0> with lines",
+        "prediction": "(<M0>).*([<NUM>].*[<NUM>].*).*",
+        "truth": "~(\\b<M0>.*[<NUM>].*\\b)"
+    },
+    {
+        "score": 0,
+        "sentence": "number a by followed letter capital a with lines",
+        "prediction": ".*[<CAP>].*[<NUM>].*.*",
+        "truth": "([<CAP>].*[<NUM>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "number a in starting character a with lines",
+        "prediction": "((.)+)&(([<NUM>])(.*))",
+        "truth": "(.*..*)&(([<NUM>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "minimum the at time 1 than less no vowel a with conclude that lines",
+        "prediction": "(.*)(([<VOW>])*)",
+        "truth": "((.*)([<VOW>]))+"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a preceding times 4 least at letter small a with items",
+        "prediction": "(([<LOW>]){4,}).*([<LET>]).*",
+        "truth": "(([<LOW>]){4,}).*([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a by preceded string <M0> a of occurrences 5 least at have that lines",
+        "prediction": "([<VOW>]).*(<M0>.*[<CAP>].*){5,}",
+        "truth": "([<VOW>]).*((<M0>){5,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 2 vowel a with starting lines",
+        "prediction": "(([<VOW>])(.*)){2,}",
+        "truth": "((([<VOW>])|([<LET>])){2,})(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". twice least at letter small a preceding letter a with items",
+        "prediction": "([<LET>].*[<LOW>].*){2,}",
+        "truth": "([<LET>].*[<LOW>].*){2,}"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel in ending lines",
+        "prediction": "(.*)(\\b([<VOW>])+\\b)",
+        "truth": "(.*)(.*[<VOW>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by followed vowel a with end that lines",
+        "prediction": "(.*)([<VOW>].*..*)",
+        "truth": "(.*)([<VOW>].*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": "letters capital 2 by followed <M0> string the with lines",
+        "prediction": "(<M0>.*[<CAP>].*){2,}",
+        "truth": "(<M0>.*[<CAP>].*){2,}"
+    },
+    {
+        "score": 0,
+        "sentence": "letters lower-case without lines",
+        "prediction": "~(([<LOW>])+)",
+        "truth": "~([<LOW>])"
+    },
+    {
+        "score": 0,
+        "sentence": "lower-case a with starting lines",
+        "prediction": "(([<LOW>])(.*))|(([<NUM>])(.*))",
+        "truth": "(.*~([<LOW>]).*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "character a with end to need lines the time 1 least at",
+        "prediction": "((.*)((.)+)|([<NUM>]))+",
+        "truth": "(.*)((.)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a then <M0> string the only have that lines",
+        "prediction": "(<M0>.*[<VOW>].*).*([<VOW>]).*",
+        "truth": "(.*<M0>.*).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel times zero containing lines",
+        "prediction": "(.*[<VOW>].*)*",
+        "truth": "(.*[<VOW>].*)*"
+    },
+    {
+        "score": 1,
+        "sentence": ". time 1 least at character a preceding numeral a with items",
+        "prediction": "([<NUM>]).*((.)+).*",
+        "truth": "([<NUM>]).*((.)+).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the with start that lines",
+        "prediction": "((<M0>)(.*)).*(([<NUM>])+).*",
+        "truth": "((<M0>)*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a by followed number a with lines",
+        "prediction": "([<NUM>]).*([<VOW>].*[<VOW>].*).*",
+        "truth": "([<NUM>].*[<VOW>].*).*([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the precede not does letter capital a where lines",
+        "prediction": ".*([<CAP>]).*(~(<M0>)).*.*",
+        "truth": "([<CAP>]).*(~((<M0>)*)).*"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at , letter lower-case a contain but character a contain not do that lines",
+        "prediction": "~((.)&([<LOW>]))",
+        "truth": "(([<LOW>])+)&(~(.))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the with ending character a with lines",
+        "prediction": "((.)+)&((.*)(<M0>))",
+        "truth": "(.).*((.*)(<M0>)).*"
+    },
+    {
+        "score": 1,
+        "sentence": "times zero least at character a only with ending lines",
+        "prediction": "(.*)((.)*)",
+        "truth": "((.*)(.))*"
+    },
+    {
+        "score": 0,
+        "sentence": "character a vowel a containing not lines",
+        "prediction": "~(.*..*)",
+        "truth": "~(.*([<VOW>])&(.).*)"
+    },
+    {
+        "score": 1,
+        "sentence": "following <M0> string the with letter case lower a with beginning lines",
+        "prediction": "(([<LOW>])(.*)).*(<M0>).*",
+        "truth": "([<LOW>].*<M0>.*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a preceding vowel a preceding letter small a with items",
+        "prediction": "([<LOW>]).*([<VOW>].*[<LET>].*).*",
+        "truth": "([<LOW>]).*([<VOW>].*[<LET>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". vowel a preceding character a with beginning items",
+        "prediction": "((.)(.*)).*([<VOW>]).*",
+        "truth": "(..*[<VOW>].*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter case upper an preceding numeral a preceding letter a with items",
+        "prediction": "([<LET>]).*([<NUM>].*[<CAP>].*).*",
+        "truth": "([<LET>].*[<NUM>].*).*([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by followed vowel a as well as letter a containing lines",
+        "prediction": "(([<LET>])&([<VOW>])).*(.).*",
+        "truth": "(([<LET>])&([<VOW>])).*(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter small a preceding <M0> with items",
+        "prediction": "(<M0>).*([<LOW>]).*",
+        "truth": "(<M0>).*((.*)([<LOW>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 4 least at letter a with items",
+        "prediction": "(([<LET>]){4,}).*([<LOW>]).*",
+        "truth": ".*([<LET>]){4,}.*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter by followed <M0> string with starting lines",
+        "prediction": "((<M0>.*[<LET>].*)(.*))+",
+        "truth": "(<M0>.*[<LET>].*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter case upper an preceding character a with beginning items",
+        "prediction": "((.)(.*)).*([<CAP>]).*",
+        "truth": "(..*[<CAP>].*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a with starting times 5 <M0> with lines",
+        "prediction": "((<M0>){5,})&(([<LET>])(.*))",
+        "truth": "((<M0>){5,})|(([<LET>])(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "letter lower-case a as well as , <M0> string the , number a by followed character a containing lines",
+        "prediction": "(.).*(([<NUM>])&(<M0>)&([<LOW>])).*",
+        "truth": "(.).*(([<NUM>])&(<M0>)&([<LOW>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 3 least at letter a after number a with lines",
+        "prediction": "([<LET>]).*(([<NUM>]){3,}).*",
+        "truth": "([<LET>].*[<NUM>].*){3,}"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a preceding letter a with lines",
+        "prediction": "([<LET>]).*([<VOW>]).*",
+        "truth": "([<LET>]).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter a in ending not lines",
+        "prediction": "~((.*)(([<LET>])+))",
+        "truth": "~(((.*)([<LET>]))+)"
+    },
+    {
+        "score": 1,
+        "sentence": "times 3 least at number a with ending lines",
+        "prediction": "(.*)(([<NUM>]){3,})",
+        "truth": "(.*)(([<NUM>]){3,})"
+    },
+    {
+        "score": 0,
+        "sentence": "character a by followed , first number a containing lines",
+        "prediction": ".*[<NUM>].*..*.*",
+        "truth": "([<NUM>].*..*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the being not amount any with , character a with lines",
+        "prediction": "((.)*)&(~(<M0>))",
+        "truth": "((.)*)|(~(<M0>))"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a after <M0> string containing lines",
+        "prediction": "([<VOW>]).*(<M0>).*",
+        "truth": ".*[<VOW>].*<M0>.*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter lower-case a by followed letter a have should lines",
+        "prediction": ".*[<LET>].*[<LOW>].*.*",
+        "truth": ".*[<LET>].*[<LOW>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a by followed character a without lines",
+        "prediction": "~(..*[<LOW>].*)",
+        "truth": ".*~(..*[<LOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "with items",
+        "prediction": ".*([<NUM>])|([<LOW>]).*",
+        "truth": "(<M0>).*(~((<M1>)&([<NUM>]))).*"
+    },
+    {
+        "score": 0,
+        "sentence": "number a in ending without lines",
+        "prediction": "~((.*)([<NUM>]))",
+        "truth": "~(.*(.*)([<NUM>]).*)"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at letter by followed letter lower-case having not lines",
+        "prediction": "~(([<LOW>].*[<LET>].*)+)",
+        "truth": "~(([<LOW>].*[<LET>].*)+)"
+    },
+    {
+        "score": 1,
+        "sentence": "letter lower-case preceding not letter capital with starting lines",
+        "prediction": "(([<CAP>])(.*)).*(~([<LOW>])).*",
+        "truth": "(([<CAP>])(.*)).*(~([<LOW>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the include not do that lines",
+        "prediction": "~(\\b.*<M0>.*\\b)",
+        "truth": "~(.*<M0>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter in ending <M0> string the with lines",
+        "prediction": "(<M0>).*((.*)([<LET>])).*",
+        "truth": "(.*<M0>.*)&((.*)([<LET>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "times zero least at letter capital a after number a with lines",
+        "prediction": "([<CAP>]).*(([<NUM>])*).*",
+        "truth": "([<CAP>]).*(([<NUM>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "capital by followed letter lower-case with lines",
+        "prediction": "([<LOW>].*[<CAP>].*).*([<CAP>]).*",
+        "truth": "[<LOW>].*[<CAP>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M1> by followed <M0> string the have least at that lines",
+        "prediction": "(<M0>.*<M1>.*).*([<VOW>]).*",
+        "truth": "(.*)((<M0>.*<M1>.*)+)"
+    },
+    {
+        "score": 1,
+        "sentence": "times 5 least at letter lower-case a after vowel a with lines",
+        "prediction": "(([<LOW>]){5,}).*([<VOW>]).*",
+        "truth": "(([<LOW>]){5,}).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<U> is letter a after come only can character a where lines",
+        "prediction": "([<LET>]).*(.).*",
+        "truth": "([<LET>]).*(.*..*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> with starting times 6 least at letter lower-case a with lines",
+        "prediction": "(([<LOW>]){6,})&((<M0>)(.*))",
+        "truth": "(([<LOW>]){6,})&((<M0>)(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": ". time 1 least at letter small a with beginning items",
+        "prediction": "(([<LOW>])(.*))+",
+        "truth": "(([<LOW>])(.*))+"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at vowel by followed <M0> string with starting lines",
+        "prediction": "((<M0>.*[<VOW>].*)(.*))+",
+        "truth": "((<M0>.*[<VOW>].*)(.*))+"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by preceded letter a containing lines",
+        "prediction": ".*..*[<LET>].*.*",
+        "truth": "(.*..*).*([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital a not by followed character a with lines",
+        "prediction": "(.).*(~([<CAP>])).*",
+        "truth": "(.).*(~([<CAP>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "number a with letter a with starting lines",
+        "prediction": "(([<LET>])+)(.*)",
+        "truth": "(([<LET>])(.*)).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 6 least at <M0> with terminating items",
+        "prediction": "(.*)((<M0>){6,})",
+        "truth": "(.*)((<M0>){6,})"
+    },
+    {
+        "score": 1,
+        "sentence": "times 5 number a with ending not lines",
+        "prediction": "~((.*)(([<NUM>]){5,}))",
+        "truth": "~((.*)(([<NUM>]){5,}))"
+    },
+    {
+        "score": 1,
+        "sentence": "letter small a & , <M0> , vowel a with lines",
+        "prediction": ".*([<VOW>])&(<M0>)&([<LOW>]).*",
+        "truth": ".*([<VOW>])&(<M0>)&([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "times 7 least at , vowel a by followed letter capital a containing lines",
+        "prediction": "([<CAP>].*[<VOW>].*){7,}",
+        "truth": "([<CAP>].*[<VOW>].*){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter any without items",
+        "prediction": "~(([<LOW>])&([<LET>]))",
+        "truth": "~(([<LET>])&([<VOW>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "character a after letter a with ending lines",
+        "prediction": "(.*)(..*[<LET>].*)",
+        "truth": "((.*)(.)).*([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter capital a by followed vowel",
+        "prediction": "([<VOW>].*[<CAP>].*)+",
+        "truth": "[<VOW>].*[<CAP>].*"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M0> preceding letter small a preceding vowel a with items",
+        "prediction": "([<VOW>]).*([<LOW>].*<M0>.*).*",
+        "truth": "([<VOW>]).*([<LOW>].*<M0>.*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "seen is letter upper-case an which after , string <M0> the with conclude that lines",
+        "prediction": "(.*)([<CAP>].*<M0>.*)",
+        "truth": "(.*)(<M0>.*[<CAP>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a once least at without items",
+        "prediction": "~((.)+)",
+        "truth": "~((.)+)"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel in ending character a with lines",
+        "prediction": "(.).*((.*)([<VOW>])).*",
+        "truth": "(.).*((.*)([<VOW>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a with ending lines",
+        "prediction": "(.*)(([<LOW>])+)",
+        "truth": "(.*)(.*[<LOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". <M0> preceding character a without items",
+        "prediction": "~((.)*).*(<M0>).*",
+        "truth": ".*(~(.)).*(<M0>).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": ". character terminating a preceding vowel a with items",
+        "prediction": "([<VOW>]).*((.*)(.)).*",
+        "truth": "([<VOW>]).*((.*)(.)).*"
+    },
+    {
+        "score": 0,
+        "sentence": "character dog a having not lines 5",
+        "prediction": "~((<M0>){5,})",
+        "truth": "(~((.){5,})).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 5 least at character a after coming vowel a with lines",
+        "prediction": "(.).*(([<VOW>]){5,}).*",
+        "truth": "(..*[<VOW>].*){5,}"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a by followed <M0> with starting lines",
+        "prediction": "((<M0>)(.*)).*([<VOW>]).*",
+        "truth": "(<M0>.*[<VOW>].*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M1> string the after <M0> string the with lines",
+        "prediction": "(<M1>).*((<M0>)&([<CAP>])).*",
+        "truth": "(<M1>).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 6 least at character a preceding letter lower-case a with lines",
+        "prediction": "([<LOW>]).*((.){6,}).*",
+        "truth": "([<LOW>].*..*){6,}"
+    },
+    {
+        "score": 1,
+        "sentence": "times 5 least at , letter lower-case a only containing with ending lines",
+        "prediction": "(.*)(([<LOW>]){5,})",
+        "truth": "(.*)(([<LOW>]){5,})"
+    },
+    {
+        "score": 0,
+        "sentence": "letter case lower a then character a have should lines , times of minimum any",
+        "prediction": "(..*[<LOW>].*){3,}",
+        "truth": "(..*[<LOW>].*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter lower-case a than other anything by followed letter a contain that lines",
+        "prediction": "([<LET>]).*(~([<LOW>])).*",
+        "truth": "([<LET>]).*(~([<LOW>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at <M0> containing lines",
+        "prediction": "(.*<M0>.*)+",
+        "truth": "((.*<M0>.*)|([<CAP>]))+"
+    },
+    {
+        "score": 0,
+        "sentence": "lower-case is that letter a by followed vowel a without lines",
+        "prediction": "(~([<VOW>])).*([<LET>]).*",
+        "truth": "~([<VOW>].*[<LOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter capital a follows line a",
+        "prediction": ".*[<CAP>].*[<CAP>].*.*",
+        "truth": "(..*[<CAP>].*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string without vowel in ending lines",
+        "prediction": "(.*)(([<VOW>])&(<M0>))",
+        "truth": "((.*)([<VOW>]))&(~(<M0>))"
+    },
+    {
+        "score": 0,
+        "sentence": "time 1 least at , <M0> string the by followed letter lower-case a have that lines",
+        "prediction": "([<LOW>].*<M0>.*)+",
+        "truth": "([<LOW>].*<M0>.*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "character a then letter lower-case a without lines",
+        "prediction": "~([<LOW>].*..*)",
+        "truth": "(~([<LOW>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines in character a then vowel a first",
+        "prediction": "([<VOW>].*..*).*(<M0>).*",
+        "truth": "(([<VOW>])(.*)).*(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding times 4 least at vowel a with items",
+        "prediction": "(([<VOW>]){4,}).*(.).*",
+        "truth": "(([<VOW>]){4,}).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "characters containing lines",
+        "prediction": ".*(.)|([<LET>]).*",
+        "truth": ".*(.)&([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 7 least at numeral a preceding vowel a with items",
+        "prediction": "([<VOW>]).*(([<NUM>]){7,}).*",
+        "truth": "([<VOW>]).*(([<NUM>]){7,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "characters of number any containing lines",
+        "prediction": ".*(.)|([<NUM>]).*",
+        "truth": "(.*..*)*"
+    },
+    {
+        "score": 0,
+        "sentence": ". <M0> without items",
+        "prediction": "~((<M0>)*)",
+        "truth": "~(.*<M0>.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter a preceding letter case upper an preceding vowel a with items",
+        "prediction": "([<VOW>]).*([<CAP>].*[<LET>].*).*",
+        "truth": "([<VOW>]).*([<CAP>].*[<LET>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 4 least at numeral a with beginning items",
+        "prediction": "(([<NUM>]){4,})(.*)",
+        "truth": "(([<NUM>])(.*)){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string with vowel a without lines",
+        "prediction": "~(([<VOW>])+)",
+        "truth": ".*(~([<VOW>])).*(<M0>).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital 1 least at by followed number a with end that lines the",
+        "prediction": "(.*)([<NUM>].*[<CAP>].*)",
+        "truth": "((.*)([<NUM>].*[<CAP>].*))+"
+    },
+    {
+        "score": 0,
+        "sentence": "<U> 1 than less no on end the at is letter a which in lines",
+        "prediction": "([<LET>])*",
+        "truth": "((.*)([<LET>]))+"
+    },
+    {
+        "score": 0,
+        "sentence": "times 5 least at letter lower-case a following letter capital a with lines",
+        "prediction": "([<LOW>].*[<CAP>].*){5,}",
+        "truth": "([<LOW>]).*(([<CAP>]){5,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter other any following letter lower-case a with lines",
+        "prediction": "([<LOW>]).*(([<LET>])&([<LOW>])).*",
+        "truth": "[<LET>].*[<LOW>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter case lower a only with lines",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "~(([<LOW>])&(.))"
+    },
+    {
+        "score": 1,
+        "sentence": ". vowel a preceding thrice last at character <U> items",
+        "prediction": "((.){3,}).*([<VOW>]).*",
+        "truth": "((.){3,}).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 7 least at , vowel having not lines",
+        "prediction": "~(([<VOW>]){7,})",
+        "truth": "~(([<VOW>]){7,})"
+    },
+    {
+        "score": 0,
+        "sentence": "times 4 least at letter lower-case a after character a with lines",
+        "prediction": "([<LOW>].*..*){4,}",
+        "truth": "(([<LOW>]){4,}).*(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": "times 4 character a with ending lines",
+        "prediction": "(.*)((.){4,})",
+        "truth": "(.*)((.){4,})"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by followed letter lower-case a without lines",
+        "prediction": "~([<LOW>].*..*)",
+        "truth": "~([<LOW>].*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": "vowel a by preceded is letter a once least at wherein lines",
+        "prediction": "([<VOW>]).*(([<LET>])+).*",
+        "truth": "([<VOW>].*[<LET>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "once letter lower-case a containing lines",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "(.*(.*)([<LOW>]).*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "letter in ending character a in starting lines",
+        "prediction": "((.)(.*))&((.*)([<LET>]))",
+        "truth": "((.)(.*)).*((.*)([<LET>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a having times 6 least at numbers with lines",
+        "prediction": "([<NUM>]){6,}",
+        "truth": "(([<NUM>]){6,})&(.*[<VOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter capital a preceding letter a of instance 1 is there where lines",
+        "prediction": "([<LET>].*[<CAP>].*)+",
+        "truth": "(.*[<LET>].*[<CAP>].*.*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at lower-case a containing lines",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "((.*[<LOW>].*)|([<CAP>]))+"
+    },
+    {
+        "score": 1,
+        "sentence": "them in once least at vowel a by followed letter lower-case a with lines",
+        "prediction": "([<LOW>].*[<VOW>].*)+",
+        "truth": "([<LOW>].*[<VOW>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": ". after <M0> string the with character a have that lines",
+        "prediction": "([<CAP>]).*(<M0>.*..*).*",
+        "truth": "(..*<M0>.*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "letter uppercase an by preceded letter lowercase a contain not do that lines",
+        "prediction": "~([<CAP>].*[<LOW>].*)",
+        "truth": "~([<CAP>].*[<LOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "character a has after then number a with end that lines",
+        "prediction": "(.*)(..*[<NUM>].*)",
+        "truth": "(.*)([<NUM>].*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding letter case upper an with terminating items",
+        "prediction": "(.*)([<CAP>].*..*)",
+        "truth": "((.*)([<CAP>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "character a with end that lines",
+        "prediction": "(.*)(..*..*)",
+        "truth": "(.*)(.)"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the as well as , letter a , letter capital a with lines",
+        "prediction": "(([<CAP>])&([<LET>])&(<M0>)).*(<M0>).*",
+        "truth": ".*([<CAP>])&([<LET>])&(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding vowel a preceding numeral a with items",
+        "prediction": "([<NUM>]).*([<VOW>].*..*).*",
+        "truth": "([<NUM>].*[<VOW>].*).*(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". character a preceding <M0> preceding letter case upper an with items",
+        "prediction": "([<CAP>]).*(<M0>.*..*).*",
+        "truth": "([<CAP>].*<M0>.*).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". vowel a preceding but character a following letter case upper an with items",
+        "prediction": "(.).*([<VOW>].*[<CAP>].*).*",
+        "truth": "(.).*([<CAP>].*[<VOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a in ending lines",
+        "prediction": "(.*)(.*([<LET>])+.*)",
+        "truth": "(.*)(([<LET>])|([<CAP>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> letter capital a having not lines",
+        "prediction": "~(([<CAP>])+)",
+        "truth": "~((([<CAP>])+)&(<M0>))"
+    },
+    {
+        "score": 0,
+        "sentence": "times 2 least at number a with lines",
+        "prediction": "(([<NUM>]){2,}).*([<NUM>]).*",
+        "truth": ".*([<NUM>]){2,}.*"
+    },
+    {
+        "score": 1,
+        "sentence": ". twice least at numeral a without items",
+        "prediction": "~(([<NUM>]){2,})",
+        "truth": "~(([<NUM>]){2,})"
+    },
+    {
+        "score": 0,
+        "sentence": "once least at letter lower-case by followed number containing lines",
+        "prediction": "([<NUM>].*[<LOW>].*)+",
+        "truth": "(.*[<NUM>].*[<LOW>].*.*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a with lines",
+        "prediction": ".*([<VOW>])|([<LET>]).*",
+        "truth": ".*[<VOW>].*"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter <U> a with end which lines",
+        "prediction": "(.*)(\\b([<LOW>])+\\b)",
+        "truth": "(.*)(.*[<LET>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "character , number , <M0> string without lines",
+        "prediction": "~((<M0>)&([<NUM>]))",
+        "truth": "~((<M0>)|([<NUM>])|(.))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the character a with starting not lines",
+        "prediction": "~((.)(.*))",
+        "truth": "(~((.)(.*))).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". thrice least at <M1> preceding <M0> with items",
+        "prediction": "(<M0>).*((<M1>){3,}).*",
+        "truth": "(<M0>.*<M1>.*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter small a preceding <M0> with items",
+        "prediction": "(<M0>).*([<LOW>]).*",
+        "truth": "(<M0>).*([<LET>].*[<LOW>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the of instance 1 least at with begin that lines",
+        "prediction": "((<M0>)+)(.*)",
+        "truth": "((<M0>)+)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter case lower a after letters capital with lines",
+        "prediction": "([<LOW>]).*([<CAP>]).*",
+        "truth": "(([<LOW>])(.*)).*([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at character a with ending not are which lines",
+        "prediction": "~(((.*)(.))+)",
+        "truth": "~((.*)((.)+))"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a with lines",
+        "prediction": ".*([<LET>])|([<LOW>]).*",
+        "truth": ".*([<LET>])|([<LOW>])|([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at <M1> string by followed <M0> string having not lines",
+        "prediction": "~((<M0>.*<M1>.*)+)",
+        "truth": "~((<M0>.*<M1>.*)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "it in once least at letter a containing with ending lines",
+        "prediction": "(.*)(([<LET>])+)",
+        "truth": "((.*)(.*[<LET>].*))+"
+    },
+    {
+        "score": 0,
+        "sentence": "number a following vowel a with lines",
+        "prediction": ".*[<NUM>].*[<VOW>].*.*",
+        "truth": "([<NUM>].*[<VOW>].*)*"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter small a preceding letter case upper an preceding letter a with items",
+        "prediction": "([<LET>]).*([<LOW>].*[<LET>].*).*",
+        "truth": "([<LET>].*[<CAP>].*).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". letter small a preceding time 1 least at numeral a with items",
+        "prediction": "(([<NUM>])+).*([<LOW>]).*",
+        "truth": "(([<NUM>])+).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines the in character a after coming vowel a must there",
+        "prediction": "(.).*([<VOW>]).*",
+        "truth": "..*[<VOW>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "once least at vowel a by followed is which letter a with lines",
+        "prediction": "([<LET>].*[<VOW>].*)+",
+        "truth": "([<LET>].*[<VOW>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "letter lower-case a by followed character a of combinations 3 least at have that lines",
+        "prediction": "(..*[<LOW>].*){3,}",
+        "truth": "(..*[<LOW>].*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel 1 least at by followed <M0> string the containing lines",
+        "prediction": "(<M0>.*[<VOW>].*)+",
+        "truth": "(.*<M0>.*[<VOW>].*.*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the only with lines",
+        "prediction": ".*<M0>.*",
+        "truth": ".*(<M0>)+.*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter 1 with starting lines",
+        "prediction": "(([<LET>])+)(.*)",
+        "truth": "(([<LET>])(.*))+"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a with ending lines",
+        "prediction": "(.*)(([<LOW>])+)",
+        "truth": "(.*)(.*~([<LOW>]).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel without character a in ending lines",
+        "prediction": "(.*)((.).*(~([<VOW>])).*",
+        "truth": "((.)(.*))&(~([<VOW>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "number a preceding vowel a containing lines",
+        "prediction": ".*[<VOW>].*[<NUM>].*.*",
+        "truth": "[<VOW>].*[<NUM>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a by preceded <U> that letters having lines",
+        "prediction": "([<VOW>]).*([<LET>]).*",
+        "truth": "~(([<VOW>]).*([<LET>]).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "characters lower-case containing lines",
+        "prediction": ".*(.)|([<LOW>]).*",
+        "truth": ".*([<LOW>])&(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a after letter lower-case a have that lines",
+        "prediction": ".*[<VOW>].*[<LOW>].*.*",
+        "truth": "[<VOW>].*[<LOW>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "times 4 least at letter lower-case a with ending lines",
+        "prediction": "(.*)(([<LOW>]){4,})",
+        "truth": "(.*)(([<LOW>]){4,})"
+    },
+    {
+        "score": 0,
+        "sentence": "times 7 over case lower a with end that lines",
+        "prediction": "(.*)(([<LOW>]){7,})",
+        "truth": "(.*(.*)([<LOW>]).*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "<M1> string without <M0> string in starting lines",
+        "prediction": "((<M0>)(.*))&(~(<M1>))",
+        "truth": "((<M0>)(.*)).*(~(<M1>)).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M0> preceding letter case upper an preceding numeral a with items",
+        "prediction": "([<NUM>].*[<CAP>].*).*(<M0>).*",
+        "truth": "([<NUM>]).*([<CAP>].*<M0>.*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "number a not is which character a by followed letter lower-case a contain that lines multiple",
+        "prediction": "([<LOW>]).*(~(.)).*",
+        "truth": "([<LOW>]).*(~([<NUM>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 5 least at , letter capital a by followed number a have that lines",
+        "prediction": "([<NUM>].*[<CAP>].*){5,}",
+        "truth": "([<NUM>]).*(([<CAP>]){5,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "number a having a not lines",
+        "prediction": "~(.*[<NUM>].*)",
+        "truth": "~(([<NUM>])+)"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 4 least at letter a preceding letter small a with items",
+        "prediction": "([<LOW>].*[<LET>].*){4,}",
+        "truth": "([<LOW>].*[<LET>].*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "times 2 <M1> by followed <M0> with starting lines",
+        "prediction": "((<M0>.*<M1>.*){2,})(.*)",
+        "truth": "((<M0>.*<M1>.*)(.*)){2,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter uppercase an preceding letter small a with items",
+        "prediction": "([<LOW>]).*([<CAP>]).*",
+        "truth": "([<LOW>]).*(([<CAP>])*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "number by followed letter lower-case containing lines",
+        "prediction": ".*[<LOW>].*[<NUM>].*.*",
+        "truth": ".*[<LOW>].*[<NUM>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M1> preceding numeral a preceding <M0> with items",
+        "prediction": "(<M0>).*([<NUM>].*<M1>.*).*",
+        "truth": "(<M0>).*([<NUM>].*<M1>.*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "times zero least at character a with ending lines",
+        "prediction": "(.*)((.)*)",
+        "truth": "(.*)((.)*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". <M1> preceding <M0> without items",
+        "prediction": "(~(<M0>)).*(<M1>).*",
+        "truth": "~((<M0>).*(<M1>).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> with end not lines",
+        "prediction": "~((.*)(<M0>))",
+        "truth": "~((.*)(([<LET>])|(<M0>)))"
+    },
+    {
+        "score": 0,
+        "sentence": ". numeral a preceding letter any with items",
+        "prediction": "(([<LOW>])|([<LET>])).*([<NUM>]).*",
+        "truth": "(([<LOW>])&([<CAP>])).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter a by followed number a preceding letter lower-case a containing lines",
+        "prediction": "([<LOW>]).*([<NUM>].*[<LET>].*).*",
+        "truth": "([<LOW>]).*([<NUM>].*[<LET>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 6 least at letter small a with items",
+        "prediction": "(([<LOW>]){6,}).*([<NUM>]).*",
+        "truth": "([<LOW>]){6,}"
+    },
+    {
+        "score": 1,
+        "sentence": "number a by followed character a containing are which lines",
+        "prediction": ".*..*[<NUM>].*.*",
+        "truth": ".*..*[<NUM>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 4 least at letter case upper an with items",
+        "prediction": "([<CAP>]){4,}",
+        "truth": "([<CAP>].*[<LET>].*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter a preceding character a with items",
+        "prediction": "(.).*([<LET>]).*",
+        "truth": "(.).*(([<LET>])*).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 4 least at <M0> preceding letter a with items",
+        "prediction": "([<LET>].*<M0>.*){4,}",
+        "truth": "([<LET>].*<M0>.*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the by followed then are that character any contain that lines",
+        "prediction": "(<M0>.*[<LOW>].*).*(<M0>).*",
+        "truth": "(.).*(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M1> preceding <M0> preceding numeral a with items",
+        "prediction": "([<NUM>]).*(<M0>.*<M1>.*).*",
+        "truth": "([<NUM>].*<M0>.*).*(<M1>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> string the with lines",
+        "prediction": ".*(<M0>)+.*",
+        "truth": "(([<VOW>])*).*((.*)(<M0>)).*"
+    },
+    {
+        "score": 0,
+        "sentence": ". end the at <U> , numbers have may that lines",
+        "prediction": ".*([<NUM>])|([<NUM>]).*",
+        "truth": "(.*)((.*[<NUM>].*)*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". number a preceding times 4 least at character a with items",
+        "prediction": "((.){4,}).*([<NUM>]).*",
+        "truth": "((.){4,}).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "after times 4 repeated <M1> string the then <M0> string the <U> that <U> of line",
+        "prediction": "(<M0>.*<M1>.*){4,}",
+        "truth": "(<M0>.*<M1>.*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a preceding character with lines",
+        "prediction": "(.).*([<VOW>]).*",
+        "truth": "((.).*([<VOW>]).*)&((<M0>)*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". <M0> by preceded character a with beginning items",
+        "prediction": "(<M0>.*..*)(.*)",
+        "truth": "(..*<M0>.*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a without line",
+        "prediction": "~(.*([<VOW>])+.*)",
+        "truth": "~(([<VOW>])*)"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> with number no with lines",
+        "prediction": "~(([<NUM>])&(<M0>))",
+        "truth": "~([<NUM>].*<M0>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a with start not do that lines",
+        "prediction": "~((([<LET>])(.*))*)",
+        "truth": "~(([<LET>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": ". times 7 least at numeral a preceding letter case upper an with items",
+        "prediction": "([<CAP>].*[<NUM>].*){7,}",
+        "truth": ".*([<CAP>]).*(([<NUM>]){7,}).*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 7 least at , letter a with end that lines",
+        "prediction": "(.*)(([<LET>]){7,})",
+        "truth": "(.*(.*)([<LET>]).*){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". <U> a preceding vowel a with items",
+        "prediction": "([<VOW>]).*([<LET>]).*",
+        "truth": "([<VOW>]).*(~([<LET>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "once <M0> string the only end that lines",
+        "prediction": "(.*)((<M0>)+)",
+        "truth": "((.*)(<M0>))+"
+    },
+    {
+        "score": 0,
+        "sentence": "letter lower-case a with lines",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "\\b([<LOW>])|([<LET>])\\b"
+    },
+    {
+        "score": 1,
+        "sentence": ". <M0> preceding vowel a preceding character a with items",
+        "prediction": "(.).*([<VOW>].*<M0>.*).*",
+        "truth": "(.).*([<VOW>].*<M0>.*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "times 6 least at vowel a after letter capital a with lines",
+        "prediction": "(([<VOW>]){6,}).*([<CAP>]).*",
+        "truth": "([<VOW>]).*(([<CAP>]){6,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter capital containing lines",
+        "prediction": ".*([<CAP>])+.*",
+        "truth": ".*[<CAP>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "number without <M0> string the with lines",
+        "prediction": "((<M0>)+)&(~([<NUM>]))",
+        "truth": "((<M0>)+)&(~([<NUM>]))"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter any by followed letter small a with items",
+        "prediction": "([<LOW>]).*([<LET>].*[<LET>].*).*",
+        "truth": ".*[<LOW>].*[<LET>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "times 2 least at letter lower-case a by followed <M0> string the without lines",
+        "prediction": "~((<M0>.*[<LOW>].*){2,})",
+        "truth": "~((<M0>.*[<LOW>].*){2,})"
+    },
+    {
+        "score": 1,
+        "sentence": ". vowel by followed letter 1 with start lines",
+        "prediction": "(([<LET>])(.*)).*([<VOW>]).*",
+        "truth": "([<LET>].*[<VOW>].*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a without lines",
+        "prediction": "~(.*([<LET>])+.*)",
+        "truth": "~(([<LOW>])|([<LET>])|([<CAP>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "letter a with stating lines",
+        "prediction": "(([<LET>])+)(.*)",
+        "truth": "(([<LET>])|([<CAP>]))(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". character a preceding letter small a with items",
+        "prediction": "([<LOW>]).*((.)*).*",
+        "truth": "([<LOW>].*..*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a only with lines",
+        "prediction": ".*([<LET>])+.*",
+        "truth": ".*([<LOW>])|([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "number by followed character with starting not lines",
+        "prediction": "(~(.)).*(([<NUM>])(.*)).*",
+        "truth": "~((..*[<NUM>].*)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel a having not lines",
+        "prediction": "~(.*([<VOW>])+.*)",
+        "truth": "~(([<VOW>]).*(([<LET>])*).*)"
+    },
+    {
+        "score": 1,
+        "sentence": ". times 6 least at , letter any with items",
+        "prediction": "(([<LOW>])|([<LET>])){6,}",
+        "truth": "(([<LET>])|([<CAP>])){6,}"
+    },
+    {
+        "score": 0,
+        "sentence": ". <M2> string the by followed <M1> string the , <M0> string the with starting lines",
+        "prediction": "((<M0>)(.*)).*(<M1>.*<M2>.*).*",
+        "truth": "((<M0>)(.*))&(<M1>.*<M2>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter a preceding numeral a without items",
+        "prediction": "(~([<NUM>])).*([<LET>]).*",
+        "truth": "~([<NUM>].*[<LET>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel 1 least at with line",
+        "prediction": "(([<VOW>])+).*([<VOW>]).*",
+        "truth": "([<VOW>])+"
+    },
+    {
+        "score": 0,
+        "sentence": "characters 7 than less in starting lines",
+        "prediction": "((.){7,})(.*)",
+        "truth": "~(((.){7,})(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "<M0> with ending lines",
+        "prediction": "(.*)(.*<M0>.*)",
+        "truth": "(.*)(.*<M0>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "times zero number with lines",
+        "prediction": ".*([<NUM>])*.*",
+        "truth": "([<NUM>])*"
+    },
+    {
+        "score": 0,
+        "sentence": ". vowel a with once least at letter a with <U>",
+        "prediction": "(([<LET>])+).*([<VOW>]).*",
+        "truth": "(([<VOW>])|([<LET>]))+"
+    },
+    {
+        "score": 0,
+        "sentence": "character in starting number a without lines",
+        "prediction": "~(([<NUM>])(.*))",
+        "truth": "(~([<NUM>]))&((.)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "letter 1 least at include that lines",
+        "prediction": "(.*[<LET>].*)+",
+        "truth": "([<LET>])+"
+    },
+    {
+        "score": 0,
+        "sentence": ". character a with terminating items",
+        "prediction": "(.*)(..*[<NUM>].*)",
+        "truth": "(.*)(.*..*)"
+    },
+    {
+        "score": 0,
+        "sentence": ". letter case uppe an preceding letter any with items",
+        "prediction": "(([<LOW>])|([<CAP>])).*([<CAP>]).*",
+        "truth": "(([<VOW>])&([<LOW>])&([<LET>])).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "numbers without starting lines",
+        "prediction": "((~([<NUM>]))(.*))",
+        "truth": "~(([<NUM>])(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by followed letter a as well as , number a , <M0> string the with lines",
+        "prediction": "((<M0>)&([<NUM>])&([<LET>])).*(.).*",
+        "truth": "((<M0>)&([<NUM>])&([<LET>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M1> by followed <M0> only contain that lines",
+        "prediction": "(<M0>).*((<M1>)+).*",
+        "truth": ".*(<M0>).*(<M1>).*.*"
+    },
+    {
+        "score": 0,
+        "sentence": ". twice least at letter small a containing <U> with items",
+        "prediction": "(([<LOW>]){2,}).*([<NUM>]).*",
+        "truth": "\\b([<LOW>]){2,}\\b"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the with ending vowel a having not lines",
+        "prediction": "(~([<VOW>]))|((.*)(<M0>))",
+        "truth": "(~([<VOW>])).*((.*)(<M0>)).*"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the follows that number a have that lines",
+        "prediction": ".*([<NUM>])&(<M0>).*",
+        "truth": "<M0>.*[<NUM>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "<U> 7 with lines",
+        "prediction": "([<LET>]){7,}",
+        "truth": "(([<NUM>])|([<LET>])){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": "letter a being not <M0> string the with lines",
+        "prediction": ".*(<M0>)&(~([<LET>])).*",
+        "truth": "((<M0>)*)&(~([<LET>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "<M0> string the by preceded not is that vowel a containing lines",
+        "prediction": "(<M0>).*(~([<VOW>])).*",
+        "truth": "~((<M0>).*([<VOW>]).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "times 7 least at lowercase the in dog using lines",
+        "prediction": "(.*)(\\b(<M0>){7,}\\b)",
+        "truth": "(\\b([<LOW>])&(<M0>)\\b){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "character a by followed vowel a with ending lines",
+        "prediction": "(.*)([<VOW>].*..*)",
+        "truth": "(.*)(.*[<VOW>].*..*.*)"
+    }
+]
+===========================================
+[
+    {
+        "score": 1,
+        "sentence": "lines that end with a character",
+        "prediction": "(.*)(.*(.)|([<VOW>]).*)",
+        "truth": "(.*)(.)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without a vowel with string <M0>",
+        "prediction": "~(([<VOW>])&(<M0>))",
+        "truth": ".*(~([<VOW>])).*(<M0>).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines finishing with the string <M0> at least once followed by a vowel",
+        "prediction": "((.*)(<M0>)).*(([<VOW>])+).*",
+        "truth": "((.*)((<M0>)+)).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines using dog in the lowercase at least 7 times",
+        "prediction": "(\\b([<VOW>]){7,}\\b){7,}",
+        "truth": "(\\b([<LOW>])&(<M0>)\\b){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": "5 lines not having a dog character",
+        "prediction": "~((.*)(.))",
+        "truth": "(~((.){5,})).*(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing any number of characters",
+        "prediction": ".*(.)*.*",
+        "truth": "(.*..*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with <M0> preceding a small letter .",
+        "prediction": "(<M0>).*(([<LOW>])*).*",
+        "truth": "(<M0>).*((.*)([<LOW>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending in vowel without string <M0>",
+        "prediction": "((.*)([<VOW>]))&(~(<M0>))",
+        "truth": "((.*)([<VOW>]))&(~(<M0>))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that contain a letter followed by anything other than a lower-case letter",
+        "prediction": "([<LET>]).*(~([<LOW>])).*",
+        "truth": "([<LET>]).*(~([<LOW>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items without a character preceding <M0> .",
+        "prediction": "(~(.)).*(<M0>).*",
+        "truth": ".*(~(.)).*(<M0>).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a small letter preceding an uppercase letter .",
+        "prediction": "([<LOW>]).*(([<CAP>])*).*",
+        "truth": "([<LOW>]).*(([<CAP>])*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a character after a lower-case letter at least 2 times",
+        "prediction": "([<LOW>]).*((.){2,}).*",
+        "truth": "([<LOW>]).*((.){2,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with <M0> 7 times",
+        "prediction": "(.*)((.*)(<M0>)){7,}",
+        "truth": "(.*(.*)(<M0>).*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a letter preceding an upper case letter preceding a small letter .",
+        "prediction": "([<LET>]).*([<CAP>].*[<LOW>].*).*",
+        "truth": "([<LET>].*[<CAP>].*).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a character after a lower-case letter at least 4 times",
+        "prediction": "(([<LOW>]){4,}).*(.).*",
+        "truth": "(([<LOW>]){4,}).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a vowel preceding a <U> .",
+        "prediction": "([<VOW>]).*((.*)([<VOW>])).*",
+        "truth": "([<VOW>]).*(~([<LET>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with only a character at least zero times",
+        "prediction": "(.*)((.)*)",
+        "truth": "((.*)(.))*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that don't <M0> followed by a lower-case letter",
+        "prediction": "~((<M0>.*[<LOW>].*)+)",
+        "truth": "\\b~(<M0>.*[<LOW>].*)\\b"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing number followed by lower-case letter at least once",
+        "prediction": "([<NUM>].*[<LOW>].*)+",
+        "truth": "(.*[<NUM>].*[<LOW>].*.*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without a lower-case letter followed by a character",
+        "prediction": "~([<LOW>].*..*)",
+        "truth": "~([<LOW>].*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a letter",
+        "prediction": ".*([<LET>])+.*",
+        "truth": "(([<CAP>])+)|(.*[<LET>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending in string <M0> with a letter",
+        "prediction": "(.*)((<M0>)|(([<LET>])+))",
+        "truth": "((.*)(<M0>))&(([<LET>])+)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a small letter at least 5 times .",
+        "prediction": "(([<LOW>]){5,})|(.*[<NUM>].*)",
+        "truth": "(([<LOW>]){5,})(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "any minimum of times , lines should have a character then a lower case letter",
+        "prediction": "(..*[<LOW>].*).*(.*[<LET>].*).*",
+        "truth": "(..*[<LOW>].*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines where a capital letter does not precede the string <M0>",
+        "prediction": "~(([<CAP>]).*(<M0>).*)",
+        "truth": "([<CAP>]).*(~((<M0>)*)).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that contain any character that are then followed by the string <M0>",
+        "prediction": "(..*<M0>.*).*(.).*",
+        "truth": "(.).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not starting with a character the string <M0>",
+        "prediction": "~((.)(.*))",
+        "truth": "(~((.)(.*))).*(<M0>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have at least 5 occurrences of a <M0> string preceded by a vowel",
+        "prediction": "(([<VOW>]){5,}).*(<M0>).*",
+        "truth": "([<VOW>]).*((<M0>){5,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with an upper case letter preceding a character .",
+        "prediction": "([<CAP>]).*(.*..*).*",
+        "truth": "([<CAP>]).*((.)*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with a letter after a character",
+        "prediction": "(.*)(.*(.)|([<LET>]).*)",
+        "truth": "((.*)(.)).*([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with only a letter",
+        "prediction": ".*([<LET>])+.*",
+        "truth": ".*([<LOW>])|([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not having lower-case letter followed by letter at least once",
+        "prediction": "~(([<LOW>].*[<LET>].*)+)",
+        "truth": "~(([<LOW>].*[<LET>].*)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with <U> containing a small letter at least twice .",
+        "prediction": "(\\b([<LOW>]){2,}\\b){2,}",
+        "truth": "\\b([<LOW>]){2,}\\b"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a character preceding a letter .",
+        "prediction": "(.).*(([<LET>])*).*",
+        "truth": "(.).*(([<LET>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that conclude with the <M0> string , after which an upper-case letter is seen",
+        "prediction": "(.*)([<CAP>].*<M0>.*)",
+        "truth": "(.*)(<M0>.*[<CAP>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting with a letter at least 4 times",
+        "prediction": "(([<LET>])(.*)){4,}",
+        "truth": "(([<LET>]){4,})(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with less than 5 of the string <M0>",
+        "prediction": "~(((.*)(<M0>)){5,})",
+        "truth": "~(.*(<M0>){5,}.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without a number starting in character",
+        "prediction": "~(([<NUM>])(.*))",
+        "truth": "(~([<NUM>]))&((.)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines contain a letter , the string <M0> , a vowel , followed by a capital letter",
+        "prediction": "(([<LET>])|(<M0>)|([<VOW>])).*([<CAP>]).*",
+        "truth": "(([<LET>])&(<M0>)&([<VOW>])).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a vowel then a letter",
+        "prediction": "([<VOW>]).*(([<LET>])+).*",
+        "truth": ".*[<VOW>].*[<LET>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines in which a letter is at the end on no less than 1 <U>",
+        "prediction": "(.*)(([<LET>])+)",
+        "truth": "((.*)([<LET>]))+"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a small letter preceding a character .",
+        "prediction": "(([<LOW>])*).*(.).*",
+        "truth": "([<LOW>].*..*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a vowel preceding a numeral at least 7 times .",
+        "prediction": "([<VOW>].*[<NUM>].*){7,}",
+        "truth": "([<VOW>]).*(([<NUM>]){7,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a vowel that is not preceded by the string <M0>",
+        "prediction": "(<M0>).*(~(<M0>)).*",
+        "truth": "~((<M0>).*([<VOW>]).*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a character followed by a number , the string <M0> , as well as a lower-case letter",
+        "prediction": "(.).*(([<NUM>])&(<M0>)&([<LOW>])).*",
+        "truth": "(.).*(([<NUM>])&(<M0>)&([<LOW>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that end with a vowel followed by a character",
+        "prediction": "(.*)([<VOW>].*..*)",
+        "truth": "(.*)([<VOW>].*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a number followed by the string <M0> at least 1 time .",
+        "prediction": "([<NUM>]).*((<M0>)+).*",
+        "truth": "([<NUM>]).*((.*<M0>.*)+).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items without a numeral preceding a letter .",
+        "prediction": "~(([<NUM>]).*(([<LET>])*).*)",
+        "truth": "~([<NUM>].*[<LET>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a vowel after a lower-case letter at least 5 times",
+        "prediction": "(([<LOW>]){5,}).*([<VOW>]).*",
+        "truth": "(([<LOW>]){5,}).*([<VOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with only a lower case letter",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "~(([<LOW>])&(.))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines which are not ending with a character at least once",
+        "prediction": "~(((.*)(.))+)",
+        "truth": "~((.*)((.)+))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that do not include the string <M0>",
+        "prediction": "~(.*<M0>.*)",
+        "truth": "~(.*<M0>.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a capital letter , a letter , as well as the string <M0>",
+        "prediction": "(([<CAP>])&([<LET>])&(<M0>)).*(.*<M0>.*).*",
+        "truth": ".*([<CAP>])&([<LET>])&(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a number after a vowel",
+        "prediction": "(.*)(([<VOW>]).*([<NUM>]).*)",
+        "truth": "((.*)([<VOW>])).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding <M0> preceding a small letter .",
+        "prediction": "([<NUM>]).*(<M0>.*[<LOW>].*).*",
+        "truth": "([<NUM>]).*(<M0>.*[<LOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with a lower-case letter at least once",
+        "prediction": "(.*)(([<LOW>])+)",
+        "truth": "(.*)((.*[<LOW>].*)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a capital letter followed by a number",
+        "prediction": "([<CAP>].*[<NUM>].*)*",
+        "truth": "([<CAP>].*[<NUM>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a capital letter followed by a vowel , at least 7 times",
+        "prediction": "([<CAP>].*[<VOW>].*){7,}",
+        "truth": "([<CAP>].*[<VOW>].*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items with an uppercase letter preceding <M0> preceding a letter .",
+        "prediction": "([<CAP>]).*(<M0>.*[<LET>].*).*",
+        "truth": "([<CAP>].*<M0>.*).*([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a number at least 3 times",
+        "prediction": "(.*)(([<NUM>]){3,})",
+        "truth": "(.*)(([<NUM>]){3,})"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with character preceding a vowel",
+        "prediction": "(.).*(([<VOW>])+).*",
+        "truth": "((.).*([<VOW>]).*)&((<M0>)*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with any letter preceding a numeral .",
+        "prediction": "(([<LOW>])&([<CAP>])).*([<NUM>]).*",
+        "truth": "(([<LOW>])&([<CAP>])).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting with string <M0> followed by vowel at least once",
+        "prediction": "((<M0>.*[<VOW>].*)(.*))+",
+        "truth": "((<M0>.*[<VOW>].*)(.*))+"
+    },
+    {
+        "score": 0,
+        "sentence": "items with <M0> preceding a small letter .",
+        "prediction": "(<M0>).*(([<LOW>])*).*",
+        "truth": "(<M0>).*([<LET>].*[<LOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with",
+        "prediction": ".*([<VOW>])+.*",
+        "truth": "(<M0>).*(~((<M1>)&([<NUM>]))).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items beginning with a character preceded by <M0> .",
+        "prediction": "(<M0>)(.*)",
+        "truth": "(..*<M0>.*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting with capital letter not preceding lower-case letter",
+        "prediction": "(([<CAP>])(.*)).*(~([<LOW>])).*",
+        "truth": "(([<CAP>])(.*)).*(~([<LOW>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a letter at least 6 times preceding a vowel .",
+        "prediction": "(([<LET>]){6,}).*([<VOW>]).*",
+        "truth": "(([<LET>]){6,}).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a small letter preceding a vowel preceding a letter .",
+        "prediction": "([<LOW>].*[<VOW>].*).*([<LET>]).*",
+        "truth": "([<LOW>]).*([<VOW>].*[<LET>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a letter preceding a number at least 6 times",
+        "prediction": "([<LET>].*[<NUM>].*){6,}",
+        "truth": "([<LET>].*[<NUM>].*){6,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a letter preceding an upper case letter preceding a character .",
+        "prediction": "([<LET>]).*([<CAP>].*..*).*",
+        "truth": "([<LET>]).*([<CAP>].*..*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without a number followed by a vowel",
+        "prediction": "~(([<NUM>]).*([<VOW>]).*)",
+        "truth": "~([<NUM>].*[<VOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that end with a lower case over 7 times",
+        "prediction": "((.*)([<LOW>])){7,}",
+        "truth": "(.*(.*)([<LOW>]).*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not starting in a capital letter",
+        "prediction": "~(([<CAP>])(.*))",
+        "truth": "~(([<CAP>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with the string <M0> after the string <M1>",
+        "prediction": "(<M1>).*((<M0>)&([<LET>])).*",
+        "truth": "(<M1>).*(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a letter preceded by a character",
+        "prediction": ".*(.).*([<LET>]).*.*",
+        "truth": "(.*..*).*([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "a line follows a capital letter .",
+        "prediction": ".*([<CAP>]).*([<LET>]).*.*",
+        "truth": "(..*[<CAP>].*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not start with a number",
+        "prediction": "~(([<NUM>])(.*))",
+        "truth": "(\\b~([<NUM>])\\b)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items beginning with a character preceding a vowel .",
+        "prediction": "((.)(.*)).*([<VOW>]).*",
+        "truth": "(..*[<VOW>].*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel preceding a small letter preceding <M0> .",
+        "prediction": "([<VOW>]).*([<LOW>].*<M0>.*).*",
+        "truth": "([<VOW>]).*([<LOW>].*<M0>.*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with capital letter vowel followed at least once",
+        "prediction": "([<CAP>]).*((.*)([<VOW>])).*",
+        "truth": "([<VOW>].*[<CAP>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "items terminating with a character .",
+        "prediction": "(.*)(.*(.)*.*)",
+        "truth": "(.*)(.*..*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding a letter , at least twice .",
+        "prediction": "([<NUM>]).*(([<LET>]){2,}).*",
+        "truth": "([<NUM>]).*(([<LET>]){2,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not having string <M0> followed by string <M1> at least once",
+        "prediction": "~((<M0>.*<M1>.*)+)",
+        "truth": "~((<M0>.*<M1>.*)+)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with the ending string <M0> at least 4 times",
+        "prediction": "((.*)(.*<M0>.*)){4,}",
+        "truth": "(.*(.*)(<M0>).*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines where a character can only come after a letter is <U>",
+        "prediction": "([<LET>]).*(.).*",
+        "truth": "([<LET>]).*(.*..*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing lower-case letter followed by number",
+        "prediction": ".*([<LOW>].*[<NUM>].*).*([<LOW>]).*.*",
+        "truth": ".*[<LOW>].*[<NUM>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with <M0> preceding a vowel preceding a small letter .",
+        "prediction": "(<M0>).*([<VOW>].*[<LOW>].*).*",
+        "truth": "(<M0>.*[<VOW>].*).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not a having a number",
+        "prediction": "~(([<NUM>])+)",
+        "truth": "~(([<NUM>])+)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have no characters in them",
+        "prediction": "~(.*..*)",
+        "truth": "~(.)"
+    },
+    {
+        "score": 0,
+        "sentence": "items without any letter .",
+        "prediction": "~(([<LOW>])|([<CAP>])|([<LET>]))",
+        "truth": "~(([<LET>])&([<VOW>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting with 1 letter",
+        "prediction": "(([<LET>])+)(.*)",
+        "truth": "(([<LET>])(.*))+"
+    },
+    {
+        "score": 0,
+        "sentence": "items without a starting vowel .",
+        "prediction": "~(([<VOW>])(.*))",
+        "truth": "~((([<VOW>])*)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a number after a letter at least 3 times",
+        "prediction": "(([<LET>]){3,}).*([<NUM>]).*",
+        "truth": "([<LET>].*[<NUM>].*){3,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with only the string <M0>",
+        "prediction": ".*(<M0>)+.*",
+        "truth": ".*(<M0>)+.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a character ending with the string <M0>",
+        "prediction": "(.).*((.*)(<M0>)).*",
+        "truth": "(.).*((.*)(<M0>)).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines where there is 1 instance of a letter preceding a capital letter",
+        "prediction": "([<LET>].*[<CAP>].*)+",
+        "truth": "(.*[<LET>].*[<CAP>].*.*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral at least 6 times preceding a small letter .",
+        "prediction": "(([<NUM>]){6,}).*([<LOW>]).*",
+        "truth": "(([<NUM>]){6,}).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "first a vowel then a character in lines",
+        "prediction": "([<VOW>]).*(.).*",
+        "truth": "(([<VOW>])(.*)).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with the string <M0> followed by 2 capital letters",
+        "prediction": "(<M0>).*(([<CAP>]){2,}).*",
+        "truth": "(<M0>.*[<CAP>].*){2,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with only less than 3 of the string <M0>",
+        "prediction": "~(((.*)(<M0>)){3,})",
+        "truth": "~((<M0>){4,})"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending in numbers .",
+        "prediction": "(.*)(([<NUM>])*)",
+        "truth": "((.*)([<LET>])).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that end only the string <M0> once",
+        "prediction": "(.*)((<M0>)+)",
+        "truth": "((.*)(<M0>))+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without a lower-case letter then a character",
+        "prediction": "~(([<LOW>]).*(.).*)",
+        "truth": "(~([<LOW>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing lower-case characters",
+        "prediction": ".*(.)+.*",
+        "truth": ".*([<LOW>])&(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a character at least 4 times preceding a number .",
+        "prediction": "((.){4,}).*([<NUM>]).*",
+        "truth": "((.){4,}).*([<NUM>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a number at least 2 times",
+        "prediction": "(([<NUM>]){2,}).*([<LET>]).*",
+        "truth": ".*([<NUM>]){2,}.*"
+    },
+    {
+        "score": 1,
+        "sentence": "items terminating with <M0> at least 6 times .",
+        "prediction": "(.*)((<M0>){6,})",
+        "truth": "(.*)((<M0>){6,})"
+    },
+    {
+        "score": 0,
+        "sentence": "items with an upper case letter at least 4 times .",
+        "prediction": "(([<CAP>]){4,}).*([<LET>]).*",
+        "truth": "([<CAP>].*[<LET>].*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding a character at least 1 time .",
+        "prediction": "([<NUM>]).*((.)+).*",
+        "truth": "([<NUM>]).*((.)+).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a lower-case letter at least 4 times",
+        "prediction": "(.*)(([<LOW>]){4,})",
+        "truth": "(.*)(([<LOW>]){4,})"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a numeral preceding a letter at least 5 times .",
+        "prediction": "([<NUM>]).*(([<LET>]){5,}).*",
+        "truth": "([<NUM>].*[<LET>].*){5,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that end with a number at least once",
+        "prediction": "(.*)(([<NUM>])+)",
+        "truth": "(.*)(([<NUM>])+)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a character , with any amount not being the string <M0>",
+        "prediction": "((.)*)&(~(<M0>))",
+        "truth": "((.)*)|(~(<M0>))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines which are containing a character followed by a number",
+        "prediction": "(..*[<NUM>].*).*(.).*",
+        "truth": ".*..*[<NUM>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not ending with vowel followed by string <M0>",
+        "prediction": "~((.*)([<VOW>].*<M0>.*))",
+        "truth": "~((.*)([<VOW>].*<M0>.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without any letters .",
+        "prediction": "~(([<LET>])|([<LOW>])|([<CAP>]))",
+        "truth": "~(([<CAP>])&([<LET>])&([<VOW>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a character at least zero times",
+        "prediction": "(.*)((.)*)",
+        "truth": "(.*)((.)*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines wherein at least once a number is preceded by a character",
+        "prediction": "((.)+).*([<NUM>]).*",
+        "truth": "(..*[<NUM>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that have at least 7 combinations of a character followed by a capital letter",
+        "prediction": "(..*[<CAP>].*){7,}",
+        "truth": "(..*[<CAP>].*){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with capital letters after a lower case letter .",
+        "prediction": "([<LOW>]).*(([<CAP>])*).*",
+        "truth": "(([<LOW>])(.*)).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that contain only <M0> followed by <M1>",
+        "prediction": "(<M0>).*(.*<M1>.*).*",
+        "truth": ".*(<M0>).*(<M1>).*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not end with <M0>",
+        "prediction": "~((.*)(<M0>))",
+        "truth": "~((.*)(([<LET>])|(<M0>)))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not having a lower-case <M0>",
+        "prediction": "~((.*)([<LOW>]))",
+        "truth": "~(([<LOW>])|((<M0>).*([<CAP>]).*))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that contain a vowel followed by a lower-case letter",
+        "prediction": "([<VOW>]).*([<LOW>]).*",
+        "truth": "([<VOW>]).*(.*[<LOW>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with any letter , at least 6 times .",
+        "prediction": "(([<LOW>])|([<CAP>])){6,}",
+        "truth": "(([<LET>])|([<CAP>])){6,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a number after a capital letter at least zero times",
+        "prediction": "(([<CAP>])*).*([<NUM>]).*",
+        "truth": "([<CAP>]).*(([<NUM>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without string <M0> , number , character",
+        "prediction": "~((<M0>)&([<NUM>])&(.))",
+        "truth": "~((<M0>)|([<NUM>])|(.))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a number after a character at least zero times",
+        "prediction": "(.).*((.)*).*",
+        "truth": "(.).*(([<NUM>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a vowel coming after a character at least 5 times",
+        "prediction": "(.){5,}",
+        "truth": "(..*[<VOW>].*){5,}"
+    },
+    {
+        "score": 0,
+        "sentence": "items with any letter preceding an uppe case letter .",
+        "prediction": "(([<LOW>])&([<CAP>])).*([<LET>]).*",
+        "truth": "(([<VOW>])&([<LOW>])&([<LET>])).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a vowel preceded by a letter .",
+        "prediction": "([<LET>]).*(.*[<LET>].*).*",
+        "truth": "(([<LET>])(.*)).*([<VOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a vowel preceding a number",
+        "prediction": ".*([<VOW>].*[<NUM>].*)+.*",
+        "truth": "[<VOW>].*[<NUM>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting with a vowel 2 times",
+        "prediction": "(([<VOW>])(.*)){2,}",
+        "truth": "((([<VOW>])|([<LET>])){2,})(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that have at least 3 combinations of a character followed by a lower-case letter",
+        "prediction": "(..*[<LOW>].*){3,}",
+        "truth": "(..*[<LOW>].*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that end with <M0>",
+        "prediction": "(.*)(.*(<M0>)*.*)",
+        "truth": "~(\\b(.*)(<M0>)\\b)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a small letter at least 4 times preceding a letter .",
+        "prediction": "(([<LOW>]){4,}).*([<LET>]).*",
+        "truth": "(([<LOW>]){4,}).*([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a character preceding a vowel preceding <M0> .",
+        "prediction": "(.).*([<VOW>].*<M0>.*).*",
+        "truth": "(.).*([<VOW>].*<M0>.*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lined ending with a number",
+        "prediction": "(.*)(.*([<NUM>])|([<LET>]).*)",
+        "truth": "(.*)(([<NUM>])*)"
+    },
+    {
+        "score": 0,
+        "sentence": "all lines",
+        "prediction": "(.*~([<LET>]).*)*",
+        "truth": "(.*([<LOW>])|(<M0>)|(<M1>).*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with the string <M0> ending in letter",
+        "prediction": "((<M0>)+)&((.*)([<LET>]))",
+        "truth": "(.*<M0>.*)&((.*)([<LET>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with containing a letter at least once in it",
+        "prediction": "(.*)(([<LET>])+)",
+        "truth": "((.*)(.*[<LET>].*))+"
+    },
+    {
+        "score": 1,
+        "sentence": "items beginning with a vowel .",
+        "prediction": "(([<VOW>])(.*))*",
+        "truth": "(([<VOW>])(.*))*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with only a character at least zero times",
+        "prediction": "(.*..*)*",
+        "truth": "(.*..*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel at least 7 time preceding a letter .",
+        "prediction": "(([<VOW>]){7,}).*([<LET>]).*",
+        "truth": "(([<VOW>]){7,}).*([<LET>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that have a character with the string <M0> after .",
+        "prediction": "(.).*(<M0>).*",
+        "truth": "(..*<M0>.*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without vowel",
+        "prediction": "~(.*([<VOW>])+.*)",
+        "truth": "~([<VOW>])"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with at least once a letter followed by string <M0>",
+        "prediction": "([<LET>]).*((.*)(<M0>)).*",
+        "truth": "(.*[<LET>].*<M0>.*.*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not ending with a number 5 times",
+        "prediction": "~((.*)(([<NUM>]){5,}))",
+        "truth": "~((.*)(([<NUM>]){5,}))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a lower-case letter",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "\\b([<LOW>])|([<LET>])\\b"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not having a capital letter <M0>",
+        "prediction": "~(([<CAP>]).*((.*)([<LET>])).*)",
+        "truth": "~((([<CAP>])+)&(<M0>))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with the string <M0> not being a letter",
+        "prediction": "~((<M0>)&([<LET>]))",
+        "truth": "((<M0>)*)&(~([<LET>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines finishing with a character at least once",
+        "prediction": "(.*)((.)+)",
+        "truth": "(.*)((.*..*)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "the lines which contain a number followed by the string <M0> occuring at least once",
+        "prediction": "([<NUM>]).*((<M0>)+).*",
+        "truth": "([<NUM>].*<M0>.*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not starting with the string <M0> followed by vowel",
+        "prediction": "~((<M0>.*[<VOW>].*)(.*))",
+        "truth": "~((<M0>.*[<VOW>].*)(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "items beginning with a character preceding an upper case letter .",
+        "prediction": "((.)(.*)).*([<CAP>]).*",
+        "truth": "(..*[<CAP>].*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting with a lower-case",
+        "prediction": "(.*[<LOW>].*)(.*)",
+        "truth": "(.*~([<LOW>]).*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that do not contain a lowercase letter preceded by an uppercase letter",
+        "prediction": "~([<CAP>].*[<LOW>].*)",
+        "truth": "~([<CAP>].*[<LOW>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that have a capital letter after the string <M0> at least 3 times",
+        "prediction": "(<M0>).*(([<CAP>]){3,}).*",
+        "truth": "(<M0>).*(([<CAP>]){3,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a number followed by a vowel",
+        "prediction": "([<NUM>]).*([<VOW>]).*",
+        "truth": "([<NUM>].*[<VOW>].*).*([<LET>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "vowel followed by a capital letter .",
+        "prediction": "([<VOW>].*[<CAP>].*)*",
+        "truth": "[<VOW>].*[<CAP>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a capital letter followed by at least 1 vowel",
+        "prediction": "([<CAP>].*[<VOW>].*)+",
+        "truth": "([<CAP>].*[<VOW>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "multiple lines that contain a lower-case letter followed by a character which is not a number",
+        "prediction": "([<LOW>]).*((.)&([<NUM>])).*",
+        "truth": "([<LOW>]).*(~([<NUM>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a small letter followed by any letter .",
+        "prediction": "([<LOW>].*[<LET>].*).*([<LOW>]).*",
+        "truth": ".*[<LOW>].*[<LET>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding <M0> preceding <M1> .",
+        "prediction": "([<NUM>]).*(<M0>.*<M1>.*).*",
+        "truth": "([<NUM>].*<M0>.*).*(<M1>).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting with <M0> 4 times",
+        "prediction": "((<M0>)(.*)){4,}",
+        "truth": "(([<LET>].*<M0>.*){4,})(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines beginning with a letter followed by a lower case letter",
+        "prediction": "([<LET>].*[<LOW>].*)(.*)",
+        "truth": "(([<LET>])(.*)).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a letter , a character , as well as the string <M0>",
+        "prediction": ".*([<LET>])&(.)&(<M0>).*",
+        "truth": ".*([<LET>])&(.)&(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items terminating with a small letter preceding an upper case letter .",
+        "prediction": "((.*)([<LOW>])).*([<CAP>]).*",
+        "truth": "(.*)([<LOW>].*[<CAP>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with an upper case letter preceding a numeral at least 7 times .",
+        "prediction": "([<CAP>].*[<NUM>].*){7,}",
+        "truth": ".*([<CAP>]).*(([<NUM>]){7,}).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing capital letter",
+        "prediction": ".*([<CAP>])+.*",
+        "truth": ".*[<CAP>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding <M0> preceding a vowel .",
+        "prediction": "([<NUM>]).*(<M0>.*[<VOW>].*).*",
+        "truth": "([<NUM>]).*(<M0>.*[<VOW>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a small letter preceding a letter at least 4 times .",
+        "prediction": "([<LOW>].*[<LET>].*){4,}",
+        "truth": "([<LOW>].*[<LET>].*){4,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with <M0> 5 times starting with a letter",
+        "prediction": "((<M0>){5,})&(([<LET>])(.*))",
+        "truth": "((<M0>){5,})|(([<LET>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending in a letter",
+        "prediction": "(.*)(.*([<LET>])|([<VOW>]).*)",
+        "truth": "(.*)(([<LET>])|([<CAP>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with <M0> followed by a lower-case letter .",
+        "prediction": "(<M0>).*(.*[<LOW>].*).*",
+        "truth": "(<M0>.*[<LET>].*)|(.*[<LOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with any letter , at least 5 times .",
+        "prediction": "(([<LOW>]){5,})&(([<CAP>]){5,})",
+        "truth": "(([<CAP>])|([<LOW>])){5,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting in less than 7 characters",
+        "prediction": "((.)(.*)){7,}",
+        "truth": "~(((.){7,})(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing zero times vowel",
+        "prediction": "(.*)(.*([<VOW>])*.*)",
+        "truth": "(.*[<VOW>].*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without a vowel",
+        "prediction": "~(.*([<VOW>])+.*)",
+        "truth": "~((.*[<VOW>].*)+)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a letter as well as a vowel followed by a character",
+        "prediction": "(([<LET>])&([<VOW>])).*(.).*",
+        "truth": "(([<LET>])&([<VOW>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a letter followed by <M0>",
+        "prediction": ".*([<LET>].*<M0>.*)+.*",
+        "truth": "[<LET>].*<M0>.*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without a letter",
+        "prediction": "~(.*([<LET>])+.*)",
+        "truth": "~(([<LOW>])|([<LET>])|([<CAP>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with not containing string <M0>",
+        "prediction": "(.*)(\\b~(<M0>)\\b)",
+        "truth": "(.*)(.*~(<M0>).*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with the string <M0>",
+        "prediction": ".*(.*)(<M0>).*",
+        "truth": "(([<VOW>])*).*((.*)(<M0>)).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without a character not ending in string <M0>",
+        "prediction": "~((.)&((.*)(<M0>)))",
+        "truth": "~((.)&((.*)(<M0>)))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not having a vowel",
+        "prediction": "~(([<VOW>])&([<VOW>]))",
+        "truth": "~(([<VOW>]).*(([<LET>])*).*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral at least 1 time preceding a small letter .",
+        "prediction": "(([<NUM>])+).*([<LOW>]).*",
+        "truth": "(([<NUM>])+).*([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel preceding a letter at least 4 times .",
+        "prediction": "([<VOW>].*[<LET>].*){4,}",
+        "truth": "([<VOW>].*[<LET>].*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not having <M0> , a capital letter",
+        "prediction": "~((<M0>)&([<CAP>]))",
+        "truth": "~((<M0>)&([<CAP>])&([<LET>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a letter preceding a vowel",
+        "prediction": "([<LET>]).*(.*[<VOW>].*).*",
+        "truth": "([<LET>]).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items beginning with a numeral at least 4 times .",
+        "prediction": "(([<NUM>])(.*)){4,}",
+        "truth": "(([<NUM>])(.*)){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without a capital letter followed by a character",
+        "prediction": "~([<CAP>].*..*)",
+        "truth": "~([<CAP>].*..*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without a vowel followed by a letter that is lower-case",
+        "prediction": "~(([<VOW>].*[<LET>].*).*([<LOW>]).*)",
+        "truth": "~([<VOW>].*[<LOW>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding an upper case letter preceding <M0> .",
+        "prediction": "([<NUM>].*[<CAP>].*).*(<M0>).*",
+        "truth": "([<NUM>]).*([<CAP>].*<M0>.*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "at least 6 times have lines with a vowel followed by a number",
+        "prediction": "([<VOW>]).*(([<NUM>]){6,}).*",
+        "truth": "([<VOW>].*[<NUM>].*){6,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that end with a number then after has a character",
+        "prediction": "(.*)(..*[<NUM>].*)",
+        "truth": "(.*)([<NUM>].*..*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with containing only a lower-case letter , at least 5 times",
+        "prediction": "((.*)([<LOW>])){5,}",
+        "truth": "(.*)(([<LOW>]){5,})"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without the string <M0> followed by a lower-case letter at least 2 times",
+        "prediction": "~((<M0>.*[<LOW>].*){2,})",
+        "truth": "~((<M0>.*[<LOW>].*){2,})"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a lowercase letter preceded by a vowel at least twice",
+        "prediction": "(([<VOW>]){2,}).*([<LOW>]).*",
+        "truth": "([<VOW>]).*(([<LOW>]){2,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a vowel followed by a character",
+        "prediction": "(.*)([<VOW>].*..*)",
+        "truth": "(.*)(.*[<VOW>].*..*.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with small letter preceding <M0> .",
+        "prediction": "(([<LOW>])&(<M0>)).*([<VOW>]).*",
+        "truth": "[<LOW>].*<M0>.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines without a capital letter followed by a letter",
+        "prediction": "~([<CAP>].*[<LET>].*)",
+        "truth": "~([<CAP>].*[<LET>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a lower-case letter once",
+        "prediction": ".*([<LOW>])+.*",
+        "truth": "(.*(.*)([<LOW>]).*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel preceding an upper case letter preceding a letter .",
+        "prediction": "([<VOW>]).*([<CAP>].*[<LET>].*).*",
+        "truth": "([<VOW>]).*([<CAP>].*[<LET>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with vowels after lower-case letter .",
+        "prediction": "([<LOW>]).*(([<VOW>])*).*",
+        "truth": ".*([<LOW>]).*([<VOW>]).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines start with 1 letter followed by vowel .",
+        "prediction": "(([<LET>].*[<VOW>].*)(.*))+",
+        "truth": "([<LET>].*[<VOW>].*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines where a lower-case letter is preceded by a character no less than zero times",
+        "prediction": "((.)*).*([<LOW>]).*",
+        "truth": "(.).*(([<LOW>])*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing only <M0>",
+        "prediction": ".*(<M0>)+.*",
+        "truth": ".*([<LET>])&(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a vowel , <M0> , & a small letter",
+        "prediction": ".*([<VOW>])&(<M0>)&([<LOW>]).*",
+        "truth": ".*([<VOW>])&(<M0>)&([<LOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting with string <M0> followed by letter",
+        "prediction": "((<M0>.*[<LET>].*)(.*))+",
+        "truth": "(<M0>.*[<LET>].*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with <M0> followed by a number",
+        "prediction": "(<M0>).*(~([<NUM>])).*",
+        "truth": "~(\\b<M0>.*[<NUM>].*\\b)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing string <M0> after a vowel",
+        "prediction": "([<VOW>]).*(<M0>).*",
+        "truth": ".*[<VOW>].*<M0>.*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "items terminating with an upper case letter preceding a character .",
+        "prediction": "(.*)([<CAP>].*..*)",
+        "truth": "((.*)([<CAP>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a letter at least 4 times .",
+        "prediction": "(([<LET>])|([<LOW>])){4,}",
+        "truth": ".*([<LET>]){4,}.*"
+    },
+    {
+        "score": 0,
+        "sentence": "a line with a capital letter at the end",
+        "prediction": "(([<CAP>])|(.*[<LET>].*))+",
+        "truth": "~((.*)([<LOW>]))"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a vowel preceding a letter at least thrice .",
+        "prediction": "([<VOW>]).*(([<LET>]){3,}).*",
+        "truth": "([<VOW>].*[<LET>].*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without lower-case letters",
+        "prediction": "~(([<LOW>])+)",
+        "truth": "~([<LOW>])"
+    },
+    {
+        "score": 0,
+        "sentence": "line with at least 1 vowel",
+        "prediction": "(.*[<VOW>].*)+",
+        "truth": "([<VOW>])+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that end with a lower-case letter followed by a character",
+        "prediction": "(.*)([<LOW>].*..*)",
+        "truth": "((.*)([<LOW>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines wherein a character is preceded by the string <M0>",
+        "prediction": "(<M0>).*(.).*",
+        "truth": ".*(<M0>).*(.).*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a character followed by not a capital letter",
+        "prediction": "(..*[<CAP>].*)*",
+        "truth": "(.).*(~([<CAP>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that begin with at least 1 instance of the string <M0>",
+        "prediction": "((<M0>)+)(.*)",
+        "truth": "((<M0>)+)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with lower-case letter followed by capital",
+        "prediction": "([<LOW>].*[<CAP>].*)+",
+        "truth": "[<LOW>].*[<CAP>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with the string <M0> ending by a character",
+        "prediction": "(<M0>).*((.*)(.)).*",
+        "truth": "~((.*)(<M0>.*..*))"
+    },
+    {
+        "score": 0,
+        "sentence": "all lines",
+        "prediction": "(.*~([<LET>]).*)*",
+        "truth": "~(([<NUM>].*[<VOW>].*)*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with containing <M0>",
+        "prediction": "(.*)(.*(<M0>)+.*)",
+        "truth": "(.*)(.*<M0>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a number",
+        "prediction": ".*([<NUM>])+.*",
+        "truth": "(.*~([<NUM>]).*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a character followed by a vowel",
+        "prediction": "(..*[<VOW>].*)*",
+        "truth": ".*..*[<VOW>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with a lower-case letter",
+        "prediction": "(.*)(.*([<LOW>])+.*)",
+        "truth": "(.*)(.*~([<LOW>]).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have a number followed by a letter",
+        "prediction": "([<NUM>]).*(.*[<LET>].*).*",
+        "truth": ".*[<NUM>].*[<LET>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting with <M0> followed by a vowel",
+        "prediction": "((<M0>.*[<VOW>].*)(.*))+",
+        "truth": "(<M0>.*[<VOW>].*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel preceding <M0> preceding a numeral .",
+        "prediction": "([<VOW>]).*(<M0>.*[<NUM>].*).*",
+        "truth": "([<VOW>].*<M0>.*).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a numeral preceding a vowel preceding a character .",
+        "prediction": "([<NUM>].*[<VOW>].*).*(.).*",
+        "truth": "([<NUM>].*[<VOW>].*).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items without <M0> preceding <M1> .",
+        "prediction": "~((<M0>).*((<M1>)&([<LET>])).*)",
+        "truth": "~((<M0>).*(<M1>).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a vowel following a number",
+        "prediction": "([<NUM>]).*([<VOW>]).*",
+        "truth": "([<NUM>].*[<VOW>].*)*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a lower-case letter at the end",
+        "prediction": "(.*)(([<LOW>])+)",
+        "truth": "(.*)([<LOW>])"
+    },
+    {
+        "score": 1,
+        "sentence": "lines wherein at least once a letter is preceded by a vowel",
+        "prediction": "(([<VOW>])+).*([<LET>]).*",
+        "truth": "([<VOW>].*[<LET>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have a number that follows the string <M0>",
+        "prediction": "([<NUM>]).*(.*<M0>.*).*",
+        "truth": "<M0>.*[<NUM>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a character preceding a numeral at least 4 times .",
+        "prediction": "(.).*(([<NUM>]){4,}).*",
+        "truth": "(..*[<NUM>].*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items with an upper case letter following a character but preceding a vowel .",
+        "prediction": "(.).*([<CAP>].*[<VOW>].*).*",
+        "truth": "(.).*([<CAP>].*[<VOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with an upper-case letter <U> up <U> of a character",
+        "prediction": ".*([<CAP>])&(.).*",
+        "truth": ".*([<CAP>]).*(.).*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a letter preceding a small letter at least twice .",
+        "prediction": "([<LET>].*[<LOW>].*){2,}",
+        "truth": "([<LET>].*[<LOW>].*){2,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a letter preceding a numeral preceding an upper case letter .",
+        "prediction": "([<LET>]).*([<NUM>].*[<CAP>].*).*",
+        "truth": "([<LET>].*[<NUM>].*).*([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "<U> with a letter at least once with a vowel .",
+        "prediction": "(([<LET>])+)|(([<VOW>])+)",
+        "truth": "(([<VOW>])|([<LET>]))+"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel preceding a terminating character .",
+        "prediction": "([<VOW>]).*((.*)(.)).*",
+        "truth": "([<VOW>]).*((.*)(.)).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that end with a lower-case letter followed by a capital letter",
+        "prediction": "(.*)([<LOW>].*[<CAP>].*)",
+        "truth": "((.*)([<LOW>])).*([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items terminating with <M0> preceding a character at least 4 times .",
+        "prediction": "(.*)((<M0>){4,})",
+        "truth": "((.*)(<M0>)).*((.){4,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing characters",
+        "prediction": ".*(.)+.*",
+        "truth": ".*(.)&([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not having vowel , at least 7 times .",
+        "prediction": "~(([<VOW>]){7,})",
+        "truth": "~(([<VOW>]){7,})"
+    },
+    {
+        "score": 1,
+        "sentence": "items terminating with a numeral preceding <M0> .",
+        "prediction": "((.*)([<NUM>])).*(<M0>).*",
+        "truth": "((.*)([<NUM>])).*(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with <M0> preceding a numeral preceding <M1> .",
+        "prediction": "(<M0>).*([<NUM>].*<M1>.*).*",
+        "truth": "(<M0>).*([<NUM>].*<M1>.*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a capital letter following a lower-case letter at least 5 times",
+        "prediction": "([<LOW>].*[<CAP>].*){5,}",
+        "truth": "([<LOW>]).*(([<CAP>]){5,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a small letter at least 6 times .",
+        "prediction": "(([<LOW>]){6,})|(.*[<NUM>].*)",
+        "truth": "([<LOW>]){6,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a number first , followed by a character",
+        "prediction": "([<NUM>]).*(.).*",
+        "truth": "([<NUM>].*..*)(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a letter preceding <M0> at least 4 times .",
+        "prediction": "([<LET>].*<M0>.*){4,}",
+        "truth": "([<LET>].*<M0>.*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items <U> character at last thrice preceding a vowel .",
+        "prediction": "((.){3,}).*([<VOW>]).*",
+        "truth": "((.){3,}).*([<VOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing <M0> at least once",
+        "prediction": "(.*)((<M0>)+)",
+        "truth": "((.*<M0>.*)|([<CAP>]))+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a capital letter after a vowel at least 6 times",
+        "prediction": "(([<VOW>]){6,}).*([<CAP>]).*",
+        "truth": "([<VOW>]).*(([<CAP>]){6,}).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines having the string <M0> followed by a letter",
+        "prediction": "(<M0>).*(.*[<LET>].*).*",
+        "truth": ".*<M0>.*[<LET>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with the string <M0> , a capital letter , as well as the string <M1> followed by a number",
+        "prediction": "((<M0>)&([<CAP>])&(<M1>)).*([<NUM>]).*",
+        "truth": "((<M0>)&([<CAP>])&(<M1>)).*([<NUM>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that have a capital letter at the end",
+        "prediction": "(.*)([<CAP>])",
+        "truth": "(.*)([<CAP>])"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not starting with character followed by number",
+        "prediction": "~((..*[<NUM>].*)(.*))",
+        "truth": "~((..*[<NUM>].*)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a numeral <U> a character at least 7 times .",
+        "prediction": "((.){7,}).*([<NUM>]).*",
+        "truth": "([<NUM>].*..*){7,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting with the string <M0> , the string <M1> followed by the string <M2> .",
+        "prediction": "((<M0>)(.*)).*((<M2>)|(<M1>)).*",
+        "truth": "((<M0>)(.*))&(<M1>.*<M2>.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines containing a lower-case letter preceding a number followed by a letter",
+        "prediction": "([<LOW>]).*([<NUM>].*[<LET>].*).*",
+        "truth": "([<LOW>]).*([<NUM>].*[<LET>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have a letter followed by a capital letter",
+        "prediction": ".*([<LET>].*[<CAP>].*)+.*",
+        "truth": "[<LET>].*[<CAP>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines are <U>",
+        "prediction": "~(.*[<VOW>].*)",
+        "truth": "~(([<LET>])|(.))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines having letters that <U> preceded by a vowel",
+        "prediction": "([<VOW>]).*(([<LET>])&([<LOW>])).*",
+        "truth": "~(([<VOW>]).*([<LET>]).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that conclude with a vowel no less than 1 time at the minimum",
+        "prediction": "((.*)(([<VOW>])+))(.*)",
+        "truth": "((.*)([<VOW>]))+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a lower-case letter followed by a vowel at least once in them",
+        "prediction": "([<LOW>].*[<VOW>].*)+",
+        "truth": "([<LOW>].*[<VOW>].*)+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that do not start with a letter",
+        "prediction": "~(([<LET>])(.*))",
+        "truth": "~(([<LET>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a lower case letter preceded by a vowel",
+        "prediction": "([<VOW>]).*([<LOW>]).*",
+        "truth": ".*[<VOW>].*[<LOW>].*.*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing the string <M0> followed by at least 1 vowel",
+        "prediction": "(<M0>.*[<VOW>].*)+",
+        "truth": "(.*<M0>.*[<VOW>].*.*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines stating with a letter",
+        "prediction": "(\\b~([<LET>])\\b)(.*)",
+        "truth": "(([<LET>])|([<CAP>]))(.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel preceding <M0> preceding <M1> .",
+        "prediction": "([<VOW>]).*(<M0>.*<M1>.*).*",
+        "truth": "([<VOW>]).*(<M0>.*<M1>.*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items without <M0> preceding a character .",
+        "prediction": "~((<M0>).*(.).*)",
+        "truth": "~(<M0>.*..*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with no number with <M0>",
+        "prediction": "~(([<NUM>])&(<M0>))",
+        "truth": "~([<NUM>].*<M0>.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a lower-case letter",
+        "prediction": "(.*)(.*([<LOW>])+.*)",
+        "truth": "(.*)(.*[<LOW>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines which end with a <U> letter .",
+        "prediction": "(.*)(.*([<LOW>])|([<LET>]).*)",
+        "truth": "(.*)(.*[<LET>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a letter which is followed by a vowel at least once",
+        "prediction": "([<LET>].*[<VOW>].*)+",
+        "truth": "([<LET>].*[<VOW>].*)+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending in a character without vowel",
+        "prediction": "(.*)((.)+)",
+        "truth": "((.)(.*))&(~([<VOW>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines that have a lower-case letter after a vowel",
+        "prediction": "([<VOW>]).*([<LOW>]).*",
+        "truth": "[<VOW>].*[<LOW>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "items without <M0> .",
+        "prediction": "~(.*<M0>.*)",
+        "truth": "~(.*<M0>.*)"
+    },
+    {
+        "score": 1,
+        "sentence": "items without at least once a character .",
+        "prediction": "~((.)+)",
+        "truth": "~((.)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "all lines",
+        "prediction": "(.*~([<LET>]).*)*",
+        "truth": "((.*)([<VOW>])).*(([<LET>])*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "letter ending with a vowel after a number",
+        "prediction": "((.*)([<NUM>])).*([<VOW>]).*",
+        "truth": "((.*)([<NUM>])).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a lower-case letter at least 6 times starting with <M0>",
+        "prediction": "(([<LOW>]){6,})&((<M0>)(.*))",
+        "truth": "(([<LOW>]){6,})&((<M0>)(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting in a character ending in letter",
+        "prediction": "((.)(.*)).*((.*)([<LET>])).*",
+        "truth": "((.)(.*)).*((.*)([<LET>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing the string <M0> followed by a letter at least 6 times",
+        "prediction": "(<M0>.*[<LET>].*){6,}",
+        "truth": "(<M0>).*(([<LET>]){6,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with <M0>",
+        "prediction": "(.*)(.*(<M0>)+.*)",
+        "truth": "(.*)(.*<M0>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that at least have the string <M0> followed by <M1>",
+        "prediction": "(<M0>).*(.*<M1>.*).*",
+        "truth": "(.*)((<M0>.*<M1>.*)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a letter preceding <M0> at least thrice .",
+        "prediction": "([<LET>].*<M0>.*){3,}",
+        "truth": "([<LET>]).*((<M0>){3,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a character 4 times",
+        "prediction": "(.*)((.){4,})",
+        "truth": "(.*)((.){4,})"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a lower-case at least once",
+        "prediction": "(.*)(([<LOW>])+)",
+        "truth": "((.*[<LOW>].*)|([<CAP>]))+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not having a vowel ending with the string <M0>",
+        "prediction": "(~([<VOW>]))&((.*)(<M0>))",
+        "truth": "(~([<VOW>])).*((.*)(<M0>)).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that may have numbers , <U> at the end .",
+        "prediction": "(.*)(([<NUM>])|(.))",
+        "truth": "(.*)((.*[<NUM>].*)*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with number zero times",
+        "prediction": "(~([<NUM>]))|((.*)([<LET>]))",
+        "truth": "([<NUM>])*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing a character that end with a number",
+        "prediction": "(.*)(.*(.)&([<NUM>]).*)",
+        "truth": "(.).*((.*)([<NUM>])).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting without numbers",
+        "prediction": "(~([<NUM>]))(.*)",
+        "truth": "~(([<NUM>])(.*))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a vowel",
+        "prediction": ".*([<VOW>])+.*",
+        "truth": ".*[<VOW>].*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines starting with a letter with a number",
+        "prediction": "(.*)(.*([<LET>])&([<NUM>]).*)",
+        "truth": "(([<LET>])(.*)).*([<NUM>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines should have a letter followed by a lower-case letter",
+        "prediction": "([<LET>]).*(.*[<LOW>].*).*",
+        "truth": ".*[<LET>].*[<LOW>].*.*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with the string <M0> , a number , as well as a letter followed by a character",
+        "prediction": "((<M0>)&([<NUM>])&([<LET>])).*(.).*",
+        "truth": "((<M0>)&([<NUM>])&([<LET>])).*(.).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without a character followed by a lower-case letter",
+        "prediction": "~(..*[<LOW>].*)",
+        "truth": ".*~(..*[<LOW>].*).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with characters that follow the string <M0>",
+        "prediction": "(.).*(.*<M0>.*).*",
+        "truth": "(<M0>.*..*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a lower-case letter preceding a character at least 6 times",
+        "prediction": "([<LOW>]).*((.){6,}).*",
+        "truth": "([<LOW>].*..*){6,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines beginning with a lower case letter with the string <M0> following",
+        "prediction": "(([<LOW>])(.*)).*(<M0>).*",
+        "truth": "([<LOW>].*<M0>.*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with a small letter preceding <M0> at least thrice .",
+        "prediction": "(([<LOW>]){3,}).*(<M0>).*",
+        "truth": "([<LOW>].*<M0>.*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have a number followed by a capital letter , at least 5 times",
+        "prediction": "([<NUM>].*[<CAP>].*){5,}",
+        "truth": "([<NUM>]).*(([<CAP>]){5,}).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not ending in a letter",
+        "prediction": "~((.*)([<LET>]))",
+        "truth": "~(((.*)([<LET>]))+)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines finishing with a letter followed by a vowel",
+        "prediction": "(.*)([<LET>].*[<VOW>].*)",
+        "truth": "(.*)(.*([<LET>]).*([<VOW>]).*.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines containing <M0> , starting with a number",
+        "prediction": ".*(<M0>)&(([<NUM>])(.*)).*",
+        "truth": "(.*<M0>.*)&(([<NUM>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a lower-case letter following any other letter",
+        "prediction": "([<LOW>]).*(([<LET>])|([<LOW>])).*",
+        "truth": "[<LET>].*[<LOW>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "items with a vowel at least 4 times preceding a character .",
+        "prediction": "(([<VOW>]){4,}).*(.).*",
+        "truth": "(([<VOW>]){4,}).*(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a character ending in vowel",
+        "prediction": "(.).*((.*)([<VOW>])).*",
+        "truth": "(.).*((.*)([<VOW>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not ending with a character followed by string <M0>",
+        "prediction": "~((.*)(..*<M0>.*))",
+        "truth": "~((.*)(..*<M0>.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that start with the string <M0>",
+        "prediction": "(\\b(<M0>)(.*)\\b)(.*)",
+        "truth": "((<M0>)*)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have only the string <M0> then a vowel",
+        "prediction": "(<M0>).*([<VOW>]).*",
+        "truth": "(.*<M0>.*).*([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "string starting with <M0> in lines",
+        "prediction": "(\\b(<M0>)(.*)\\b)(.*)",
+        "truth": "(<M0>)(.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with <M0>",
+        "prediction": ".*(<M0>)+.*",
+        "truth": "((<M0>)*)&(.*<M1>.*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines not containing a vowel a character",
+        "prediction": "~(.*..*)",
+        "truth": "~(.*([<VOW>])&(.).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines ending with a capital letter but not the string <M0>",
+        "prediction": "(.*)((~([<CAP>]))|(<M0>))",
+        "truth": "((.*)([<CAP>]))|(~(<M0>))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with numbers at least 6 times having a vowel",
+        "prediction": "(([<NUM>]){6,})&(([<VOW>]){6,})",
+        "truth": "(([<NUM>]){6,})&(.*[<VOW>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with the string <M0> , the string <M1> , as well as the string <M2> followed by a lower-case letter",
+        "prediction": "((<M0>)&(<M1>)&(<M2>)).*([<LOW>]).*",
+        "truth": "((<M0>)&(<M1>)&(<M2>)).*([<LOW>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "ends with lower-case letter",
+        "prediction": "(.*)(.*([<LOW>])|([<LET>]).*)",
+        "truth": "(.*)(([<LOW>])+)"
+    },
+    {
+        "score": 1,
+        "sentence": "items with an upper case letter preceding <M0> preceding a character .",
+        "prediction": "([<CAP>]).*(<M0>.*..*).*",
+        "truth": "([<CAP>].*<M0>.*).*(.).*"
+    },
+    {
+        "score": 1,
+        "sentence": "items terminating with <M0> preceding a letter .",
+        "prediction": "(.*)(<M0>.*[<LET>].*)",
+        "truth": "(.*)(<M0>.*[<LET>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "at least 1 time the lines need to end with a character",
+        "prediction": "((.*)(.))&((.*)(.))",
+        "truth": "(.*)((.)+)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with the string <M0> without number",
+        "prediction": "~((<M0>)&([<NUM>]))",
+        "truth": "((<M0>)+)&(~([<NUM>]))"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a character starting in a number",
+        "prediction": "((.)+)&(([<NUM>])(.*))",
+        "truth": "(.*..*)&(([<NUM>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that have a lower-case letter followed by the string <M0> , at least 1 time",
+        "prediction": "([<LOW>].*<M0>.*)+",
+        "truth": "([<LOW>].*<M0>.*)*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that include at least 1 letter",
+        "prediction": "(.*[<LET>].*)+",
+        "truth": "([<LET>])+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with characters at least once starting with a lower-case letter",
+        "prediction": "((.)+)&(([<LOW>])(.*))",
+        "truth": "((.)+)&(([<LOW>])(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines without ending in a number",
+        "prediction": "(.*)(.*~([<NUM>]).*)",
+        "truth": "~(.*(.*)([<NUM>]).*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with <M0> preceding <M1> at least thrice .",
+        "prediction": "(<M0>).*((<M1>){3,}).*",
+        "truth": "(<M0>.*<M1>.*){3,}"
+    },
+    {
+        "score": 0,
+        "sentence": "line without a vowel",
+        "prediction": "~(([<VOW>])+)",
+        "truth": "~(([<VOW>])*)"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that end with a letter , at least 7 times",
+        "prediction": "(.*)(([<LET>]){7,})",
+        "truth": "(.*(.*)([<LET>]).*){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending in vowel",
+        "prediction": "(.*)(.*([<VOW>])+.*)",
+        "truth": "(.*)(.*[<VOW>].*)"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with a capital letter preceded at least once by the string <M0>",
+        "prediction": "((<M0>)+).*([<CAP>]).*",
+        "truth": "((<M0>)+).*([<CAP>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "there must a vowel coming after a character in the lines",
+        "prediction": ".*(.).*([<VOW>]).*.*",
+        "truth": "..*[<VOW>].*"
+    },
+    {
+        "score": 1,
+        "sentence": "items without a numeral at least twice .",
+        "prediction": "~(([<NUM>]){2,})",
+        "truth": "~(([<NUM>]){2,})"
+    },
+    {
+        "score": 1,
+        "sentence": "lines with the string <M0> after a capital letter at least 3 times",
+        "prediction": "(([<CAP>]){3,}).*(<M0>).*",
+        "truth": "(([<CAP>]){3,}).*(<M0>).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting in a character with a vowel",
+        "prediction": "((.)(.*)).*((.*)([<VOW>])).*",
+        "truth": "((.)(.*)).*(.*[<VOW>].*).*"
+    },
+    {
+        "score": 1,
+        "sentence": "the lines that end with a number followed by at least 1 capital letter",
+        "prediction": "((.*)([<NUM>].*[<CAP>].*))+",
+        "truth": "((.*)([<NUM>].*[<CAP>].*))+"
+    },
+    {
+        "score": 1,
+        "sentence": "lines not starting with lower-case letter at least once",
+        "prediction": "~((([<LOW>])+)(.*))",
+        "truth": "~((([<LOW>])+)(.*))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a letter",
+        "prediction": ".*([<LET>])+.*",
+        "truth": ".*([<LET>])|([<LOW>])|([<CAP>]).*"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a letter containing a vowel",
+        "prediction": ".*([<LET>])|([<VOW>]).*",
+        "truth": "(([<LET>])+)&(.*[<VOW>].*)"
+    },
+    {
+        "score": 0,
+        "sentence": "items with any letter .",
+        "prediction": ".*([<LOW>])|([<CAP>])|([<LET>]).*",
+        "truth": ".*([<LOW>])&([<LET>])&([<VOW>]).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting in string <M0> without string <M1>",
+        "prediction": "((<M0>)(.*))&(~(<M1>))",
+        "truth": "((<M0>)(.*)).*(~(<M1>)).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines starting with <M0> followed by <M1> 2 times",
+        "prediction": "((<M0>.*<M1>.*)(.*)){2,}",
+        "truth": "((<M0>.*<M1>.*)(.*)){2,}"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with 7 <U>",
+        "prediction": "(.*)(([<VOW>]){7,})",
+        "truth": "(([<NUM>])|([<LET>])){7,}"
+    },
+    {
+        "score": 1,
+        "sentence": "line of <U> that <U> the string <M0> then the string <M1> repeated 4 times after",
+        "prediction": "(<M0>.*<M1>.*){4,}",
+        "truth": "(<M0>.*<M1>.*){4,}"
+    },
+    {
+        "score": 1,
+        "sentence": "items beginning with a small letter at least 1 time .",
+        "prediction": "(([<LOW>])(.*))+",
+        "truth": "(([<LOW>])(.*))+"
+    },
+    {
+        "score": 0,
+        "sentence": "lines that do not contain a character but contain a lower-case letter , at least once",
+        "prediction": "~((.)+)",
+        "truth": "(([<LOW>])+)&(~(.))"
+    },
+    {
+        "score": 0,
+        "sentence": "lines with a vowel ending with a capital letter",
+        "prediction": "((.*)([<VOW>]))&((.*)([<CAP>]))",
+        "truth": "([<VOW>]).*((.*)([<CAP>])).*"
+    },
+    {
+        "score": 1,
+        "sentence": "lines ending with a letter followed by a lower-case letter at least 4 times",
+        "prediction": "((.*)([<LET>].*[<LOW>].*)){4,}",
+        "truth": "((.*)([<LET>].*[<LOW>].*)){4,}"
+    }
+]
+===========================================

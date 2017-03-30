@@ -184,16 +184,20 @@ class ModelRuntime:
             # print(prediction, loss, optimizer)
 
     def run(self):
-        self.train()
-        """
-        sample = self._train_data_iterator.get_batch(1)
+        # self.train()
 
-        predictions, loss, optimizer, feed_dict = self._train_model.train(sample)
-        predictions, loss, optimizer = self._session.run((predictions, loss, optimizer,), feed_dict=feed_dict)
-        print(predictions)
+        sample = self._train_data_iterator.get_batch(3)
+
+        outputs, states, predictions, loss, feed_dict = self._train_model.encode(sample)
+        outputs, states, predictions, loss = self._session.run((outputs, states, loss, predictions), feed_dict=feed_dict)
+        print(outputs)
+        print("====================")
+        print(states)
         print("====================")
         print(loss)
-        """
+        print("====================")
+        print(predictions)
+
         self._session.close()
 
 

@@ -4,7 +4,6 @@ import util
 from data_provider.data_iterator import VocabManager
 import tensorflow as tf
 from tensorflow.contrib.rnn import LSTMCell, LSTMStateTuple
-from tensorflow.nn import bidirectional_dynamic_rnn
 import numpy as np
 
 
@@ -530,7 +529,7 @@ class Model:
 
             def _reconstruct_LSTMStateTuple(fw_states, bw_states):
                 """
-                Expand LSTMStateTuple
+                Concatenate the fw_state and bw_state
                 """
                 new_tuples = []
                 for (fw, bw) in zip(fw_states, bw_states):

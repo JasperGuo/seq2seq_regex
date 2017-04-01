@@ -11,8 +11,8 @@ import tensorflow as tf
 from model import Model
 from data_provider.data_iterator import VocabManager, DataIterator
 
-
 JAR_PATH = os.path.join(os.getcwd(), 'regex_dfa_equals.jar')
+# np.set_printoptions(threshold=np.nan)
 
 
 def read_configuration(path):
@@ -83,21 +83,19 @@ class ModelRuntime:
             dna_equality = 'dfa_equality: %d' % dfa_diff
             f.write('\n'.join(['\n', summary, dna_equality, source, padded_seq_str, ground_truth_str, segmentation]))
 
-    def _log_epoch(self, epoch, accuracy, dfa_accuracy, loss):
+    def _log_epoch(self, epoch, accuracy, dfa_accuracy, train_accuracy, train_dfa_accuracy, loss):
         with open(self._result_log, "a") as f:
-            log = "\n epoch_num: %f, accuracy: %f, dfa_accuracy: %f, average_loss: %f \n" % (
-                epoch, accuracy, dfa_accuracy, loss)
+            log = "\n epoch_num: %f, accuracy: %f, dfa_accuracy: %f, train_accuracy: %f, train_dfa_accuracy: %f, average_loss: %f \n" % (
+                epoch, accuracy, dfa_accuracy, train_accuracy, train_dfa_accuracy, loss)
             f.write(log)
 
-    def _calc_accuracy(self, source, ground_truth, prediction, weights):
+    def _calc_accuracy(self, ground_truth, prediction):
         """
         Calculate the accuracy
-        :param batch:
-        :param predictions:
+        :param ground_truth:
+        :param prediction:
         :return: # correct
         """
-        padded_seq = np.concatenate((prediction, np.array([0] * (len(ground_truth) - len(prediction)))), axis=0)
-        diff = np.sum(np.abs((padded_seq - ground_truth) * weights))
 
         def _replace(regex):
             regex = regex.replace("<VOW>", 'AEIOUaeiou')
@@ -111,17 +109,17 @@ class ModelRuntime:
             regex = regex.replace("<M3>", 'lake')
             regex = regex.replace(" ", "")
             return regex
-        dfa_result = False
+
+        gold = _replace(self._vocab_manager.decode(ground_truth))
+        pred = _replace(self._vocab_manager.decode(prediction))
+        diff = (gold == pred)
         try:
-            gold = _replace(self._vocab_manager.decode(ground_truth))
-            pred = _replace(self._vocab_manager.decode(padded_seq))
             out = subprocess.check_output(['java', '-jar', 'regex_dfa_equals.jar', gold, pred])
             dfa_result = '\n1' in out.decode()
         except Exception as e:
             print(e)
             dfa_result = False
-        self._log_test(source, ground_truth, padded_seq, diff == 0, dfa_result)
-        return diff == 0, dfa_result
+        return diff, dfa_result
 
     def test(self):
         # TODO Batch test
@@ -130,9 +128,10 @@ class ModelRuntime:
         :return:
         """
 
-        def _test(bs=1):
+        def _test():
             sample = self._test_data_iterator.get_batch(1)
-            last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(sample.encoder_seq, sample.reverse_encoder_seq)
+            last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
+                sample.encoder_seq, sample.reverse_encoder_seq, sample.source_length)
             last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
                 (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
 
@@ -142,8 +141,9 @@ class ModelRuntime:
                 index = np.argmin(logprobs * (-mask))
             _predictions = _predictions[index]
             ground_truth = np.array(sample.target_seq[0])
-            weights = np.array(sample.weights[0])
-            exact_match, dfa_equality = self._calc_accuracy(sample.encoder_seq[0], ground_truth, _predictions, weights)
+            padded_seq = np.concatenate((_predictions, np.array([0] * (len(ground_truth) - len(_predictions)))), axis=0)
+            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq)
+            self._log_test(sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality)
             return 1, exact_match, dfa_equality
 
         total = 0
@@ -154,7 +154,22 @@ class ModelRuntime:
             total += t
             exact_correct += e
             dfa_corrent += d
-        return exact_correct/total, dfa_corrent/total
+        return exact_correct / total, dfa_corrent / total
+
+    def _calc_train_set_accuracy(self, predictions, ground_truths):
+        """
+        Check accuracy in training set
+        :return:
+        """
+        exact_correct = 0
+        dfa_corrent = 0
+        for (prediction, ground_truth) in zip(predictions, ground_truths):
+            ground_truth = np.array(ground_truth)
+            padded_seq = np.concatenate((prediction, np.array([0] * (len(ground_truth) - len(prediction)))), axis=0)
+            e, d = self._calc_accuracy(ground_truth, padded_seq)
+            exact_correct += e
+            dfa_corrent += d
+        return exact_correct, dfa_corrent
 
     def train(self):
         """
@@ -164,40 +179,47 @@ class ModelRuntime:
         losses = list()
 
         def evaluate(epoch_num):
+            nonlocal i
             nonlocal losses
+            nonlocal train_dfa_match
+            nonlocal train_exact_match
+            nonlocal total
+            i += 1
             loss = np.average(np.array(losses))
+            print(losses)
             self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
             accuracy, dfa_accuracy = self.test()
-            print("epoch_num: %f, accuracy: %f, dfa_accuracy: %f,  average_loss: %f " % (
-                epoch_num, accuracy, dfa_accuracy, loss))
-            self._log_epoch(epoch_num, accuracy, dfa_accuracy, loss)
+            train_accuracy = train_exact_match / total
+            train_dfa_accuracy = train_dfa_match / total
+            print(
+                "epoch_num: %f, accuracy: %f, dfa_accuracy: %f, train_accuracy: %f, train_dfa_accuracy: %f, average_loss: %f " % (
+                    epoch_num, accuracy, dfa_accuracy, train_accuracy, train_dfa_accuracy, loss))
+            self._log_epoch(epoch_num, accuracy, dfa_accuracy, train_accuracy, train_dfa_accuracy, loss)
             losses = list()
+            total = 0
+            train_exact_match = 0
+            train_dfa_match = 0
 
         self._train_data_iterator.epoch_cb = evaluate
 
-        while self._train_data_iterator.epoch < self._epoches:
+        i = 0
+        train_exact_match = 0
+        train_dfa_match = 0
+        total = 0
+        while i < self._epoches:
             batch = self._train_data_iterator.get_batch(self._batch_size)
             prediction, loss, optimizer, feed = self._train_model.train(batch)
             prediction, loss, optimizer = self._session.run((prediction, loss, optimizer,),
                                                             feed_dict=feed)
+
+            exact_match, dfa_correct = self._calc_train_set_accuracy(prediction, batch.target_seq)
+            train_exact_match += exact_match
+            train_dfa_match += dfa_correct
+            total += batch.batch_size
             losses.append(loss)
-            # print(prediction, loss, optimizer)
 
     def run(self):
         self.train()
-        """
-        samples = self._test_data_iterator.get_batch(self._batch_size)
-
-        print(samples._print())
-
-        predictions, loss, optimizer, feed_dict = self._train_model.train(samples)
-
-        predictions, loss, optimizer = self._session.run((predictions, loss, optimizer), feed_dict=feed_dict)
-
-        print(predictions)
-        print("=========================")
-        print(loss)
-        """
         self._session.close()
 
 

@@ -91,7 +91,7 @@ class VocabManager:
             if wid in [self.PADDING_TOKEN_ID, self.EOS_TOKEN_ID, self.GO_TOKEN_ID]:
                 continue
             result.append(self.encoder_id2word(wid))
-        return delimiter.join(reversed(result))
+        return delimiter.join(result)
 
 
 class Batch:
@@ -219,8 +219,7 @@ class DataIterator:
 
     def process_x(self, x):
         """
-        1. Reverse the input sequence, append <EOS> at the end of the sequence
-        2. Padding <PAD>
+        Padding <PAD>
         :param X:
         :return:
         """
@@ -262,8 +261,9 @@ class DataIterator:
         else:
             return [1.0] * first_pad_idx + [0.0] * (self._max_y_len - first_pad_idx)
 
-    def get_batch(self, n):
+    def get_batch(self, n, is_notice=True):
         """
+        :param is_notice:
         :param n:                  batch size
         :return: source samples, target samples
         """
@@ -272,7 +272,7 @@ class DataIterator:
             self.shuffle()
             self._cursor = 0
 
-            if self._epoch_cb:
+            if self._epoch_cb and is_notice:
                 self._epoch_cb(self._epochs)
 
         samples = self._data[self._cursor:self._cursor + n]

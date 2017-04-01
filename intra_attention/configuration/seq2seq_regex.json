@@ -21,5 +21,6 @@
   "development_file": "feed_tf\\development.json",
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
-  "result_log": "result_log\\"
+  "result_log": "result_log\\",
+  "use_intra_attention_in_decode": false
 }

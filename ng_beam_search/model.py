@@ -358,7 +358,8 @@ class Model:
                     # mask, indicate which sequence in beam finish
                     tf.zeros([self._beam_size], dtype=tf.int64),
                     self._decoder_states
-                ]
+                ],
+                parallel_iterations=1
             )
 
     def _predict(self, outputs):

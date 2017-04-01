@@ -91,7 +91,7 @@ class VocabManager:
             if wid in [self.PADDING_TOKEN_ID, self.EOS_TOKEN_ID, self.GO_TOKEN_ID]:
                 continue
             result.append(self.encoder_id2word(wid))
-        return delimiter.join(reversed(result))
+        return delimiter.join(result)
 
 
 class Batch:
@@ -99,11 +99,12 @@ class Batch:
     Batch Data
     """
 
-    def __init__(self, source, reverse_source, target, weight):
+    def __init__(self, source, reverse_source, source_length, target, weight):
         self._encoder_seqs = source
         self._reverse_encoder_seqs = reverse_source
         self._decoder_seqs = target
         self._weights = weight
+        self._source_length = source_length
 
         self._target_seqs = list()
 
@@ -117,6 +118,10 @@ class Batch:
     @property
     def reverse_encoder_seq(self):
         return self._reverse_encoder_seqs
+
+    @property
+    def source_length(self):
+        return self._source_length
 
     @property
     def decoder_seq(self):
@@ -160,9 +165,10 @@ class DataIterator:
             data = json.load(f)
 
         for pair in data:
-            bw_source, fw_source = self.process_x(pair["source"])
+            bw_source, fw_source, source_length = self.process_x(pair["source"])
             pair["bw_source"] = bw_source
             pair["fw_source"] = fw_source
+            pair["source_length"] = source_length
             pair["target"] = self.process_y(pair["target"])
             pair["weight"] = self.process_weight(pair["target"])
 
@@ -232,6 +238,7 @@ class DataIterator:
         :param X:
         :return:
         """
+        sequence_length = len(x)
         temp = copy.deepcopy(x[::-1])
         temp.append(VocabManager.EOS_TOKEN_ID)
         temp_len = len(temp)
@@ -246,7 +253,7 @@ class DataIterator:
             fw_temp.append(VocabManager.PADDING_TOKEN_ID)
             fw_temp_len += 1
 
-        return temp, fw_temp
+        return temp, fw_temp, sequence_length
 
     def process_y(self, y):
         """
@@ -278,8 +285,9 @@ class DataIterator:
         else:
             return [1.0] * first_pad_idx + [0.0] * (self._max_y_len - first_pad_idx)
 
-    def get_batch(self, n):
+    def get_batch(self, n, is_notice=True):
         """
+        :param is_notice:
         :param n:                  batch size
         :return: source samples, target samples
         """
@@ -288,7 +296,7 @@ class DataIterator:
             self.shuffle()
             self._cursor = 0
 
-            if self._epoch_cb:
+            if self._epoch_cb and is_notice:
                 self._epoch_cb(self._epochs)
 
         samples = self._data[self._cursor:self._cursor + n]
@@ -297,4 +305,5 @@ class DataIterator:
         reverse_source_sample = [s["bw_source"] for s in samples]
         target_sample = [s["target"] for s in samples]
         weights = [s["weight"] for s in samples]
-        return Batch(source_sample, reverse_source_sample, target_sample, weights)
+        source_length = [s["source_length"] for s in samples]
+        return Batch(source_sample, reverse_source_sample, source_length, target_sample, weights)

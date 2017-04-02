@@ -576,7 +576,6 @@ class Model:
                 """
                 new_tuples = []
                 for (fw, bw) in zip(fw_states, bw_states):
-                    print(fw)
                     new_tuples.append(
                         LSTMStateTuple(
                             c=tf.concat((fw.c, bw.c), axis=1),

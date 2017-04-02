@@ -1,7 +1,7 @@
 {
   "name": "beam_search",
   "learning_rate": 0.01,
-  "gradient": "rmsprop",
+                           "gradient": "rmsprop",
   "rmsprop_smooth": 0.95,
   "gradient_clip": 5,
   "embedding_dim": 150,
@@ -22,5 +22,6 @@
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
-  "is_cell_share": true
+  "is_cell_share": true,
+  "is_test_capability": true
 }

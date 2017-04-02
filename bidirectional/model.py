@@ -78,7 +78,7 @@ class Model:
         self._predictions = self._predict(softmax_outputs)
 
         softmax_outputs = tf.add(softmax_outputs,
-                                       tf.constant(self.epsilon, dtype=tf.float32))
+                                 tf.constant(self.epsilon, dtype=tf.float32))
 
         # training, define loss
         with tf.name_scope("loss"):

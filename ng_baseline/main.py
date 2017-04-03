@@ -160,12 +160,15 @@ class ModelRuntime:
 
         def evaluate(epoch_num):
             nonlocal losses
-            self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
-            accuracy, dfa_accuracy = self.test()
+            # self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
+            # accuracy, dfa_accuracy = self.test()
             loss = np.average(np.array(losses))
-            print("epoch_num: %f, accuracy: %f, dfa_accuracy: %f,  average_loss: %f " % (
-                epoch_num, accuracy, dfa_accuracy, loss))
-            self._log_epoch(epoch_num, accuracy, dfa_accuracy, loss)
+            print(losses)
+            print("epoch_num: %f, average_loss: %f" % (epoch_num, loss))
+
+            # print("epoch_num: %f, accuracy: %f, dfa_accuracy: %f,  average_loss: %f " % (
+            #     epoch_num, accuracy, dfa_accuracy, loss))
+            # self._log_epoch(epoch_num, accuracy, dfa_accuracy, loss)
             losses = list()
 
         self._train_data_iterator.epoch_cb = evaluate

@@ -135,9 +135,9 @@ class Model:
             # self._optimizer = optimizer.minimize(self._loss)
 
             # clipped at 5 to alleviate the exploding gradient problem
-            gvs = optimizer.compute_gradients(self._loss)
-            capped_gvs = [(tf.clip_by_value(grad, -self._gradient_clip, self._gradient_clip), var) for grad, var in gvs]
-            self._optimizer = optimizer.apply_gradients(capped_gvs)
+            self._gvs = optimizer.compute_gradients(self._loss)
+            self._capped_gvs = [(tf.clip_by_value(grad, -self._gradient_clip, self._gradient_clip), var) for grad, var in self._gvs]
+            self._optimizer = optimizer.apply_gradients(self._capped_gvs)
 
     def _build_test_graph(self):
         """
@@ -526,16 +526,17 @@ class Model:
                                                                   state_is_tuple=True)
             else:
                 with tf.variable_scope("encoder_cell"):
-                    encoder_fw_cell = LSTMCell(
+                    encoder_cell = LSTMCell(
                         num_units=self._hidden_dim,
                         state_is_tuple=True
                     )
-                    encoder_fw_cell = tf.contrib.rnn.DropoutWrapper(encoder_fw_cell,
-                                                                    input_keep_prob=self._encoder_input_keep_prob,
-                                                                    output_keep_prob=self._encoder_output_keep_prob)
-                    encoder_fw_cell = tf.contrib.rnn.MultiRNNCell([encoder_fw_cell] * self._layers,
+                    encoder_cell = tf.contrib.rnn.DropoutWrapper(encoder_cell,
+                                                                 input_keep_prob=self._encoder_input_keep_prob,
+                                                                 output_keep_prob=self._encoder_output_keep_prob)
+                    encoder_fw_cell = tf.contrib.rnn.MultiRNNCell([encoder_cell] * self._layers,
                                                                   state_is_tuple=True)
-                    encoder_bw_cell = encoder_fw_cell
+                    encoder_bw_cell = tf.contrib.rnn.MultiRNNCell([encoder_cell] * self._layers,
+                                                                  state_is_tuple=True)
 
             with tf.variable_scope("fw_encode"):
                 self._fw_encoder_outputs, self._fw_encoder_states = tf.nn.dynamic_rnn(cell=encoder_fw_cell,
@@ -747,7 +748,7 @@ class Model:
         assert self._is_test == False
 
         feed_dict = self._build_train_feed(batch)
-        return self._predictions, self._loss, self._optimizer, feed_dict
+        return self._predictions, self._loss, self._gvs, self._capped_gvs, self._optimizer, feed_dict
 
     def predict(self, inputs, reverse_encoder_seq, source_length):
         """

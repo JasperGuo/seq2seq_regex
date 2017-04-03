@@ -1,11 +1,11 @@
 {
-  "name": "beam_search",
-  "learning_rate": 0.01,
+  "name": "bidirection",
+  "learning_rate": 0.1,
   "gradient": "rmsprop",
   "rmsprop_smooth": 0.95,
   "gradient_clip": 5,
-  "embedding_dim": 150,
-  "hidden_dim": 150,
+  "embedding_dim": 128,
+  "hidden_dim": 100,
   "params_init_min": -0.08,
   "params_init_max": 0.08,
   "layer": 2,
@@ -22,6 +22,6 @@
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
-  "is_cell_share": true,
+  "is_cell_share": false,
   "is_test_capability": true
 }

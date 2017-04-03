@@ -180,6 +180,7 @@ class ModelRuntime:
         Test on development set
         :return:
         """
+
         def _test():
             sample = self._development_data_iterator.get_batch(1)
             last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
@@ -236,11 +237,14 @@ class ModelRuntime:
             nonlocal total
             i += 1
             loss = np.average(np.array(losses))
-            print(loss)
+            print(losses)
 
             if self._is_test_capability:
                 train_accuracy = train_exact_match / total
-                print("epoch_num: %f, train_accuracy: %f" % (epoch_num, train_accuracy))
+                string = "epoch_num: %f, train_accuracy: %f, average_loss: %f" % (epoch_num, train_accuracy, loss)
+                print(string)
+                with open(os.path.join(self._result_log_base_path, "result.txt"), "a") as f:
+                    f.write(string)
             else:
                 self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
                 accuracy, dfa_accuracy = self.test()
@@ -260,13 +264,22 @@ class ModelRuntime:
         total = 0
         while i < self._epoches:
             batch = self._train_data_iterator.get_batch(self._batch_size)
-            prediction, loss, optimizer, feed = self._train_model.train(batch)
-            prediction, loss, optimizer = self._session.run((prediction, loss, optimizer,),
-                                                            feed_dict=feed)
+            prediction, loss, optimizer, gvs, clipped_gvs, feed = self._train_model.train(batch)
+            prediction, loss, gvs, clipped_gvs, optimizer = self._session.run(
+                (prediction, loss, gvs, clipped_gvs, optimizer,),
+                feed_dict=feed)
             exact_match, dfa_correct = self._calc_train_set_accuracy(prediction, batch.target_seq)
             train_exact_match += exact_match
             total += batch.batch_size
             losses.append(loss)
+            """
+            print("========= Gradient ===========")
+            print(gvs)
+
+            print("\n")
+            print("========= Clipped Gradient ===")
+            print(clipped_gvs)
+            """
 
     def run(self):
         self.train()

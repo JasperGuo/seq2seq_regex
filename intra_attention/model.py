@@ -396,7 +396,7 @@ class LSTMN:
 
         _outputs, _new_hidden_states, _new_memory_tapes, _last_attentive_hs = tf.cond(
             tf.logical_and(
-                tf.equal(self._ts, tf.constant(0)),
+                tf.equal(ts, tf.constant(0)),
                 tf.not_equal(self._init_states_length, 0)
             ),
             _run_with_init_states,
@@ -501,6 +501,8 @@ class Model:
         self._uniform_init_max = util.get_value(opts, "params_init_max", 0.08)
 
         self._use_intra_attention_in_decode = util.get_value(opts, "use_intra_attention_in_decode", False)
+
+        self._optimizer_choice = util.get_value(opts, "optimizer", "rmsprop")
 
         self._is_test = is_test
 
@@ -637,20 +639,47 @@ class Model:
             # self._embedded shape is self._batch_size * self._max_length_encode * self._embedding_dim
             self._decoder_embedded = tf.nn.embedding_lookup(self._decoder_embeddings, self._decoder_inputs)
 
-        # No intra-attention when decoding
-        with tf.name_scope("decoder_cell"):
-            decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
-            decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
-                                                         input_keep_prob=self._decoder_input_keep_prob,
-                                                         output_keep_prob=self._decoder_output_keep_prob)
-            self._decoder_cell = tf.contrib.rnn.MultiRNNCell([decoder_cell] * self._layers,
-                                                             state_is_tuple=True)
+        if not self._use_intra_attention_in_decode:
+            # No intra-attention in decode
+            with tf.name_scope("decoder_cell"):
+                decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
+                decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
+                                                             input_keep_prob=self._decoder_input_keep_prob,
+                                                             output_keep_prob=self._decoder_output_keep_prob)
+                self._decoder_cell = tf.contrib.rnn.MultiRNNCell([decoder_cell] * self._layers,
+                                                                 state_is_tuple=True)
 
-        with tf.variable_scope('decoder'):
-            self._decoder_outputs, self._decoder_states = tf.nn.dynamic_rnn(self._decoder_cell,
-                                                                            initial_state=self._encoder_states,
-                                                                            inputs=self._decoder_embedded,
-                                                                            dtype=tf.float32)
+            with tf.variable_scope('decoder'):
+                self._decoder_outputs, self._decoder_states = tf.nn.dynamic_rnn(self._decoder_cell,
+                                                                                initial_state=self._encoder_states,
+                                                                                inputs=self._decoder_embedded,
+                                                                                dtype=tf.float32)
+        else:
+            with tf.variable_scope("decoder_cell") as scope:
+                decoder_cells = list()
+                for i in range(self._layers):
+                    with tf.variable_scope("lstm_cell_%d" % i):
+                        decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
+                        decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
+                                                                     input_keep_prob=self._encoder_input_keep_prob,
+                                                                     output_keep_prob=self._encoder_output_keep_prob)
+                        decoder_cells.append(decoder_cell)
+
+            with tf.variable_scope('decoder') as scope:
+
+                _decoder_lstmn = LSTMN(
+                    cells=decoder_cells,
+                    max_length=self._max_length_decode,
+                    batch_size=self._batch_size,
+                    hidden_size=self._hidden_dim,
+                    embedding_size=self._embedding_dim,
+                    initial_states=self._encoder_states,
+                    scope=scope
+                )
+
+                self._decoder_outputs, self._decoder_hidden_states, self._decoder_memory_tapes = _decoder_lstmn.multi_steps(
+                    self._decoder_embedded
+                )
 
     def _predict(self, outputs):
         """
@@ -913,10 +942,12 @@ class Model:
             # tf.summary.scalar('loss', self._loss)
 
         with tf.name_scope('back_propagation'):
-            optimizer = tf.train.RMSPropOptimizer(learning_rate=self._learning_rate, decay=0.95)
-            # self._optimizer = optimizer.minimize(self._loss)
 
-            variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
+            if self._optimizer_choice == "rmsprop":
+                optimizer = tf.train.RMSPropOptimizer(learning_rate=self._learning_rate, decay=0.95)
+            else:
+                optimizer = tf.train.AdamOptimizer(learning_rate=self._learning_rate)
+
             # clipped at 5 to alleviate the exploding gradient problem
             gvs = optimizer.compute_gradients(self._loss)
             capped_gvs = [(tf.clip_by_value(grad, -self._gradient_clip, self._gradient_clip), var) for grad, var in gvs]

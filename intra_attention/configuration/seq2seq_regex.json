@@ -1,7 +1,7 @@
 {
   "name": "beam_search",
-  "learning_rate": 0.01,
-  "gradient": "rmsprop",
+  "learning_rate": 0.001,
+  "optimizer": "AdamOptimizer",
   "rmsprop_smooth": 0.95,
   "gradient_clip": 5,
   "embedding_dim": 150,
@@ -13,7 +13,7 @@
   "beam_size": 1,
   "test_batch_size": 1,
   "dropout": 0.25,
-  "epoches": 100,
+  "epoches": 500,
   "max_length_encode": 30,
   "max_length_decode": 40,
   "train_file": "feed_tf\\train.json",

@@ -244,7 +244,7 @@ class ModelRuntime:
                 string = "epoch_num: %f, train_accuracy: %f, average_loss: %f" % (epoch_num, train_accuracy, loss)
                 print(string)
                 with open(os.path.join(self._result_log_base_path, "result.txt"), "a") as f:
-                    f.write(string)
+                    f.write(string + "\n")
             else:
                 self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
                 accuracy, dfa_accuracy = self.test()

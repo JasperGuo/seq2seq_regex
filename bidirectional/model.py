@@ -478,7 +478,6 @@ class Model:
         with tf.name_scope('encoder_placeholder'):
             # encoder inputs are integers, representing the index of words in the sentences
             self._encoder_fw_inputs = tf.placeholder(tf.int32, [None, self._max_length_encode], name="fw_inputs")
-            self._encoder_bw_inputs = tf.placeholder(tf.int32, [None, self._max_length_encode], name="bw_inputs")
             self._source_length = tf.placeholder(tf.int32, [None], name="source_length")
             self._encoder_output_keep_prob = tf.placeholder(tf.float32, name="output_keep_prob")
             self._encoder_input_keep_prob = tf.placeholder(tf.float32, name="input_keep_prob")
@@ -498,9 +497,7 @@ class Model:
             self._encoder_embeddings = tf.concat(values=[pad_embeddings, self._encoder_embeddings], axis=0)
 
             # replace vocab-id with embedding
-            # both self._encoder_fw_embedded, _encoder_bw_embedded shapes are self._batch_size * self._max_length_encode * self._embedding_dim
             self._encoder_fw_embedded = tf.nn.embedding_lookup(self._encoder_embeddings, self._encoder_fw_inputs)
-            self._encoder_bw_embedded = tf.nn.embedding_lookup(self._encoder_embeddings, self._encoder_bw_inputs)
 
         with tf.variable_scope('encoder'):
             # dropout is only available during training
@@ -538,35 +535,15 @@ class Model:
                     encoder_bw_cell = tf.contrib.rnn.MultiRNNCell([encoder_cell] * self._layers,
                                                                   state_is_tuple=True)
 
-            with tf.variable_scope("fw_encode"):
-                self._fw_encoder_outputs, self._fw_encoder_states = tf.nn.dynamic_rnn(cell=encoder_fw_cell,
-                                                                                      inputs=self._encoder_fw_embedded,
-                                                                                      dtype=tf.float32)
+            with tf.variable_scope("bidirectional_encode"):
 
-            with tf.variable_scope("bw_encode"):
-                self._bw_encoder_outputs, self._bw_encoder_states = tf.nn.dynamic_rnn(cell=encoder_bw_cell,
-                                                                                      inputs=self._encoder_bw_embedded,
-                                                                                      dtype=tf.float32)
-
-            length_template = tf.multiply(
-                tf.ones([tf.shape(self._encoder_fw_inputs)[0]], dtype=tf.int32),
-                tf.subtract(self._max_length_encode, 1)
-            )
-
-            # Naive Reverse
-            _ = tf.reverse_sequence(
-                self._bw_encoder_outputs,
-                seq_axis=2,
-                batch_axis=0,
-                seq_lengths=length_template
-            )
-            _reversed_outputs = tf.reverse_sequence(_, seq_axis=2, batch_axis=0, seq_lengths=self._source_length)
-            self._bw_encoder_outputs = tf.reverse_sequence(
-                _reversed_outputs,
-                seq_axis=2,
-                batch_axis=0,
-                seq_lengths=length_template
-            )
+                (self._fw_encoder_outputs, self._bw_encoder_outputs), (self._fw_encoder_states, self._bw_encoder_states) = tf.nn.bidirectional_dynamic_rnn(
+                    cell_fw=encoder_fw_cell,
+                    cell_bw=encoder_bw_cell,
+                    inputs=self._encoder_fw_embedded,
+                    sequence_length=self._source_length,
+                    dtype=tf.float32
+                )
 
             # concat outputs, [batch_size, max_length_encode, hidden_state * 2]
             self._encoder_outputs = tf.concat((self._fw_encoder_outputs, self._bw_encoder_outputs), axis=2)
@@ -709,7 +686,6 @@ class Model:
     def _build_train_feed(self, batch):
         feed_dict = dict()
         feed_dict[self._encoder_fw_inputs] = batch.encoder_seq
-        feed_dict[self._encoder_bw_inputs] = batch.reverse_encoder_seq
         feed_dict[self._encoder_input_keep_prob] = 1. - self._dropout
         feed_dict[self._encoder_output_keep_prob] = 1. - self._dropout
         feed_dict[self._decoder_input_keep_prob] = 1. - self._dropout
@@ -719,14 +695,13 @@ class Model:
         feed_dict[self._source_length] = batch.source_length
         return feed_dict
 
-    def _build_test_feed(self, inputs, reverse_input, source_length):
+    def _build_test_feed(self, inputs, source_length):
         feed_dict = dict()
         feed_dict[self._encoder_output_keep_prob] = 1.
         feed_dict[self._encoder_input_keep_prob] = 1.
         feed_dict[self._decoder_input_keep_prob] = 1.
         feed_dict[self._decoder_output_keep_prob] = 1.
         feed_dict[self._encoder_fw_inputs] = inputs
-        feed_dict[self._encoder_bw_inputs] = reverse_input
         feed_dict[self._source_length] = source_length
         return feed_dict
 
@@ -750,7 +725,7 @@ class Model:
         feed_dict = self._build_train_feed(batch)
         return self._predictions, self._loss, self._gvs, self._capped_gvs, self._optimizer, feed_dict
 
-    def predict(self, inputs, reverse_encoder_seq, source_length):
+    def predict(self, inputs, source_length):
         """
         When testing, LSTM decoder had to predict token step by step
         :param source_length:
@@ -761,12 +736,12 @@ class Model:
         """
         assert self._is_test == True
 
-        feed_dict = self._build_test_feed(inputs, reverse_encoder_seq, source_length)
+        feed_dict = self._build_test_feed(inputs, source_length)
         return self._last_prediction, self._predictions, self._logprobs, self._mask, self._decoder_states, feed_dict
 
     def encode(self, batch):
         if self._is_test:
-            feed_dict = self._build_test_feed(batch.encoder_seq, batch.reverse_encoder_seq, batch.source_length)
+            feed_dict = self._build_test_feed(batch.encoder_seq, batch.source_length)
         else:
             feed_dict = self._build_train_feed(batch)
         return self._encoder_outputs, self._encoder_states, feed_dict

@@ -149,7 +149,7 @@ class ModelRuntime:
         def _test():
             sample = self._test_data_iterator.get_batch(1)
             last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
-                sample.encoder_seq, sample.reverse_encoder_seq, sample.source_length)
+                sample.encoder_seq,sample.source_length)
             last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
                 (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
 
@@ -283,6 +283,7 @@ class ModelRuntime:
 
     def run(self):
         self.train()
+        # self._train_data_iterator.get_batch(1)._print()
         self._session.close()
 
 

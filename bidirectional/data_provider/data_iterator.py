@@ -99,9 +99,8 @@ class Batch:
     Batch Data
     """
 
-    def __init__(self, source, reverse_source, source_length, target, weight):
+    def __init__(self, source, source_length, target, weight):
         self._encoder_seqs = source
-        self._reverse_encoder_seqs = reverse_source
         self._decoder_seqs = target
         self._weights = weight
         self._source_length = source_length
@@ -114,10 +113,6 @@ class Batch:
     @property
     def encoder_seq(self):
         return self._encoder_seqs
-
-    @property
-    def reverse_encoder_seq(self):
-        return self._reverse_encoder_seqs
 
     @property
     def source_length(self):
@@ -145,10 +140,10 @@ class Batch:
         :return:
         """
         print(self._encoder_seqs)
-        print(self._reverse_encoder_seqs)
         print(self._decoder_seqs)
         print(self._target_seqs)
         print(self._weights)
+        print(self._source_length)
 
         length = []
         for s in self._encoder_seqs:
@@ -165,8 +160,7 @@ class DataIterator:
             data = json.load(f)
 
         for pair in data:
-            bw_source, fw_source, source_length = self.process_x(pair["source"])
-            pair["bw_source"] = bw_source
+            fw_source, source_length = self.process_x(pair["source"])
             pair["fw_source"] = fw_source
             pair["source_length"] = source_length
             pair["target"] = self.process_y(pair["target"])
@@ -238,22 +232,15 @@ class DataIterator:
         :param X:
         :return:
         """
-        sequence_length = len(x)
-        temp = copy.deepcopy(x[::-1])
-        temp.append(VocabManager.EOS_TOKEN_ID)
-        temp_len = len(temp)
-        while temp_len < self._max_x_len:
-            temp.insert(0, VocabManager.PADDING_TOKEN_ID)
-            temp_len += 1
-
         fw_temp = copy.deepcopy(x)
         fw_temp.append(VocabManager.EOS_TOKEN_ID)
+        sequence_length = len(fw_temp)
         fw_temp_len = len(fw_temp)
         while fw_temp_len < self._max_x_len:
             fw_temp.append(VocabManager.PADDING_TOKEN_ID)
             fw_temp_len += 1
 
-        return temp, fw_temp, sequence_length
+        return fw_temp, sequence_length
 
     def process_y(self, y):
         """
@@ -302,8 +289,7 @@ class DataIterator:
         samples = self._data[self._cursor:self._cursor + n]
         self._cursor += n
         source_sample = [s["fw_source"] for s in samples]
-        reverse_source_sample = [s["bw_source"] for s in samples]
         target_sample = [s["target"] for s in samples]
         weights = [s["weight"] for s in samples]
         source_length = [s["source_length"] for s in samples]
-        return Batch(source_sample, reverse_source_sample, source_length, target_sample, weights)
+        return Batch(source_sample, source_length, target_sample, weights)

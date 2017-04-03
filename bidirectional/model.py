@@ -21,7 +21,7 @@ class Model:
         self._max_length_decode = util.get_value(opts, "max_length_decode", 20)
         self._vocab_manager = vocab_manager
         self._embedding_dim = util.get_value(opts, "embedding_dim", 128)
-        self._learning_rate = util.get_value(opts, "learning_rate", 0.001)
+        self._learning_rate = util.get_value(opts, "learning_rate", 0.01)
         self._gradient_clip = util.get_value(opts, "gradient_clip", 5)
 
         self._batch_size = util.get_value(opts, "batch_size", 20)
@@ -34,6 +34,7 @@ class Model:
 
         self._test_batch_size = util.get_value(opts, "test_batch_size", 1)
         self._is_cell_share = util.get_value(opts, "is_cell_share")
+        self._optimizer_choice = util.get_value(opts, "optimizer", "rmsprop")
 
         if self._is_test:
             self._build_test_graph()
@@ -70,8 +71,6 @@ class Model:
             )
 
         self._attention_decoder_outputs = self._calculate_attention(self._decoder_outputs, num=self._max_length_decode)
-
-        # self._attention_decoder_outputs = tf.add(self._attention_decoder_outputs, tf.constant(self.epsilon, dtype=tf.float32))
 
         softmax_outputs = self._normalize(self._attention_decoder_outputs)
 
@@ -131,7 +130,13 @@ class Model:
             # tf.summary.scalar('loss', self._loss)
 
         with tf.name_scope('back_propagation'):
-            optimizer = tf.train.RMSPropOptimizer(learning_rate=self._learning_rate, decay=0.95)
+
+            if self._optimizer_choice == "rmsprop":
+                print("Rmsprop Optimizer")
+                optimizer = tf.train.RMSPropOptimizer(learning_rate=self._learning_rate, decay=0.95)
+            else:
+                print("Adam Optimizer")
+                optimizer = tf.train.AdamOptimizer(learning_rate=self._learning_rate)
             # self._optimizer = optimizer.minimize(self._loss)
 
             # clipped at 5 to alleviate the exploding gradient problem

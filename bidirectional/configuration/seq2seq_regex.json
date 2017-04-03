@@ -1,14 +1,14 @@
 {
   "name": "bidirection",
-  "learning_rate": 0.01,
-  "gradient": "rmsprop",
+  "learning_rate": 0.0001,
+  "optimizer": "AdamOptimizer",
   "rmsprop_smooth": 0.95,
   "gradient_clip": 5,
   "embedding_dim": 150,
   "hidden_dim": 150,
   "params_init_min": -0.08,
   "params_init_max": 0.08,
-  "layer": 1,
+  "layer": 2,
   "batch_size": 32,
   "beam_size": 1,
   "test_batch_size": 1,
@@ -22,6 +22,6 @@
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
-  "is_cell_share": false,
+  "is_cell_share": true,
   "is_test_capability": true
 }

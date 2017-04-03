@@ -107,14 +107,14 @@ class LSTMN:
 
         self._ts = tf.constant(0, dtype=tf.int32)
 
-        self._init_cell_states()
         self._init_intra_attention_params()
+
+        self._is_set_reuse = False
 
         if initial_states:
             self._init_states = initial_states
             self._init_states_length = len(self._init_states)
         else:
-
             template_tuple = LSTMStateTuple(
                 h=tf.zeros([self._batch_size, self._hidden_size], dtype=tf.float32),
                 c=tf.zeros([self._batch_size, self._hidden_size], dtype=tf.float32)
@@ -157,38 +157,6 @@ class LSTMN:
             self._intra_attention_weight_vector = tf.get_variable(
                 initializer=tf.truncated_normal([self._hidden_size], stddev=0.5),
                 name="intra_attention_weight_vector"
-            )
-
-    def _init_cell_states(self):
-        """
-        Initialize Cell States
-        :return:
-        """
-        with tf.name_scope("cell_states"):
-            """
-            Support Multiple Layers
-            """
-            # h
-            self._hidden_states = tf.zeros(
-                [
-                    self._batch_size,
-                    self._max_length,
-                    self._num_layer,
-                    self._hidden_size
-                ],
-                dtype=tf.float32,
-                name="hidden_states"
-            )
-            # c
-            self._memory_tapes = tf.zeros(
-                [
-                    self._batch_size,
-                    self._max_length,
-                    self._num_layer,
-                    self._hidden_size
-                ],
-                dtype=tf.float32,
-                name="memory_tapes"
             )
 
     def _calc_intra_attention(self, ts, inputs, hidden_states, memory_tapes, last_attentive_hs, input_weighted_matrix):
@@ -290,11 +258,19 @@ class LSTMN:
 
             return attentive_hidden_state, attentive_memory_cell
 
-    def step(self, inputs):
+    def step(self, ts, inputs, hidden_states, memory_tapes, last_attentive_hs):
         """
         Run one step
+        :param last_attentive_hs: [batch_size, hidden_size]
+        :param ts               scalar
+        :param memory_tapes:    [batch_size, max_length, num_layer, hidden_size]
+        :param hidden_states:   [batch_size, max_length, num_layer, hidden_size]
         :param inputs: [batch_size, 1, embedding_size]
         :return:
+            outputs: [batch_size, hidden_dim],
+            hidden_states: [batch_size, num_layer, hidden_size]
+            memory_tapes:  [batch_size, num_layer, hidden_size],
+            last_attentive_hs: [batch_size, hidden_dim]
         """
 
         def _get_tape(layer, tape):
@@ -322,14 +298,16 @@ class LSTMN:
                 dtype=tf.float32
             )
 
-            self._scope.reuse_variables()
-
             new_hidden_states = tf.zeros([self._batch_size, self._num_layer, self._hidden_size], dtype=tf.float32)
             new_memory_tapes = tf.zeros([self._batch_size, self._num_layer, self._hidden_size], dtype=tf.float32)
             new_hidden_states = update_output(0, states.h, new_hidden_states)
             new_memory_tapes = update_output(0, states.c, new_memory_tapes)
 
             _inputs = states.h
+
+            if not self._is_set_reuse:
+                self._scope.reuse_variables()
+                self._is_set_reuse = True
 
             for i, cell in enumerate(self._cells[1:]):
                 curr_layer = tf.constant((i + 1))
@@ -357,13 +335,17 @@ class LSTMN:
             """
             # 1. Perform the first layer
             attentive_hidden_state, attentive_memory_tape = self._calc_intra_attention(
-                ts=self._ts,
+                ts=ts,
                 inputs=inputs,
-                hidden_states=_get_tape(0, self._hidden_states),
-                memory_tapes=_get_tape(0, self._memory_tapes),
-                last_attentive_hs=self._last_attentive_hidden_state,
+                hidden_states=_get_tape(0, hidden_states),
+                memory_tapes=_get_tape(0, memory_tapes),
+                last_attentive_hs=last_attentive_hs,
                 input_weighted_matrix=self._intra_attention_weight_word
             )
+
+            if not self._is_set_reuse:
+                self._scope.reuse_variables()
+                self._is_set_reuse = True
 
             first_layer_hidden_state, first_layer_lstm_state_tuple = tf.nn.dynamic_rnn(
                 cell=self._cells[0],
@@ -372,6 +354,10 @@ class LSTMN:
                 dtype=tf.float32
             )
 
+            if not self._is_set_reuse:
+                self._scope.reuse_variables()
+                self._is_set_reuse = True
+
             new_hidden_states = tf.zeros([self._batch_size, self._num_layer, self._hidden_size], dtype=tf.float32)
             new_memory_tapes = tf.zeros([self._batch_size, self._num_layer, self._hidden_size], dtype=tf.float32)
             new_hidden_states = update_output(0, first_layer_lstm_state_tuple.h, new_hidden_states)
@@ -379,17 +365,17 @@ class LSTMN:
 
             # 2. Perform loop, layer by layer
 
-            last_attentive_hs = attentive_hidden_state
+            __last_attentive_hs = attentive_hidden_state
             _inputs = first_layer_lstm_state_tuple.h
 
             for i, cell in enumerate(self._cells[1:]):
                 curr_layer = tf.constant((i + 1))
                 ahs, amt = self._calc_intra_attention(
-                    ts=self._ts,
+                    ts=ts,
                     inputs=tf.reshape(_inputs, [self._batch_size, 1, self._hidden_size]),
-                    hidden_states=_get_tape(curr_layer, self._hidden_states),
-                    memory_tapes=_get_tape(curr_layer, self._memory_tapes),
-                    last_attentive_hs=last_attentive_hs,
+                    hidden_states=_get_tape(curr_layer, hidden_states),
+                    memory_tapes=_get_tape(curr_layer, memory_tapes),
+                    last_attentive_hs=__last_attentive_hs,
                     input_weighted_matrix=self._intra_attention_weight_l
                 )
                 _layer_hidden_state, _layer_lstm_state_tuple = tf.nn.dynamic_rnn(
@@ -402,7 +388,7 @@ class LSTMN:
                 new_memory_tapes = update_output(curr_layer, _layer_lstm_state_tuple.c, new_memory_tapes)
 
                 _inputs = _layer_lstm_state_tuple.h
-                last_attentive_hs = ahs
+                __last_attentive_hs = ahs
 
             self._last_attentive_hidden_state = last_attentive_hs
 
@@ -417,12 +403,7 @@ class LSTMN:
             _run_with_intra_attention
         )
 
-        self._last_attentive_hidden_state = _last_attentive_hs
-        self._hidden_states = update_tape(self._ts, _new_hidden_states, self._hidden_states)
-        self._memory_tapes = update_tape(self._ts, _new_memory_tapes, self._memory_tapes)
-        self._ts = tf.add(self._ts, 1)
-
-        return _outputs
+        return _outputs, _new_hidden_states, _new_memory_tapes, _last_attentive_hs
 
     def multi_steps(self, inputs):
         """
@@ -430,33 +411,70 @@ class LSTMN:
         :param inputs: [batch_size, max_length, embedding_size]
         :return:       [batch_size, max_length, hidden_size]
         """
-        values = tf.zeros([self._batch_size, self._max_length, self._hidden_size])
+        values = tf.zeros([self._batch_size, self._max_length, self._hidden_size], dtype=tf.float32)
 
-        def cond(curr_ts, inputs_embeddings, outputs):
+        hidden_states = tf.zeros(
+            [
+                self._batch_size,
+                self._max_length,
+                self._num_layer,
+                self._hidden_size
+            ],
+            dtype=tf.float32
+        )
+        memory_tapes = tf.zeros(
+            [
+                self._batch_size,
+                self._max_length,
+                self._num_layer,
+                self._hidden_size
+            ]
+        )
+
+        last_attentive_hs = tf.zeros([self._batch_size, self._hidden_size], dtype=tf.float32)
+
+        def cond(curr_ts, inputs_embeddings, outputs, _hidden_states, _memory_tapes, _last_attentive_hs):
             return tf.less(curr_ts, self._max_length)
 
-        def _loop_body(curr_ts, inputs_embeddings, outputs):
+        def _loop_body(curr_ts, inputs_embeddings, outputs, _hidden_states, _memory_tapes, _last_attentive_hs):
             curr_input = tf.reshape(
                 tf.slice(inputs_embeddings, [0, curr_ts, 0], [self._batch_size, 1, self._embedding_size]),
                 shape=[self._batch_size, 1, self._embedding_size]
             )
-            _outputs = self.step(curr_input)
+            _outputs, _new_hidden_states, _new_memory_tapes, _last_attentive_hs = self.step(
+                curr_ts,
+                curr_input,
+                _hidden_states,
+                _memory_tapes,
+                _last_attentive_hs
+            )
             _outputs = update_output(curr_ts, _outputs, outputs)
+            _hidden_states = tf.reshape(
+                update_tape(curr_ts, _new_hidden_states, _hidden_states),
+                shape=[self._batch_size, self._max_length, self._num_layer, self._hidden_size]
+            )
+            _memory_tapes = tf.reshape(
+                update_tape(curr_ts, _new_memory_tapes, _memory_tapes),
+                shape=[self._batch_size, self._max_length, self._num_layer, self._hidden_size]
+            )
 
             _ts = tf.add(curr_ts, 1)
-            return _ts, inputs_embeddings, _outputs
+            return _ts, inputs_embeddings, _outputs, _hidden_states, _memory_tapes, _last_attentive_hs
 
-        ts, _inputs_embeddings, values = tf.while_loop(
+        ts, _inputs_embeddings, values, hidden_states, memory_tapes, last_attentive_hs = tf.while_loop(
             cond=cond,
             body=_loop_body,
             loop_vars=[
                 tf.constant(0, tf.int32),
                 inputs,
-                values
+                values,
+                hidden_states,
+                memory_tapes,
+                last_attentive_hs
             ],
             name="multi_step"
         )
-        return values, self._hidden_states, self._memory_tapes
+        return values, hidden_states, memory_tapes
 
     def reset_ts(self):
         self._ts = tf.constant(0, dtype=tf.int32)
@@ -525,7 +543,7 @@ class Model:
 
         # dropout is only available during training
         # define encoder cell
-        with tf.variable_scope("encoder_cell"):
+        with tf.variable_scope("encoder_cell") as scope:
             encoder_cells = list()
             for i in range(self._layers):
                 with tf.variable_scope("lstm_cell_%d" % i):
@@ -537,7 +555,11 @@ class Model:
 
         with tf.variable_scope('encoder') as scope:
 
-            # Manually do the first encode
+            template_tuple = LSTMStateTuple(
+                h=tf.zeros([self._batch_size, self._hidden_dim], dtype=tf.float32),
+                c=tf.zeros([self._batch_size, self._hidden_dim], dtype=tf.float32)
+            )
+            init_states = [template_tuple]*self._layers
 
             _encoder_lstmn = LSTMN(
                 cells=encoder_cells,
@@ -545,6 +567,7 @@ class Model:
                 batch_size=self._batch_size,
                 hidden_size=self._hidden_dim,
                 embedding_size=self._embedding_dim,
+                initial_states=init_states,
                 scope=scope
             )
 
@@ -893,6 +916,7 @@ class Model:
             optimizer = tf.train.RMSPropOptimizer(learning_rate=self._learning_rate, decay=0.95)
             # self._optimizer = optimizer.minimize(self._loss)
 
+            variables = tf.get_collection(tf.GraphKeys.TRAINABLE_VARIABLES)
             # clipped at 5 to alleviate the exploding gradient problem
             gvs = optimizer.compute_gradients(self._loss)
             capped_gvs = [(tf.clip_by_value(grad, -self._gradient_clip, self._gradient_clip), var) for grad, var in gvs]

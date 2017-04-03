@@ -202,7 +202,10 @@ class ModelRuntime:
 
             if self._is_test_capability:
                 train_accuracy = train_exact_match / total
-                print("epoch_num: %f, train_accuracy: %f, average_loss: %f" % (epoch_num, train_accuracy, loss))
+                string = "epoch_num: %f, train_accuracy: %f, average_loss: %f" % (epoch_num, train_accuracy, loss)
+                print(string)
+                with open(os.path.join(self._result_log_base_path, "result.log"), "a") as f:
+                    f.write(string + "\n")
             else:
                 self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
                 accuracy, dfa_accuracy = self.test()

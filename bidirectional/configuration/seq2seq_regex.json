@@ -13,7 +13,7 @@
   "beam_size": 1,
   "test_batch_size": 1,
   "dropout": 0.25,
-  "epoches": 100,
+  "epoches": 1,
   "max_length_encode": 30,
   "max_length_decode": 40,
   "train_file": "feed_tf\\train.json",
@@ -23,5 +23,5 @@
   "log_dir": "log",
   "result_log": "result_log\\",
   "is_cell_share": true,
-  "is_test_capability": true
+  "is_test_capability": false
 }

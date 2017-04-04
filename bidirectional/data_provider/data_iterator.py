@@ -184,7 +184,7 @@ class DataIterator:
         # Remove the training examples that are too long
         rm_list = list()
         for value in self._data:
-            source = value["source"]
+            source = value["fw_source"]
             target = value["target"]
             if len(source) > self._max_x_len or len(target) > self._max_y_len:
                 rm_list.append(value)

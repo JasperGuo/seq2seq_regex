@@ -10,6 +10,7 @@ import tensorflow as tf
 
 from model import Model
 from data_provider.data_iterator import VocabManager, DataIterator
+from tools.test_dfa_equality import process as dfa_process
 
 JAR_PATH = os.path.join(os.getcwd(), 'regex_dfa_equals.jar')
 
@@ -34,11 +35,10 @@ class ModelRuntime:
         self._max_length_encode = self._conf["max_length_encode"]
         self._max_length_decode = self._conf["max_length_decode"]
         self._log_dir = self._conf["log_dir"]
-        self._result_log_base_path = self._conf["result_log"] + str(int(time.time()))
+        self._result_log_base_path = os.path.abspath(self._conf["result_log"] + str(int(time.time())))
         self._is_test_capability = self._conf["is_test_capability"]
 
         os.mkdir(self._result_log_base_path)
-        self._result_log = None
         self._save_conf_file()
 
         self._train_data_iterator = DataIterator(
@@ -65,6 +65,8 @@ class ModelRuntime:
         self._test_model = None
         self._train_model = None
 
+        self._cached_logs = dict()
+
     def _save_conf_file(self):
         """
         Save Configuration to result log directory
@@ -86,18 +88,44 @@ class ModelRuntime:
             self._file_writer = tf.summary.FileWriter(self._log_dir, self._session.graph)
             self._summary_operator = tf.summary.merge_all()
 
-    def _log_test(self, source, ground_truth, prediction, diff, dfa_diff):
-        with open(self._result_log, "a") as f:
-            source = 'S: ' + self._vocab_manager.decode_source(source)
-            padded_seq_str = 'p: ' + self._vocab_manager.decode(prediction)
-            ground_truth_str = 'T: ' + self._vocab_manager.decode(ground_truth)
-            segmentation = '============================================='
-            summary = 'exact_match_diff: %d' % diff
-            dna_equality = 'dfa_equality: %d' % dfa_diff
-            f.write('\n'.join(['\n', summary, dna_equality, source, padded_seq_str, ground_truth_str, segmentation]))
+    def _write(self, file=None):
+        """
+        Force to write to file
+        :return:
+        """
+        if file:
+            with open(file, "a") as f:
+                for log in self._cached_logs[file]:
+                    f.write(log)
+            self._cached_logs[file] = list()
+            return
+
+        for log_file, value in self._cached_logs.items():
+            with open(log_file, "a") as f:
+                for log in value:
+                    f.write(log)
+            self._cached_logs[log_file] = list()
+
+    def _log_test(self, file, source, ground_truth, prediction, diff, dfa_diff):
+
+        source = 'S: ' + self._vocab_manager.decode_source(source)
+        padded_seq_str = 'p: ' + self._vocab_manager.decode(prediction)
+        ground_truth_str = 'T: ' + self._vocab_manager.decode(ground_truth)
+        segmentation = '============================================='
+        summary = 'exact_match_diff: %d' % diff
+        dna_equality = 'dfa_equality: %d' % dfa_diff
+        string = '\n'.join(['\n', summary, dna_equality, source, padded_seq_str, ground_truth_str, segmentation])
+
+        if file not in self._cached_logs:
+            self._cached_logs[file] = []
+        self._cached_logs[file].append(string)
+
+        if len(self._cached_logs[file]) >= 100:
+            self._write(file)
 
     def _log_epoch(self, epoch, accuracy, dfa_accuracy, train_accuracy, loss):
-        with open(self._result_log, "a") as f:
+        result_log = os.path.join(self._result_log_base_path, "result_log.txt")
+        with open(result_log, "a") as f:
             log = "\n epoch_num: %f, accuracy: %f, dfa_accuracy: %f, train_accuracy: %f, average_loss: %f \n" % (
                 epoch, accuracy, dfa_accuracy, train_accuracy, loss)
             f.write(log)
@@ -139,7 +167,7 @@ class ModelRuntime:
             dfa_result = False
         return diff, dfa_result
 
-    def test(self):
+    def test(self, log_file=None):
         # TODO Batch test
         """
         Test Model
@@ -149,7 +177,7 @@ class ModelRuntime:
         def _test():
             sample = self._test_data_iterator.get_batch(1)
             last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
-                sample.encoder_seq,sample.source_length)
+                sample.encoder_seq, sample.source_length)
             last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
                 (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
 
@@ -160,8 +188,10 @@ class ModelRuntime:
             _predictions = _predictions[index]
             ground_truth = np.array(sample.target_seq[0])
             padded_seq = np.concatenate((_predictions, np.array([0] * (len(ground_truth) - len(_predictions)))), axis=0)
-            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq)
-            self._log_test(sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality)
+            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
+
+            if log_file:
+                self._log_test(log_file, sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality)
             return 1, exact_match, dfa_equality
 
         total = 0
@@ -184,7 +214,7 @@ class ModelRuntime:
         def _test():
             sample = self._development_data_iterator.get_batch(1)
             last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
-                sample.encoder_seq, sample.reverse_encoder_seq, sample.source_length)
+                sample.encoder_seq, sample.source_length)
             last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
                 (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
 
@@ -195,7 +225,7 @@ class ModelRuntime:
             _predictions = _predictions[index]
             ground_truth = np.array(sample.target_seq[0])
             padded_seq = np.concatenate((_predictions, np.array([0] * (len(ground_truth) - len(_predictions)))), axis=0)
-            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq)
+            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
             return 1, exact_match, dfa_equality
 
         total = 0
@@ -246,12 +276,13 @@ class ModelRuntime:
                 with open(os.path.join(self._result_log_base_path, "result.txt"), "a") as f:
                     f.write(string + "\n")
             else:
-                self._result_log = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
-                accuracy, dfa_accuracy = self.test()
+                log_file = os.path.join(self._result_log_base_path, "epoch_%d.txt" % epoch_num)
+                accuracy, dfa_accuracy = self.test(log_file)
+                development_accuracy, development_dfa_accuracy = self.test_on_development_set()
                 train_accuracy = train_exact_match / total
                 print(
-                    "epoch_num: %f, accuracy: %f, dfa_accuracy: %f, train_accuracy: %f, average_loss: %f " % (
-                        epoch_num, accuracy, dfa_accuracy, train_accuracy, loss))
+                    "epoch_num: %f, train_accuracy: %f, development_accuracy: %f, test_accuracy: %f, average_loss: %f " % (
+                        epoch_num, train_accuracy, development_accuracy, accuracy, loss))
                 self._log_epoch(epoch_num, accuracy, dfa_accuracy, train_accuracy, loss)
             losses = list()
             total = 0
@@ -272,18 +303,17 @@ class ModelRuntime:
             train_exact_match += exact_match
             total += batch.batch_size
             losses.append(loss)
-            """
-            print("========= Gradient ===========")
-            print(gvs)
 
-            print("\n")
-            print("========= Clipped Gradient ===")
-            print(clipped_gvs)
-            """
+        # Force Write
+        self._write()
+
+        # Evaluate
+        for j in range(i):
+            filename = "epoch_%d.txt" % (j+1)
+            dfa_process(os.path.join(self._result_log_base_path, filename))
 
     def run(self):
         self.train()
-        # self._train_data_iterator.get_batch(1)._print()
         self._session.close()
 
 

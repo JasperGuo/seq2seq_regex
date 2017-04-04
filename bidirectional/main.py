@@ -284,6 +284,7 @@ class ModelRuntime:
                     "epoch_num: %f, train_accuracy: %f, development_accuracy: %f, test_accuracy: %f, average_loss: %f " % (
                         epoch_num, train_accuracy, development_accuracy, accuracy, loss))
                 self._log_epoch(epoch_num, accuracy, dfa_accuracy, train_accuracy, loss)
+                self._write()
             losses = list()
             total = 0
             train_exact_match = 0
@@ -303,9 +304,6 @@ class ModelRuntime:
             train_exact_match += exact_match
             total += batch.batch_size
             losses.append(loss)
-
-        # Force Write
-        self._write()
 
         # Evaluate
         for j in range(i):

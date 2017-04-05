@@ -1058,8 +1058,8 @@ class Model:
                 with tf.variable_scope("lstm_cell_%d" % i):
                     decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
                     decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
-                                                                 input_keep_prob=self._encoder_input_keep_prob,
-                                                                 output_keep_prob=self._encoder_output_keep_prob)
+                                                                 input_keep_prob=self._decoder_input_keep_prob,
+                                                                 output_keep_prob=self._decoder_output_keep_prob)
                     decoder_cells.append(decoder_cell)
 
         with tf.variable_scope('decoder') as scope:
@@ -1098,7 +1098,7 @@ class Model:
                 attention_decoder_outputs = self._calculate_inter_attention(
                     tf.reshape(_outputs, shape=[test_batch_size, 1, self._hidden_dim]),
                     num=1
-               )
+                )
                 softmax_outputs = self._normalize(attention_decoder_outputs)
                 prediction = self._predict(softmax_outputs)
                 prediction = tf.reshape(prediction, tf.shape(token_id))

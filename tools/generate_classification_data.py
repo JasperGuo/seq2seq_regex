@@ -50,6 +50,7 @@ def process_worker(file_queue, result_queue, lock):
                         sentences_match = SENTENCE_PATTERN.match(f.readline())
                         regex_1 = PREDICTION_PATTERN.match(f.readline()).group(1).strip()
                         regex_2 = GROUND_TRUTH_PATTERN.match(f.readline()).group(1).strip()
+                        score = (regex_1 == regex_2)
                         if dfa_equality_match == 1 and score == 0:
                             msg = {
                                 "regex_1": regex_1,

@@ -783,7 +783,9 @@ class Model:
         """
         Inter-Attention
         Set up attention layer
-        :return: attentioned_outputs
+        :param:  decoder_hidden_states
+        :param:  num
+        :return: attentive_outputs
         """
         attentioned_decoder_outputs = list()
 
@@ -855,6 +857,274 @@ class Model:
             attentioned_decoder_outputs.append(_attention(batch_hidden_state))
 
         return tf.stack(attentioned_decoder_outputs, axis=1)
+
+    def _decode_without_intra_attention(self):
+        """
+        Decode with Beam Search
+        :param decoder_cells:
+        :return:
+        """
+        with tf.name_scope("decoder_cell"):
+            decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
+            decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
+                                                         input_keep_prob=self._decoder_input_keep_prob,
+                                                         output_keep_prob=self._decoder_output_keep_prob)
+            decoder_cells = tf.contrib.rnn.MultiRNNCell([decoder_cell] * self._layers,
+                                                        state_is_tuple=True)
+
+        # decoder
+        with tf.variable_scope('decoder'):
+
+            """
+            Batch_size = 1
+            """
+            batch_size = 1
+
+            # Setup
+            decoder_embedded = tf.nn.embedding_lookup(self._decoder_embeddings, [[VocabManager.GO_TOKEN_ID]])
+            decoder_outputs, self._decoder_states = tf.nn.dynamic_rnn(decoder_cells,
+                                                                      initial_state=self._encoder_states,
+                                                                      inputs=decoder_embedded,
+                                                                      dtype=tf.float32)
+            attention_decoder_outputs = self._calculate_inter_attention(decoder_outputs, num=1)
+            softmax_outputs = self._normalize(attention_decoder_outputs)
+            symbols_probs, index = tf.nn.top_k(softmax_outputs, k=self._beam_size)
+
+            self._predictions = tf.multiply(
+                tf.constant(np.array([[1] + [0] * (self._max_length_decode - 1)] * self._beam_size),
+                            dtype=tf.int64),
+                tf.cast(tf.reshape(index, [self._beam_size, 1]), dtype=tf.int64)
+            )
+
+            self._first_predictions = tf.cast(tf.reshape(index, [self._beam_size, 1]), dtype=tf.int64)
+
+            logprobs = tf.reshape(tf.log(symbols_probs), [self._beam_size])
+
+            # Reconstruct LSTMStateTuple for encoder_states
+
+            def _reconstruct_LSTMStateTuple(hidden_states):
+                """
+                Expand LSTMStateTuple
+                """
+                new_tuples = []
+                template = tf.ones([self._beam_size, self._hidden_dim], dtype=tf.float32)
+                for ls in tf.unstack(hidden_states, axis=0):
+                    extended = list()
+                    for t in tf.unstack(ls, axis=0):
+                        extended.append(tf.multiply(template, t))
+                    new_tuples.append(
+                        LSTMStateTuple(extended[0], extended[1])
+                    )
+                return tuple(new_tuples)
+
+            def _reorder_LSTMStateTuple(hidden_states, indices):
+                """
+                Reorder LSTMState
+                """
+                new_tuples = []
+                for ls in tf.unstack(hidden_states, axis=0):
+                    extended = list()
+                    for t in tf.unstack(ls, axis=0):
+                        extended.append(tf.gather(t, indices))
+                    new_tuples.append(
+                        LSTMStateTuple(extended[0], extended[1])
+                    )
+                return tuple(new_tuples)
+
+            self._decoder_states = _reconstruct_LSTMStateTuple(self._decoder_states)
+
+            # Reconstruct Encoder Output
+            new_encoder_outputs = list()
+            for h in tf.unstack(self._encoder_outputs, axis=1):
+                template = tf.ones([self._beam_size, self._hidden_dim], dtype=tf.float32)
+                new_encoder_outputs.append(tf.multiply(template, h))
+            self._encoder_outputs = tf.stack(new_encoder_outputs, axis=1)
+
+            def _loop_body(token_id, curr_ts, _predictions, _logprobs, _mask, states):
+                """
+                :param token_id:  last_predictions
+                :param curr_ts:   time_step
+                :param _predictions: sequences
+                :param _logprobs: log probabilities of each sequence in beam,
+                :param _mask:     Mask to indicate whether the sequence finishes or not
+                :param states:    LSTM hidden states
+                :return:
+                """
+                _decoder_embedded = tf.nn.embedding_lookup(self._decoder_embeddings, token_id)
+
+                _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(decoder_cells,
+                                                                      initial_state=states,
+                                                                      inputs=_decoder_embedded,
+                                                                      dtype=tf.float32)
+                _attention_decoder_outputs = self._calculate_inter_attention(_decoder_outputs, num=1)
+
+                _softmax_outputs = self._normalize(_attention_decoder_outputs)
+
+                # 1. Predict next tokens
+
+                _symbols, symbols_logprobs, parent_ref = self._beam_predict(_softmax_outputs, _logprobs, _mask)
+
+                # 2. Reorder mask
+
+                # [beam_size]
+                _mask = tf.gather(_mask, parent_ref)
+
+                # 3. Update log probability
+
+                # [beam_size]
+                _logprobs = tf.gather(_logprobs, parent_ref)
+
+                # Calculate log probability of each sequence in beam, then reshape to [batch_size*beam_size]
+                _logprobs = tf.add(
+                    _logprobs,
+                    tf.multiply(
+                        tf.cast(
+                            tf.subtract(tf.constant(1, dtype=tf.int64), _mask),
+                            dtype=tf.float32
+                        ),
+                        symbols_logprobs
+                    )
+                )
+
+                # 4. Update individual sequences in beam
+
+                # [beam_size, max_sequence_length]
+                predictions = tf.gather(_predictions, parent_ref)
+
+                ts = tf.cast(tf.equal(tf.range(self._max_length_decode), curr_ts), dtype=tf.int64)
+                reshaped_ts = tf.tile(tf.expand_dims(ts, 0), [self._beam_size, 1])
+                # [beam_size, max_sequence_length]
+                ts_value = tf.multiply(reshaped_ts,
+                                       tf.cast(tf.reshape(_symbols, [-1, 1]), dtype=tf.int64))
+                predictions = tf.add(predictions, ts_value)
+
+                # 5. Update mask
+                _mask = tf.cast(
+                    tf.equal(
+                        tf.cast(
+                            _symbols,
+                            dtype=tf.int64
+                        ),
+                        tf.constant(VocabManager.EOS_TOKEN_ID, dtype=tf.int64)
+                    ),
+                    dtype=tf.int64
+                )
+
+                # 6. Reorder LSTMStates
+                _decoder_states = _reorder_LSTMStateTuple(_decoder_states, parent_ref)
+
+                # 6. Update curr_ts
+                curr_ts = tf.add(curr_ts, 1)
+
+                token_ids = tf.cast(tf.reshape(_symbols, [self._beam_size, 1]), dtype=tf.int64)
+                return token_ids, curr_ts, predictions, _logprobs, _mask, _decoder_states
+
+            def _terminate_condition(token_id, curr_ts, predictions, logprobs, _mask, states):
+                """
+                :return:
+                """
+                return tf.logical_and(
+                    tf.less(curr_ts, self._max_length_decode),
+                    tf.less(tf.reduce_sum(_mask), self._beam_size)
+                )
+
+            self._last_prediction, time_steps, self._predictions, self._logprobs, self._mask, self._decoder_states = tf.while_loop(
+                _terminate_condition,
+                _loop_body,
+                [
+                    self._first_predictions,
+                    tf.constant(1),
+                    # prediction, shape: [beam_size, length],
+                    self._predictions,
+                    # log probability of each sequence in beam, [beam_size],
+                    logprobs,
+                    # mask, indicate which sequence in beam finish
+                    tf.zeros([self._beam_size], dtype=tf.int64),
+                    self._decoder_states
+                ]
+            )
+
+    def _decode_with_intra_attention(self):
+        # TODO: Add Beam Search
+        """
+        Decode With intra-attention
+        :param decode_cells:
+        :return:
+        """
+        # Use intra-attention in decode
+        with tf.variable_scope("decoder_cell"):
+            decoder_cells = list()
+            for i in range(self._layers):
+                with tf.variable_scope("lstm_cell_%d" % i):
+                    decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
+                    decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
+                                                                 input_keep_prob=self._encoder_input_keep_prob,
+                                                                 output_keep_prob=self._encoder_output_keep_prob)
+                    decoder_cells.append(decoder_cell)
+
+        with tf.variable_scope('decoder') as scope:
+
+            test_batch_size = 1
+
+            _decoder_lstmn = LSTMN(
+                cells=decoder_cells,
+                max_length=self._max_length_decode,
+                batch_size=test_batch_size,
+                hidden_size=self._hidden_dim,
+                embedding_size=self._embedding_dim,
+                initial_states=self._encoder_states,
+                scope=scope
+            )
+
+            def _loop_body(token_id, curr_ts, _predictions, hidden_states, memory_tapes, last_attentive_hs):
+                decoder_embedded = tf.nn.embedding_lookup(self._decoder_embeddings, token_id)
+                _outputs, _new_hidden_states, _new_memory_tapes, _last_attentive_hs = _decoder_lstmn.step(
+                    ts=curr_ts,
+                    hidden_states=hidden_states,
+                    memory_tapes=memory_tapes,
+                    inputs=decoder_embedded,
+                    last_attentive_hs=last_attentive_hs
+                )
+
+                _hidden_states = tf.reshape(
+                    update_tape(curr_ts, _new_hidden_states, hidden_states),
+                    shape=[test_batch_size, self._max_length_decode, self._layers, self._hidden_dim]
+                )
+                _memory_tapes = tf.reshape(
+                    update_tape(curr_ts, _new_hidden_states, memory_tapes),
+                    shape=[test_batch_size, self._max_length_decode, self._layers, self._hidden_dim]
+                )
+
+                attention_decoder_outputs = self._calculate_inter_attention(
+                    tf.reshape(_outputs, shape=[test_batch_size, 1, self._hidden_dim]),
+                    num=1
+               )
+                softmax_outputs = self._normalize(attention_decoder_outputs)
+                prediction = self._predict(softmax_outputs)
+                prediction = tf.reshape(prediction, tf.shape(token_id))
+
+                _predictions = _predictions.write(curr_ts, tf.gather_nd(prediction, [0]))
+                return prediction, tf.add(curr_ts, 1), _predictions, _hidden_states, _memory_tapes, _last_attentive_hs
+
+            def _terminate_condition(token_id, curr_ts, predictions, hidden_states, memory_tapes, last_attentive_hs):
+                """
+                :return:
+                """
+                return tf.less(curr_ts, self._max_length_decode)
+
+            _last_prediction, time_steps, _predictions, decoder_hidden_states, decoder_memory_tapes, decoder_last_attentive_hs = tf.while_loop(
+                _terminate_condition,
+                _loop_body,
+                [
+                    tf.constant([[VocabManager.GO_TOKEN_ID]], dtype=tf.int64),
+                    tf.constant(0),
+                    tf.TensorArray(dtype=tf.int64, size=self._max_length_decode),
+                    tf.zeros([test_batch_size, self._max_length_decode, self._layers, self._hidden_dim], dtype=tf.float32),
+                    tf.zeros([test_batch_size, self._max_length_decode, self._layers, self._hidden_dim], dtype=tf.float32),
+                    tf.zeros([test_batch_size, self._hidden_dim], dtype=tf.float32)
+                ]
+            )
+            self._predictions = _predictions.stack()
 
     def _build_train_graph(self):
         self._build_encoder()
@@ -988,14 +1258,6 @@ class Model:
             self._decoder_input_keep_prob = tf.placeholder(tf.float32, name="input_keep_prob")
             self._decoder_output_keep_prob = tf.placeholder(tf.float32, name="output_keep_prob")
 
-        with tf.name_scope("decoder_cell"):
-            decoder_cell = LSTMCell(num_units=self._hidden_dim, state_is_tuple=True)
-            decoder_cell = tf.contrib.rnn.DropoutWrapper(decoder_cell,
-                                                         input_keep_prob=self._decoder_input_keep_prob,
-                                                         output_keep_prob=self._decoder_output_keep_prob)
-            self._decoder_cell = tf.contrib.rnn.MultiRNNCell([decoder_cell] * self._layers,
-                                                             state_is_tuple=True)
-
         # Target Vocab embedding
         with tf.name_scope('decoder_embedding'):
             # vocab_size - 1, manually add zero tensor for PADDING embeddings
@@ -1011,177 +1273,10 @@ class Model:
                                              trainable=False)
             self._decoder_embeddings = tf.concat(values=[pad_embeddings, self._decoder_embeddings], axis=0)
 
-        # decoder
-        with tf.variable_scope('decoder'):
-
-            """
-            Batch_size = 1
-            """
-            batch_size = 1
-
-            # Setup
-            decoder_embedded = tf.nn.embedding_lookup(self._decoder_embeddings, [[VocabManager.GO_TOKEN_ID]])
-            decoder_outputs, self._decoder_states = tf.nn.dynamic_rnn(self._decoder_cell,
-                                                                      initial_state=self._encoder_states,
-                                                                      inputs=decoder_embedded,
-                                                                      dtype=tf.float32)
-            attention_decoder_outputs = self._calculate_inter_attention(decoder_outputs, num=1)
-            softmax_outputs = self._normalize(attention_decoder_outputs)
-            symbols_probs, index = tf.nn.top_k(softmax_outputs, k=self._beam_size)
-
-            self._predictions = tf.multiply(
-                tf.constant(np.array([[1] + [0] * (self._max_length_decode - 1)] * self._beam_size),
-                            dtype=tf.int64),
-                tf.cast(tf.reshape(index, [self._beam_size, 1]), dtype=tf.int64)
-            )
-
-            self._first_predictions = tf.cast(tf.reshape(index, [self._beam_size, 1]), dtype=tf.int64)
-
-            logprobs = tf.reshape(tf.log(symbols_probs), [self._beam_size])
-
-            # Reconstruct LSTMStateTuple for encoder_states
-
-            def _reconstruct_LSTMStateTuple(hidden_states):
-                """
-                Expand LSTMStateTuple
-                """
-                new_tuples = []
-                template = tf.ones([self._beam_size, self._hidden_dim], dtype=tf.float32)
-                for ls in tf.unstack(hidden_states, axis=0):
-                    extended = list()
-                    for t in tf.unstack(ls, axis=0):
-                        extended.append(tf.multiply(template, t))
-                    new_tuples.append(
-                        LSTMStateTuple(extended[0], extended[1])
-                    )
-                return tuple(new_tuples)
-
-            def _reorder_LSTMStateTuple(hidden_states, indices):
-                """
-                Reorder LSTMState
-                """
-                new_tuples = []
-                for ls in tf.unstack(hidden_states, axis=0):
-                    extended = list()
-                    for t in tf.unstack(ls, axis=0):
-                        extended.append(tf.gather(t, indices))
-                    new_tuples.append(
-                        LSTMStateTuple(extended[0], extended[1])
-                    )
-                return tuple(new_tuples)
-
-            self._decoder_states = _reconstruct_LSTMStateTuple(self._decoder_states)
-
-            # Reconstruct Encoder Output
-            new_encoder_outputs = list()
-            for h in tf.unstack(self._encoder_outputs, axis=1):
-                template = tf.ones([self._beam_size, self._hidden_dim], dtype=tf.float32)
-                new_encoder_outputs.append(tf.multiply(template, h))
-            self._encoder_outputs = tf.stack(new_encoder_outputs, axis=1)
-
-            def _loop_body(token_id, curr_ts, _predictions, _logprobs, _mask, states):
-                """
-                :param token_id:  last_predictions
-                :param curr_ts:   time_step
-                :param _predictions: sequences
-                :param _logprobs: log probabilities of each sequence in beam,
-                :param _mask:     Mask to indicate whether the sequence finishes or not
-                :param states:    LSTM hidden states
-                :return:
-                """
-                _decoder_embedded = tf.nn.embedding_lookup(self._decoder_embeddings, token_id)
-
-                _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(self._decoder_cell,
-                                                                      initial_state=states,
-                                                                      inputs=_decoder_embedded,
-                                                                      dtype=tf.float32)
-                _attention_decoder_outputs = self._calculate_inter_attention(_decoder_outputs, num=1)
-
-                _softmax_outputs = self._normalize(_attention_decoder_outputs)
-
-                # 1. Predict next tokens
-
-                _symbols, symbols_logprobs, parent_ref = self._beam_predict(_softmax_outputs, _logprobs, _mask)
-
-                # 2. Reorder mask
-
-                # [beam_size]
-                _mask = tf.gather(_mask, parent_ref)
-
-                # 3. Update log probability
-
-                # [beam_size]
-                _logprobs = tf.gather(_logprobs, parent_ref)
-
-                # Calculate log probability of each sequence in beam, then reshape to [batch_size*beam_size]
-                _logprobs = tf.add(
-                    _logprobs,
-                    tf.multiply(
-                        tf.cast(
-                            tf.subtract(tf.constant(1, dtype=tf.int64), _mask),
-                            dtype=tf.float32
-                        ),
-                        symbols_logprobs
-                    )
-                )
-
-                # 4. Update individual sequences in beam
-
-                # [beam_size, max_sequence_length]
-                predictions = tf.gather(_predictions, parent_ref)
-
-                ts = tf.cast(tf.equal(tf.range(self._max_length_decode), curr_ts), dtype=tf.int64)
-                reshaped_ts = tf.tile(tf.expand_dims(ts, 0), [self._beam_size, 1])
-                # [beam_size, max_sequence_length]
-                ts_value = tf.multiply(reshaped_ts,
-                                       tf.cast(tf.reshape(_symbols, [-1, 1]), dtype=tf.int64))
-                predictions = tf.add(predictions, ts_value)
-
-                # 5. Update mask
-                _mask = tf.cast(
-                    tf.equal(
-                        tf.cast(
-                            _symbols,
-                            dtype=tf.int64
-                        ),
-                        tf.constant(VocabManager.EOS_TOKEN_ID, dtype=tf.int64)
-                    ),
-                    dtype=tf.int64
-                )
-
-                # 6. Reorder LSTMStates
-                _decoder_states = _reorder_LSTMStateTuple(_decoder_states, parent_ref)
-
-                # 6. Update curr_ts
-                curr_ts = tf.add(curr_ts, 1)
-
-                token_ids = tf.cast(tf.reshape(_symbols, [self._beam_size, 1]), dtype=tf.int64)
-                return token_ids, curr_ts, predictions, _logprobs, _mask, _decoder_states
-
-            def _terminate_condition(token_id, curr_ts, predictions, logprobs, _mask, states):
-                """
-                :return:
-                """
-                return tf.logical_and(
-                    tf.less(curr_ts, self._max_length_decode),
-                    tf.less(tf.reduce_sum(_mask), self._beam_size)
-                )
-
-            self._last_prediction, time_steps, self._predictions, self._logprobs, self._mask, self._decoder_states = tf.while_loop(
-                _terminate_condition,
-                _loop_body,
-                [
-                    self._first_predictions,
-                    tf.constant(1),
-                    # prediction, shape: [beam_size, length],
-                    self._predictions,
-                    # log probability of each sequence in beam, [beam_size],
-                    logprobs,
-                    # mask, indicate which sequence in beam finish
-                    tf.zeros([self._beam_size], dtype=tf.int64),
-                    self._decoder_states
-                ]
-            )
+        if not self._use_intra_attention_in_decode:
+            self._decode_without_intra_attention()
+        else:
+            self._decode_with_intra_attention()
 
     def _build_train_feed(self, batch):
         feed_dict = dict()
@@ -1233,7 +1328,11 @@ class Model:
         assert self._is_test == True
 
         feed_dict = self._build_test_feed(inputs)
-        return self._last_prediction, self._predictions, self._logprobs, self._mask, self._decoder_states, feed_dict
+
+        if not self._use_intra_attention_in_decode:
+            return self._predictions, self._logprobs, self._mask, feed_dict
+        else:
+            return self._predictions, feed_dict
 
     def encode(self, batch):
         if self._is_test:

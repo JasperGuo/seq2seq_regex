@@ -8,12 +8,12 @@
   "hidden_dim": 150,
   "params_init_min": -0.08,
   "params_init_max": 0.08,
-  "layer": 2,
+  "layer": 3,
   "batch_size": 32,
   "beam_size": 1,
   "test_batch_size": 1,
   "dropout": 0.25,
-  "epoches": 1,
+  "epoches": 100,
   "max_length_encode": 30,
   "max_length_decode": 40,
   "train_file": "feed_tf\\train.json",
@@ -22,6 +22,6 @@
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
-  "is_cell_share": true,
+  "is_cell_share": false,
   "is_test_capability": false
 }

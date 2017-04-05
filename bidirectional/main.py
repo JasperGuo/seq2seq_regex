@@ -123,11 +123,11 @@ class ModelRuntime:
         if len(self._cached_logs[file]) >= 100:
             self._write(file)
 
-    def _log_epoch(self, epoch, accuracy, dfa_accuracy, train_accuracy, loss):
+    def _log_epoch(self, epoch, train_accuracy, development_accuracy, test_accuracy, loss):
         result_log = os.path.join(self._result_log_base_path, "result_log.txt")
         with open(result_log, "a") as f:
-            log = "\n epoch_num: %f, accuracy: %f, dfa_accuracy: %f, train_accuracy: %f, average_loss: %f \n" % (
-                epoch, accuracy, dfa_accuracy, train_accuracy, loss)
+            log = "\n epoch_num: %f, train_accuracy: %f, development_accuracy: %f, test_accuracy: %f, average_loss: %f \n" % (
+                epoch, train_accuracy, development_accuracy, test_accuracy, loss)
             f.write(log)
 
     def _calc_accuracy(self, ground_truth, prediction, is_dfa_test=True):
@@ -283,7 +283,7 @@ class ModelRuntime:
                 print(
                     "epoch_num: %f, train_accuracy: %f, development_accuracy: %f, test_accuracy: %f, average_loss: %f " % (
                         epoch_num, train_accuracy, development_accuracy, accuracy, loss))
-                self._log_epoch(epoch_num, accuracy, dfa_accuracy, train_accuracy, loss)
+                self._log_epoch(epoch_num, train_accuracy, development_accuracy, accuracy, loss)
                 self._write()
             losses = list()
             total = 0

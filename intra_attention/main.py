@@ -180,10 +180,10 @@ class ModelRuntime:
             sample = self._test_data_iterator.get_batch(1)
 
             if not self._use_intra_attention_in_decode:
-                last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
+                _predictions, logprobs, mask, feed_dict = self._test_model.predict(
                     sample.encoder_seq)
-                last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
-                    (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
+                _predictions, logprobs, mask, = self._session.run(
+                    (_predictions, logprobs, mask), feed_dict=feed_dict)
 
                 if np.sum(mask) == 0:
                     index = np.argmax(logprobs)
@@ -224,10 +224,11 @@ class ModelRuntime:
         def _test():
             sample = self._development_data_iterator.get_batch(1)
             if not self._use_intra_attention_in_decode:
-                last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = self._test_model.predict(
+
+                _predictions, logprobs, mask, feed_dict = self._test_model.predict(
                     sample.encoder_seq)
-                last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
-                    (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
+                _predictions, logprobs, mask, = self._session.run(
+                    (_predictions, logprobs, mask), feed_dict=feed_dict)
 
                 if np.sum(mask) == 0:
                     index = np.argmax(logprobs)

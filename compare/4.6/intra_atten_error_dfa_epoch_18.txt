@@ -1,0 +1,2407 @@
+[
+    {
+        "truth": "((<M0>).*([<LET>]).*)|(([<LOW>]){3,})",
+        "sentence": "lines with 3 or more of the string <M0> before a letter",
+        "prediction": "((<M0>){3,}).*([<LET>]).*"
+    },
+    {
+        "truth": ".*(<M0>).*(.)+",
+        "sentence": "lines wherein a character is preceded by the string <M0>",
+        "prediction": "(.)+((<M0>)+).*"
+    },
+    {
+        "truth": "(((.*)(<M0>))|(.)){5,}",
+        "sentence": "lines ending with 5 or more of the string <M0> or characters",
+        "prediction": "((.*)(<M0>))|((.){5,})"
+    },
+    {
+        "truth": "(..*[<NUM>].*)*",
+        "sentence": "items with a character preceding a numeral .",
+        "prediction": "(.)+(([<NUM>])*).*"
+    },
+    {
+        "truth": "(.*)([<CAP>].*[<LET>].*)",
+        "sentence": "lines containging a capital letter and a letter",
+        "prediction": "([<CAP>]).*([<LET>]).*"
+    },
+    {
+        "truth": "([<NUM>]).*((<M0>){3,}).*",
+        "sentence": "lines with string <M0> , 3 or more times preceded by a number",
+        "prediction": "(([<NUM>]){3,}).*(<M0>).*"
+    },
+    {
+        "truth": "(.*[<LOW>].*){2,}",
+        "sentence": "lines that have 2 or more lower-case letters",
+        "prediction": "(([<LOW>]){2,}).*([<LET>]).*"
+    },
+    {
+        "truth": "(.*[<NUM>].*).*(.)+",
+        "sentence": "lines with a number before a character",
+        "prediction": "([<NUM>]).*(.*..*).*"
+    },
+    {
+        "truth": "(.*[<LET>].*)|([<VOW>].*<M0>.*)",
+        "sentence": "lines with either a letter or a vowel preceding the string <M0>",
+        "prediction": "(([<LET>])|([<VOW>])).*(<M0>).*"
+    },
+    {
+        "truth": "((.)+)|((.*)(<M0>))",
+        "sentence": "lines with 1 or more character , or ending with the string <M0>",
+        "prediction": "((.)+((.*)(<M0>))+).*"
+    },
+    {
+        "truth": ".*([<LET>])|([<VOW>]).*",
+        "sentence": "lines that have a vowel or letter",
+        "prediction": ".*([<VOW>])|([<LET>]).*"
+    },
+    {
+        "truth": "(([<NUM>]){2,}).*([<CAP>]).*",
+        "sentence": "lines with an uppercase letter preceded by a number 2 or more times",
+        "prediction": "([<NUM>].*[<CAP>].*){2,}"
+    },
+    {
+        "truth": "([<VOW>]).*((<M0>){2,}).*",
+        "sentence": "lines with 2 or more of a vowel before string <M0>",
+        "prediction": "([<VOW>].*<M0>.*){2,}"
+    },
+    {
+        "truth": "\\b.*(<M0>)+.*\\b",
+        "sentence": "lines with words that contain the string <M0> occurring at least once",
+        "prediction": "(\\b<M0>.*<M0>.*\\b)+"
+    },
+    {
+        "truth": "(.*)(\\b(<M0>){2,}\\b)",
+        "sentence": "items terminating with <M0> at least twice .",
+        "prediction": "((.*)(<M0>)){2,}"
+    },
+    {
+        "truth": "\\b([<VOW>]){2,}\\b",
+        "sentence": "lines containing a vowel in words , at least 2 times",
+        "prediction": ".*\\b([<VOW>]){2,}\\b.*"
+    },
+    {
+        "truth": "(.*[<LET>].*)|((<M0>)(.*))",
+        "sentence": "line with letters starting with the string <M0>",
+        "prediction": "(([<LET>])|(<M0>))(.*)"
+    },
+    {
+        "truth": "((<M0>)(.*))|(([<CAP>])*)",
+        "sentence": "lines starting in zero or more of the string <M0> or capital letter",
+        "prediction": "(((<M0>)|([<CAP>]))*)(.*)"
+    },
+    {
+        "truth": "((.*)(<M0>))*",
+        "sentence": "lines ending with string <M0> , zero",
+        "prediction": "(.*)((<M0>)*)"
+    },
+    {
+        "truth": "\\b([<VOW>])*\\b",
+        "sentence": "the lines that contain words words that also have a vowel at least 1 time",
+        "prediction": "(\\b[<VOW>].*[<VOW>].*\\b)+"
+    },
+    {
+        "truth": ".*([<VOW>])|([<NUM>]).*",
+        "sentence": "lines with a number or a vowel",
+        "prediction": ".*([<NUM>])|([<VOW>]).*"
+    },
+    {
+        "truth": "([<LET>]).*(.*<M0>.*).*",
+        "sentence": "lines containing the string <M0> with a letter before it",
+        "prediction": "((<M0>)|([<LET>])).*([<LET>]).*"
+    },
+    {
+        "truth": "(.*<M0>.*).*(([<CAP>]){2,}).*",
+        "sentence": "lines with <M0> followed by 2 or more capital letters",
+        "prediction": "(<M0>.*[<CAP>].*){2,}"
+    },
+    {
+        "truth": "\\b((<M0>){2,}).*([<CAP>]).*\\b",
+        "sentence": "lines with words and 2 or more of strings <M0> before a capital letter",
+        "prediction": "(\\b<M0>.*[<CAP>].*\\b){2,}"
+    },
+    {
+        "truth": "(\\b[<NUM>]\\b).*(<M0>).*",
+        "sentence": "lines with words with only a number before string <M0>",
+        "prediction": "\\b([<NUM>]).*(<M0>).*\\b"
+    },
+    {
+        "truth": "\\b((<M0>)|([<LET>])).*([<NUM>]).*\\b",
+        "sentence": "lines containing words having the string <M0> or a letter followed by a number",
+        "prediction": "(\\b(<M0>)|([<LET>]).*([<NUM>]).*\\b"
+    },
+    {
+        "truth": "(.*[<LOW>].*).*((<M0>)|(<M1>)).*",
+        "sentence": "lines with a lower case letter followed by the string <M0> or the string <M1>",
+        "prediction": "([<LOW>].*<M0>.*)|((<M1>)+)"
+    },
+    {
+        "truth": "((.*)([<LET>])){2,}",
+        "sentence": "lines ending with letter , 2 or more times",
+        "prediction": "(.*)(([<LET>]){2,})"
+    },
+    {
+        "truth": "(.)+(([<NUM>])+).*",
+        "sentence": "lines that have a letter after a character at least once",
+        "prediction": "(.)+(([<LET>])+).*"
+    },
+    {
+        "truth": "(.*)(((<M0>)|([<NUM>])){3,})",
+        "sentence": "lines ending with <M0> or a number 3 times",
+        "prediction": "(.*)((<M0>)|([<NUM>]))"
+    },
+    {
+        "truth": "(.)+((<M0>)|([<LOW>])|([<LET>])).*",
+        "sentence": "lines with the string <M0> , a lower-case letter , or a letter after a character",
+        "prediction": "((<M0>)|([<LOW>])|(.)).*(.)+"
+    },
+    {
+        "truth": "(.)+((<M0>){2,}).*",
+        "sentence": "lines with a character followed by the string <M0> , at least 2 times",
+        "prediction": "(..*<M0>.*){2,}"
+    },
+    {
+        "truth": "(([<CAP>])*).*(.)+",
+        "sentence": "lines with zero or more capital letters before a character",
+        "prediction": "(.*([<CAP>]).*(.)+).*(.)+"
+    },
+    {
+        "truth": "([<LOW>].*<M0>.*)|((<M1>).*(<M2>).*)",
+        "sentence": "lines with lower-case letter followed by string <M0> or string <M1> before string <M2>",
+        "prediction": "(([<LOW>].*<M0>.*)|(<M1>)).*(<M2>).*"
+    },
+    {
+        "truth": ".*(<M0>)*.*",
+        "sentence": "lines with the <U> <M0> at least zero times",
+        "prediction": "((<M0>)*)|(.*[<CAP>].*)"
+    },
+    {
+        "truth": "([<LET>].*[<NUM>].*).*((<M0>)|(<M1>)).*",
+        "sentence": "lines containing a letter preceding a number before the string <M0> or the string <M1>",
+        "prediction": "([<LET>].*[<NUM>].*).*(<M0>).*"
+    },
+    {
+        "truth": "((.){4,}).*([<LOW>]).*",
+        "sentence": "lines that have a character which is numbering at 4 or greater <U> and that precedes a small letter",
+        "prediction": "(.){4,}"
+    },
+    {
+        "truth": "\\b(([<LET>]){2,})|([<CAP>])\\b",
+        "sentence": "lines with words and 2 or more letter or with a capital letter",
+        "prediction": "\\b(([<LET>])|([<CAP>])){2,}\\b"
+    },
+    {
+        "truth": "([<NUM>]).*((<M0>)|([<CAP>])).*",
+        "sentence": "lines with a number or capital letter before the string <M0>",
+        "prediction": "(([<NUM>])|([<CAP>])).*(<M0>).*"
+    },
+    {
+        "truth": "(.*)(([<CAP>].*..*){5,})",
+        "sentence": "lines that end with 5 or more capital letters , each followed by a character",
+        "prediction": "((.*)(([<CAP>]){5,})).*(.)+"
+    },
+    {
+        "truth": "((.*)(<M0>.*<M1>.*))*",
+        "sentence": "items terminating with <M0> preceding <M1> .",
+        "prediction": "(.*)(<M0>.*<M1>.*)"
+    },
+    {
+        "truth": "(.*(<M0>).*){4,}",
+        "sentence": "lines with the ending string <M0> at least 4 times",
+        "prediction": "(.*)((<M0>){4,})"
+    },
+    {
+        "truth": "\\b.*([<NUM>])*.*\\b",
+        "sentence": "lines with words that contain number , zero or more times",
+        "prediction": "\\b(([<NUM>])*)*\\b"
+    },
+    {
+        "truth": "((.*)([<VOW>]))|(([<LET>]){2,})",
+        "sentence": "lines ending in 2 or more of a vowel or letter",
+        "prediction": "((.*)(([<VOW>])|([<LET>]))){2,}"
+    },
+    {
+        "truth": "(.*)((<M0>.*<M1>.*)+)",
+        "sentence": "lines that at least have the string <M0> followed by <M1>",
+        "prediction": "(<M0>.*<M1>.*)*"
+    },
+    {
+        "truth": ".*(<M0>){3,}.*",
+        "sentence": "lines with 3 or more strings of <M0>",
+        "prediction": "((<M0>){3,})|(.*[<CAP>].*)"
+    },
+    {
+        "truth": "(([<LOW>])(.*))|(([<VOW>]){5,})",
+        "sentence": "lines stating with 5 or more lower-case letters or vowels",
+        "prediction": "((([<LOW>]){5,})|([<VOW>]))(.*)"
+    },
+    {
+        "truth": "\\b([<LET>])|([<LOW>])|([<CAP>])\\b",
+        "sentence": "lines with a lower-case or capital letter",
+        "prediction": ".*([<LOW>])|([<CAP>])|([<CAP>]).*"
+    },
+    {
+        "truth": "\\b(.*<M0>.*)|(<M1>)\\b",
+        "sentence": "lines with words containing the string <M0> or <M1>",
+        "prediction": "\\b(<M0>)|(<M1>)\\b"
+    },
+    {
+        "truth": ".*(<M0>).*((.)*).*",
+        "sentence": "lines with the string <M0> followed by a character , zero times or more",
+        "prediction": "(<M0>.*..*)*"
+    },
+    {
+        "truth": "\\b(.)|([<LET>])|([<NUM>])\\b",
+        "sentence": "lines which words contain either of these - letter , number , or vowel",
+        "prediction": "\\b([<LET>])|([<NUM>])|([<VOW>])\\b"
+    },
+    {
+        "truth": "(\\b(<M0>){2,}\\b).*(<M1>).*",
+        "sentence": "lines with the string <M0> at least 2 times and comes before the string <M1>",
+        "prediction": "((<M0>){2,}).*((<M1>){2,}).*"
+    },
+    {
+        "truth": "\\b([<CAP>]){5,}\\b",
+        "sentence": "lines wherein 5 or more times it contains words with an uppercase letter",
+        "prediction": "(\\b[<CAP>]){5,}\\b"
+    },
+    {
+        "truth": "(([<CAP>])|([<VOW>])){4,}",
+        "sentence": "lines that contain a capital letter or a vowel , at least 4 times",
+        "prediction": "(([<VOW>])|([<VOW>])){4,}"
+    },
+    {
+        "truth": "(([<CAP>]){5,}).*(.)+",
+        "sentence": "lines containing a character after a capital letter at least 5 times",
+        "prediction": "([<CAP>]).*((.){5,}).*"
+    },
+    {
+        "truth": "((.)|(<M0>)|([<NUM>])).*(<M1>).*",
+        "sentence": "lines with a character , the string <M0> , or the string <M1> with a number beforehand .",
+        "prediction": "(.*..*)|((<M0>)|([<NUM>])|(<M1>))"
+    },
+    {
+        "truth": ".*([<VOW>]).*(.)+",
+        "sentence": "the lines that have a vowel coming before a character",
+        "prediction": "([<VOW>]).*(.)+"
+    },
+    {
+        "truth": "(.*<M0>.*).*(([<VOW>])|([<LOW>])).*",
+        "sentence": "lines with the string <M0> before a vowel or a lower-case letter",
+        "prediction": "(<M0>).*(([<VOW>])|([<LOW>])).*"
+    },
+    {
+        "truth": "\\b([<CAP>])(.*)\\b",
+        "sentence": "lines with words start with a capital letter",
+        "prediction": ".*\\b([<CAP>])(.*)\\b.*"
+    },
+    {
+        "truth": "(.*)((([<LOW>]).*(.)+)|([<NUM>]))",
+        "sentence": "lines ending in lower-case letter before character or number",
+        "prediction": "((.*)([<LOW>])).*((.)|([<NUM>])).*"
+    },
+    {
+        "truth": "(.*([<LET>])|(<M0>).*){2,}",
+        "sentence": "lines containing a letter or string <M0> , 2 or more times",
+        "prediction": "(([<LET>])|(<M0>)){2,}"
+    },
+    {
+        "truth": "(([<CAP>])(.*))|((.*)([<LOW>]))",
+        "sentence": "lines that begin with a capital and end with a lowercase",
+        "prediction": "(([<CAP>])(.*)).*((.*)([<LOW>])).*"
+    },
+    {
+        "truth": "\\b(([<CAP>])*).*([<NUM>]).*\\b",
+        "sentence": "lines with words and a capital letter before a number",
+        "prediction": ".*\\b[<CAP>].*[<NUM>].*\\b.*"
+    },
+    {
+        "truth": "([<LOW>].*[<VOW>].*){5,}",
+        "sentence": "lines with 5 or more of a lower-case letter before vowel",
+        "prediction": "([<LOW>]).*(([<VOW>]){5,}).*"
+    },
+    {
+        "truth": "\\b(.*<M0>.*)|([<LOW>])\\b",
+        "sentence": "lines with words that contain string <M0> or lower-case letter",
+        "prediction": "\\b(<M0>)|([<LOW>])\\b"
+    },
+    {
+        "truth": "(.*<M0>.*)|([<NUM>].*<M1>.*)",
+        "sentence": "lines with the string <M0> or number before string <M1>",
+        "prediction": "((<M0>)|([<NUM>])).*(<M1>).*"
+    },
+    {
+        "truth": "(.*<M0>.*[<VOW>].*)+",
+        "sentence": "lines containing the string <M0> followed by at least 1 vowel",
+        "prediction": "(<M0>.*[<VOW>].*)+"
+    },
+    {
+        "truth": ".*([<LOW>]).*([<NUM>]).*",
+        "sentence": "lines that have a letter in lower-case followed by a number",
+        "prediction": "([<LOW>]).*([<NUM>].*[<NUM>].*).*"
+    },
+    {
+        "truth": "(.*)(\\b[<NUM>]\\b)",
+        "sentence": "lines ending with a number",
+        "prediction": "(.*)(.*([<NUM>])+.*)"
+    },
+    {
+        "truth": "(.*<M0>.*).*(([<LET>])|([<NUM>])|([<VOW>])).*",
+        "sentence": "lines with the string <M0> before a letter , number , or vowel",
+        "prediction": "(<M0>).*(([<LET>])|([<NUM>])|([<VOW>])).*"
+    },
+    {
+        "truth": "(.*)(.*([<CAP>])*.*)",
+        "sentence": "lines that do no end with a capital letter",
+        "prediction": "(.*)(.*[<CAP>].*)"
+    },
+    {
+        "truth": "((.){2,}).*([<LET>]).*",
+        "sentence": "lines that contain a character followed by a letter , at least twice",
+        "prediction": "(..*[<LET>].*){2,}"
+    },
+    {
+        "truth": "([<NUM>].*..*)|(([<VOW>]){2,})",
+        "sentence": "lines with a number before 2 or more of a character or vowel",
+        "prediction": "([<NUM>]).*((.){2,}).*"
+    },
+    {
+        "truth": "((<M0>)(.*))|((.*)(<M1>))",
+        "sentence": "lines which are starting with the string <M0> or ending with the string <M1>",
+        "prediction": "((<M0>)|((.*)(<M1>)))(.*)"
+    },
+    {
+        "truth": "((<M0>)|(.)).*((.*)([<LOW>])).*",
+        "sentence": "lines with the string <M0> or character ending in lower-case letter",
+        "prediction": "((<M0>)|(.))*"
+    },
+    {
+        "truth": "[<CAP>].*..*",
+        "sentence": "lines having capital letters followed by a character",
+        "prediction": "([<CAP>].*..*).*(.)+"
+    },
+    {
+        "truth": ".*([<LOW>])|([<VOW>])|([<LET>]).*",
+        "sentence": "lines with a vowel or letter",
+        "prediction": ".*([<VOW>])|([<LET>]).*"
+    },
+    {
+        "truth": "(.*[<VOW>].*[<CAP>].*){2,}",
+        "sentence": "lines with 2 or more of a vowel before capital letter",
+        "prediction": "([<VOW>].*[<CAP>].*){2,}"
+    },
+    {
+        "truth": "((.*)([<NUM>].*[<CAP>].*))*",
+        "sentence": "lines ending in zero or more of a number before capital letter",
+        "prediction": "((.*)([<NUM>])).*(([<CAP>])*).*"
+    },
+    {
+        "truth": "\\b.*[<CAP>].*\\b",
+        "sentence": "lines with words and only a capital letter",
+        "prediction": ".*\\b[<CAP>]\\b.*"
+    },
+    {
+        "truth": "(.*<M0>.*)|((<M1>){2,})",
+        "sentence": "lines with 2 or more of the string <M0> or <M1>",
+        "prediction": "((<M0>)|(<M1>)){2,}"
+    },
+    {
+        "truth": "..*[<CAP>].*",
+        "sentence": "lines containing a capital letter before a character",
+        "prediction": ".*([<CAP>]).*(.)+"
+    },
+    {
+        "truth": "(([<NUM>]).*([<LOW>]).*)|(([<CAP>])+)",
+        "sentence": "lines with a number before lower-case or capital letter",
+        "prediction": "([<NUM>]).*(([<LOW>])|([<CAP>])).*"
+    },
+    {
+        "truth": "\\b(.)|([<LET>])\\b",
+        "sentence": "items with a letter or a character .",
+        "prediction": ".*([<LET>])|(.)|([<LOW>]).*"
+    },
+    {
+        "truth": "\\b(([<NUM>])(.*)).*([<CAP>]).*\\b",
+        "sentence": "lines with words with starting with a number before a capital letter in them",
+        "prediction": "(\\b([<NUM>])(.*)\\b).*([<CAP>]).*"
+    },
+    {
+        "truth": "(([<NUM>])(.*)).*((.)|(<M0>)).*",
+        "sentence": "lines that begin with a number followed by a character or the string <M0>",
+        "prediction": "(([<NUM>].*..*)|(<M0>))(.*)"
+    },
+    {
+        "truth": "(<M0>.*[<VOW>].*){2,}",
+        "sentence": "lines that have a vowel preceded by the string <M0> at least 2 times",
+        "prediction": "(<M0>).*(([<VOW>]){2,}).*"
+    },
+    {
+        "truth": "\\b.*[<NUM>].*\\b",
+        "sentence": "lines with number words",
+        "prediction": "\\b([<NUM>])+\\b"
+    },
+    {
+        "truth": "(.*)(\\b[<LET>]\\b)",
+        "sentence": "lines that have only letters in the <U> words .",
+        "prediction": ".*\\b([<LET>])*\\b.*"
+    },
+    {
+        "truth": "([<LET>]).*(\\b.*<M0>.*\\b).*",
+        "sentence": "lines with a letter before words that contain the string dog in them",
+        "prediction": "([<LET>]).*(\\b(<M0>)*\\b).*"
+    },
+    {
+        "truth": "\\b(<M0>)|([<CAP>])\\b",
+        "sentence": "lines which contain <M0> or a capital letter .",
+        "prediction": ".*(<M0>)|([<CAP>])|([<CAP>]).*"
+    },
+    {
+        "truth": "((<M0>)*).*([<CAP>]).*",
+        "sentence": "lines with the string <M0> before a capital letter",
+        "prediction": "(<M0>).*(([<CAP>])+).*"
+    },
+    {
+        "truth": "(\\b.*<M0>.*\\b){5,}",
+        "sentence": "lines with words that contain 5 or more of the string <M0>",
+        "prediction": ".*\\b(<M0>){5,}\\b.*"
+    },
+    {
+        "truth": "((.*)(<M0>)){4,}",
+        "sentence": "lines that finish with the <M0> string 4 times or more",
+        "prediction": "(.*)((<M0>){4,})"
+    },
+    {
+        "truth": ".*\\b(<M1>)|([<LOW>])|(<M0>)\\b.*",
+        "sentence": "items with words containing <M0> , <M1> , or a small letter .",
+        "prediction": "\\b(<M0>)|(<M1>)|([<LOW>])\\b"
+    },
+    {
+        "truth": "(.*)(<M0>)",
+        "sentence": "lines that have the <M0> string as an ending",
+        "prediction": "(<M0>).*((.*)([<LET>])).*"
+    },
+    {
+        "truth": "(.*)(\\b.\\b)",
+        "sentence": "lines that end with only a character",
+        "prediction": "(.*)(\\b(.)*\\b)"
+    },
+    {
+        "truth": "((<M0>)|([<LOW>]))+",
+        "sentence": "lines with the string <M0> containing only a lower-case letter",
+        "prediction": ".*<M0>.*[<LOW>].*"
+    },
+    {
+        "truth": "\\b(.)|([<LOW>])\\b",
+        "sentence": "lines that contain a lower-case letter or a character",
+        "prediction": ".*([<LOW>])|(.)+"
+    },
+    {
+        "truth": "(.*(.*)(<M0>).*){2,}",
+        "sentence": "lines ending with <M0> 2 times",
+        "prediction": "(.*)((<M0>){2,})"
+    },
+    {
+        "truth": ".*([<VOW>])|([<NUM>])|(.)+",
+        "sentence": "lines which contain a vowel , number or <U>",
+        "prediction": ".*([<VOW>])|([<NUM>])|([<LOW>]).*"
+    },
+    {
+        "truth": "((<M0>)|([<CAP>]))+",
+        "sentence": "lines containing <M0> or at least 1 capital letter",
+        "prediction": ".*((<M0>)|([<CAP>]))+.*"
+    },
+    {
+        "truth": "(.*<M0>.*){3,}",
+        "sentence": "lines with only 3 or more of the string <M0>",
+        "prediction": "((<M0>){3,})|(.*[<CAP>].*)"
+    },
+    {
+        "truth": "((<M0>.*[<LET>].*)(.*)).*([<CAP>]).*",
+        "sentence": "lines starting with <M0> followed by a capital",
+        "prediction": "(<M0>.*[<CAP>].*)(.*)"
+    },
+    {
+        "truth": "(.)+(([<NUM>]){5,}).*",
+        "sentence": "lines with 5 or more of a character before number",
+        "prediction": "(..*[<NUM>].*){5,}"
+    },
+    {
+        "truth": "(\\b(<M0>)|([<VOW>])\\b)+",
+        "sentence": "lines with words and string <M0> or vowel",
+        "prediction": "\\b(<M0>)|([<VOW>])\\b"
+    },
+    {
+        "truth": "([<LOW>].*<M0>.*).*((<M1>)+).*",
+        "sentence": "lines that have a combination of a lower-case letter followed by the word <M0> , then the word <M1> , 1 or more times",
+        "prediction": "([<LOW>].*<M0>.*)*"
+    },
+    {
+        "truth": "(.*)(\\b([<CAP>]).*([<VOW>]).*\\b)",
+        "sentence": "lines ending with a capital letter preceding a vowel",
+        "prediction": "(.*)([<CAP>].*[<VOW>].*)"
+    },
+    {
+        "truth": "((.*)([<CAP>])){2,}",
+        "sentence": "lines which end 2 or more times with a capital letter",
+        "prediction": "((.*)(([<CAP>]){2,}))|((.*)([<CAP>]))"
+    },
+    {
+        "truth": "\\b(([<CAP>])|(.))+\\b",
+        "sentence": "lines with words with a capital letter or character",
+        "prediction": "\\b([<CAP>])|(.)\\b"
+    },
+    {
+        "truth": "\\b.*[<LOW>].*[<LET>].*\\b",
+        "sentence": "lines with words with a lower-case letter before letter",
+        "prediction": "\\b([<LOW>]).*([<LET>]).*\\b"
+    },
+    {
+        "truth": ".*\\b(<M0>)(.*)\\b.*",
+        "sentence": "lines containing the string <M0>",
+        "prediction": ".*(<M0>)|([<CAP>]).*"
+    },
+    {
+        "truth": "([<VOW>]).*(([<LOW>]){2,}).*",
+        "sentence": "lines with at least 2 vowels before a lower-case letter",
+        "prediction": "(([<VOW>]){2,}).*([<LOW>]).*"
+    },
+    {
+        "truth": "((<M0>)(.*))|((<M1>){2,})",
+        "sentence": "lines starting in 2 or more of the string <M0> or <M1>",
+        "prediction": "(((<M0>)|(<M1>)){2,})(.*)"
+    },
+    {
+        "truth": "(.*)((<M0>.*[<VOW>].*){3,})",
+        "sentence": "lines ending with <M0> <U> by a vowel 3 times",
+        "prediction": "((.*)(<M0>)){3,}"
+    },
+    {
+        "truth": "(.*)(\\b(<M0>).*([<NUM>]).*\\b)",
+        "sentence": "lines finishing with the string <M0> followed by a number",
+        "prediction": "(.*)(.*<M0>.*[<NUM>].*)"
+    },
+    {
+        "truth": "(([<VOW>])*).*([<LOW>]).*",
+        "sentence": "lines containing a lowercase letter",
+        "prediction": "([<LOW>]).*(.*[<LET>].*).*"
+    },
+    {
+        "truth": "([<LOW>]).*((<M0>){3,}).*",
+        "sentence": "lines with 3 or more of a lower-case letter before string <M0>",
+        "prediction": "([<LOW>].*<M0>.*){3,}"
+    },
+    {
+        "truth": "([<LOW>].*[<CAP>].*){3,}",
+        "sentence": "lines containing both a lower-case and capital letter at least 3 times .",
+        "prediction": "([<LOW>]).*(([<CAP>]){3,}).*"
+    },
+    {
+        "truth": ".*([<CAP>]){4,}.*",
+        "sentence": "lines that have 4 or more uppercase letters",
+        "prediction": "(([<LET>]){4,})|([<LET>])"
+    },
+    {
+        "truth": ".*(.*)((<M0>)|([<CAP>])).*",
+        "sentence": "lines which are ending with the string <M0> or a capital letter",
+        "prediction": "(.*)((<M0>)|([<CAP>]))"
+    },
+    {
+        "truth": ".*\\b([<CAP>]).*([<LOW>]).*\\b.*",
+        "sentence": "lines containing a capital letter before a lower-case letter",
+        "prediction": ".*([<CAP>]).*([<LOW>]).*"
+    },
+    {
+        "truth": "(<M0>).*(\\b(<M1>){3,}\\b).*",
+        "sentence": "lines that contain the string <M0> before <M1> 3 times or more",
+        "prediction": "(<M0>).*((<M1>){3,}).*"
+    },
+    {
+        "truth": "(([<VOW>])(.*))|((<M0>).*(<M1>).*)",
+        "sentence": "lines that start with a vowel or <M0> before <M1>",
+        "prediction": "(([<VOW>])|(<M0>)).*(<M1>).*"
+    },
+    {
+        "truth": "([<CAP>]).*(([<VOW>])|([<NUM>])).*",
+        "sentence": "lines starting with a capital letter",
+        "prediction": "(([<CAP>])(.*))+"
+    },
+    {
+        "truth": ".*((.*)(<M0>))|(<M1>).*",
+        "sentence": "lines ending with the string <M0> or the string <M1>",
+        "prediction": "(.*)((<M0>)|(<M1>))"
+    },
+    {
+        "truth": "(.)+(([<LET>])|([<NUM>])|(<M0>)).*",
+        "sentence": "lines with a letter , a number , or the string <M0> after a character",
+        "prediction": "((.)|([<NUM>])|(<M0>)).*(.)+"
+    },
+    {
+        "truth": "\\b([<CAP>]).*((<M0>){3,}).*\\b",
+        "sentence": "lines with words and 3 or more of a capital letter before string <M0>",
+        "prediction": "(\\b[<CAP>].*<M0>.*\\b){3,}"
+    },
+    {
+        "truth": "([<LET>]).*((.){3,}).*",
+        "sentence": "lines with 3 or more letters before characters",
+        "prediction": "(([<LET>]){3,}).*(.)+"
+    },
+    {
+        "truth": "([<CAP>]).*(([<LOW>]){3,}).*",
+        "sentence": "lines that at least 3 times have have a capital letter preceding a lower-case letter",
+        "prediction": "([<CAP>].*[<LOW>].*){3,}"
+    },
+    {
+        "truth": "\\b((.){4,})|([<NUM>])\\b",
+        "sentence": "lines with a character 4 times or a number",
+        "prediction": "(.){4,}"
+    },
+    {
+        "truth": ".*(<M0>)|([<CAP>])|([<VOW>]).*",
+        "sentence": "items with a vowel or an upper case letter or <M0> .",
+        "prediction": ".*(([<CAP>])|([<VOW>])|(<M0>)).*([<CAP>]).*"
+    },
+    {
+        "truth": "\\b([<CAP>]).*([<LOW>]).*\\b",
+        "sentence": "lines that have words containing a lower-case letter following an upper-case letter",
+        "prediction": "\\b[<LOW>].*[<CAP>].*\\b"
+    },
+    {
+        "truth": ".*((.*)(<M0>))+.*",
+        "sentence": "lines ending with the string <M0>",
+        "prediction": "(.*)((<M0>)|([<VOW>]))"
+    },
+    {
+        "truth": ".*([<LOW>])|([<CAP>])|([<LET>]).*",
+        "sentence": "items with any letter .",
+        "prediction": ".*([<LOW>])|([<LET>])|([<CAP>]).*"
+    },
+    {
+        "truth": "([<LOW>]).*((<M0>)|([<NUM>])).*",
+        "sentence": "lines with the string <M0> or a number followed by a lower-case letter",
+        "prediction": "((<M0>)|([<NUM>])).*([<LOW>]).*"
+    },
+    {
+        "truth": "([<LOW>]).*((.*<M0>.*)*).*",
+        "sentence": "lines with a lower-case letter before <M0>",
+        "prediction": "([<LOW>]).*((<M0>)+).*"
+    },
+    {
+        "truth": "(.*(.)|([<NUM>]).*){2,}",
+        "sentence": "lines containing 2 or more characters or numbers .",
+        "prediction": "((.){2,})|(([<NUM>])(.*))"
+    },
+    {
+        "truth": "((.*)([<VOW>])).*(([<LET>])*).*",
+        "sentence": "all lines",
+        "prediction": "(.*[<LET>].*)|(([<NUM>])+)"
+    },
+    {
+        "truth": ".",
+        "sentence": "lines with only a character",
+        "prediction": "(.*..*)+"
+    },
+    {
+        "truth": "([<LOW>]).*(([<CAP>])*).*",
+        "sentence": "items with a small letter preceding an uppercase letter .",
+        "prediction": "([<LOW>]).*([<CAP>]).*"
+    },
+    {
+        "truth": "((<M0>)(.*)).*([<VOW>]).*",
+        "sentence": "lines that have the string <M0> that occurs before a vowel",
+        "prediction": "(.*<M0>.*).*([<VOW>]).*"
+    },
+    {
+        "truth": "([<NUM>]).*((.){4,}).*",
+        "sentence": "lines that contain a number followed by a character , at least 4 times",
+        "prediction": "([<NUM>].*..*){4,}"
+    },
+    {
+        "truth": "([<VOW>]).*((<M0>){2,}).*",
+        "sentence": "a vowel appear 2 or more times before the string <M0> in the lines",
+        "prediction": "(([<VOW>]){2,}).*(<M0>).*"
+    },
+    {
+        "truth": "((([<LOW>])|([<NUM>]))(.*))*",
+        "sentence": "all lines",
+        "prediction": "(.*[<LET>].*)|(([<NUM>])+)"
+    },
+    {
+        "truth": ".*(<M0>)|([<VOW>])|(<M1>).*",
+        "sentence": "lines that contain either a vowel or the strings <M0> or <M1>",
+        "prediction": ".*([<VOW>])|(<M0>)|(<M1>).*"
+    },
+    {
+        "truth": ".*(<M0>)|(.)|([<VOW>]).*",
+        "sentence": "lines with a vowel , the string <M0> , and a character",
+        "prediction": "(([<VOW>])|(<M0>)|(.))+"
+    },
+    {
+        "truth": "([<LOW>].*[<NUM>].*)*",
+        "sentence": "lines with a number , zero or more times followed by a lower-case letter",
+        "prediction": "(([<NUM>])*).*([<LOW>]).*"
+    },
+    {
+        "truth": "(.*)(([<LOW>]){5,})",
+        "sentence": "lines ending with containing only a lower-case letter , at least 5 times",
+        "prediction": "((.*)([<LOW>])){5,}"
+    },
+    {
+        "truth": "((<M0>.*<M1>.*){5,})(.*)",
+        "sentence": "lines starting with string <M0> and <M1> , 5 or more times",
+        "prediction": "((<M0>){5,}).*((<M1>){5,}).*"
+    },
+    {
+        "truth": "([<VOW>]).*((<M0>){4,}).*",
+        "sentence": "lines that have a vowel before a <M0> string at least 4 times",
+        "prediction": "(([<VOW>]){4,}).*(<M0>).*"
+    },
+    {
+        "truth": "(\\b[<NUM>]\\b)*",
+        "sentence": "lines with words and only zero or more numbers",
+        "prediction": "\\b([<NUM>])*\\b"
+    },
+    {
+        "truth": "((<M0>)|([<VOW>])).*([<NUM>]).*",
+        "sentence": "lines containing the string <M0> or a number followed by a vowel",
+        "prediction": "((<M0>)|([<NUM>])).*([<VOW>]).*"
+    },
+    {
+        "truth": "(\\b(<M0>)|(<M1>)|([<CAP>])\\b)(.*)",
+        "sentence": "lines staring in words with string <M0> or <M1> or a capital letter",
+        "prediction": "\\b((<M0>)|(<M1>)|([<CAP>]))|([<CAP>])\\b"
+    },
+    {
+        "truth": "(([<NUM>]){3,}).*([<LOW>]).*",
+        "sentence": "lines with a number",
+        "prediction": "([<NUM>]).*(([<NUM>])+).*"
+    },
+    {
+        "truth": "(\\b(<M0>)|([<LOW>])\\b){4,}",
+        "sentence": "lines with words and 4 or more of the string <M0> or lower-case letter",
+        "prediction": "\\b((<M0>){4,})|([<LOW>])\\b"
+    },
+    {
+        "truth": "\\b(.*)(<M0>.*[<LOW>].*)\\b",
+        "sentence": "lines with words ending in string <M0> before lower-case letter",
+        "prediction": "(\\b(.*)(<M0>)\\b).*([<LOW>]).*"
+    },
+    {
+        "truth": "\\b.*<M0>.*\\b",
+        "sentence": "the string <M0> should be <U> with words in the string .",
+        "prediction": "(\\b(<M0>)|(<M1>)\\b)+"
+    },
+    {
+        "truth": "((.*)([<LET>])){3,}",
+        "sentence": "lines ending with 3 or more letters",
+        "prediction": "(.*)(([<LET>]){3,})"
+    },
+    {
+        "truth": "\\b([<LET>])|([<NUM>])|([<VOW>])\\b",
+        "sentence": "lines with a letter , a number , or a vowel .",
+        "prediction": ".*([<LET>])|([<NUM>])|([<VOW>]).*"
+    },
+    {
+        "truth": "\\b(<M0>).*([<LOW>]).*\\b",
+        "sentence": "lines with words with only the string <M0> before lower-case letter",
+        "prediction": "(\\b<M0>\\b).*([<LOW>]).*"
+    },
+    {
+        "truth": "(([<VOW>])*).*((<M0>)|(.)|([<LOW>])).*",
+        "sentence": "lines with a zero or more of a vowel before string <M0> , character , or lower-case letter",
+        "prediction": "([<VOW>]).*((<M0>)|(.)|([<LOW>])).*"
+    },
+    {
+        "truth": "([<NUM>].*[<CAP>].*){5,}",
+        "sentence": "lines with a capital letter after a number at least 5 times",
+        "prediction": "([<NUM>]).*(([<CAP>]){5,}).*"
+    },
+    {
+        "truth": ".*([<NUM>])|([<CAP>]).*",
+        "sentence": "lines containing capital letters or numbers",
+        "prediction": ".*([<CAP>])|([<NUM>]).*"
+    },
+    {
+        "truth": "((([<LOW>])*)(.*)).*([<LET>]).*",
+        "sentence": "lines starting with zero or more of a lower-case letter with a letter",
+        "prediction": "(([<LOW>])(.*))*"
+    },
+    {
+        "truth": "(([<NUM>])|([<LET>]))+",
+        "sentence": "lines with a number or letter",
+        "prediction": ".*([<NUM>])|([<LET>]).*"
+    },
+    {
+        "truth": "(<M0>){4,}",
+        "sentence": "lines that contain 4 or more times the string <M0>",
+        "prediction": "((<M0>){4,})|(.*[<LET>].*)"
+    },
+    {
+        "truth": "(([<VOW>].*[<LOW>].*)|(<M0>))*",
+        "sentence": "lines containing a vowel before with or without a lower-case letter or the string <M0>",
+        "prediction": "(([<VOW>]).*(([<LOW>])*).*)|(<M0>)"
+    },
+    {
+        "truth": "((.)|([<LOW>])){3,}",
+        "sentence": "lines with 3 or more characters or lower-case letters",
+        "prediction": "((.){3,})|([<LOW>])"
+    },
+    {
+        "truth": "\\b.*([<VOW>])(.*).*\\b",
+        "sentence": "lines containing a vowel",
+        "prediction": ".*([<VOW>])|([<LOW>]).*"
+    },
+    {
+        "truth": "(([<NUM>]).*([<CAP>]).*)|(([<LOW>])|(<M0>)|(<M1>))",
+        "sentence": "lines with a number",
+        "prediction": "([<NUM>]).*(([<NUM>])+).*"
+    },
+    {
+        "truth": "(([<NUM>])(.*))*",
+        "sentence": "lines starting with a number , zero times or more",
+        "prediction": "((([<NUM>])*)|([<NUM>]))(.*)"
+    },
+    {
+        "truth": "(<M0>).*(([<LOW>])*).*",
+        "sentence": "lines with the string <M0> and 0 or more lower-case letters",
+        "prediction": "((<M0>)|([<LOW>]))*"
+    },
+    {
+        "truth": "((<M0>)|(.*<M1>.*))+",
+        "sentence": "lines with the string <M0> with the string <M1>",
+        "prediction": "(<M1>).*((<M0>)|(<M1>)).*"
+    },
+    {
+        "truth": ".*((<M0>)|([<LOW>])){2,}.*",
+        "sentence": "lines with the string <M0> or a lower-case letter , twice or more times",
+        "prediction": "((<M0>)|([<LOW>])){2,}"
+    },
+    {
+        "truth": "\\b(.*[<VOW>].*).*(<M0>).*\\b",
+        "sentence": "lines with words with a vowel before string <M0>",
+        "prediction": "\\b([<VOW>]).*(<M0>).*\\b"
+    },
+    {
+        "truth": "\\b([<VOW>]){2,}\\b",
+        "sentence": "lines with a vowel , 2 times",
+        "prediction": "(([<VOW>]){2,}).*([<VOW>]).*"
+    },
+    {
+        "truth": "\\b(([<LOW>]){4,})(.*)\\b",
+        "sentence": "lines with words starting with 4 or more lower-case letters",
+        "prediction": "(\\b([<LOW>]){4,}\\b)(.*)"
+    },
+    {
+        "truth": "(.*)(((<M0>)|(<M1>)){3,})",
+        "sentence": "lines containing the string <M0> or the string <M1>",
+        "prediction": ".*(<M0>)|(<M1>).*"
+    },
+    {
+        "truth": "(.*)((.*[<VOW>].*)*)",
+        "sentence": "lines ending with a vowel , zero or more times",
+        "prediction": "((.*)([<VOW>]))*"
+    },
+    {
+        "truth": "\\b((<M0>)+).*([<VOW>]).*\\b",
+        "sentence": "lines with words and the string <M0>",
+        "prediction": ".*\\b(<M0>)+\\b.*"
+    },
+    {
+        "truth": "(.)+((<M0>){2,}).*",
+        "sentence": "lines with the string <M0> after a character at least twice",
+        "prediction": "((.){2,}).*(<M0>).*"
+    },
+    {
+        "truth": "(<M0>).*(([<LET>]){2,}).*",
+        "sentence": "lines with 2 or more of the string <M0> before a letter",
+        "prediction": "((<M0>){2,}).*([<LET>]).*"
+    },
+    {
+        "truth": "(.*[<VOW>].*).*(<M0>).*",
+        "sentence": "lines that have a vowel before the <U> <M0>",
+        "prediction": "([<VOW>]).*((<M0>)+).*"
+    },
+    {
+        "truth": "([<LOW>].*[<VOW>].*).*([<CAP>]).*",
+        "sentence": "lines followed by a vowel before a capital letter",
+        "prediction": "([<VOW>].*[<VOW>].*).*([<CAP>]).*"
+    },
+    {
+        "truth": "((.*)([<NUM>].*<M0>.*))*",
+        "sentence": "lines ending with a number then <M0>",
+        "prediction": "(.*)([<NUM>].*<M0>.*)"
+    },
+    {
+        "truth": "(\\b<M0>\\b){5,}",
+        "sentence": "items with words containing just <M0> at least 5 times .",
+        "prediction": "\\b(<M0>){5,}\\b"
+    },
+    {
+        "truth": "([<CAP>]).*(([<LOW>]){2,}).*",
+        "sentence": "lines that have at least 2 occurrences of a lower-case letter following a capital letter",
+        "prediction": "([<CAP>].*[<LOW>].*){2,}"
+    },
+    {
+        "truth": ".*[<VOW>].*[<LET>].*",
+        "sentence": "lines with a vowel then a letter",
+        "prediction": "([<VOW>].*[<LET>].*)+"
+    },
+    {
+        "truth": "\\b.*[<LOW>].*\\b",
+        "sentence": "items with words containing a small letter .",
+        "prediction": "\\b.*([<LOW>])*.*\\b"
+    },
+    {
+        "truth": "\\b(<M1>).*(<M0>).*\\b",
+        "sentence": "lines with words that have the string <M0> after the string <M1>",
+        "prediction": "\\b.*(<M0>).*(<M1>).*"
+    },
+    {
+        "truth": ".*\\b([<LET>])|(<M0>)\\b.*",
+        "sentence": "lines containing the string <M0> with a letter",
+        "prediction": "(.*<M0>.*)|(([<LET>])+)"
+    },
+    {
+        "truth": "(.*([<NUM>]).*([<VOW>]).*)+",
+        "sentence": "items with a numeral preceding a vowel at least once .",
+        "prediction": "([<NUM>].*[<VOW>].*)+"
+    },
+    {
+        "truth": "(([<NUM>])|([<CAP>])){2,}",
+        "sentence": "lines with 2 or more letters",
+        "prediction": "(([<LET>]){2,})|(.*[<CAP>].*)"
+    },
+    {
+        "truth": ".*\\b([<NUM>]).*(<M0>).*\\b.*",
+        "sentence": "lines with words with a number before string <M0>",
+        "prediction": "\\b([<NUM>]).*(<M0>).*\\b"
+    },
+    {
+        "truth": "((.*[<CAP>].*)|([<VOW>])){2,}",
+        "sentence": "lines with 2 or more of a capital letter or vowel",
+        "prediction": "(([<CAP>])|([<VOW>])){2,}"
+    },
+    {
+        "truth": "(<M0>).*([<LOW>]).*",
+        "sentence": "lines containing the string <M0> followed by a lower-case letter",
+        "prediction": ".*<M0>.*[<LOW>].*"
+    },
+    {
+        "truth": "(..*[<LOW>].*).*((.*)(<M0>)).*",
+        "sentence": "lines with a character before a lower-case letter ending in string <M0>",
+        "prediction": "(.)+(([<LOW>])*).*"
+    },
+    {
+        "truth": "([<LET>].*<M0>.*)*",
+        "sentence": "lines where the string <M0> has a letter before it , no less than zero times",
+        "prediction": "(<M0>).*(([<LET>])*).*"
+    },
+    {
+        "truth": "(.*[<LOW>].*<M0>.*){2,}",
+        "sentence": "lines with 2 or more of a lower-case letter before string <M0>",
+        "prediction": "([<LOW>].*<M0>.*){2,}"
+    },
+    {
+        "truth": ".*((.*)([<CAP>]))+.*",
+        "sentence": "lines containing ending with a capital letter at least once in them",
+        "prediction": "(.*)(([<CAP>])+)"
+    },
+    {
+        "truth": "([<LET>]).*((<M0>){3,}).*",
+        "sentence": "items with a letter preceding <M0> at least thrice .",
+        "prediction": "([<LET>].*<M0>.*){3,}"
+    },
+    {
+        "truth": "(([<LOW>])|([<CAP>]))*",
+        "sentence": "lines with a lower-case or capital letter",
+        "prediction": ".*([<LOW>])|([<CAP>])|([<CAP>]).*"
+    },
+    {
+        "truth": "((.*)([<NUM>])).*(.)+",
+        "sentence": "lines ending with a number before a letter",
+        "prediction": "((.*)([<NUM>])).*([<LET>]).*"
+    },
+    {
+        "truth": "(<M0>.*[<CAP>].*).*(.)+",
+        "sentence": "lines containing the string <M0> , a capital letter , and a character",
+        "prediction": ".*(<M0>)|([<CAP>]).*"
+    },
+    {
+        "truth": "(.*)(((<M0>){4,})|([<LOW>]))",
+        "sentence": "lines ending with string <M0> , 4 or more times or lower-case letter",
+        "prediction": "(.*)((<M0>){4,})"
+    },
+    {
+        "truth": "([<LOW>]).*((.*)([<CAP>])).*",
+        "sentence": "lines with a lower-case letter ending in capital letter",
+        "prediction": "(.*)([<LOW>].*[<CAP>].*)"
+    },
+    {
+        "truth": "\\b(([<VOW>]){5,})(.*)\\b",
+        "sentence": "lines with words starting in 5 or more vowels",
+        "prediction": "(\\b([<VOW>])(.*)\\b){5,}"
+    },
+    {
+        "truth": "(.*<M0>.*)|((.*)([<CAP>]))",
+        "sentence": "lines containing the string <M0> or which are ending with a capital letter",
+        "prediction": ".*(<M0>)|((.*)([<CAP>])).*"
+    },
+    {
+        "truth": "\\b((<M0>).*([<LOW>]).*)|([<LET>])\\b",
+        "sentence": "lines with words and the string <M0> before a letter",
+        "prediction": "(\\b<M0>.*[<LET>].*\\b)+"
+    },
+    {
+        "truth": "((<M0>)+)|((<M1>).*(<M2>).*)",
+        "sentence": "lines with the string <M0> or the strings <M1> before <M2>",
+        "prediction": "((<M0>)|(<M1>)).*(<M2>).*"
+    },
+    {
+        "truth": "(<M0>).*(([<LOW>])|([<CAP>])).*",
+        "sentence": "lines containing the string <M0> before a lower-case letter or a capital letter",
+        "prediction": "(.*<M0>.*).*(([<LOW>])|([<CAP>])).*"
+    },
+    {
+        "truth": "((.)|(<M1>)|(<M2>)).*(<M0>).*",
+        "sentence": "lines containing the string <M0> after a character , the string <M1> , or the string <M2>",
+        "prediction": "(.*..*).*((<M0>)|(<M1>)|(<M2>)).*"
+    },
+    {
+        "truth": "(.*)((([<CAP>]){2,})|([<VOW>]))",
+        "sentence": "lines finishing with a capital letter , twice or more or a vowel",
+        "prediction": "(.*)(([<CAP>]){2,})"
+    },
+    {
+        "truth": "(([<VOW>])(.*))|(.*<M0>.*)",
+        "sentence": "lines starting in a vowel or with string <M0>",
+        "prediction": "((([<VOW>])|(<M0>))(.*))+"
+    },
+    {
+        "truth": "(<M1>).*(([<CAP>])|([<LET>])|(<M0>)).*",
+        "sentence": "lines wherein either an uppercase letter , a letter , or the string <M0> are preceded by the string <M1>",
+        "prediction": "(([<CAP>])|([<LET>])|(<M0>)).*(<M1>).*"
+    },
+    {
+        "truth": ".*<M0>.*[<VOW>].*",
+        "sentence": "items with <M0> preceding a vowel .",
+        "prediction": "(<M0>).*([<VOW>]).*"
+    },
+    {
+        "truth": "((<M0>)|([<CAP>])){2,}",
+        "sentence": "lines containing the string <M0> 2 times or a capital letter 2 times",
+        "prediction": "((<M0>){2,})|(([<CAP>]){2,})"
+    },
+    {
+        "truth": "(.*)((([<LET>]).*(<M0>).*)|([<LOW>]))",
+        "sentence": "lines ending in a letter before string <M0> or lower-case letter",
+        "prediction": "((.*)([<LET>])).*((<M0>)|([<LOW>])).*"
+    },
+    {
+        "truth": "(\\b([<LET>])+\\b).*(<M0>).*",
+        "sentence": "lines with a letter before <M0>",
+        "prediction": "([<LET>]).*((<M0>)+).*"
+    },
+    {
+        "truth": "(<M0>).*((.)|([<LET>])|([<VOW>])).*",
+        "sentence": "lines with the string <M0> followed by either a character or a letter",
+        "prediction": "(<M0>.*..*)|([<LET>])"
+    },
+    {
+        "truth": "(([<VOW>])|([<CAP>])){5,}",
+        "sentence": "items with an upper case letter and a vowel at least 5 times .",
+        "prediction": "([<CAP>].*[<VOW>].*){5,}"
+    },
+    {
+        "truth": "\\b((.*)([<LET>])){3,}\\b",
+        "sentence": "lines that have 3 or more words that end in a letter",
+        "prediction": "(\\b(.*)([<LET>])\\b){3,}"
+    },
+    {
+        "truth": "(.*(<M0>)|([<VOW>]).*){4,}",
+        "sentence": "lines where either the string <M0> or a vowel appear 4 or more times",
+        "prediction": "((<M0>)|([<VOW>])){4,}"
+    },
+    {
+        "truth": "(([<CAP>]){2,})(.*)",
+        "sentence": "lines containing 2 or more capital letters",
+        "prediction": "(.*[<CAP>].*){2,}"
+    },
+    {
+        "truth": "\\b(<M0>){2,}\\b",
+        "sentence": "lines containing the words with the string <M0> at least 2 times",
+        "prediction": ".*\\b(<M0>){2,}\\b.*"
+    },
+    {
+        "truth": "([<LET>].*<M0>.*).*((.)*).*",
+        "sentence": "lines containing a letter , the string <M0> , and 0 or more characters",
+        "prediction": ".*(([<LET>])|(<M0>)|([<LOW>])).*(.)*"
+    },
+    {
+        "truth": "(.*[<NUM>].*){2,}",
+        "sentence": "lines with 2 or more numbers",
+        "prediction": "([<NUM>]){2,}"
+    },
+    {
+        "truth": "\\b(<M0>.*[<NUM>].*){2,}\\b",
+        "sentence": "lines that have <M0> before 2 or more numbers",
+        "prediction": "(<M0>).*(([<NUM>]){2,}).*"
+    },
+    {
+        "truth": "([<LOW>]).*(\\b.*[<CAP>].*\\b).*",
+        "sentence": "lines with words containing a capital letter after a lower case letter",
+        "prediction": "\\b[<LOW>].*[<CAP>].*\\b"
+    },
+    {
+        "truth": "((([<LET>]).*([<NUM>]).*)|(<M0>))+",
+        "sentence": "lines with a letter before a number , or at least 1 <M0>",
+        "prediction": "(([<LET>]).*([<NUM>]).*)|(([<NUM>])+)"
+    },
+    {
+        "truth": "(([<NUM>])*).*(.)+",
+        "sentence": "lines with a number before a character at least zero times",
+        "prediction": "([<NUM>]).*((.)*).*"
+    },
+    {
+        "truth": "<M0>.*..*",
+        "sentence": "lines containing a character preceded by the string <M0>",
+        "prediction": ".*(.)+(<M0>).*"
+    },
+    {
+        "truth": "(\\b.\\b){5,}",
+        "sentence": "lines with words with 5 or more of only characters",
+        "prediction": "\\b(.){5,}\\b"
+    },
+    {
+        "truth": ".*([<NUM>]){4,}.*",
+        "sentence": "lines that have 4 or more numbers",
+        "prediction": "([<NUM>]){4,}"
+    },
+    {
+        "truth": "((<M0>)|([<NUM>]))*",
+        "sentence": "items with <M0> or numeral .",
+        "prediction": ".*([<NUM>])|(<M0>)|([<NUM>]).*"
+    },
+    {
+        "truth": "(([<LOW>]){2,}).*(.)+",
+        "sentence": "lower-case letter before a character 2 or more times",
+        "prediction": "([<LOW>]).*((.){2,}).*"
+    },
+    {
+        "truth": "(.*)((([<LET>])*)|(<M0>))",
+        "sentence": "lines ending in zero or more of a letter and string <M0>",
+        "prediction": "((.*)([<LET>].*<M0>.*))*"
+    },
+    {
+        "truth": "(.*<M0>.*<M1>.*){2,}",
+        "sentence": "lines containing string <M0> followed by string <M1> , 2 or more times",
+        "prediction": "(<M0>.*<M1>.*){2,}"
+    },
+    {
+        "truth": "([<LET>]).*((<M0>)|([<LOW>])|([<CAP>])).*",
+        "sentence": "lines with a letter string <M0> , a lower-case letter , or a capital letter",
+        "prediction": ".*([<LET>])|([<LOW>])|([<CAP>]).*"
+    },
+    {
+        "truth": "(([<CAP>])|(([<LOW>]).*(<M0>).*))*",
+        "sentence": "lines with or without lower-case letter or upper case letter before the string <M0>",
+        "prediction": "(([<LOW>])|([<CAP>])).*(<M0>).*"
+    },
+    {
+        "truth": "(<M0>).*((([<VOW>])|(<M1>))+).*",
+        "sentence": "the lines with the string <M0> ; at least once or the string <M1> before a vowel",
+        "prediction": "((<M0>)+)|((<M1>).*([<VOW>]).*)"
+    },
+    {
+        "truth": "(\\b(<M0>)(.*)\\b){2,}",
+        "sentence": "lines with words starting with string <M0> , 2 or more times",
+        "prediction": "\\b((<M0>){2,})(.*)\\b"
+    },
+    {
+        "truth": "(.*[<NUM>].*).*([<LOW>]).*",
+        "sentence": "lines containing number before lower-case letter",
+        "prediction": "([<NUM>]).*(.*[<LOW>].*).*"
+    },
+    {
+        "truth": ".*([<LOW>]).*(.)+",
+        "sentence": "lines containing only a lower-case letter before a character",
+        "prediction": "([<LOW>]).*(.*..*).*"
+    },
+    {
+        "truth": "((.*)(.)).*(([<LET>]){5,}).*",
+        "sentence": "lines ending with 5 or more of a character before a letter",
+        "prediction": "((.*)(..*[<LET>].*)){5,}"
+    },
+    {
+        "truth": "([<VOW>].*[<LOW>].*)*",
+        "sentence": "lines with no or multiple vowels followed by a lower-case letter",
+        "prediction": "(([<VOW>])|([<LOW>])).*([<LOW>]).*"
+    },
+    {
+        "truth": "(<M0>).*(([<LOW>]){2,}).*",
+        "sentence": "lines containing the string <M0> 2 or more times before a lower-case letter",
+        "prediction": "((<M0>){2,}).*([<LOW>]).*"
+    },
+    {
+        "truth": ".*([<LOW>].*<M0>.*)+.*",
+        "sentence": "lines which are containing a lower-case letter followed by the string <M0> at least once",
+        "prediction": "([<LOW>].*<M0>.*)+"
+    },
+    {
+        "truth": "(.*([<VOW>])|(.)+).*([<NUM>]).*",
+        "sentence": "my <U> <U> is <U> .",
+        "prediction": "(.*[<LOW>].*)+"
+    },
+    {
+        "truth": "((.*)([<LET>]))*",
+        "sentence": "lines ending with letter , zero or more times",
+        "prediction": "(.*)((([<LET>])*)|([<LET>]))"
+    },
+    {
+        "truth": "(.*..*<M0>.*)*",
+        "sentence": "lines containing a character followed by a string <M0>",
+        "prediction": ".*..*<M0>.*"
+    },
+    {
+        "truth": "((.*<M0>.*)+).*(<M1>).*",
+        "sentence": "lines containing string <M0> at least once before string <M1>",
+        "prediction": "((<M0>)+).*(<M1>).*"
+    },
+    {
+        "truth": "((.)|([<LET>]))*",
+        "sentence": "lines with a character or letter at least once",
+        "prediction": "((.)|([<LET>]))+"
+    },
+    {
+        "truth": "((<M0>)(.*)){2,}",
+        "sentence": "lines that start with 2 or more instance of the string <M0>",
+        "prediction": "((<M0>){2,})(.*)"
+    },
+    {
+        "truth": "(([<NUM>])|((<M0>).*(<M1>).*)){5,}",
+        "sentence": "lines with a number or the string <M0> before the string <M1> , 5 or more times in it",
+        "prediction": "(([<NUM>])|(<M0>)).*((<M1>){5,}).*"
+    },
+    {
+        "truth": ".*[<VOW>].*",
+        "sentence": "lines with a vowel",
+        "prediction": "([<VOW>]).*(([<LET>])+).*"
+    },
+    {
+        "truth": "((<M0>)|([<LET>])|(<M1>)).*(<M2>).*",
+        "sentence": "lines having either the string <M0> , a letter , or the string <M1> <M2>",
+        "prediction": ".*(<M0>)|([<LET>])|(<M1>).*"
+    },
+    {
+        "truth": "(<M0>){2,}",
+        "sentence": "items with <M0> at least twice .",
+        "prediction": "(<M0>).*(([<LET>]){2,}).*"
+    },
+    {
+        "truth": "\\b([<LET>]).*((<M0>)|(<M1>)).*\\b",
+        "sentence": "lines with words with a letter before string <M0> of <M1>",
+        "prediction": "\\b([<LET>]).*(<M0>).*\\b"
+    },
+    {
+        "truth": "\\b([<LET>]).*(([<CAP>])+).*\\b",
+        "sentence": "lines with words with a letter and capital letter",
+        "prediction": "\\b([<LET>])|([<CAP>])\\b"
+    },
+    {
+        "truth": ".*(<M0>)|([<NUM>])|([<VOW>]).*",
+        "sentence": "the string <M0> a number or a vowel appears in the lines",
+        "prediction": "(([<NUM>])|([<VOW>])).*(<M0>).*"
+    },
+    {
+        "truth": "((<M0>)|([<CAP>])).*([<NUM>]).*",
+        "sentence": "lines with <M0> a letter before a number",
+        "prediction": "([<LET>]).*([<NUM>].*[<NUM>].*).*"
+    },
+    {
+        "truth": ".*(([<LET>])|([<LOW>]))*.*",
+        "sentence": "the lines that have either a capital letter or lower-case letter at least once",
+        "prediction": "(([<CAP>])|([<LOW>]))+"
+    },
+    {
+        "truth": "((.*)([<CAP>])){4,}",
+        "sentence": "lines ending with a capital , 4 or more times",
+        "prediction": "(.*)(([<CAP>]){4,})"
+    },
+    {
+        "truth": "(\\b(<M0>)*\\b).*(.)+",
+        "sentence": "lines with words and zero or more of the string <M0>",
+        "prediction": "\\b(<M0>)*\\b"
+    },
+    {
+        "truth": "(.*..*)|(<M0>.*<M1>.*)",
+        "sentence": "lines with characters or the string <M0> followed by the string <M1>",
+        "prediction": "((.)|(<M0>.*<M1>.*))*"
+    },
+    {
+        "truth": "\\b(..*[<CAP>].*){5,}\\b",
+        "sentence": "lines with words with a character followed by a capital letter , 5 or more times in them",
+        "prediction": "(\\b..*[<CAP>].*\\b){5,}"
+    },
+    {
+        "truth": "([<LOW>].*..*)*",
+        "sentence": "items with a small letter preceding a character .",
+        "prediction": "([<LOW>]).*(.)+"
+    },
+    {
+        "truth": "([<LET>].*..*).*([<CAP>]).*",
+        "sentence": "lines with a letter followed by a character",
+        "prediction": "([<LET>].*..*).*(.)+"
+    },
+    {
+        "truth": "([<LET>]).*(([<CAP>])|([<LOW>])).*",
+        "sentence": "lines with a capital or lower case after a letter",
+        "prediction": "([<LET>]).*(([<LOW>])|([<LOW>])).*"
+    },
+    {
+        "truth": "(\\b(.*)(<M0>)\\b){5,}",
+        "sentence": "lines containing 5 or more of the string <M0>",
+        "prediction": ".*(<M0>){5,}.*"
+    },
+    {
+        "truth": "([<LOW>]).*(([<CAP>]){3,}).*",
+        "sentence": "lines that contain a lower-case letter followed by 3 or more capital letters",
+        "prediction": "([<LOW>].*[<CAP>].*){3,}"
+    },
+    {
+        "truth": "(\\b(<M0>)|(<M1>)|([<NUM>])\\b)(.*)",
+        "sentence": "lines starting with either <M0> , <M1> , or a number",
+        "prediction": "((<M0>)|(<M1>)|([<NUM>]))(.*)"
+    },
+    {
+        "truth": ".*[<NUM>].*[<VOW>].*",
+        "sentence": "lines with a number before a vowel",
+        "prediction": "([<NUM>]).*([<VOW>]).*"
+    },
+    {
+        "truth": "((.*[<LOW>].*)|([<VOW>]))+",
+        "sentence": "lines with a lower-case letter or vowel",
+        "prediction": ".*([<LOW>])|([<VOW>]).*"
+    },
+    {
+        "truth": "(([<LET>])|([<LOW>])).*(.)+",
+        "sentence": "lines with a lower-case letter before a character",
+        "prediction": "([<LOW>]).*(.*..*).*"
+    },
+    {
+        "truth": "(<M0>).*(([<NUM>]){2,}).*",
+        "sentence": "lines with 2 or more of the string <M0> before number",
+        "prediction": "((<M0>){2,}).*([<NUM>]).*"
+    },
+    {
+        "truth": "(.*)(((.)|(<M0>)){2,})",
+        "sentence": "lines ending with character or string <M0> , 2 or more times",
+        "prediction": "((.*)(.))|((<M0>){2,})"
+    },
+    {
+        "truth": "(.*)(\\b[<CAP>].*[<NUM>].*\\b)",
+        "sentence": "lined ending with words with a capital letter with a number after",
+        "prediction": "(.*)(\\b([<CAP>])|([<NUM>])\\b)"
+    },
+    {
+        "truth": ".*([<CAP>])|(([<LET>])*).*",
+        "sentence": "lines containing capital letter or letter , zero or more times",
+        "prediction": "(([<CAP>])|([<LET>]))*"
+    },
+    {
+        "truth": "([<LOW>]).*(<M0>.*[<NUM>].*).*",
+        "sentence": "lines with the string <M0> after a lower-case letter followed by a number",
+        "prediction": "([<LOW>].*[<NUM>].*).*(<M0>).*"
+    },
+    {
+        "truth": "\\b([<LET>])|(<M0>)|(<M1>)\\b",
+        "sentence": "lines with a letter , <M0> or <M1>",
+        "prediction": ".*([<LET>])|(<M0>)|(<M1>).*"
+    },
+    {
+        "truth": "(\\b([<LOW>])+\\b)(.*)",
+        "sentence": "lines with at least 1 lower-case letter",
+        "prediction": "([<LOW>])+"
+    },
+    {
+        "truth": "(<M0>).*((<M1>)|([<CAP>])|([<NUM>])).*",
+        "sentence": "items with <M0> preceding <M1> , a numeral , or an upper case letter .",
+        "prediction": "(<M0>).*((<M1>)|([<CAP>])|([<CAP>])).*"
+    },
+    {
+        "truth": "(.)+((<M0>){2,}).*",
+        "sentence": "items with a character preceding <M0> at least 2 times .",
+        "prediction": "(..*<M0>.*){2,}"
+    },
+    {
+        "truth": "(\\b([<LOW>])(.*)\\b){2,}",
+        "sentence": "lines having words beginning with a lower-case letter coming twice or more",
+        "prediction": "(\\b([<LOW>]){2,}\\b)(.*)"
+    },
+    {
+        "truth": "(([<LOW>])(.*)){2,}",
+        "sentence": "lines that have a lower-case letter at the beginning 2 or more times",
+        "prediction": "(([<LOW>]){2,})(.*)"
+    },
+    {
+        "truth": "(<M0>.*[<VOW>].*){2,}",
+        "sentence": "lines with 2 or more of the string <M0> before a vowel",
+        "prediction": "((<M0>){2,}).*([<VOW>]).*"
+    },
+    {
+        "truth": "(.*(.)|([<LET>])|(<M0>).*)*",
+        "sentence": "lines that contain a character , letter , or 0 or more instances of the string <M0>",
+        "prediction": "((.)|([<LET>])|(<M0>)).*((<M0>)*).*"
+    },
+    {
+        "truth": "(.*)(([<NUM>])*)",
+        "sentence": "lined ending with a number",
+        "prediction": "(.*)(.*([<NUM>])|([<NUM>]).*)"
+    },
+    {
+        "truth": "((<M0>){2,}).*([<VOW>]).*",
+        "sentence": "lines with the string <M0> at least 2 times",
+        "prediction": "((<M0>){2,})|(.*[<LET>].*)"
+    },
+    {
+        "truth": "\\b(([<LET>]){2,})|([<CAP>])\\b",
+        "sentence": "lines containing words with 2 or more times a letter or a capital letter",
+        "prediction": "\\b(([<LET>])|([<CAP>])){2,}\\b"
+    },
+    {
+        "truth": "([<LOW>].*<M0>.*){2,}",
+        "sentence": "lines with lower-case letters before 2 of the strings <M0>",
+        "prediction": "([<LOW>]).*((<M0>){2,}).*"
+    },
+    {
+        "truth": "\\b((.*)(<M0>)).*(<M1>).*\\b",
+        "sentence": "lines with words ending with the string <M0> before <M1>",
+        "prediction": "(\\b(.*)(<M0>)\\b).*(<M1>).*"
+    },
+    {
+        "truth": "([<LET>]).*(\\b.*<M0>.*\\b).*",
+        "sentence": "lines with a letter before words with string <M0>",
+        "prediction": "([<LET>]).*(\\b(<M0>)*\\b).*"
+    },
+    {
+        "truth": "((([<CAP>])|([<VOW>]))(.*)){2,}",
+        "sentence": "lines containing a capital letter and 2 or more vowels",
+        "prediction": "([<CAP>]).*(([<VOW>]){2,}).*"
+    },
+    {
+        "truth": ".*(([<LOW>]){2,})|(<M0>).*",
+        "sentence": "lines that contain the string <M0> or a lower-case letter , at least 2 times",
+        "prediction": "((<M0>)|([<LOW>])){2,}"
+    },
+    {
+        "truth": "(([<NUM>])(.*)){3,}",
+        "sentence": "a line starting with a number that is repeated 3 or more times",
+        "prediction": "(([<NUM>]){3,})(.*)"
+    },
+    {
+        "truth": "(.*<M0>.*).*(([<CAP>])+).*",
+        "sentence": "lines containing string <M0> before capital letter at least once",
+        "prediction": "(<M0>).*(([<CAP>])+).*"
+    },
+    {
+        "truth": "\\b(.*[<LOW>].*).*(<M0>).*\\b",
+        "sentence": "lines with words that contain lower-case letter before string <M0>",
+        "prediction": "\\b([<LOW>]).*(<M0>).*\\b"
+    },
+    {
+        "truth": "((([<LOW>])(.*))|(<M0>)){4,}",
+        "sentence": "lines starting with a lower-case letter or string <M0> , 4 or more times",
+        "prediction": "((([<LOW>])|(<M0>)){4,})(.*)"
+    },
+    {
+        "truth": "([<NUM>]).*((.*)([<CAP>])).*",
+        "sentence": "lines with a number ending in only a capital letter",
+        "prediction": "(.*)([<NUM>].*[<CAP>].*)"
+    },
+    {
+        "truth": "(([<LET>])*).*(<M0>).*",
+        "sentence": "lines that have a letter , no times or all times , all of which appear prior to the <M0> string",
+        "prediction": "(([<LET>])*)|((<M0>).*(<M0>).*)"
+    },
+    {
+        "truth": "\\b(.*<M0>.*).*([<CAP>]).*\\b",
+        "sentence": "lines with words that contain the string <M0> before a capital letter in them",
+        "prediction": "(\\b<M0>.*[<CAP>].*\\b)+"
+    },
+    {
+        "truth": "([<CAP>]).*(([<NUM>]){2,}).*",
+        "sentence": "lines with 2 or more of a capital letter before a number",
+        "prediction": "([<CAP>].*[<NUM>].*){2,}"
+    },
+    {
+        "truth": "(\\b(<M0>)|([<NUM>])|(<M1>)\\b)+",
+        "sentence": "lines with either at least 1 <M0> , number , or <M1>",
+        "prediction": ".*(<M0>)|([<NUM>])|(<M1>).*"
+    },
+    {
+        "truth": "(.*)(((.)+([<CAP>]).*)|([<LET>]))",
+        "sentence": "lines ending in a character before a letter",
+        "prediction": "(.*)(..*[<LET>].*)"
+    },
+    {
+        "truth": "(<M0>).*(\\b.*<M1>.*\\b).*",
+        "sentence": "lines with the string <M0> before words with string <M1>",
+        "prediction": "(<M0>).*(\\b(<M1>)*\\b).*"
+    },
+    {
+        "truth": "\\b.*(.)(.*).*\\b",
+        "sentence": "lines containing a character",
+        "prediction": ".*(.)+([<VOW>]).*"
+    },
+    {
+        "truth": "(.*)((([<CAP>])+)|([<VOW>]))",
+        "sentence": "lines ending with a letter or vowel",
+        "prediction": "(.*)(([<LET>])|([<VOW>]))"
+    },
+    {
+        "truth": "((.*)([<CAP>])){2,}",
+        "sentence": "lines ending with capital letter at least twice",
+        "prediction": "(.*)(([<CAP>]){2,})"
+    },
+    {
+        "truth": "(.*)([<VOW>].*[<CAP>].*)",
+        "sentence": "lines ending with a vowel preceding a capital letter",
+        "prediction": "(.*)(.*[<VOW>].*)"
+    },
+    {
+        "truth": "((.*)((<M0>)|(<M1>)))*",
+        "sentence": "all lines",
+        "prediction": "(.*[<LET>].*)|(([<NUM>])+)"
+    },
+    {
+        "truth": "(.*)(.*([<LET>]).*([<VOW>]).*)",
+        "sentence": "lines finishing with a letter followed by a vowel",
+        "prediction": "(.*)(.*[<LET>].*)"
+    },
+    {
+        "truth": "(.*)((([<LET>])|([<LOW>])){2,})",
+        "sentence": "lines ending with letter or lower-case letter , 2 or more times",
+        "prediction": "((.*)(([<LET>])|([<LOW>]))){2,}"
+    },
+    {
+        "truth": "(((<M0>)|(<M1>)){3,}).*(.)+",
+        "sentence": "lines containing the string <M0> or the string <M1> before a character at least 3 times",
+        "prediction": "((<M0>)|(<M1>)).*((.){3,}).*"
+    },
+    {
+        "truth": "(.*([<LOW>])|(<M0>)|(<M1>).*)*",
+        "sentence": "lines with zero or more of a lower-case letter or string <M0> or <M1>",
+        "prediction": ".*(([<LOW>])|(<M0>)|(<M1>)).*([<LOW>]).*"
+    },
+    {
+        "truth": ".*([<VOW>].*[<LET>].*)+.*",
+        "sentence": "lines with a vowel before a letter",
+        "prediction": "([<VOW>]).*(([<LET>])+).*"
+    },
+    {
+        "truth": "\\b([<LOW>]).*(<M0>).*\\b",
+        "sentence": "lines that have words containing a small letter preceding the <M0> string",
+        "prediction": "\\b.*[<LOW>].*<M0>.*\\b"
+    },
+    {
+        "truth": "\\b([<LET>])|(.)|([<LOW>])\\b",
+        "sentence": "lines containing words with a letter , a character , or a lower-case letter",
+        "prediction": ".*\\b([<LET>])|(.)|([<LOW>])\\b.*"
+    },
+    {
+        "truth": "((.*)(([<LOW>])|([<VOW>]))){2,}",
+        "sentence": "lines which are ending with a lower-case letter or a vowel , 2 or more times",
+        "prediction": "((.*)([<LOW>]))|(([<VOW>]){2,})"
+    },
+    {
+        "truth": "(<M0>).*(([<NUM>]){3,}).*",
+        "sentence": "lines with 3 or more of the string <M0>",
+        "prediction": "((<M0>){3,})|(.*[<CAP>].*)"
+    },
+    {
+        "truth": "((<M0>){3,})|(.*..*)",
+        "sentence": "lines with 3 or more of the string <M0> or with a character",
+        "prediction": "((<M0>)|((.){3,}))(.*)"
+    },
+    {
+        "truth": "(\\b(<M0>)(.*)\\b).*([<NUM>]).*",
+        "sentence": "lines with words starting with string <M0> before number",
+        "prediction": "(\\b(<M0>).*([<NUM>]).*\\b)(.*)"
+    },
+    {
+        "truth": "((<M0>)|([<LOW>])).*([<VOW>]).*",
+        "sentence": "a vowel must come before a lower case letter and must have string <M0>",
+        "prediction": "([<VOW>]).*([<LOW>].*<M0>.*).*"
+    },
+    {
+        "truth": "(([<LOW>]){5,}).*([<LET>]).*",
+        "sentence": "lines with 5 or more of a lower-case letter before a letter",
+        "prediction": "([<LOW>]).*(([<LET>]){5,}).*"
+    },
+    {
+        "truth": "((.*)(<M0>.*[<VOW>].*))*",
+        "sentence": "lines that end with <M0> and a vowel",
+        "prediction": "(.*)(<M0>.*[<VOW>].*)"
+    },
+    {
+        "truth": ".*(.*)(([<VOW>]){4,}).*",
+        "sentence": "lines ending with a vowel , 4 or more times",
+        "prediction": "(.*)(([<VOW>]){4,})"
+    },
+    {
+        "truth": "(([<LET>])|(.*[<NUM>].*)){4,}",
+        "sentence": "lines with letter or containing number , 4 or more times",
+        "prediction": "(([<LET>])|([<NUM>])){4,}"
+    },
+    {
+        "truth": ".*(([<NUM>])|(<M0>))+.*",
+        "sentence": "lines containing the string <M0> once",
+        "prediction": "(<M0>).*((.*)(.*[<LET>].*)).*"
+    },
+    {
+        "truth": ".*(.)|(([<LET>]).*([<NUM>]).*).*",
+        "sentence": "lines with a character or a letter , followed by a number",
+        "prediction": "((.)|([<LET>])).*([<NUM>]).*"
+    },
+    {
+        "truth": ".*(<M0>.*[<NUM>].*){2,}.*",
+        "sentence": "lines containing the string <M0> followed by 2 or more numbers",
+        "prediction": "(<M0>.*[<NUM>].*){2,}"
+    },
+    {
+        "truth": "(([<CAP>])*).*((.*)(<M0>)).*",
+        "sentence": "lines with a capital letter before ending with the string <M0> at least zero times",
+        "prediction": "([<CAP>]).*((.*)((<M0>)*)).*"
+    },
+    {
+        "truth": "((<M0>)(.*)).*(.*[<VOW>].*).*",
+        "sentence": "lines starting in the string <M0> before a vowel",
+        "prediction": "((<M0>)(.*)).*(([<VOW>])*).*"
+    },
+    {
+        "truth": "(([<NUM>]){2,})(.*)",
+        "sentence": "2 or more lines starting with a number .",
+        "prediction": "(([<NUM>])(.*)){2,}"
+    },
+    {
+        "truth": "(.)+(([<LET>]){2,}).*",
+        "sentence": "items with a character preceding a letter at <U> .",
+        "prediction": "(.)+(([<LET>])*).*"
+    },
+    {
+        "truth": "(\\b([<NUM>]).*(.)+\\b){2,}",
+        "sentence": "lines with words with number before character , 2 or more times",
+        "prediction": "\\b([<NUM>]).*((.){2,}).*\\b"
+    },
+    {
+        "truth": "(.*([<LET>])|([<VOW>]).*){2,}",
+        "sentence": "2 or more lines containing a letter or a vowel",
+        "prediction": "(([<LET>])|([<VOW>])){2,}"
+    },
+    {
+        "truth": "(((<M0>).*([<NUM>]).*)|([<LOW>]))(.*)",
+        "sentence": "lines starting with string <M0> before number or lower-case letter",
+        "prediction": "((<M0>)(.*)).*(([<NUM>])|([<LOW>])).*"
+    },
+    {
+        "truth": "\\b([<LOW>])|(.)|([<LET>])\\b",
+        "sentence": "lines with a letter , or a character",
+        "prediction": ".*([<LET>])|(.)+"
+    },
+    {
+        "truth": "(.*<M0>.*..*)+",
+        "sentence": "lines with the string <M0> before a character",
+        "prediction": "(<M0>).*(.*(.)+).*"
+    },
+    {
+        "truth": "(<M0>).*((.*)((<M1>){2,})).*",
+        "sentence": "lines that end with the string <M0> followed by the string <M1> , at least 2 times",
+        "prediction": "((.*)(<M0>.*<M1>.*)){2,}"
+    },
+    {
+        "truth": "\\b(.*<M0>.*){3,}\\b",
+        "sentence": "lines with words that have the string <M0> at least 3 times",
+        "prediction": ".*\\b(<M0>){3,}\\b.*"
+    },
+    {
+        "truth": "\\b([<NUM>])|([<LET>])|([<VOW>])\\b",
+        "sentence": "lines with words and containing a number",
+        "prediction": ".*\\b([<NUM>])+\\b.*"
+    },
+    {
+        "truth": "(<M0>).*((<M0>)|([<CAP>])|(<M1>)).*",
+        "sentence": "line where 1 of 3 <U> comes after the string <U> the string <M1> , a capital letter , or the string <M2>",
+        "prediction": "((<M1>)|([<CAP>])|(<M2>)).*([<VOW>]).*"
+    },
+    {
+        "truth": "(\\b([<CAP>])|([<VOW>])\\b)+",
+        "sentence": "lines with words and capital letter or vowel",
+        "prediction": "\\b([<CAP>])|([<VOW>])\\b"
+    },
+    {
+        "truth": "(\\b.*[<LOW>].*\\b)(.*)",
+        "sentence": "lines with words and a lower-case letter",
+        "prediction": ".*\\b([<LOW>])+\\b.*"
+    },
+    {
+        "truth": "\\b([<LET>])|([<CAP>])|(<M0>)\\b",
+        "sentence": "lines containing either a letter , a capital letter , or the string <M0>",
+        "prediction": ".*([<LET>])|([<CAP>])|(<M0>).*"
+    },
+    {
+        "truth": "\\b.*(.*)([<CAP>]).*\\b",
+        "sentence": "lines with words ending in capital letter",
+        "prediction": "\\b(.*)([<CAP>])\\b"
+    },
+    {
+        "truth": "([<NUM>]).*(((<M0>)|([<LOW>])){2,}).*",
+        "sentence": "lines with 2 or more of a number before string <M0> or lower-case letter",
+        "prediction": "(([<NUM>]){2,}).*((<M0>)|([<LOW>])).*"
+    },
+    {
+        "truth": "((<M0>)(.*)).*((<M1>)*).*",
+        "sentence": "lines where the string <M0> is not followed by the string <M1>",
+        "prediction": "(<M0>.*<M1>.*)*"
+    },
+    {
+        "truth": "(<M0>).*((<M2>)|(<M1>)).*",
+        "sentence": "lines containing the strings <M0> and <M1> , or before the string <M2> .",
+        "prediction": ".*((<M0>)|(<M1>)|(<M2>)).*(<M2>).*"
+    },
+    {
+        "truth": "([<LOW>].*[<CAP>].*)|(([<LET>])(.*))",
+        "sentence": "lines with a lower-case letter followed by a capital letter or any letter",
+        "prediction": "([<LOW>]).*(([<CAP>])|([<LET>])).*"
+    },
+    {
+        "truth": "(.*([<CAP>]){2,}.*).*(<M0>).*",
+        "sentence": "lines with 2 or more capital letters before string <M0>",
+        "prediction": "(([<CAP>]){2,}).*(<M0>).*"
+    },
+    {
+        "truth": "([<LET>]).*(([<CAP>])+).*",
+        "sentence": "lines with a letter containing only a capital letter at least once",
+        "prediction": "([<CAP>]).*(([<LET>])+).*"
+    },
+    {
+        "truth": "(.*..*).*((<M0>)*).*",
+        "sentence": "lines with a character before <M0>",
+        "prediction": "(.)+((<M0>)+).*"
+    },
+    {
+        "truth": "([<LOW>]){3,}",
+        "sentence": "lines which contain 3 or more times a lowercase lettere",
+        "prediction": "(([<LOW>]){3,}).*([<LET>]).*"
+    },
+    {
+        "truth": "(([<CAP>])*).*([<LOW>]).*",
+        "sentence": "lines with capital letters before lower-case letters",
+        "prediction": "([<CAP>]).*([<LOW>].*[<LOW>].*).*"
+    },
+    {
+        "truth": "(([<LOW>])|(.)).*([<LET>]).*",
+        "sentence": "lines can either have a lower case letter or a letter that follows a character",
+        "prediction": "(([<LOW>])|([<LET>])).*(.)+"
+    },
+    {
+        "truth": "\\b((<M0>)|([<LET>]))*\\b",
+        "sentence": "lines with words and zero or more of the string <M0> or letter",
+        "prediction": "\\b((<M0>)*)|([<LET>])\\b"
+    },
+    {
+        "truth": ".*(([<CAP>])+).*([<LOW>]).*",
+        "sentence": "lines with a capital letter before a lower-case letter",
+        "prediction": "([<CAP>]).*(.*[<LOW>].*).*"
+    },
+    {
+        "truth": "(([<VOW>])|([<LET>])|(<M0>)).*(.)+",
+        "sentence": "before a character your lines should have a vowel , a letter , or <M0> string",
+        "prediction": "(([<VOW>])|([<LET>])|(<M0>)).*([<VOW>]).*"
+    },
+    {
+        "truth": "\\b(<M0>)|([<LOW>])|([<NUM>])\\b",
+        "sentence": "lines containing the string <M0> , a lower-case letter , or a number",
+        "prediction": ".*(<M0>)|([<LOW>])|([<NUM>]).*"
+    },
+    {
+        "truth": "(.)+(([<VOW>]){2,}).*",
+        "sentence": "lines containing 2 characters preceding a vowel",
+        "prediction": "(..*[<VOW>].*){2,}"
+    },
+    {
+        "truth": "(\\b(<M0>).*(<M1>).*\\b)*",
+        "sentence": "lines using the word string <M0> before the string <M1> , no times or more",
+        "prediction": "(<M0>).*((<M1>){4,}).*"
+    },
+    {
+        "truth": "\\b(<M0>)|(.*[<LOW>].*)\\b",
+        "sentence": "lines with words and <M0> or lower-case letter",
+        "prediction": "\\b(<M0>)|([<LOW>])\\b"
+    },
+    {
+        "truth": "([<VOW>]).*((.)|([<LET>])).*",
+        "sentence": "lines with a vowel followed by character or letter",
+        "prediction": "([<VOW>].*..*)|(([<LET>])+)"
+    },
+    {
+        "truth": "([<CAP>]).*(\\b<M0>.*[<LOW>].*\\b).*",
+        "sentence": "lines with a capital letter before words with string <M0> before lower-case letter",
+        "prediction": "([<CAP>]).*(\\b(<M0>).*\\b).*"
+    },
+    {
+        "truth": "(.*[<NUM>].*)*",
+        "sentence": "line that contains only numbers , can occur zero or more times .",
+        "prediction": "(([<NUM>])*)|(([<LET>])*)"
+    },
+    {
+        "truth": "((([<LOW>])(.*))*).*([<VOW>]).*",
+        "sentence": "lines wherein the <U> character is a vowel",
+        "prediction": "(.)+(([<VOW>])+).*"
+    },
+    {
+        "truth": "\\b(([<CAP>])|([<VOW>])|(<M0>))|(<M1>)\\b",
+        "sentence": "lines containing string <M0> , string <M1> , a vowel or a capital letter",
+        "prediction": ".*(<M0>)|(<M1>)|([<CAP>]).*"
+    },
+    {
+        "truth": "(([<NUM>])|(<M0>)).*([<LET>]).*",
+        "sentence": "<M0> <U> is <U> to do",
+        "prediction": "(<M0>).*(.*[<CAP>].*).*"
+    },
+    {
+        "truth": "(\\b([<LOW>]){4,}\\b).*(<M0>).*",
+        "sentence": "line with a lower-case letter , 4 times before <M0>",
+        "prediction": "(([<LOW>]){4,}).*(<M0>).*"
+    },
+    {
+        "truth": "([<VOW>].*..*)*",
+        "sentence": "lines with vowel then a character",
+        "prediction": "([<VOW>]).*(.*(.)+).*"
+    },
+    {
+        "truth": "([<NUM>]).*(([<LOW>]){3,}).*",
+        "sentence": "lines with a lower-case letter and number",
+        "prediction": "([<LOW>]).*([<NUM>]).*"
+    },
+    {
+        "truth": "(\\b(<M0>)(.*)\\b)+",
+        "sentence": "lines with words and stating with the string <M0>",
+        "prediction": ".*\\b(<M0>)(.*)\\b.*"
+    },
+    {
+        "truth": "([<VOW>].*[<CAP>].*){2,}",
+        "sentence": "lines with 2 or more vowels followed by capital letters",
+        "prediction": "(([<VOW>]){2,}).*([<CAP>]).*"
+    },
+    {
+        "truth": "(.*<M0>.*).*([<VOW>].*[<NUM>].*).*",
+        "sentence": "items with <M0> preceding a vowel preceding a numeral .",
+        "prediction": "(<M0>).*([<VOW>].*[<NUM>].*).*"
+    },
+    {
+        "truth": "(.*[<LET>].*).*(<M0>).*",
+        "sentence": "items with a letter preceding <M0> .",
+        "prediction": "([<LET>]).*((<M0>)*).*"
+    },
+    {
+        "truth": "([<LET>]).*(([<LOW>]){2,}).*",
+        "sentence": "lines with 2 or more of a letter before a lower-case letter",
+        "prediction": "([<LET>].*[<LOW>].*){2,}"
+    },
+    {
+        "truth": "([<VOW>]).*((.*)([<NUM>])).*",
+        "sentence": "lines ending with a number after a vowel",
+        "prediction": "(.*)([<VOW>].*[<NUM>].*)"
+    },
+    {
+        "truth": "(.*<M0>.*){2,}",
+        "sentence": "items with <M0> at least 2 times .",
+        "prediction": "(<M0>).*(([<LET>]){2,}).*"
+    },
+    {
+        "truth": "((<M0>)+)|(<M1>.*<M2>.*)",
+        "sentence": "lines containing at least 1 instance <U> the string <M0> , or the string <M1> preceding the string <M2>",
+        "prediction": "((<M0>)|(<M1>)).*(<M2>).*"
+    },
+    {
+        "truth": "([<VOW>].*[<NUM>].*){5,}",
+        "sentence": "lines with 5 or more times vowels followed by a numbers 5",
+        "prediction": "(([<VOW>]){5,}).*([<NUM>]).*"
+    },
+    {
+        "truth": "\\b.*([<NUM>]){2,}.*\\b",
+        "sentence": "lines with words and 2 or more numbers",
+        "prediction": "\\b([<NUM>]){2,}\\b"
+    },
+    {
+        "truth": "(\\b(.*)([<VOW>])\\b)*",
+        "sentence": "lines with words ending with vowels , or a zero",
+        "prediction": "\\b(.*)(([<VOW>])|([<VOW>]))\\b"
+    },
+    {
+        "truth": "(<M0>.*<M1>.*).*([<NUM>]).*",
+        "sentence": "lines with a number before the string <M0> followed by the string <M1>",
+        "prediction": "([<NUM>]).*(<M0>.*<M1>.*).*"
+    },
+    {
+        "truth": "(<M0>.*..*)|(([<CAP>])+)",
+        "sentence": "lines with string <M0> followed by character or a capital at least once",
+        "prediction": "((<M0>.*..*)|([<CAP>]))+"
+    },
+    {
+        "truth": "(.*[<NUM>].*).*(<M0>.*[<LET>].*).*",
+        "sentence": "lines with a number before string <M0> then a letter",
+        "prediction": "([<NUM>]).*(<M0>.*[<LET>].*).*"
+    },
+    {
+        "truth": "\\b(([<NUM>])|([<LET>]))+\\b",
+        "sentence": "lines with words with a number or letter",
+        "prediction": "\\b([<NUM>])|([<LET>])\\b"
+    },
+    {
+        "truth": "((.*)(<M0>)).*(.*[<VOW>].*).*",
+        "sentence": "lines ending in the string <M0> with a vowel",
+        "prediction": "(.*)((<M0>)|([<VOW>]))"
+    },
+    {
+        "truth": "(\\b<M0>.*<M1>.*\\b).*(<M2>).*",
+        "sentence": "lines that have the word <M0> before the word <M1> , which is then followed by the word <M2>",
+        "prediction": "(<M0>.*<M1>.*).*(<M2>).*"
+    },
+    {
+        "truth": "\\b.*([<NUM>]){3,}.*\\b",
+        "sentence": "lines with words that have numbers , 3 times or more",
+        "prediction": "\\b([<NUM>]){3,}\\b"
+    },
+    {
+        "truth": "[<VOW>].*[<LET>].*",
+        "sentence": "lines where an alphabet character <U> a , e , i , o or u",
+        "prediction": "([<CAP>]).*((.)|([<LOW>])).*"
+    },
+    {
+        "truth": "(.*)(([<CAP>])+)",
+        "sentence": "lines ending with a capital at least 1 time",
+        "prediction": "((.*)(.*[<CAP>].*))+"
+    },
+    {
+        "truth": "(([<CAP>])+)|(([<VOW>])(.*))",
+        "sentence": "lines with a capital letter and stating with a vowel",
+        "prediction": "([<CAP>]).*(([<VOW>])(.*)).*"
+    },
+    {
+        "truth": ".*([<CAP>].*[<NUM>].*){2,}.*",
+        "sentence": "lines containing a letter followed by a number 2 times",
+        "prediction": "([<LET>].*[<NUM>].*){2,}"
+    },
+    {
+        "truth": "(.*)(([<LET>])|(<M0>))",
+        "sentence": "lines concluding with the <M0> string or concluding with a letter",
+        "prediction": ".*(<M0>)|([<LET>])|(([<LET>])+).*"
+    },
+    {
+        "truth": "([<CAP>]).*([<LOW>].*[<VOW>].*).*",
+        "sentence": "lines containing a capital letter , a lower-case letter , and a vowel",
+        "prediction": ".*([<CAP>])|([<LOW>].*[<VOW>].*).*"
+    },
+    {
+        "truth": ".*(([<VOW>]){3,}).*([<CAP>]).*",
+        "sentence": "lines that contain a vowel followed by a capital letter at least 3 times",
+        "prediction": "([<VOW>].*[<CAP>].*){3,}"
+    },
+    {
+        "truth": "([<VOW>].*[<LOW>].*){2,}",
+        "sentence": "lines with a lower-case letter at least twice before a vowel",
+        "prediction": "(([<LOW>]){2,}).*([<VOW>]).*"
+    },
+    {
+        "truth": "(([<VOW>])|([<CAP>])){3,}",
+        "sentence": "lines that have a vowel or capital letter",
+        "prediction": ".*([<VOW>])|([<CAP>]).*"
+    },
+    {
+        "truth": "(.*)(.*([<NUM>])|([<LOW>]).*)",
+        "sentence": "lines ending with numeral or lower-case letter",
+        "prediction": "(.*)(([<NUM>])|([<LOW>]))"
+    },
+    {
+        "truth": "((<M0>.*<M1>.*)(.*)).*([<VOW>]).*",
+        "sentence": "lines starting with the string <M0> with string <M1>",
+        "prediction": "((<M0>)(.*))|((<M1>)(.*))"
+    },
+    {
+        "truth": ".*([<LOW>]).*((.)+).*",
+        "sentence": "lines with a lower-case letter before a character",
+        "prediction": "([<LOW>]).*(.*..*).*"
+    },
+    {
+        "truth": "((([<LOW>]).*([<NUM>]).*)|([<CAP>]))*",
+        "sentence": "lines with lower-case letter before number or zero or more of <U> letter",
+        "prediction": "(([<LOW>]).*([<NUM>]).*)*"
+    },
+    {
+        "truth": "([<LOW>].*<M0>.*)*",
+        "sentence": "lines that have a lower-case letter followed by the string <M0> , at least 1 time",
+        "prediction": "([<LOW>].*<M0>.*)+"
+    },
+    {
+        "truth": "(.*<M0>.*)|(([<VOW>]){5,})",
+        "sentence": "lines containing string <M0> or vowel , 5 or more times",
+        "prediction": "((<M0>)|([<VOW>])){5,}"
+    },
+    {
+        "truth": "([<LOW>]).*(([<LET>])|(<M0>)|(<M1>)).*",
+        "sentence": "lines with a lower-case letter followed by either a letter , the string <M0> , or the string <M1>",
+        "prediction": "(([<LOW>])|(<M0>)|(<M1>)).*([<LOW>]).*"
+    },
+    {
+        "truth": "(((<M0>)|([<NUM>]))*)(.*)",
+        "sentence": "lines starting with the string <M0> and number , zero or more times",
+        "prediction": "((<M0>)|([<NUM>]))*"
+    },
+    {
+        "truth": "((.*)(<M0>)).*((.){4,}).*",
+        "sentence": "items terminating with <M0> preceding a character at least 4 times .",
+        "prediction": "((.*)(<M0>.*..*)){4,}"
+    },
+    {
+        "truth": ".*([<LET>]).*(<M0>).*",
+        "sentence": "lines that have only 1 letter preceding the word <M0>",
+        "prediction": "([<LET>]).*((<M0>)+).*"
+    },
+    {
+        "truth": ".*[<LOW>].*..*",
+        "sentence": "lines containing a character that follows a lower-case letter",
+        "prediction": ".*(.)+([<LOW>]).*"
+    },
+    {
+        "truth": "([<LET>]).*(.*[<NUM>].*).*",
+        "sentence": "lines that have letters preceding any numbers",
+        "prediction": "([<LET>]).*(([<NUM>])*).*"
+    },
+    {
+        "truth": "\\b(<M0>).*((.)|([<CAP>])).*\\b",
+        "sentence": "lines with words with string <M0> before character or capital letter",
+        "prediction": "\\b((<M0>).*(.)+)|([<CAP>])\\b"
+    },
+    {
+        "truth": "((.){5,}).*([<VOW>]).*",
+        "sentence": "lines with a character before a vowel at least 5 times",
+        "prediction": "(..*[<VOW>].*){5,}"
+    },
+    {
+        "truth": ".*([<VOW>])|([<LET>])|(<M0>).*",
+        "sentence": "items with <M0> , a letter , or a vowel .",
+        "prediction": ".*([<VOW>])|(<M0>)|([<VOW>]).*"
+    },
+    {
+        "truth": "(<M0>.*<M1>.*)|(([<NUM>])+)",
+        "sentence": "lines with string <M0> followed by string <M1> or number at least once",
+        "prediction": "((<M0>.*<M1>.*)|([<NUM>]))+"
+    },
+    {
+        "truth": "(([<VOW>])*)|((<M0>)(.*))",
+        "sentence": "lines with a vowel starting with the string <M0>",
+        "prediction": "(([<VOW>])(.*)).*(<M0>).*"
+    },
+    {
+        "truth": "(([<CAP>]){3,}).*([<VOW>]).*",
+        "sentence": "lines with at least 3 capital letter before a vowel",
+        "prediction": "([<CAP>]).*(([<VOW>]){3,}).*"
+    },
+    {
+        "truth": "(<M0>).*((.*)((.){2,})).*",
+        "sentence": "lines with 2 or more of a string <M0> ending with a character",
+        "prediction": "((<M0>){2,})|((.*)(.))"
+    },
+    {
+        "truth": "((<M0>.*[<LET>].*)(.*)){2,}",
+        "sentence": "lines starting in 2 or more of the string <M0> before a letter",
+        "prediction": "((<M0>)(.*)).*(([<LET>]){2,}).*"
+    },
+    {
+        "truth": "(.*(.*)([<LET>]).*){2,}",
+        "sentence": "lines that end with a letter , at least 2 times",
+        "prediction": "(.*)(([<LET>]){2,})"
+    },
+    {
+        "truth": "\\b([<LOW>]){5,}\\b",
+        "sentence": "lines with 5 or more small letter words",
+        "prediction": ".*\\b([<LOW>]){5,}\\b.*"
+    },
+    {
+        "truth": "([<CAP>]).*((<M0>){2,}).*",
+        "sentence": "lines with a capital letter , <U> at least twice , before the string <M0>",
+        "prediction": "(([<CAP>]){2,}).*(<M0>).*"
+    },
+    {
+        "truth": ".*(<M0>).*([<NUM>].*<M1>.*).*",
+        "sentence": "lines with the string <M0> before a number before string <M1>",
+        "prediction": "(<M0>).*([<NUM>].*<M1>.*).*"
+    },
+    {
+        "truth": "(.*[<LOW>].*..*)*",
+        "sentence": "lines that contain a lower-case letter followed by a character , zero times or more",
+        "prediction": "([<LOW>].*..*)*"
+    },
+    {
+        "truth": "((..*<M0>.*)(.*)){2,}",
+        "sentence": "lines that use the string <M0> twice or more , after a character .",
+        "prediction": "(.)+((<M0>){2,}).*"
+    },
+    {
+        "truth": "\\b([<LET>])|(.)|(<M0>)\\b",
+        "sentence": "lines containing a letter , a character , or the string <M0>",
+        "prediction": ".*([<LET>])|(.)|(<M0>).*"
+    },
+    {
+        "truth": "(.*([<LOW>]).*([<VOW>]).*)+",
+        "sentence": "lines containing 1 lower-case letter before a vowel",
+        "prediction": "([<LOW>]).*(.*[<VOW>].*).*"
+    },
+    {
+        "truth": "(.*[<LET>].*)|(<M0>.*[<VOW>].*)",
+        "sentence": "lines with a letter or string <M0> before a vowel",
+        "prediction": "(([<LET>])|(<M0>)).*([<VOW>]).*"
+    },
+    {
+        "truth": "(((.)(.*))*).*(<M0>).*",
+        "sentence": "lines starting in zero or more of a character before string <M0>",
+        "prediction": "(..*<M0>.*)*"
+    },
+    {
+        "truth": "((([<VOW>]).*([<CAP>]).*)|([<LET>]))+",
+        "sentence": "lines with vowel before capital letter or letter at least once",
+        "prediction": "(([<VOW>]).*([<CAP>]).*)|(([<LET>])+)"
+    },
+    {
+        "truth": "([<VOW>].*<M0>.*){5,}",
+        "sentence": "lines containing a vowel before the string <M0> , 5 or more times",
+        "prediction": "(.*[<VOW>].*).*((<M0>){5,}).*"
+    },
+    {
+        "truth": "(.*)(.*(<M0>){3,}.*)",
+        "sentence": "lines containing 3 or more of the string <M0> at the end",
+        "prediction": "((.*)(<M0>)){3,}"
+    },
+    {
+        "truth": "([<CAP>].*[<NUM>].*){5,}",
+        "sentence": "lines with 5 or more of a capital letter before number",
+        "prediction": "([<CAP>]).*(([<NUM>]){5,}).*"
+    },
+    {
+        "truth": ".*([<LET>].*[<VOW>].*)*.*",
+        "sentence": "lines with zero or more of a letter before a vowel",
+        "prediction": "([<LET>].*[<VOW>].*)*"
+    },
+    {
+        "truth": ".*[<NUM>].*<M0>.*",
+        "sentence": "lines with the string <M0> following a number",
+        "prediction": "([<NUM>]).*(<M0>).*"
+    },
+    {
+        "truth": "([<LET>]).*((<M0>)|([<LOW>])|(<M1>)).*",
+        "sentence": "lines in which a <M0> string , a letter that's lower-case , or a <M1> string are preceded by a letter",
+        "prediction": "((<M0>)|([<LOW>])|(<M1>)).*(<M2>).*"
+    },
+    {
+        "truth": "(([<NUM>]){5,}).*(.)+",
+        "sentence": "lines with a character preceded by a number 5 or more times",
+        "prediction": "([<NUM>]){5,}"
+    },
+    {
+        "truth": "((.*)([<NUM>]))|((<M0>)(.*))",
+        "sentence": "either start with string <M0> or end with any number",
+        "prediction": "((<M0>)|((.*)([<NUM>])))(.*)"
+    },
+    {
+        "truth": ".*([<NUM>])|([<CAP>])|([<VOW>]).*",
+        "sentence": "items with a vowel , numeral , or upper case letter .",
+        "prediction": ".*([<NUM>])|([<VOW>])|([<CAP>]).*"
+    },
+    {
+        "truth": "(.)+(([<LET>]){5,}).*",
+        "sentence": "lines with 5 or more of a character before letter",
+        "prediction": "(..*[<LET>].*){5,}"
+    },
+    {
+        "truth": "(([<NUM>]){2,}).*([<VOW>]).*",
+        "sentence": "lines containing more than 1 number before a vowel",
+        "prediction": "([<NUM>]).*(([<VOW>]){2,}).*"
+    },
+    {
+        "truth": "(([<LET>]).*(<M0>).*)|((<M1>)*)",
+        "sentence": "lines with a letter before zero or more of the string <M0> or <M1>",
+        "prediction": "([<LET>]).*((<M0>)*)|(<M1>).*"
+    },
+    {
+        "truth": "(([<NUM>])|([<LOW>])){2,}",
+        "sentence": "items with a numeral or small letter at least 2 times .",
+        "prediction": "(([<LOW>])|([<LOW>])){2,}"
+    },
+    {
+        "truth": "((([<LOW>])|(<M0>))(.*))*",
+        "sentence": "lines that begin with a lower-case letter or the string <M0>",
+        "prediction": "(([<LOW>])|(<M0>))(.*)"
+    },
+    {
+        "truth": "\\b(.*[<LET>].*){2,}\\b",
+        "sentence": "lines with a letter 2 times",
+        "prediction": "(([<LET>]){2,}).*([<LET>]).*"
+    },
+    {
+        "truth": "(([<LOW>]){3,}).*(.)+",
+        "sentence": "lines containing a character followed by 3 or more lower-case letters",
+        "prediction": "(..*[<LOW>].*){3,}"
+    },
+    {
+        "truth": "(([<NUM>]){5,})(.*)",
+        "sentence": "lines that start with 5 or more numbers",
+        "prediction": "(([<NUM>])(.*)){5,}"
+    },
+    {
+        "truth": ".*(([<LOW>])|([<NUM>]))*.*",
+        "sentence": "lines with zero or more of a lower-case letter or number",
+        "prediction": "(([<LOW>])|([<NUM>]))*"
+    },
+    {
+        "truth": "\\b([<LET>])|([<LOW>])\\b",
+        "sentence": "lines with words and a letter",
+        "prediction": ".*\\b([<LET>])+\\b.*"
+    },
+    {
+        "truth": "([<NUM>]).*((.){5,}).*",
+        "sentence": "lines with 5 or more numbers before a character",
+        "prediction": "(([<NUM>]){5,}).*(.)+"
+    },
+    {
+        "truth": "(([<VOW>]){3,}).*([<LET>]).*",
+        "sentence": "lines <U> a vowel which precedes a letter no less than 3 times and all <U>",
+        "prediction": "(([<VOW>])|([<LET>])){3,}"
+    },
+    {
+        "truth": "(.)+((<M0>)|([<LOW>])|(<M1>)).*",
+        "sentence": "lines containing <M0> , <M1> , or a lower-case letter",
+        "prediction": ".*(<M0>)|(<M1>)|([<LOW>]).*"
+    },
+    {
+        "truth": "(([<CAP>].*[<NUM>].*)(.*))*",
+        "sentence": "lines starting with a capital followed by number , zero or more times",
+        "prediction": "(([<CAP>].*[<NUM>].*)*)(.*)"
+    },
+    {
+        "truth": "(.)+(([<LOW>]){3,}).*",
+        "sentence": "lines with 3 or more instances of a character before a lower-case letter",
+        "prediction": "(..*[<LOW>].*){3,}"
+    },
+    {
+        "truth": "((.*)(<M0>))|((<M1>)+)",
+        "sentence": "at least 1 line ending in the string <M0> or <M1>",
+        "prediction": "((.*)((<M0>)|(<M1>)))+"
+    },
+    {
+        "truth": "\\b([<NUM>]).*(([<VOW>])*).*\\b",
+        "sentence": "lines with a number before a vowel",
+        "prediction": "([<NUM>]).*([<VOW>]).*"
+    },
+    {
+        "truth": "(..*<M0>.*)|((.*)(<M1>))",
+        "sentence": "lines with a character before the string <M0> or ending in the string <M1>",
+        "prediction": "(.)+((<M0>)|((.*)(<M1>))).*"
+    },
+    {
+        "truth": "(.*)(\\b([<LET>])*\\b)",
+        "sentence": "lines ending with a letter",
+        "prediction": "(.*)(.*([<LET>])|([<LET>]).*)"
+    },
+    {
+        "truth": "(<M0>)+",
+        "sentence": "<M0> string appear at least once in the lines",
+        "prediction": "((<M0>)+)|((.*)([<LET>]))"
+    },
+    {
+        "truth": "([<LET>].*[<CAP>].*)|((<M0>)+)",
+        "sentence": "lines with a letter before a capital letter or the string <M0>",
+        "prediction": "([<LET>]).*(([<CAP>])|(<M0>)).*"
+    },
+    {
+        "truth": "(<M0>).*(<M1>.*[<NUM>].*).*",
+        "sentence": "lines with string <M0> before string <M1> with number following",
+        "prediction": "(<M0>).*((<M1>)|([<NUM>])).*"
+    },
+    {
+        "truth": "\\b(.*)(([<NUM>]){3,})\\b",
+        "sentence": "lines containing words that end with a number , at least 3 times",
+        "prediction": "(\\b(.*)([<NUM>])\\b){3,}"
+    },
+    {
+        "truth": "\\b(.*[<CAP>].*)|([<VOW>])\\b",
+        "sentence": "lines with words an a capital letter or vowel",
+        "prediction": "\\b([<CAP>])|([<VOW>])|([<VOW>])\\b"
+    },
+    {
+        "truth": "(([<VOW>])|(.*..*))*",
+        "sentence": "lines with a vowel with a character",
+        "prediction": "([<VOW>]).*((.*)(.)).*"
+    },
+    {
+        "truth": "(([<LOW>]){5,})(.*)",
+        "sentence": "items with a small letter at least 5 times .",
+        "prediction": "([<LOW>]){5,}"
+    },
+    {
+        "truth": "((.*)((<M0>)|([<LET>])))+",
+        "sentence": "lines ending with 1 or more of the string <M0>",
+        "prediction": "(.*)(((<M0>)+)|(.*<M0>.*))"
+    },
+    {
+        "truth": "\\b(<M0>)|([<LET>])|(<M1>)\\b",
+        "sentence": "lines with the string <M0> , a letter , or the string <M1>",
+        "prediction": ".*(<M0>)|([<LET>])|(<M1>).*"
+    },
+    {
+        "truth": "\\b([<CAP>].*<M0>.*).*(.)+\\b",
+        "sentence": "lines containing words with a capital letter before the string <M0> followed by a character",
+        "prediction": "(\\b[<CAP>].*<M0>.*\\b).*(.)+"
+    },
+    {
+        "truth": "(([<NUM>])|((.*)([<LOW>])))+",
+        "sentence": "lines with a number or ending in lower-case letter",
+        "prediction": ".*([<NUM>])|((.*)([<LOW>])).*"
+    },
+    {
+        "truth": "([<NUM>]).*((<M0>){5,}).*",
+        "sentence": "lines with 5 or more of a number before string <M0>",
+        "prediction": "([<NUM>].*<M0>.*){5,}"
+    },
+    {
+        "truth": "((<M0>)|([<VOW>]))*",
+        "sentence": "lines with the string <M0> or a vowel",
+        "prediction": ".*(<M0>)|([<VOW>]).*"
+    },
+    {
+        "truth": "(.*<M0>.*).*((<M1>)|(<M2>)|([<LOW>])).*",
+        "sentence": "lines with the string <M0> before <M1> or <M2> or a lower-case letter",
+        "prediction": "(<M0>).*((<M1>)|([<LOW>])|(<M2>)).*"
+    },
+    {
+        "truth": "((.*)([<LOW>])).*(([<VOW>])*).*",
+        "sentence": "lines ending with a lower-case letter before a vowel",
+        "prediction": "((.*)([<LOW>])).*([<VOW>]).*"
+    },
+    {
+        "truth": "([<LET>]).*((<M0>){5,}).*",
+        "sentence": "items with a letter preceding <M0> at least 5 times .",
+        "prediction": "([<LET>].*<M0>.*){5,}"
+    },
+    {
+        "truth": "(.*)(\\b[<CAP>]\\b)",
+        "sentence": "items with words that have only an upper case letter .",
+        "prediction": "\\b([<CAP>])|([<CAP>])|([<LET>])\\b"
+    },
+    {
+        "truth": "([<VOW>]).*((<M0>)+).*",
+        "sentence": "lines with a vowel <M0> at least once .",
+        "prediction": "((<M0>)+)|(([<VOW>])+)"
+    },
+    {
+        "truth": "(([<LET>].*<M0>.*)|([<CAP>]))+",
+        "sentence": "lines with a letter before the string <M0> or capital letter",
+        "prediction": "([<LET>]).*((<M0>)|([<CAP>])).*"
+    }
+]

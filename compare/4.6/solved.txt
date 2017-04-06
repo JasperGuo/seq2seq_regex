@@ -1,0 +1,213 @@
+Solved:
+
+1. By Bidirectional
+
+   lines containing a lower-case letter preceding a capital letter
+   lines with string <M0> or string <M1> followed by number , 3 or more times
+   lines with words with starting with a number before a capital letter in them
+   lines with lower-case letter followed by string <M0> or string <M1> before string <M2>
+   lines containing at least 1 occurrence of a capital or lower-case letter
+   lines with 2 or more of the string <M0> before number
+   lines that end with a capital letter or <M0>
+   lines containing 2 or more lower-case letters
+   lines containing words having the string <M0> or a letter followed by a number
+   lines that contain a lower-case letter or a character
+   lines with words and 2 or more of strings <M0> before a capital letter
+   lines containing capital letter or letter , zero or more times
+   lines with words and the string <M0> followed by a vowel at least 2 times
+   lines with the string <M0> or lower-case letter before string <M1>
+   lines whiich are starting with words with a letter , 2 or more times
+   lines which are starting with the string <M0> or ending with the string <M1>
+   lines containing number before lower-case letter
+   lines with 2 or more vowels followed by capital letters
+   lines with a capital letter followed by <M0>
+   lines containing either a number or a letter at least 3 times
+   lines with words and the string <M0> before a lower-case letter
+   lines with words and stating with the string <M0>
+   lines containing the string <M0> after a capital letter
+   lines need to have either a lower-case letter , a number , or a letter before the string <M0>
+   lines ending with a lower-case letter
+   lines with a lower-case letter preceded by either a vowel , the string <M0> or the string <M1>
+   lines containing words with 2 or more times a letter or a capital letter
+   lines with string <M0> , 3 or more times preceded by a number
+   lines with a capital letter after a vowel at least zero times
+   lines with 2 or more characters or a vowels
+   lines with 2 or more capital letters or the string <M0>
+   lines containing a character followed by a lower-case letter
+   lines ending with a vowel , zero or more times
+   lines containing words having either a letter , a capital letter , or the string <M0> or the string <M1>
+
+  
+
+
+2. By Intra-Attention
+
+   lines ending in zero or more of a vowel or letter
+   lines containing a lower-case letter preceding a capital letter
+   lines containing words with at least 1 <M0>
+   lines with string <M0> or string <M1> followed by number , 3 or more times
+   lines containing at least 1 occurrence of a capital or lower-case letter
+   lines that end with a capital letter or <M0>
+   lines containing 2 or more lower-case letters
+   items with a small letter preceding <M0> at least thrice .
+   lines with words and the string <M0> followed by a vowel at least 2 times
+   lines containing words with letter followed by string <M0>
+   lines with the string <M0> or lower-case letter before string <M1>
+   lines whiich are starting with words with a letter , 2 or more times
+   lines with a lower-case letter after the string <M0> followed by a character
+   lines with a capital letter followed by <M0>
+   lines containing either a number or a letter at least 3 times
+   lines with words and the string <M0> before a lower-case letter
+   lines that contain words that contain only the string <M0>
+   lines containing the string <M0> after a capital letter
+   lines need to have either a lower-case letter , a number , or a letter before the string <M0>
+   lines ending with a lower-case letter
+   lines with a lower-case letter preceded by either a vowel , the string <M0> or the string <M1>
+   lines that end with only 2 or letters
+   lines with words and the string <M0> before 3 or more vowels
+   lines starting with character before lower-case letter or letter
+   lines with a capital letter after a vowel at least zero times
+   lines with 2 or more characters or a vowels
+   lines with 2 or more capital letters or the string <M0>
+   lines with a number at the end followed by a capital letter or <M0>
+   lines containing a character followed by a lower-case letter
+   lines containing words starting with a letter
+   lines containing words having either a letter , a capital letter , or the string <M0> or the string <M1>
+
+
+
+
+
+
+
+
+
+
+3. Beam Search
+
+   lines containing the string <M0> with a letter before it
+   lines with string <M0> or string <M1> followed by number , 3 or more times
+   lines with words with starting with a number before a capital letter in them
+   lines containing at least 1 occurrence of a capital or lower-case letter
+   lines with 2 or more of the string <M0> before number
+   lines that end with a capital letter or <M0>
+   lines containing words having the string <M0> or a letter followed by a number
+   items with a small letter preceding <M0> at least thrice .
+   lines that end with 5 or more capital letters , each followed by a character
+   lines with words and the string <M0> followed by a vowel at least 2 times
+   lines with the string <M0> or lower-case letter before string <M1>
+   lines with 2 or more of a letter before a lower-case letter
+   lines whiich are starting with words with a letter , 2 or more times
+   lines that have <M0> before 2 or more numbers
+   lines with 2 or more vowels followed by capital letters
+   lines with 3 or more instances of a character before a lower-case letter
+   lines containing either a number or a letter at least 3 times
+   lines with words and the string <M0> before a lower-case letter
+   lines that have a letter , no times or all times , all of which appear prior to the <M0> string
+   lines with words and stating with the string <M0>
+   lines containing the string <M0> after a capital letter
+   lines need to have either a lower-case letter , a number , or a letter before the string <M0>
+   lines with a lower-case letter preceded by either a vowel , the string <M0> or the string <M1>
+   lines that end with only 2 or letters
+   lines with words and the string <M0> before 3 or more vowels
+   lines with string <M0> , 3 or more times preceded by a number
+   lined ending with words with a capital letter with a number after
+   lines that have the <M0> string as an ending
+   lines with a capital letter after a vowel at least zero times
+   lines with 2 or more characters or a vowels
+   lines with 2 or more capital letters or the string <M0>
+   lines containing a character followed by a lower-case letter
+   lines with 5 or more small letter words
+
+
+Remarkable:
+
+
+before <M0> , the lines must have a number , vowel , or letter first .
+Solved by , intra, bilstm
+Ground:
+    (([<NUM>])|([<VOW>])|([<LET>])).*(<M0>).*
+Baseline:
+    (([<NUM>])|([<LET>])|(<M0>)).*([<LET>]).*
+beam_search:
+    (<M0>).*(([<NUM>])|([<VOW>])|([<LET>])).*
+
+
+lines with words and a character or string <M0> before a capital letter
+Solved by , intra, bilstm, beam_search
+
+
+lines with words with either string <M0> , a letter , or lower-case letter , zero or more times
+Solved by , intra, bilstm, beam_search
+
+
+lines containing a character , followed by the string <M0> or 0 or more capital letters
+Solved by , intra
+
+lines containing words with a capital letter before the string <M0> followed by a character
+Solved by , bilstm, beam_search
+
+
+
+lines with the string <M0> before a character
+Not Solved:
+
+Ground truth:
+    (.*<M0>.*..*)+
+Baseline: 
+    ((<M0>)*).*(.)+
+Beam Search:
+    (<M0>).*(.)+
+Bidirectional:
+    (<M0>).*(.*..*).*
+Intra-Attention:
+    (<M0>).*(.*(.)+).*
+
+
+
+lines with a lower case letter followed by the string <M0> or the string <M1>
+Not Solved:
+
+Ground truth:
+    (.*[<LOW>].*).*((<M0>)|(<M1>)).*
+Baseline:
+    ([<LOW>]).*((<M0>)|(<M1>)).*
+beam_search:
+    ([<LOW>]).*((<M0>)|(<M1>)).*
+Bidirectional:
+    ([<LOW>]).*((<M0>)|(<M1>)).*
+Intra-Attention:
+    ([<LOW>].*<M0>.*)|((<M1>)+)
+
+
+lines with the string <M0> before a vowel or a lower-case letter
+Not Solved
+
+Ground truth:
+    (.*<M0>.*).*(([<VOW>])|([<LOW>])).*
+Baseline:
+
+
+
+lines containing the string <M0> followed by at least 1 vowel
+Not Solved
+
+Ground truth:
+    (.*<M0>.*[<VOW>].*)+
+Baseline:
+    (<M0>.*[<VOW>].*)+
+
+
+lines that have a letter in lower-case followed by a number
+Not Solved
+
+Ground truth:
+    .*([<LOW>]).*([<NUM>]).*
+Baseline:
+    ([<LOW>]).*([<NUM>]).*
+beam_search:
+    [<LOW>].*[<NUM>].*
+Intra-Attention:
+    ([<LOW>]).*([<NUM>].*[<NUM>].*).*
+Bidirectional:
+    ([<LOW>]).*([<NUM>]).*

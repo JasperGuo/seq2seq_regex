@@ -277,7 +277,7 @@
     {
         "truth": "((.)|(<M0>)|([<NUM>])).*(<M1>).*",
         "sentence": "lines with a character , the string <M0> , or the string <M1> with a number beforehand .",
-        "prediction": "(.*..*)|((<M0>)|([<NUM>])|(<M1>))"
+        "prediction": "f\\b([<LET>])|([<CAP>])|(<M0>)\\b"
     },
     {
         "truth": ".*([<VOW>]).*(.)+",

@@ -1,0 +1,70 @@
+Not Solved
+
+lines with the string <M0> before a character
+Not Solved:
+
+Ground truth:
+    (.*<M0>.*..*)+
+Baseline: 
+    ((<M0>)*).*(.)+
+Beam Search:
+    (<M0>).*(.)+
+Bidirectional:
+    (<M0>).*(.*..*).*
+Intra-Attention:
+    (<M0>).*(.*(.)+).*
+
+
+
+lines with a lower case letter followed by the string <M0> or the string <M1>
+Not Solved:
+
+Ground truth:
+    (.*[<LOW>].*).*((<M0>)|(<M1>)).*
+Baseline:
+    ([<LOW>]).*((<M0>)|(<M1>)).*
+beam_search:
+    ([<LOW>]).*((<M0>)|(<M1>)).*
+Bidirectional:
+    ([<LOW>]).*((<M0>)|(<M1>)).*
+Intra-Attention:
+    ([<LOW>].*<M0>.*)|((<M1>)+)
+
+
+lines containing the string <M0> followed by at least 1 vowel
+Not Solved
+
+Ground truth:
+    (.*<M0>.*[<VOW>].*)+
+Baseline:
+    (<M0>.*[<VOW>].*)+
+
+
+lines that have a letter in lower-case followed by a number
+Not Solved
+
+Ground truth:
+    .*([<LOW>]).*([<NUM>]).*
+Baseline:
+    ([<LOW>]).*([<NUM>]).*
+beam_search:
+    [<LOW>].*[<NUM>].*
+Intra-Attention:
+    ([<LOW>]).*([<NUM>].*[<NUM>].*).*
+Bidirectional:
+    ([<LOW>]).*([<NUM>]).*
+
+
+lines with a character , the string <M0> , or the string <M1> with a number beforehand .
+Nost Solved
+
+Ground truth:
+    ((.)|(<M0>)|([<NUM>])).*(<M1>).*
+Bidirectional:
+    ((.)|(<M0>)|(<M1>)).*([<NUM>]).*
+beam_search:
+    \\b(.)|(<M0>)|(<M1>)\\b
+intra-Attention:
+    (.*..*)|((<M0>)|([<NUM>])|(<M1>))
+Baseline:
+    .*(.)|(<M0>)|(<M1>).*

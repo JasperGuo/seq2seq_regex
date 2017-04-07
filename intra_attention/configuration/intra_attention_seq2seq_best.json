@@ -1,6 +1,6 @@
 {
     "layer": 1,
-    "epoches": 200,
+    "epoches": 10,
     "rmsprop_smooth": 0.95,
     "params_init_min": -0.08,
     "train_file": "feed_tf\\train.json",

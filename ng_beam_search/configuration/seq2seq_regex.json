@@ -8,9 +8,9 @@
   "hidden_dim": 150,
   "params_init_min": -0.08,
   "params_init_max": 0.08,
-  "layer": 2,
+  "layer": 1,
   "batch_size": 32,
-  "beam_size": 10,
+  "beam_size": 5,
   "test_batch_size": 1,
   "dropout": 0.25,
   "epoches": 100,
@@ -21,5 +21,6 @@
   "development_file": "feed_tf\\development.json",
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
-  "result_log": "result_log\\"
+  "result_log": "result_log\\",
+  "is_test_capability": false
 }

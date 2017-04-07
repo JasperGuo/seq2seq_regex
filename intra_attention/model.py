@@ -109,7 +109,7 @@ class LSTMN:
 
         self._init_intra_attention_params()
 
-        self._is_set_reuse = False
+        self._is_set_reuse = False if scope else True
 
         if initial_states:
             self._init_states = initial_states
@@ -1062,7 +1062,7 @@ class Model:
                                                                  output_keep_prob=self._decoder_output_keep_prob)
                     decoder_cells.append(decoder_cell)
 
-        with tf.variable_scope('decoder') as scope:
+        with tf.variable_scope('decoder'):
 
             test_batch_size = 1
 
@@ -1073,7 +1073,6 @@ class Model:
                 hidden_size=self._hidden_dim,
                 embedding_size=self._embedding_dim,
                 initial_states=self._encoder_states,
-                scope=scope
             )
 
             def _loop_body(token_id, curr_ts, _predictions, hidden_states, memory_tapes, last_attentive_hs):

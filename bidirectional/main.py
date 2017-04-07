@@ -181,17 +181,23 @@ class ModelRuntime:
             last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
                 (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
 
-            if np.sum(mask) == 0:
-                index = np.argmax(logprobs)
-            else:
-                index = np.argmin(logprobs * (-mask))
-            _predictions = _predictions[index]
             ground_truth = np.array(sample.target_seq[0])
-            padded_seq = np.concatenate((_predictions, np.array([0] * (len(ground_truth) - len(_predictions)))), axis=0)
-            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
-
-            if log_file:
-                self._log_test(log_file, sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality)
+            exact_matches, dfa_matches = [], []
+            for pred in _predictions:
+                """
+                if np.sum(mask) == 0:
+                    index = np.argmax(logprobs)
+                else:
+                    index = np.argmin(logprobs * (-mask))
+                """
+                padded_seq = np.concatenate((pred, np.array([0] * (len(ground_truth) - len(pred)))), axis=0)
+                exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
+                exact_matches.append(exact_match)
+                dfa_matches.append(dfa_equality)
+                if log_file:
+                    self._log_test(log_file, sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality)
+            exact_match = True in exact_matches
+            dfa_equality = True in dfa_matches
             return 1, exact_match, dfa_equality
 
         total = 0
@@ -218,14 +224,21 @@ class ModelRuntime:
             last_predictions, _predictions, logprobs, mask, decoder_states = self._session.run(
                 (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
 
-            if np.sum(mask) == 0:
-                index = np.argmax(logprobs)
-            else:
-                index = np.argmin(logprobs * (-mask))
-            _predictions = _predictions[index]
             ground_truth = np.array(sample.target_seq[0])
-            padded_seq = np.concatenate((_predictions, np.array([0] * (len(ground_truth) - len(_predictions)))), axis=0)
-            exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
+            exact_matches, dfa_matches = [], []
+            for pred in _predictions:
+                """
+                if np.sum(mask) == 0:
+                    index = np.argmax(logprobs)
+                else:
+                    index = np.argmin(logprobs * (-mask))
+                """
+                padded_seq = np.concatenate((pred, np.array([0] * (len(ground_truth) - len(pred)))), axis=0)
+                exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
+                exact_matches.append(exact_match)
+                dfa_matches.append(dfa_equality)
+            exact_match = True in exact_matches
+            dfa_equality = True in dfa_matches
             return 1, exact_match, dfa_equality
 
         total = 0

@@ -39,23 +39,32 @@ def extract_from_text_file(path, target_list):
         file_name = os.path.join(path, file)
         if not os.path.isfile(file_name):
             continue
-        result = list()
+        result = dict()
         with open(file_name, "r") as f:
             line = f.readline()
             while line and line != "":
                 match = STRING_MATCH_PATTERN.match(line)
                 if match:
                     score = int(match.group(1).strip())
-                    dfa_equality = DFA_PATTERN.match(f.readline()).group(1).strip()
+                    dfa_equality = int(DFA_PATTERN.match(f.readline()).group(1).strip())
                     sentence = SENTENCE_PATTERN.match(f.readline()).group(1).strip()
                     if sentence in target_list:
-                        result.append({
+
+                        if sentence not in result:
+                            result[sentence] = {
+                                "detail": list(),
+                                "dfa": list(),
+                                "string": list()
+                            }
+                        result[sentence]["detail"].append({
                             "dfa_equality": dfa_equality,
                             "score": score,
                             "sentence": sentence,
                             "prediction": PREDICTION_PATTERN.match(f.readline()).group(1).strip(),
                             "truth": GROUND_TRUTH_PATTERN.match(f.readline()).group(1).strip()
                         })
+                        result[sentence]["dfa"].append(dfa_equality)
+                        result[sentence]["string"].append(score)
                 line = f.readline()
         new_file_name = os.path.join(new_dir, file)
         with open(new_file_name, "w") as f:

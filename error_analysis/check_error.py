@@ -21,7 +21,6 @@ def calc_err(path, sentence, format="json"):
     :param path:
     :return:
     """
-    print(sentence)
     result = list()
     for file in os.listdir(path):
         file_name = os.path.join(path, file)
@@ -34,14 +33,9 @@ def calc_err(path, sentence, format="json"):
                 except:
                     continue
 
-                for prediction in predictions:
-                    se = prediction["sentence"]
-                    score = prediction["score"]
-                    dfa_score = int(prediction["dfa_equality"])
-                    pred = prediction["prediction"]
-
-                    if se == sentence and dfa_score == 0:
-                        result.append((file, pred)),
+                for se, prediction in predictions.items():
+                    if sentence == se and sum(prediction["dfa"]) == 0:
+                        result.append((file, prediction))
             else:
                 line = f.readline()
                 while line and line != "":
@@ -57,8 +51,9 @@ def calc_err(path, sentence, format="json"):
                             result.append((file, pred))
 
                     line = f.readline()
+    print("=======================================")
+    print(sentence, len(result))
     pprint(result)
-    print(len(result))
     return result
 
 
@@ -76,12 +71,6 @@ def batch(path):
 
     for sentence in sentences:
         result = calc_err(path, sentence)
-
-        with open("result.log", "w") as f:
-            f.write("=============================================\n")
-            f.write(sentence)
-            f.write('\n'.join([', '.join(r) for r in result]))
-            f.write('\n')
 
 
 if __name__ == "__main__":

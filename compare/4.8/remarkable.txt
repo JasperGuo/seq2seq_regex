@@ -1,0 +1,93 @@
+1. lines containing the string <M0> , a capital letter , and a character
+	.*(<M0>)|([<CAP>])|(.)+
+	.*([<CAP>]).*(<M0>).*
+	.*([<CAP>])|(<M0>)|(.)+
+	.*(<M0>)|([<CAP>]).*(.)+
+	\b(<M0>)|([<CAP>])|(.)\b
+	
+	truth: (<M0>.*[<CAP>].*).*(.)+
+	
+	problem: "|" is not implied in the sentence, there are 4233 training pairs, only 280 pairs have keyword "and", but 3481 pairs have keyword "or".
+	
+2. lines starting in string <M0> or <M1> before <M2>
+	(((<M0>)|(<M1>))(.*)).*(<M2>).*
+	(((<M0>)(.*))|(<M1>)).*(<M2>).*
+	(((<M0>)|(<M1>)).*(<M2>).*(<M2>).*
+	(((<M0>)|(<M1>)).*(<M1>).*)(.*)
+	((<M0>)|(<M1>)).*(<M2>).*)(.*)
+	
+	truth: ((<M0>)|(<M1>.*<M2>.*))(.*)
+	
+	problem: Ambiguous
+	
+3. lines with the string <M0> before a number before string <M1>
+	(<M0>).*([<NUM>].*<M1>.*).*
+	((<M0>).*([<NUM>].*).*).*(<M1>).*
+	(<M0>.*[<NUM>].*).*(.*<M1>.*).*
+	(<M0>.*[<NUM>].*).*(<M1>).*
+	((<M0>.*[<NUM>].*)+).*(<M1>).*
+	
+	truth: .*(<M0>).*([<NUM>].*<M1>.*).*
+	
+	problem: with (contains | start with) ? Ambiguous of conjunction (or)
+	
+4. lines containing the string <M0> or the string <M1> before a character at least 3 times
+	((<M0>)|(<M1>).*((.)+){3,}
+	((<M0>)|(<M1>.*..*)){3,}
+	((<M1>)|(<M0>)).*((.){3,}).*
+	((<M0>)|(<M1>).*(.)+){3,}
+	((<M0>)|(<M1>).*((.)+){3,}
+	
+	truth: (((<M0>)|(<M1>)){3,}).*(.)+
+	
+	problem: Ground truth does not make sense, ((<M0>)|(<M1>.*..*)){3,} makes sense.
+
+5. lines containing a letter , the string <M0> , and 0 or more characters
+	(([<LET>])|(<M0>)|(.))*
+	([<LET>]).*((<M0>)|(.)).*
+	.*([<LET>])|(<M0>)|(.)+
+	(.*[<LET>].*)|((<M0>).*(.)+)
+	(([<LET>])|(<M0>)|(<M1>)).*(.)+
+	
+	truth: ([<LET>].*<M0>.*).*((.)*).*
+	
+	problem: "|" is not implied in the sentence, there are 4233 training pairs, only 280 pairs have keyword "and", but 3481 pairs have keyword "or".
+
+6. lines with a zero or more of a vowel before string <M0> , character , or lower-case letter
+	([<VOW>]).*(((<M0>)|(.)|([<LOW>]))).*
+	([<VOW>].*<M0>.*)|((.)|([<LOW>]))*
+	([<VOW>]).*((<M0>)|(.)|([<LOW>])).*
+	([<VOW>]).*(((<M0>)|(.)|([<LOW>])))*
+	(([<VOW>]).*(<M0>).*)|((.)|([<LOW>]))
+
+	truth: (([<VOW>])*).*((<M0>)|(.)|([<LOW>])).*
+
+	problem: two key ingredients in generating this regex,
+				1. Recognize "zero or more of"
+				2. Recognize "Before"
+				3. Recognize conjunction "or"
+
+				(Success) lines with lower-case letter before number or zero or more of acapital letter
+				lines with a zero or more of a vowel before string <M0> , character , or lower-case letter
+				(Success) lines with a letter before zero or more of the string <M0> or <M1>
+
+7. lines that contain the string <M0> or a lower-case letter , at least 2 times
+	.*((<M0>)|([<LOW>])){2,}.*
+	(([<LOW>])|(<M0>)){2,}
+	((<M0>)|([<LOW>])){2,}
+	(.*(<M0>)|([<LOW>]).*){2,}
+	\b((<M0>)|([<LOW>])){2,}\b
+
+	truth: .*(([<LOW>]){2,})|(<M0>).*
+
+	problem: What "at least 2 times" modifies ?
+
+8. lines where either the string <M0> or a vowel appear 4 or more times
+	((.*)(<M0>))|([<VOW>]).*
+	((<M0>)|([<VOW>])){4,}
+	(((<M0>)|([<VOW>])){4,})(.*)
+	((.*)((<M0>)|([<VOW>]))){4,}
+	(.*((<M0>)|([<VOW>])){4,}).*
+
+	truth: (.*(<M0>)|([<VOW>]).*){4,}
+

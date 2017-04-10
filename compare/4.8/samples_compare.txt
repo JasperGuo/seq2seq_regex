@@ -1,0 +1,8 @@
+1. lines with the string <M0> or number before string <M1> (Ground Truth Somehow incorrect)
+2. lines containing both a lower-case and capital letter at least 3 times . (At least 3 times)
+3. lines containing a number after a vowel 5 or more times (after 17 epoch run correctly)
+4. lines with words and zero or more of the string <M0> (What does the sentence means ?)
+5. lines with a letter before words with string <M0>
+6. lines with the string <M0> before <M1> or <M2> or a lower-case letter
+7. lines with words <M0> or lower-case letter
+8. lines ending with a number

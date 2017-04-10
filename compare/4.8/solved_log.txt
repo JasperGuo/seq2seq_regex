@@ -1,0 +1,786 @@
+===============================================
+lines with lower-case letters before 2 of the strings <M0>
+Solved by , bilstm
+===============================================
+lines ending with a number after a vowel
+Solved by , bilstm
+===============================================
+lines with 2 or more numbers
+Solved by , bilstm
+===============================================
+the lines that have a vowel coming before a character
+Solved by , bilstm
+===============================================
+lines containing words with the string <M0> followed by a vowel in it
+Solved by , bilstm
+===============================================
+items beginning with <M0> at least 2 times .
+Solved by , bilstm
+===============================================
+lines with a character before a vowel at least 5 times
+Solved by , bilstm
+===============================================
+line that contains only numbers , can occur zero or more times .
+Solved by , bilstm
+===============================================
+lines with 5 or more of a lower-case letter before vowel
+Solved by , bilstm
+===============================================
+lines with 2 or more of a capital letter before number
+Solved by , bilstm
+===============================================
+lines starting with character before lower-case letter or letter
+Solved by , bilstm
+===============================================
+lines containing a letter or string <M0> , 2 or more times
+Solved by , bilstm
+===============================================
+lined ending with words with a capital letter with a number after
+Solved by , bilstm
+===============================================
+lines with the string <M0> or character ending in lower-case letter
+Solved by , bilstm
+===============================================
+lines with words ending in capital letter
+Solved by , bilstm
+===============================================
+lines containing words with letter followed by string <M0>
+Solved by , bilstm
+===============================================
+lines that have a vowel before the <U> <M0>
+Solved by , bilstm
+===============================================
+lines with a letter before a number , or at least 1 <M0>
+Solved by , bilstm
+===============================================
+items with a letter preceding <M0> at least thrice .
+Solved by , bilstm
+===============================================
+lines that have only 1 letter preceding the word <M0>
+Solved by , bilstm
+===============================================
+<M0> string appear at least once in the lines
+Solved by , bilstm
+===============================================
+lines which are containing the string <M0> before ending with the string <M1>
+Solved by , bilstm
+===============================================
+lines which are containing words that contain only a letter
+Solved by , bilstm
+===============================================
+lines with words that have the string <M0> after the string <M1>
+Solved by , bilstm
+===============================================
+lines containing words with at least 1 <M0>
+Solved by , bilstm
+===============================================
+lines that end with a letter , at least 2 times
+Solved by , bilstm
+===============================================
+lines ending with a capital , 4 or more times
+Solved by , bilstm
+===============================================
+lines that contain a number followed by a character , at least 4 times
+Solved by , bilstm
+===============================================
+lines ending with letter , 2 or more times
+Solved by , bilstm
+===============================================
+lines containing the word dog , followed by a number and a capital letter
+Solved by , bilstm
+===============================================
+items with <M0> or numeral .
+Solved by , bilstm
+===============================================
+lines with a letter , a number , or a vowel .
+Solved by , bilstm
+===============================================
+lines with a number before a vowel
+Solved by , bilstm
+===============================================
+lines with a character before the string <M0> or ending in the string <M1>
+Solved by , bilstm
+===============================================
+lines with words and capital letter or vowel
+Solved by , bilstm
+===============================================
+lines starting with a capital followed by number , zero or more times
+Solved by , bilstm
+===============================================
+lines with a letter containing only a capital letter at least once
+Solved by , bilstm
+===============================================
+lines with either a letter or a vowel preceding the string <M0>
+Solved by , bilstm
+===============================================
+lines with 2 or more of a lower-case letter before string <M0>
+Solved by , bilstm
+===============================================
+lines with a letter string <M0> , a lower-case letter , or a capital letter
+Solved by , bilstm
+===============================================
+lines ending with 5 or more of the string <M0> or characters
+Solved by , bilstm
+===============================================
+lines containing either a letter , a capital letter , or the string <M0>
+Solved by , bilstm
+===============================================
+lines with a number ending in only a capital letter
+Solved by , bilstm
+===============================================
+items terminating with <M0> preceding a character at least 4 times .
+Solved by , bilstm
+===============================================
+lines with 5 or more numbers before a character
+Solved by , bilstm
+===============================================
+lines starting with either <M0> , a vowel or a capital letter or <M1>
+Solved by , bilstm
+===============================================
+lines with zero or more of a lower-case letter or string <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines with a number or letter
+Solved by , bilstm
+===============================================
+lines with zero or more of a lower-case letter or number
+Solved by , bilstm
+===============================================
+<U> lines containing a character or vowel
+Solved by , bilstm
+===============================================
+lines with a letter , <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines which are ending with the string <M0> or a capital letter
+Solved by , bilstm
+===============================================
+lines with words and 3 or more of a capital letter before string <M0>
+Solved by , bilstm
+===============================================
+items with an upper case letter and a vowel at least 5 times .
+Solved by , bilstm
+===============================================
+lines that contain 4 or more times the string <M0>
+Solved by , bilstm
+===============================================
+a vowel appear 2 or more times before the string <M0> in the lines
+Solved by , bilstm
+===============================================
+lines with words and lower-case letter or the string <M0> before <M1>
+Solved by , bilstm
+===============================================
+lines that at least have the string <M0> followed by <M1>
+Solved by , bilstm
+===============================================
+lines with words starting with string <M0> , 2 or more times
+Solved by , bilstm
+===============================================
+lines with the ending string <M0> at least 4 times
+Solved by , bilstm
+===============================================
+lines finishing with a capital letter , twice or more or a vowel
+Solved by , bilstm
+===============================================
+lines containing the string <M0> followed by 2 or more numbers
+Solved by , bilstm
+===============================================
+lines containing a character , followed by the string <M0> or 0 or more capital letters
+Solved by , bilstm
+===============================================
+lines with words with string <M0> before a letter or character
+Solved by , bilstm
+===============================================
+lines that have 2 or more lower-case letters
+Solved by , bilstm
+===============================================
+lines with a capital letter before words with string <M0> before lower-case letter
+Solved by , bilstm
+===============================================
+lines containing string <M0> followed by string <M1> , 2 or more times
+Solved by , bilstm
+===============================================
+lines with 2 or more of the string <M0> before a vowel
+Solved by , bilstm
+===============================================
+lines with a capital letter or <M0> as a string at least twice
+Solved by , bilstm
+===============================================
+lines that have a letter , no times or all times , all of which appear prior to the <M0> string
+Solved by , bilstm
+===============================================
+lower-case letter before a character 2 or more times
+Solved by , bilstm
+===============================================
+lines that end with only a character
+Solved by , bilstm
+===============================================
+lines containing zero times vowel
+Solved by , bilstm
+===============================================
+lines with 3 or more instances of a character before a lower-case letter
+Solved by , bilstm
+===============================================
+lines ending with <M0> 2 times
+Solved by , bilstm
+===============================================
+items with a small letter preceding an uppercase letter .
+Solved by , bilstm
+===============================================
+lines with a number before a character at least zero times
+Solved by , bilstm
+===============================================
+lines with a lower-case letter before a character
+Solved by , bilstm
+===============================================
+lines with a letter before a capital letter or the string <M0>
+Solved by , bilstm
+===============================================
+lines that contain words that contain only the string <M0>
+Solved by , bilstm
+===============================================
+items with a small letter preceding <M0> at least thrice .
+Solved by , bilstm
+===============================================
+items with a letter or a character .
+Solved by , bilstm
+===============================================
+lines staring in words with string <M0> or <M1> or a capital letter
+Solved by , bilstm
+===============================================
+lines containing a letter preceding a number before the string <M0> or the string <M1>
+Solved by , bilstm
+===============================================
+lines starting with a number , zero times or more
+Solved by , bilstm
+===============================================
+lines which are ending with a letter or the string <M0> , zero or more times
+Solved by , bilstm
+===============================================
+lines with 3 or more strings of <M0>
+Solved by , bilstm
+===============================================
+lines with only zero or more of a lower-case letter
+Solved by , bilstm
+===============================================
+lines with words and 4 or more of the string <M0> or lower-case letter
+Solved by , bilstm
+===============================================
+lines with 5 or more of a character before letter
+Solved by , bilstm
+===============================================
+lines with number words
+Solved by , bilstm
+===============================================
+lines with a lower-case or capital letter
+Solved by , bilstm
+===============================================
+lines that have a lower-case letter at the beginning 2 or more times
+Solved by , bilstm
+===============================================
+lines with words that have the string <M0> at least 3 times
+Solved by , bilstm
+===============================================
+lines containging a capital letter and a letter
+Solved by , bilstm
+===============================================
+items with words containing a character preceding <M0> at least 2 times .
+Solved by , bilstm
+===============================================
+lines starting with string <M0> before number or lower-case letter
+Solved by , bilstm
+===============================================
+lines containing words starting with a letter
+Solved by , bilstm
+===============================================
+2 or more lines containing a letter or a vowel
+Solved by , bilstm
+===============================================
+lines containing both a lower-case and capital letter at least 3 times .
+Solved by , bilstm
+===============================================
+lines with the string <M0> , a letter , or the string <M1>
+Solved by , bilstm
+===============================================
+lines with words and only zero or more numbers
+Solved by , bilstm
+===============================================
+a line starting with a number that is repeated 3 or more times
+Solved by , bilstm
+===============================================
+lines with words and 2 or more numbers
+Solved by , bilstm
+===============================================
+items with a character preceding a letter at <U> .
+Solved by , bilstm
+===============================================
+lines that have a letter in lower-case followed by a number
+Solved by , bilstm
+===============================================
+lines having words beginning with a lower-case letter coming twice or more
+Solved by , bilstm
+===============================================
+lines containing only a lower-case letter before a character
+Solved by , bilstm
+===============================================
+lines with a vowel
+Solved by , bilstm
+===============================================
+lines with a number before 2 or more of a character or vowel
+Solved by , bilstm
+===============================================
+lines followed by a character letter
+Solved by , bilstm
+===============================================
+lines with the string <M0> before a number or which are ending with a vowel
+Solved by , bilstm
+===============================================
+lines with zero or more of a letter before a vowel
+Solved by , bilstm
+===============================================
+lines which are ending with a lower-case letter or a vowel , 2 or more times
+Solved by , bilstm
+===============================================
+lines with words containing the string <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines starting in 2 or more of the string <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines with string <M0> followed by character or a capital at least once
+Solved by , bilstm
+===============================================
+lines that begin with a number followed by a character or the string <M0>
+Solved by , bilstm
+===============================================
+lines with letter or containing number , 4 or more times
+Solved by , bilstm
+===============================================
+lines with 2 or more of a vowel before string <M0>
+Solved by , bilstm
+===============================================
+lines ending with a character after the string dog 4 or more times
+Solved by , bilstm
+===============================================
+lines with a letter , a number , or the string <M0> after a character
+Solved by , bilstm
+===============================================
+lines with 2 or more of a vowel before capital letter
+Solved by , bilstm
+===============================================
+lines starting in zero or more of a character before string <M0>
+Solved by , bilstm
+===============================================
+lines with string <M0> followed by string <M1> or number at least once
+Solved by , bilstm
+===============================================
+lines ending with number before string <M0> , zero or more times
+Solved by , bilstm
+===============================================
+lines with words and zero or more of the string <M0> or letter
+Solved by , bilstm
+===============================================
+lines ending in zero or more of a vowel or letter
+Solved by , bilstm
+===============================================
+lines which contain <M0> or a capital letter .
+Solved by , bilstm
+===============================================
+lines with characters or the string <M0> followed by the string <M1>
+Solved by , bilstm
+===============================================
+lines that contain a lower-case letter followed by 3 or more capital letters
+Solved by , bilstm
+===============================================
+lines with 3 or more of a lower-case letter before string <M0>
+Solved by , bilstm
+===============================================
+lines with or without a vowel before a number
+Solved by , bilstm
+===============================================
+lines that at least 3 times have have a capital letter preceding a lower-case letter
+Solved by , bilstm
+===============================================
+lines that contain a character followed by a letter , at least twice
+Solved by , bilstm
+===============================================
+lines with 5 or more vowels
+Solved by , bilstm
+===============================================
+lines containing a lower-case letter before a capital letter
+Solved by , bilstm
+===============================================
+lines with words that contain string <M0> or lower-case letter
+Solved by , bilstm
+===============================================
+lines that end with <M0> and a character
+Solved by , bilstm
+===============================================
+lines with a vowel then a letter
+Solved by , bilstm
+===============================================
+lines that start with 2 or more instance of the string <M0>
+Solved by , bilstm
+===============================================
+lines wherein either an uppercase letter , a letter , or the string <M0> are preceded by the string <M1>
+Solved by , bilstm
+===============================================
+lines with a letter before the string <M0> or capital letter
+Solved by , bilstm
+===============================================
+lines with a letter 2 times
+Solved by , bilstm
+===============================================
+lines with 5 or more of a character before number
+Solved by , bilstm
+===============================================
+lines with words with a character or string <M0> , 2 or more times
+Solved by , bilstm
+===============================================
+lines ending with string <M0> , zero
+Solved by , bilstm
+===============================================
+lines which contain 3 or more times a lowercase lettere
+Solved by , bilstm
+===============================================
+lines containing 3 or more of the string <M0> at the end
+Solved by , bilstm
+===============================================
+lines with words with a lower-case letter before letter
+Solved by , bilstm
+===============================================
+lines that end with only 2 or letters
+Solved by , bilstm
+===============================================
+lines starting with a lower-case letter or string <M0> , 4 or more times
+Solved by , bilstm
+===============================================
+lines where the string <M0> has a letter before it , no less than zero times
+Solved by , bilstm
+===============================================
+lines ending with character or string <M0> , 2 or more times
+Solved by , bilstm
+===============================================
+lines ending with letter , zero or more times
+Solved by , bilstm
+===============================================
+lines with 2 or more of a number before string <M0> or lower-case letter
+Solved by , bilstm
+===============================================
+lines having either the string <M0> , a letter , or the string <M1> <M2>
+Solved by , bilstm
+===============================================
+lines that have letters preceding any numbers
+Solved by , bilstm
+===============================================
+lines that start with 5 or more numbers
+Solved by , bilstm
+===============================================
+items with a small letter preceding a vowel , at least 2 times .
+Solved by , bilstm
+===============================================
+lines containing words that end with a number , at least 3 times
+Solved by , bilstm
+===============================================
+lines with a number before a character
+Solved by , bilstm
+===============================================
+lines with the string <M0> before words with string <M1>
+Solved by , bilstm
+===============================================
+lines ending zero or more times with a lower-case letter
+Solved by , bilstm
+===============================================
+lines with a letter , or a character
+Solved by , bilstm
+===============================================
+lines with 2 or more of a string <M0> ending with a character
+Solved by , bilstm
+===============================================
+lines with 2 or more of the string <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines with a character 4 times or a number
+Solved by , bilstm
+===============================================
+lines with a number before lower-case or capital letter
+Solved by , bilstm
+===============================================
+lines containing the string <M0> , a lower-case letter , or a number
+Solved by , bilstm
+===============================================
+lines starting in 2 or more of the string <M0> before a letter
+Solved by , bilstm
+===============================================
+lines that have 3 or more words that end in a letter
+Solved by , bilstm
+===============================================
+lines with 1 or more character , or ending with the string <M0>
+Solved by , bilstm
+===============================================
+lines with words with a number before string <M0>
+Solved by , bilstm
+===============================================
+lines with the string <M0> or a vowel
+Solved by , bilstm
+===============================================
+lines ending with capital letter at least twice
+Solved by , bilstm
+===============================================
+items with a character preceding <M0> at least 2 times .
+Solved by , bilstm
+===============================================
+lines starting with the string <M0> and number , zero or more times
+Solved by , bilstm
+===============================================
+lines containing the string <M0> followed by a lower-case letter
+Solved by , bilstm
+===============================================
+lines with the <U> <M0> at least zero times
+Solved by , bilstm
+===============================================
+lines with words that contain 5 or more of the string <M0>
+Solved by , bilstm
+===============================================
+lines starting with either <M0> , <M1> , or a number
+Solved by , bilstm
+===============================================
+lines <U> a vowel which precedes a letter no less than 3 times and all <U>
+Solved by , bilstm
+===============================================
+lines ending with only a lower-case letter , 2 or more times
+Solved by , bilstm
+===============================================
+lines with words with only a number before string <M0>
+Solved by , bilstm
+===============================================
+lines containing a vowel before the string <M0> , 5 or more times
+Solved by , bilstm
+===============================================
+lines with words with a letter before string <M0> of <M1>
+Solved by , bilstm
+===============================================
+lines with a number at the end followed by a capital letter or <M0>
+Solved by , bilstm
+===============================================
+lines with words with a capital letter or character
+Solved by , bilstm
+===============================================
+lines wherein 5 or more times it contains words with an uppercase letter
+Solved by , bilstm
+===============================================
+lines with the string <M0> or a lower-case letter , twice or more times
+Solved by , bilstm
+===============================================
+lines with words starting in 5 or more vowels
+Solved by , bilstm
+===============================================
+lines ending with 5 or more of a character before a letter
+Solved by , bilstm
+===============================================
+lines that have a vowel preceded by the string <M0> at least 2 times
+Solved by , bilstm
+===============================================
+lines with words that contain the string <M0> occurring at least once
+Solved by , bilstm
+===============================================
+lines that end with 5 or more capital letters , each followed by a character
+Solved by , bilstm
+===============================================
+lines beginning with a number or a vowel preceding the string <M0>
+Solved by , bilstm
+===============================================
+lines with a character followed by the string <M0> , at least 2 times
+Solved by , bilstm
+===============================================
+lines containing a lower-case letter preceding a capital letter
+Solved by , bilstm
+===============================================
+lines with a capital letter before a lower-case letter
+Solved by , bilstm
+===============================================
+lines with words ending with a character at least 5 times
+Solved by , bilstm
+===============================================
+lines starting with the string <M0> before a lower-case letter or the strings <M1> or <M2>
+Solved by , bilstm
+===============================================
+lines with 5 or more of a capital letter before number
+Solved by , bilstm
+===============================================
+lines starting with string <M0> and <M1> , 5 or more times
+Solved by , bilstm
+===============================================
+lines with words and the string <M0> before 3 or more vowels
+Solved by , bilstm
+===============================================
+lines with 5 or more of a lower-case letter before a letter
+Solved by , bilstm
+===============================================
+lines ending ending with a capital or lower-case letter
+Solved by , bilstm
+===============================================
+lines with a number or capital letter before the string <M0>
+Solved by , bilstm
+===============================================
+lines that have words containing a lower-case letter following an upper-case letter
+Solved by , bilstm
+===============================================
+lines ending in words with a lower-case letter
+Solved by , bilstm
+===============================================
+lines with 3 or more of a capital letter before a letter
+Solved by , bilstm
+===============================================
+lines ending with a capital letter preceding a vowel
+Solved by , bilstm
+===============================================
+lines with words with number before character , 2 or more times
+Solved by , bilstm
+===============================================
+lines with string <M0> before string <M1> with number following
+Solved by , bilstm
+===============================================
+lines with words that contain lower-case letter before string <M0>
+Solved by , bilstm
+===============================================
+lines ending with 3 or more letters
+Solved by , bilstm
+===============================================
+lines with 3 or more letters before characters
+Solved by , bilstm
+===============================================
+lines with words with either strings : dog or truck , or a letter
+Solved by , bilstm
+===============================================
+lines that use the string <M0> twice or more , after a character .
+Solved by , bilstm
+===============================================
+items with words containing a small letter .
+Solved by , bilstm
+===============================================
+lines that contain either a vowel or the strings <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines with a lower-case letter or vowel
+Solved by , bilstm
+===============================================
+items with a letter preceding <M0> at least 5 times .
+Solved by , bilstm
+===============================================
+lines containing a character after a capital letter at least 5 times
+Solved by , bilstm
+===============================================
+lines containing words with only the string <M0> 1 time or more
+Solved by , bilstm
+===============================================
+lines with 5 or more of a number before string <M0>
+Solved by , bilstm
+===============================================
+lines containing string <M0> followed by string <M1> or string <M2>
+Solved by , bilstm
+===============================================
+lines with words with ending with the string <M0> , occurring 3 or more times
+Solved by , bilstm
+===============================================
+lines with words with a vowel before string <M0>
+Solved by , bilstm
+===============================================
+lines with 2 or more capital letters before string <M0>
+Solved by , bilstm
+===============================================
+lines with words starting with string <M0> before number
+Solved by , bilstm
+===============================================
+lines which end 2 or more times with a capital letter
+Solved by , bilstm
+===============================================
+lines that have the string <M0> and a lower-case letter
+Solved by , bilstm
+===============================================
+lines where 2 or more times there is a letter or the string <M0>
+Solved by , bilstm
+===============================================
+lines with a letter before words with string <M0>
+Solved by , bilstm
+===============================================
+lines with a vowel before a letter
+Solved by , bilstm
+===============================================
+lines that have 4 or more numbers
+Solved by , bilstm
+===============================================
+lines that have a combination of a lower-case letter followed by the word <M0> , then the word <M1> , 1 or more times
+Solved by , bilstm
+===============================================
+lines with the string <M0> before a vowel or a lower-case letter
+Solved by , bilstm
+===============================================
+lines with words with 5 or more of only characters
+Solved by , bilstm
+===============================================
+lines with a letter before zero or more of the string <M0> or <M1>
+Solved by , bilstm
+===============================================
+lines with a a vowel or a number followed by ending with the string <M0>
+Solved by , bilstm
+===============================================
+lines with a letter before words that contain the string dog in them
+Solved by , bilstm
+===============================================
+lines containing a letter , a character , or the string <M0>
+Solved by , bilstm
+===============================================
+lines with 5 or more small letter words
+Solved by , bilstm
+===============================================
+lines that do no end with a capital letter
+Solved by , bilstm
+===============================================
+lines with the string <M0> before a character
+Solved by , bilstm
+===============================================
+lines with words with the string <M0> before a number or the string <M1> in them
+Solved by , bilstm
+===============================================
+lines with a capital letter after a number at least 5 times
+Solved by , bilstm
+===============================================
+lines that start with a vowel or <M0> before <M1>
+Solved by , bilstm
+===============================================
+the string <M0> should be <U> with words in the string .
+Solved by , bilstm
+===============================================
+lines that have <M0> before 2 or more numbers
+Solved by , bilstm
+===============================================
+lines with 2 or more of a letter before a lower-case letter
+Solved by , bilstm
+===============================================
+lines that have a character which is numbering at 4 or greater <U> and that precedes a small letter
+Solved by , bilstm
+===============================================
+lines ending in zero or more of a number before capital letter
+Solved by , bilstm
+===============================================
+lines that finish with the <M0> string 4 times or more
+Solved by , bilstm
+===============================================
+lines ending with a lower-case letter before a capital followed by letter
+Solved by , bilstm
+===============================================
+lines with a lower-case letter after the string <M0> followed by a character
+Solved by , bilstm
+===============================================
+lines that have 4 or more uppercase letters
+Solved by , bilstm
+===============================================
+lines with the string <M0> following a number
+Solved by , bilstm
+===============================================
+lines ending with string <M0> , 4 or more times or lower-case letter
+Solved by , bilstm
+===============================================
+lines with a letter or string <M0> before a vowel
+Solved by , bilstm

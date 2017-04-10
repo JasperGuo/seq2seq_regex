@@ -1,0 +1,549 @@
+===============================================
+lines with a number , zero or more times followed by a lower-case letter
+Not Solved
+===============================================
+items with a small letter preceding a character .
+Not Solved
+===============================================
+lines containing the string <M0> once
+Not Solved
+===============================================
+lines containing at least 1 instance <U> the string <M0> , or the string <M1> preceding the string <M2>
+Not Solved
+===============================================
+items terminating with <M0> at least twice .
+Not Solved
+===============================================
+lines that have a vowel or capital letter
+Not Solved
+===============================================
+the string <M0> a number or a vowel appears in the lines
+Not Solved
+===============================================
+lines with or without lower-case letter or upper case letter before the string <M0>
+Not Solved
+===============================================
+lines with a capital letter before ending with the string <M0> at least zero times
+Not Solved
+===============================================
+items with <M0> , a letter , or a vowel .
+Not Solved
+===============================================
+lines with a number or ending in lower-case letter
+Not Solved
+===============================================
+multiple lines with capital letters or characters
+Not Solved
+===============================================
+all lines
+Not Solved
+===============================================
+lines starting with the string <M0> with string <M1>
+Not Solved
+===============================================
+lines with lower-case letter before number or zero or more of <U> letter
+Not Solved
+===============================================
+lines with a vowel or letter
+Not Solved
+===============================================
+lines with a capital letter and stating with a vowel
+Not Solved
+===============================================
+lines ending with a letter
+Not Solved
+===============================================
+lines concluding with the <M0> string or concluding with a letter
+Not Solved
+===============================================
+lines containing the string <M0> or a number followed by a vowel
+Not Solved
+===============================================
+lines with at least 1 lower-case letter
+Not Solved
+===============================================
+lines ending in a character before a letter
+Not Solved
+===============================================
+lines that contain a vowel followed by a capital letter at least 3 times
+Not Solved
+===============================================
+line with letters starting with the string <M0>
+Not Solved
+===============================================
+lines with a vowel with a character
+Not Solved
+===============================================
+lines with a character before <M0>
+Not Solved
+===============================================
+lines containing 5 or more of the string <M0>
+Not Solved
+===============================================
+lines that have a lower-case letter followed by the string <M0> , at least 1 time
+Not Solved
+===============================================
+lines containing the string <M0>
+Not Solved
+===============================================
+lines with words that contain number , zero or more times
+Not Solved
+===============================================
+lines with a letter followed by a character
+Not Solved
+===============================================
+lines containing a capital letter before a lower-case letter
+Not Solved
+===============================================
+items terminating with <M0> preceding <M1> .
+Not Solved
+===============================================
+lines that have the <M0> string as an ending
+Not Solved
+===============================================
+lines ending with a number before a letter
+Not Solved
+===============================================
+lines that begin with a capital and end with a lowercase
+Not Solved
+===============================================
+lines with at least 1 capital letter with a character before it
+Not Solved
+===============================================
+lines containing a character followed by a string <M0>
+Not Solved
+===============================================
+lines with a lower-case letter followed by a capital letter or any letter
+Not Solved
+===============================================
+lines starting with zero or more of a lower-case letter with a letter
+Not Solved
+===============================================
+items with <M0> preceding a vowel .
+Not Solved
+===============================================
+lines starting in a vowel or with string <M0>
+Not Solved
+===============================================
+items with a letter preceding <M0> .
+Not Solved
+===============================================
+lines where an alphabet character <U> a , e , i , o or u
+Not Solved
+===============================================
+lines containing the string <M0> 2 or more times before a lower-case letter
+Not Solved
+===============================================
+lines with the string <M0> before <M1> or <M2> or a lower-case letter
+Not Solved
+===============================================
+lines which words contain either of these - letter , number , or vowel
+Not Solved
+===============================================
+lines containing a character that follows a lower-case letter
+Not Solved
+===============================================
+lines ending with a number
+Not Solved
+===============================================
+items with a vowel or an upper case letter or <M0> .
+Not Solved
+===============================================
+lines with words ending with vowels , or a zero
+Not Solved
+===============================================
+lines that have the word <M0> before the word <M1> , which is then followed by the word <M2>
+Not Solved
+===============================================
+lines containing the string <M0> followed by at least 1 vowel
+Not Solved
+===============================================
+lines with the string <M0> or the strings <M1> before <M2>
+Not Solved
+===============================================
+lines with a lower-case letter and number
+Not Solved
+===============================================
+lines with a vowel , the string <M0> , and a character
+Not Solved
+===============================================
+lines with the string <M0> after a lower-case letter followed by a number
+Not Solved
+===============================================
+lines starting with the string <M0> zero or more times followed by a character
+Not Solved
+===============================================
+lines with the string <M0> or a number followed by a lower-case letter
+Not Solved
+===============================================
+lines containing the string <M0> or the string <M1>
+Not Solved
+===============================================
+lines with either at least 1 <M0> , number , or <M1>
+Not Solved
+===============================================
+lines wherein the <U> character is a vowel
+Not Solved
+===============================================
+lines that contain a lower-case letter followed by a character , zero times or more
+Not Solved
+===============================================
+lines containing 2 characters preceding a vowel
+Not Solved
+===============================================
+lines ending with a number then <M0>
+Not Solved
+===============================================
+lines with the string <M0> or number before string <M1>
+Not Solved
+===============================================
+lines with a lower-case letter at least twice before a vowel
+Not Solved
+===============================================
+lines containing capital letters or numbers
+Not Solved
+===============================================
+lines with the string <M0> containing only a lower-case letter
+Not Solved
+===============================================
+lines that end with the string <M0> followed by the string <M1> , at least 2 times
+Not Solved
+===============================================
+lined ending with a number
+Not Solved
+===============================================
+lines that begin with a lower-case letter or the string <M0>
+Not Solved
+===============================================
+lines that have a vowel or letter
+Not Solved
+===============================================
+items with words that have only an upper case letter .
+Not Solved
+===============================================
+lines containing the string <M0> with a letter before it
+Not Solved
+===============================================
+lines with words that contain the string <M0> before a capital letter in them
+Not Solved
+===============================================
+items with a character preceding a numeral .
+Not Solved
+===============================================
+lines with the string <M0> at least 2 times
+Not Solved
+===============================================
+the lines that have either a capital letter or lower-case letter at least once
+Not Solved
+===============================================
+lines ending with a vowel , 4 or more times
+Not Solved
+===============================================
+lines containing the string <M0> , a capital letter , and a character
+Not Solved
+===============================================
+lines ending with a letter or vowel
+Not Solved
+===============================================
+either start with string <M0> or end with any number
+Not Solved
+===============================================
+the lines with the string <M0> ; at least once or the string <M1> before a vowel
+Not Solved
+===============================================
+lines with the string <M0> before a number before string <M1>
+Not Solved
+===============================================
+lines wherein a character is preceded by the string <M0>
+Not Solved
+===============================================
+at least twice , the string <M0> followed by a character
+Not Solved
+===============================================
+lines starting with a capital letter
+Not Solved
+===============================================
+lines with a vowel starting with the string <M0>
+Not Solved
+===============================================
+lines that have a letter after a character at least once
+Not Solved
+===============================================
+lines with 3 or more of the string <M0>
+Not Solved
+===============================================
+lines with a number before string <M0> then a letter
+Not Solved
+===============================================
+lines with 2 or more letters
+Not Solved
+===============================================
+lines with words and the string <M0> before a letter
+Not Solved
+===============================================
+lines stating with 5 or more lower-case letters or vowels
+Not Solved
+===============================================
+lines with at least 2 vowels before a lower-case letter
+Not Solved
+===============================================
+lines with the string <M0> before a letter , number , or vowel
+Not Solved
+===============================================
+lines with the string <M0> with the string <M1>
+Not Solved
+===============================================
+items with a small letter at least 5 times .
+Not Solved
+===============================================
+lines with words that have numbers , 3 times or more
+Not Solved
+===============================================
+lines with the string <M0> before a capital letter
+Not Solved
+===============================================
+items with a numeral preceding a vowel at least once .
+Not Solved
+===============================================
+lines where either the string <M0> or a vowel appear 4 or more times
+Not Solved
+===============================================
+lines can either have a lower case letter or a letter that follows a character
+Not Solved
+===============================================
+lines with a number
+Not Solved
+===============================================
+lines with words and string <M0> or vowel
+Not Solved
+===============================================
+lines with words and a capital letter before a number
+Not Solved
+===============================================
+lines containing 2 or more capital letters
+Not Solved
+===============================================
+lines containing a letter followed by a number 2 times
+Not Solved
+===============================================
+lines with <M0> a letter before a number
+Not Solved
+===============================================
+items with <M0> at least 2 times .
+Not Solved
+===============================================
+lines followed by a vowel before a capital letter
+Not Solved
+===============================================
+lines with a character or a letter , followed by a number
+Not Solved
+===============================================
+lines containing the strings <M0> and <M1> , or before the string <M2> .
+Not Solved
+===============================================
+lines containing the string <M0> with a letter
+Not Solved
+===============================================
+lines with words and zero or more of the string <M0>
+Not Solved
+===============================================
+lines with vowel then a character
+Not Solved
+===============================================
+items with words containing <M0> , <M1> , or a small letter .
+Not Solved
+===============================================
+items with <M0> at least twice .
+Not Solved
+===============================================
+lines with a capital letter , <U> at least twice , before the string <M0>
+Not Solved
+===============================================
+lines starting in string <M0> or <M1> before <M2>
+Not Solved
+===============================================
+lines with words with a number or letter
+Not Solved
+===============================================
+lines with 3 or more of the string <M0> before a letter
+Not Solved
+===============================================
+lines that end with <M0> and a vowel
+Not Solved
+===============================================
+lines with words and <M0> or lower-case letter
+Not Solved
+===============================================
+line where 1 of 3 <U> comes after the string <U> the string <M1> , a capital letter , or the string <M2>
+Not Solved
+===============================================
+lines with a number or a vowel
+Not Solved
+===============================================
+lines ending in 2 or more of a vowel or letter
+Not Solved
+===============================================
+items with any letter .
+Not Solved
+===============================================
+lines with words and a letter
+Not Solved
+===============================================
+lines containing a letter , the string <M0> , and 0 or more characters
+Not Solved
+===============================================
+lines where the string <M0> is not followed by the string <M1>
+Not Solved
+===============================================
+lines containing the string <M0> 2 times or a capital letter 2 times
+Not Solved
+===============================================
+lines containing a vowel before with or without a lower-case letter or the string <M0>
+Not Solved
+===============================================
+lines with a lower case letter followed by the string <M0> or the string <M1>
+Not Solved
+===============================================
+lines with a zero or more of a vowel before string <M0> , character , or lower-case letter
+Not Solved
+===============================================
+lines containing string <M0> , string <M1> , a vowel or a capital letter
+Not Solved
+===============================================
+lines with no or multiple vowels followed by a lower-case letter
+Not Solved
+===============================================
+line with a lower-case letter , 4 times before <M0>
+Not Solved
+===============================================
+lines with only a character
+Not Solved
+===============================================
+lines with vowel before capital letter or letter at least once
+Not Solved
+===============================================
+lines that contain the string <M0> or a lower-case letter , at least 2 times
+Not Solved
+===============================================
+lines with a character or letter at least once
+Not Solved
+===============================================
+a vowel must come before a lower case letter and must have string <M0>
+Not Solved
+===============================================
+lines containing a capital letter before a character
+Not Solved
+===============================================
+lines with words containing a capital letter after a lower case letter
+Not Solved
+===============================================
+lines with the string <M0> followed by a character , zero times or more
+Not Solved
+===============================================
+lines containing <M0> , <M1> , or a lower-case letter
+Not Solved
+===============================================
+items with <M0> preceding a vowel preceding a numeral .
+Not Solved
+===============================================
+lines containing string <M0> or vowel , 5 or more times
+Not Solved
+===============================================
+the lines that contain words words that also have a vowel at least 1 time
+Not Solved
+===============================================
+lines with 2 or more of a capital letter or vowel
+Not Solved
+===============================================
+lines containing the string <M0> or the string <M1> before a character at least 3 times
+Not Solved
+===============================================
+lines that have only letters in the <U> words .
+Not Solved
+===============================================
+lines with a number before the string <M0> followed by the string <M1>
+Not Solved
+===============================================
+lines starting with <M0> followed by a capital
+Not Solved
+===============================================
+lines with words and the string <M0>
+Not Solved
+===============================================
+my <U> <U> is <U> .
+Not Solved
+===============================================
+lines containing more than 1 number before a vowel
+Not Solved
+===============================================
+lines with capital letters before lower-case letters
+Not Solved
+===============================================
+lines which contain a vowel , number or <U>
+Not Solved
+===============================================
+lines using the word string <M0> before the string <M1> , no times or more
+Not Solved
+===============================================
+lines ending with a lower-case letter before a vowel
+Not Solved
+===============================================
+lines that contain the string <M0> before <M1> 3 times or more
+Not Solved
+===============================================
+lines with the string <M0> at least 2 times and comes before the string <M1>
+Not Solved
+===============================================
+lines with a lower-case letter before <M0>
+Not Solved
+===============================================
+lines starting in zero or more of the string <M0> or capital letter
+Not Solved
+===============================================
+lines with <M0> followed by 2 or more capital letters
+Not Solved
+===============================================
+lines with a letter before <M0>
+Not Solved
+===============================================
+<M0> <U> is <U> to do
+Not Solved
+===============================================
+items with words containing just <M0> at least 5 times .
+Not Solved
+===============================================
+items with a vowel , numeral , or upper case letter .
+Not Solved
+===============================================
+lines with words and containing a number
+Not Solved
+===============================================
+lines with a character , the string <M0> , or the string <M1> with a number beforehand .
+Not Solved
+===============================================
+lines containing a capital letter and 2 or more vowels
+Not Solved
+===============================================
+lines ending with the string <M0> or the string <M1>
+Not Solved
+===============================================
+lines ending with numeral or lower-case letter
+Not Solved
+===============================================
+lines containing a character followed by 3 or more lower-case letters
+Not Solved
+===============================================
+lines ending with 1 or more of the string <M0>
+Not Solved
+===============================================
+lines with words an a capital letter or vowel
+Not Solved
+===============================================
+lines with a number or the string <M0> before the string <M1> , 5 or more times in it
+Not Solved
+===============================================
+lines in which a <M0> string , a letter that's lower-case , or a <M1> string are preceded by a letter
+Not Solved
+===============================================
+lines finishing with the string <M0> followed by a number
+Not Solved

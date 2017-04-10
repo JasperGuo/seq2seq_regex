@@ -15,29 +15,26 @@ def _build_set(file):
     return sentence_dict
 
 
-def main(baseline, intra, bilstm, search):
+def main(baseline, bilstm):
     """
     :param baseline:
-    :param intra:
     :param bilstm:
-    :param search:
     :return:
     """
-    intra_dict = _build_set(intra)
     bilstm_dict = _build_set(bilstm)
-    search_dict = _build_set(search)
     baseline_dict = _build_set(baseline)
 
     result_path = "error_compare_log.txt"
+    solved_path = "solved_log.txt"
+    unsolved_path = "unsolved_log.txt"
 
     for sentence, regex_dict in baseline_dict.items():
         logs = []
-        if sentence not in intra_dict:
-            logs.append("intra")
+        is_solved = False
+
         if sentence not in bilstm_dict:
             logs.append("bilstm")
-        if sentence not in search_dict:
-            logs.append("beam_search")
+            is_solved = True
 
         if len(logs) == 0:
             log = "Not Solved"
@@ -50,13 +47,26 @@ def main(baseline, intra, bilstm, search):
             f.write("\n")
             f.write(log)
             f.write("\n")
+        if is_solved:
+            with open(solved_path, "a") as f:
+                f.write("===============================================\n")
+                f.write(sentence)
+                f.write("\n")
+                f.write(log)
+                f.write("\n")
+        else:
+            with open(unsolved_path, "a") as f:
+                f.write("===============================================\n")
+                f.write(sentence)
+                f.write("\n")
+                f.write(log)
+                f.write("\n")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Evaluate DFA Equality')
     parser.add_argument('--baseline', help='baseline file', required=True)
-    parser.add_argument('--intra', help='intra attention file', required=True)
     parser.add_argument('--bilstm', help='beam search file', required=True)
-    parser.add_argument('--search', help='bidirectional lstm file', required=True)
 
     args = parser.parse_args()
-    main(args.baseline, args.intra, args.bilstm, args.search)
+    main(args.baseline, args.bilstm)

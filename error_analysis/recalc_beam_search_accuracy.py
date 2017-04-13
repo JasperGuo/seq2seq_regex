@@ -15,6 +15,7 @@ DFA_PATTERN = re.compile(r'dfa_equality: (\d)\n')
 SENTENCE_PATTERN = re.compile(r'S: (.*)\n')
 PREDICTION_PATTERN = re.compile(r'p: (.*)\n')
 GROUND_TRUTH_PATTERN = re.compile(r'T: (.*)\n')
+SCORE_PATTERN = re.compile(r'score: ([-+]?([0-9]*\.[0-9]+|[0-9]+))')
 
 
 def read(file_path):
@@ -27,6 +28,7 @@ def read(file_path):
             if match:
                 score = int(match.group(1).strip())
                 dfa_equality = int(DFA_PATTERN.match(f.readline()).group(1).strip())
+                logprob = float(SCORE_PATTERN.match(f.readline()).group(1).strip())
                 sentence = SENTENCE_PATTERN.match(f.readline()).group(1).strip()
 
                 if sentence not in result:
@@ -38,6 +40,7 @@ def read(file_path):
                 result[sentence]["detail"].append({
                     "file_name": '_'.join(["dfa", file_name]),
                     "dfa_equality": dfa_equality,
+                    "logprob": logprob,
                     "score": score,
                     "prediction": PREDICTION_PATTERN.match(f.readline()).group(1).strip(),
                     "truth": GROUND_TRUTH_PATTERN.match(f.readline()).group(1).strip()

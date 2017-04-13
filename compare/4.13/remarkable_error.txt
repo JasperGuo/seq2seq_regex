@@ -1,0 +1,73 @@
+1. lines containing a letter , the string <M0> , and 0 or more characters
+	truth: lines containing capital letters or numbers
+
+2. lines that contain the string <M0> or a lower-case letter , at least 2 times
+	truth: .*(([<LOW>]){2,})|(<M0>).*
+
+3. lines with or without lower-case letter or upper case letter before the string <M0>
+	truth: (([<CAP>])|(([<LOW>]).*(<M0>).*))*
+
+4. lines with the string <M0> before a letter , number , or vowel
+	truth: (.*<M0>.*).*(([<LET>])|([<NUM>])|([<VOW>])).*
+
+5. the string <M0> a number or a vowel appears in the lines
+	truth: .*(<M0>)|([<NUM>])|([<VOW>]).*
+
+6. lines that contain words that contain only the string <M0>
+	truth: .*\\b<M0>\\b.*
+
+7. lines that contain a vowel followed by a capital letter at least 3 times
+	truth: .*(([<VOW>]){3,}).*([<CAP>]).*
+
+8. lines that have the <M0> string as an ending"
+	truth: (.*)(<M0>)
+
+9. lines that have the word <M0> before the word <M1> , which is then followed by the word <M2>
+	truth: (\\b<M0>.*<M1>.*\\b).*(<M2>).*
+
+10. lines with words containing a capital letter after a lower case letter
+	truth: ([<LOW>]).*(\\b.*[<CAP>].*\\b).*
+
+11. lines containing the string <M0> with a letter before it
+	truth: ([<LET>]).*(.*<M0>.*).*
+	
+	problem: Pattern Recognize fails
+
+12. lines containing the string <M0> 2 times or a capital letter 2 times"
+	truth: ((<M0>)|([<CAP>])){2,}
+	
+	problem: Pattern
+	
+13. lines containing a character that follows a lower-case letter
+	truth: .*[<LOW>].*..*
+	
+	pattern: Recognize fails
+	
+14. lines using the word string <M0> before the string <M1> , no times or more
+	truth: (\\b(<M0>).*(<M1>).*\\b)*
+	
+15. lines that end with 5 or more capital letters , each followed by a character
+	truth: (.*)(([<CAP>].*..*){5,})
+
+16. items with words that have only an upper case letter .
+	truth: (.*)(\\b[<CAP>]\\b)
+
+17. lines with a vowel , the string <M0> , and a character
+	truth: .*(<M0>)|(.)|([<VOW>]).*
+	
+	problem: confuse `and` and `or`
+	
+18. lines that contain a lower-case letter followed by a character , zero times or more
+	truth: (.*[<LOW>].*..*)*
+	
+19. lines with only a character
+	truth: .
+	
+20. lines containing a letter preceding a number before the string <M0> or the string <M1>
+	truth: ([<LET>].*[<NUM>].*).*((<M0>)|(<M1>)).*
+	
+21. lines with a number or a vowel
+	truth: .*([<VOW>])|([<NUM>]).*
+	
+22. lines containing a letter , the string <M0> , and 0 or more characters
+	truth: ([<LET>].*<M0>.*).*((.)*).*

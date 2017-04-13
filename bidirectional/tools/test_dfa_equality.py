@@ -12,6 +12,7 @@ DFA_PATTERN = re.compile(r'dfa_equality: (\d)\n')
 SENTENCE_PATTERN = re.compile(r'S: (.*)\n')
 PREDICTION_PATTERN = re.compile(r'p: (.*)\n')
 GROUND_TRUTH_PATTERN = re.compile(r'T: (.*)\n')
+SCORE_PATTERN = re.compile(r'score: ([-+]?([0-9]*\.[0-9]+|[0-9]+))')
 
 PARALLEL_EVALUATION = 10
 CACHE_LOGS = 100
@@ -105,8 +106,9 @@ def write_worker(result_queue, result_path):
             ground_truth_str = 'T: ' + msg["truth"]
             segmentation = '============================================='
             summary = 'exact_match_diff: %d' % msg["score"]
-            dna_equality = 'dfa_equality: %d' % msg["dfa_equality"]
-            string = '\n'.join(['\n', summary, dna_equality, source, padded_seq_str, ground_truth_str, segmentation])
+            dfa_equality = 'dfa_equality: %d' % msg["dfa_equality"]
+            logprob = 'score: %f' % msg["logprob"]
+            string = '\n'.join(['\n', summary, dfa_equality, logprob, source, padded_seq_str, ground_truth_str, segmentation])
 
             curr_len += 1
 
@@ -139,11 +141,13 @@ def read(file_path):
             if match:
                 score = int(match.group(1).strip())
                 dfa_equality_match = DFA_PATTERN.match(f.readline())
+                logprob = float(SCORE_PATTERN.match(f.readline()).group(1).strip())
                 sentences_match = SENTENCE_PATTERN.match(f.readline())
                 result.append({
                     "file_name": '_'.join(["dfa", file_name]),
                     "dfa_equality": dfa_equality_match.group(1).strip(),
                     "score": score,
+                    "logprob": logprob,
                     "sentence": sentences_match.group(1).strip(),
                     "prediction": PREDICTION_PATTERN.match(f.readline()).group(1).strip(),
                     "truth": GROUND_TRUTH_PATTERN.match(f.readline()).group(1).strip()

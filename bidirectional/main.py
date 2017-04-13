@@ -106,7 +106,7 @@ class ModelRuntime:
                     f.write(log)
             self._cached_logs[log_file] = list()
 
-    def _log_test(self, file, source, ground_truth, prediction, diff, dfa_diff):
+    def _log_test(self, file, source, ground_truth, prediction, diff, dfa_diff, score):
 
         source = 'S: ' + self._vocab_manager.decode_source(source)
         padded_seq_str = 'p: ' + self._vocab_manager.decode(prediction)
@@ -114,7 +114,8 @@ class ModelRuntime:
         segmentation = '============================================='
         summary = 'exact_match_diff: %d' % diff
         dna_equality = 'dfa_equality: %d' % dfa_diff
-        string = '\n'.join(['\n', summary, dna_equality, source, padded_seq_str, ground_truth_str, segmentation])
+        score_str = 'score: %f' % score
+        string = '\n'.join(['\n', summary, dna_equality, score_str, source, padded_seq_str, ground_truth_str, segmentation])
 
         if file not in self._cached_logs:
             self._cached_logs[file] = []
@@ -183,7 +184,7 @@ class ModelRuntime:
 
             ground_truth = np.array(sample.target_seq[0])
             exact_matches, dfa_matches = [], []
-            for pred in _predictions:
+            for idx, pred in enumerate(_predictions):
                 """
                 if np.sum(mask) == 0:
                     index = np.argmax(logprobs)
@@ -194,8 +195,9 @@ class ModelRuntime:
                 exact_match, dfa_equality = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=False)
                 exact_matches.append(exact_match)
                 dfa_matches.append(dfa_equality)
+                score = logprobs[idx]
                 if log_file:
-                    self._log_test(log_file, sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality)
+                    self._log_test(log_file, sample.encoder_seq[0], ground_truth, padded_seq, exact_match, dfa_equality, score)
             exact_match = True in exact_matches
             dfa_equality = True in dfa_matches
             return 1, exact_match, dfa_equality

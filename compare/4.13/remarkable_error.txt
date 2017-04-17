@@ -71,3 +71,18 @@
 	
 22. lines containing a letter , the string <M0> , and 0 or more characters
 	truth: ([<LET>].*<M0>.*).*((.)*).*
+	
+23. lines with vowel before capital letter or letter at least once
+	truth: ((([<VOW>]).*([<CAP>]).*)|([<LET>]))+
+	
+24. lines with either a letter or a vowel preceding the string <M0>
+	truth: (.*[<LET>].*)|([<VOW>].*<M0>.*)
+
+25. lines with the string <M0> before a number before string <M1>
+	truth: .*(<M0>).*([<NUM>].*<M1>.*).*
+	
+26. items with <M0> preceding a vowel preceding a numeral .
+	truth: (.*<M0>.*).*([<VOW>].*[<NUM>].*).*
+	
+27. lines where the string <M0> appears 2 or more times followed by either the string <M1> , a vowel , or a letter
+	truth: ((<M0>){2,}).*((<M1>)|([<VOW>])|([<LET>])).*

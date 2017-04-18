@@ -1,0 +1,410 @@
+{
+    "<M1>": {
+        "frequency": 2558,
+        "id": 4
+    },
+    "b": {
+        "frequency": 8116,
+        "id": 5
+    },
+    "n": {
+        "frequency": 8023,
+        "id": 6
+    },
+    "g": {
+        "frequency": 8145,
+        "id": 69
+    },
+    "i": {
+        "frequency": 9113,
+        "id": 8
+    },
+    "N": {
+        "frequency": 8125,
+        "id": 46
+    },
+    "-": {
+        "frequency": 4529,
+        "id": 10
+    },
+    "/": {
+        "frequency": 4666,
+        "id": 11
+    },
+    "K": {
+        "frequency": 8064,
+        "id": 12
+    },
+    "1": {
+        "frequency": 8727,
+        "id": 13
+    },
+    "S": {
+        "frequency": 8210,
+        "id": 7
+    },
+    ")": {
+        "frequency": 7794,
+        "id": 14
+    },
+    "*": {
+        "frequency": 7717,
+        "id": 15
+    },
+    "C": {
+        "frequency": 8134,
+        "id": 51
+    },
+    ";": {
+        "frequency": 4479,
+        "id": 16
+    },
+    ",": {
+        "frequency": 4625,
+        "id": 17
+    },
+    "c": {
+        "frequency": 8116,
+        "id": 18
+    },
+    ":": {
+        "frequency": 4602,
+        "id": 19
+    },
+    "Q": {
+        "frequency": 8136,
+        "id": 20
+    },
+    "G": {
+        "frequency": 8174,
+        "id": 21
+    },
+    "%": {
+        "frequency": 7774,
+        "id": 58
+    },
+    "{": {
+        "frequency": 4526,
+        "id": 23
+    },
+    "o": {
+        "frequency": 9328,
+        "id": 24
+    },
+    "<EOS>": {
+        "frequency": 0,
+        "id": 3
+    },
+    "W": {
+        "frequency": 8104,
+        "id": 25
+    },
+    "h": {
+        "frequency": 8219,
+        "id": 26
+    },
+    "3": {
+        "frequency": 8611,
+        "id": 27
+    },
+    "v": {
+        "frequency": 8085,
+        "id": 28
+    },
+    "A": {
+        "frequency": 9420,
+        "id": 29
+    },
+    "|": {
+        "frequency": 4676,
+        "id": 30
+    },
+    "0": {
+        "frequency": 8770,
+        "id": 31
+    },
+    "\\": {
+        "frequency": 4657,
+        "id": 32
+    },
+    "=": {
+        "frequency": 7536,
+        "id": 33
+    },
+    "9": {
+        "frequency": 8707,
+        "id": 34
+    },
+    "u": {
+        "frequency": 8956,
+        "id": 35
+    },
+    "!": {
+        "frequency": 7600,
+        "id": 36
+    },
+    "^": {
+        "frequency": 7672,
+        "id": 37
+    },
+    "}": {
+        "frequency": 4631,
+        "id": 38
+    },
+    "$": {
+        "frequency": 7598,
+        "id": 39
+    },
+    "R": {
+        "frequency": 7970,
+        "id": 40
+    },
+    "?": {
+        "frequency": 4501,
+        "id": 42
+    },
+    "<M3>": {
+        "frequency": 13,
+        "id": 43
+    },
+    "(": {
+        "frequency": 7791,
+        "id": 45
+    },
+    "2": {
+        "frequency": 8740,
+        "id": 9
+    },
+    "r": {
+        "frequency": 8314,
+        "id": 47
+    },
+    "<U>": {
+        "frequency": 0,
+        "id": 1
+    },
+    "8": {
+        "frequency": 8737,
+        "id": 49
+    },
+    "X": {
+        "frequency": 8126,
+        "id": 50
+    },
+    "~": {
+        "frequency": 7772,
+        "id": 22
+    },
+    "@": {
+        "frequency": 7667,
+        "id": 52
+    },
+    "q": {
+        "frequency": 8233,
+        "id": 53
+    },
+    "w": {
+        "frequency": 8091,
+        "id": 54
+    },
+    "V": {
+        "frequency": 8344,
+        "id": 55
+    },
+    "a": {
+        "frequency": 9196,
+        "id": 56
+    },
+    "<P>": {
+        "frequency": 0,
+        "id": 0
+    },
+    "P": {
+        "frequency": 8197,
+        "id": 57
+    },
+    "F": {
+        "frequency": 8101,
+        "id": 44
+    },
+    "`": {
+        "frequency": 4475,
+        "id": 59
+    },
+    "T": {
+        "frequency": 8377,
+        "id": 60
+    },
+    "J": {
+        "frequency": 8179,
+        "id": 61
+    },
+    "s": {
+        "frequency": 8369,
+        "id": 62
+    },
+    "f": {
+        "frequency": 8079,
+        "id": 63
+    },
+    "4": {
+        "frequency": 8745,
+        "id": 64
+    },
+    "]": {
+        "frequency": 4588,
+        "id": 65
+    },
+    "E": {
+        "frequency": 9322,
+        "id": 66
+    },
+    "&": {
+        "frequency": 7584,
+        "id": 67
+    },
+    "p": {
+        "frequency": 8051,
+        "id": 48
+    },
+    "k": {
+        "frequency": 8232,
+        "id": 68
+    },
+    "j": {
+        "frequency": 8160,
+        "id": 41
+    },
+    "7": {
+        "frequency": 8739,
+        "id": 70
+    },
+    "H": {
+        "frequency": 8140,
+        "id": 71
+    },
+    "D": {
+        "frequency": 8224,
+        "id": 72
+    },
+    "<M2>": {
+        "frequency": 302,
+        "id": 73
+    },
+    "Y": {
+        "frequency": 8224,
+        "id": 74
+    },
+    ".": {
+        "frequency": 4527,
+        "id": 75
+    },
+    "l": {
+        "frequency": 8143,
+        "id": 76
+    },
+    "6": {
+        "frequency": 8651,
+        "id": 77
+    },
+    "+": {
+        "frequency": 7713,
+        "id": 78
+    },
+    "'": {
+        "frequency": 4646,
+        "id": 79
+    },
+    "t": {
+        "frequency": 8132,
+        "id": 80
+    },
+    "M": {
+        "frequency": 8101,
+        "id": 81
+    },
+    "\"": {
+        "frequency": 4560,
+        "id": 82
+    },
+    "B": {
+        "frequency": 8195,
+        "id": 83
+    },
+    "e": {
+        "frequency": 9294,
+        "id": 84
+    },
+    "y": {
+        "frequency": 8337,
+        "id": 85
+    },
+    "L": {
+        "frequency": 8231,
+        "id": 86
+    },
+    "<M0>": {
+        "frequency": 21602,
+        "id": 87
+    },
+    "U": {
+        "frequency": 9254,
+        "id": 88
+    },
+    "m": {
+        "frequency": 8123,
+        "id": 89
+    },
+    "z": {
+        "frequency": 8221,
+        "id": 90
+    },
+    "<": {
+        "frequency": 4524,
+        "id": 91
+    },
+    ">": {
+        "frequency": 4627,
+        "id": 92
+    },
+    "#": {
+        "frequency": 7745,
+        "id": 93
+    },
+    "5": {
+        "frequency": 8670,
+        "id": 94
+    },
+    "_": {
+        "frequency": 7619,
+        "id": 95
+    },
+    "I": {
+        "frequency": 9307,
+        "id": 96
+    },
+    "Z": {
+        "frequency": 8185,
+        "id": 97
+    },
+    "<GO>": {
+        "frequency": 0,
+        "id": 2
+    },
+    "O": {
+        "frequency": 9374,
+        "id": 98
+    },
+    "[": {
+        "frequency": 4560,
+        "id": 99
+    },
+    "x": {
+        "frequency": 8161,
+        "id": 100
+    },
+    "d": {
+        "frequency": 8258,
+        "id": 101
+    }
+}

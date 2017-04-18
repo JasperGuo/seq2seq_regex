@@ -105,6 +105,7 @@ class ModelRuntime:
 
     def train(self):
         for epoch in tqdm(range(self._epoches)):
+            self._train_data_iterator.shuffle()
             losses = list()
             total_errors = 0
             total = 0
@@ -119,13 +120,15 @@ class ModelRuntime:
 
                 total_errors += np.sum(np.abs(predictions - ground_truth_labels))
                 total += batch.batch_size
-            self._train_data_iterator.shuffle()
             average_loss = np.average(np.array(losses))
 
             tqdm.write("epoch: %d, loss: %f" % (epoch, average_loss))
             tqdm.write(', '.join(["Train", "accuracy: %f" % (1 - (total_errors / total))]))
+            self._test_data_iterator.shuffle()
+            self._development_data_iterator.shuffle()
             self.test(self._development_data_iterator, "Development")
             self.test(self._test_data_iterator, "Test")
+            tqdm.write("=================================================================")
 
     def run(self):
         self.train()

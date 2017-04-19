@@ -35,7 +35,14 @@ def split(file_path, target_path):
             new_string += " " + word
         sample["case"] = new_string.strip()
 
-    save_data(target_path, raw_data)
+    result = list()
+    for sample in raw_data:
+        case = sample["case"]
+        if case and len(case.replace(" ", "")) == 0:
+            continue
+        result.append(sample)
+
+    save_data(target_path, result)
 
 
 if __name__ == "__main__":

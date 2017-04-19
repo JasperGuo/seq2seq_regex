@@ -19,3 +19,7 @@ Output:
 2. LSTM RNN ( character level ) encodes random string
 3. Attention ? 
 4. Feed Forward Neural Network
+
+---
+
+Refer to **Reasoning About Entailment With Neural Attention** https://arxiv.org/pdf/1509.06664.pdf

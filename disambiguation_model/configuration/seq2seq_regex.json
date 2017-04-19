@@ -3,9 +3,9 @@
   "learning_rate": 0.001,
   "optimizer": "AdamOptimizer",
   "gradient_clip": 5,
-  "embedding_dim": 150,
-  "hidden_dim": 150,
-  "layer": 2,
+  "embedding_dim": 100,
+  "hidden_dim": 100,
+  "layer": 1,
   "batch_size": 32,
   "test_batch_size": 32,
   "dropout": 0.25,
@@ -19,5 +19,5 @@
   "case_vocab_files": "feed_tf\\case_vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
-  "is_test_capability": false
+  "is_test_capability": false,
 }

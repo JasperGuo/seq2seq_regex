@@ -1,0 +1,410 @@
+{
+    "O": {
+        "id": 4,
+        "frequency": 16595
+    },
+    "q": {
+        "id": 96,
+        "frequency": 14372
+    },
+    "4": {
+        "id": 5,
+        "frequency": 15684
+    },
+    "8": {
+        "id": 6,
+        "frequency": 15511
+    },
+    "\"": {
+        "id": 39,
+        "frequency": 10001
+    },
+    "9": {
+        "id": 8,
+        "frequency": 15558
+    },
+    "#": {
+        "id": 9,
+        "frequency": 13309
+    },
+    "f": {
+        "id": 42,
+        "frequency": 14168
+    },
+    "L": {
+        "id": 11,
+        "frequency": 14412
+    },
+    "P": {
+        "id": 23,
+        "frequency": 14234
+    },
+    "a": {
+        "id": 12,
+        "frequency": 16474
+    },
+    "w": {
+        "id": 13,
+        "frequency": 14276
+    },
+    "1": {
+        "id": 14,
+        "frequency": 15680
+    },
+    "F": {
+        "id": 15,
+        "frequency": 14331
+    },
+    "+": {
+        "id": 16,
+        "frequency": 13355
+    },
+    "*": {
+        "id": 57,
+        "frequency": 13073
+    },
+    ")": {
+        "id": 18,
+        "frequency": 13340
+    },
+    "t": {
+        "id": 19,
+        "frequency": 14306
+    },
+    "B": {
+        "id": 20,
+        "frequency": 14254
+    },
+    "%": {
+        "id": 21,
+        "frequency": 13203
+    },
+    "\\": {
+        "id": 58,
+        "frequency": 10152
+    },
+    "!": {
+        "id": 46,
+        "frequency": 13064
+    },
+    "<": {
+        "id": 24,
+        "frequency": 9925
+    },
+    "<P>": {
+        "id": 0,
+        "frequency": 0
+    },
+    "5": {
+        "id": 26,
+        "frequency": 15460
+    },
+    "@": {
+        "id": 27,
+        "frequency": 13100
+    },
+    "Z": {
+        "id": 28,
+        "frequency": 14325
+    },
+    "^": {
+        "id": 29,
+        "frequency": 13207
+    },
+    "x": {
+        "id": 30,
+        "frequency": 14322
+    },
+    ",": {
+        "id": 22,
+        "frequency": 10246
+    },
+    "v": {
+        "id": 31,
+        "frequency": 14170
+    },
+    "0": {
+        "id": 32,
+        "frequency": 15669
+    },
+    ";": {
+        "id": 33,
+        "frequency": 9871
+    },
+    "E": {
+        "id": 34,
+        "frequency": 16612
+    },
+    "<M3>": {
+        "id": 35,
+        "frequency": 25
+    },
+    "b": {
+        "id": 75,
+        "frequency": 14326
+    },
+    "l": {
+        "id": 37,
+        "frequency": 14272
+    },
+    "$": {
+        "id": 38,
+        "frequency": 13244
+    },
+    "U": {
+        "id": 7,
+        "frequency": 16686
+    },
+    ".": {
+        "id": 40,
+        "frequency": 9839
+    },
+    "{": {
+        "id": 25,
+        "frequency": 9816
+    },
+    ">": {
+        "id": 10,
+        "frequency": 10023
+    },
+    "/": {
+        "id": 43,
+        "frequency": 10254
+    },
+    "3": {
+        "id": 44,
+        "frequency": 15369
+    },
+    "C": {
+        "id": 45,
+        "frequency": 14366
+    },
+    "k": {
+        "id": 54,
+        "frequency": 14304
+    },
+    ":": {
+        "id": 49,
+        "frequency": 10071
+    },
+    "i": {
+        "id": 73,
+        "frequency": 16309
+    },
+    "2": {
+        "id": 51,
+        "frequency": 15479
+    },
+    "H": {
+        "id": 68,
+        "frequency": 14354
+    },
+    "n": {
+        "id": 52,
+        "frequency": 14138
+    },
+    "o": {
+        "id": 53,
+        "frequency": 16594
+    },
+    "T": {
+        "id": 56,
+        "frequency": 14787
+    },
+    "~": {
+        "id": 17,
+        "frequency": 13270
+    },
+    "<M2>": {
+        "id": 59,
+        "frequency": 695
+    },
+    "u": {
+        "id": 60,
+        "frequency": 16013
+    },
+    "c": {
+        "id": 61,
+        "frequency": 14185
+    },
+    "V": {
+        "id": 62,
+        "frequency": 14511
+    },
+    "d": {
+        "id": 64,
+        "frequency": 14746
+    },
+    "(": {
+        "id": 65,
+        "frequency": 13409
+    },
+    "?": {
+        "id": 66,
+        "frequency": 9911
+    },
+    "X": {
+        "id": 67,
+        "frequency": 14411
+    },
+    "7": {
+        "id": 63,
+        "frequency": 15565
+    },
+    "_": {
+        "id": 69,
+        "frequency": 13095
+    },
+    "y": {
+        "id": 70,
+        "frequency": 14483
+    },
+    "m": {
+        "id": 71,
+        "frequency": 14236
+    },
+    "s": {
+        "id": 72,
+        "frequency": 14726
+    },
+    "<U>": {
+        "id": 1,
+        "frequency": 0
+    },
+    "]": {
+        "id": 55,
+        "frequency": 10035
+    },
+    "z": {
+        "id": 74,
+        "frequency": 14482
+    },
+    "K": {
+        "id": 48,
+        "frequency": 13998
+    },
+    "|": {
+        "id": 76,
+        "frequency": 10255
+    },
+    "A": {
+        "id": 77,
+        "frequency": 16696
+    },
+    "I": {
+        "id": 78,
+        "frequency": 16476
+    },
+    "W": {
+        "id": 79,
+        "frequency": 14350
+    },
+    "j": {
+        "id": 80,
+        "frequency": 14314
+    },
+    "6": {
+        "id": 81,
+        "frequency": 15350
+    },
+    "<GO>": {
+        "id": 2,
+        "frequency": 0
+    },
+    "<M0>": {
+        "id": 82,
+        "frequency": 38215
+    },
+    "D": {
+        "id": 92,
+        "frequency": 14350
+    },
+    "Q": {
+        "id": 83,
+        "frequency": 14154
+    },
+    "M": {
+        "id": 84,
+        "frequency": 14212
+    },
+    "G": {
+        "id": 98,
+        "frequency": 14224
+    },
+    "N": {
+        "id": 85,
+        "frequency": 14417
+    },
+    "}": {
+        "id": 86,
+        "frequency": 10034
+    },
+    "h": {
+        "id": 87,
+        "frequency": 14198
+    },
+    "r": {
+        "id": 89,
+        "frequency": 14657
+    },
+    "<EOS>": {
+        "id": 3,
+        "frequency": 0
+    },
+    "'": {
+        "id": 90,
+        "frequency": 10256
+    },
+    "&": {
+        "id": 91,
+        "frequency": 13111
+    },
+    "<M1>": {
+        "id": 50,
+        "frequency": 5701
+    },
+    "e": {
+        "id": 93,
+        "frequency": 16539
+    },
+    "`": {
+        "id": 94,
+        "frequency": 9851
+    },
+    "g": {
+        "id": 88,
+        "frequency": 14292
+    },
+    "p": {
+        "id": 47,
+        "frequency": 13917
+    },
+    "=": {
+        "id": 95,
+        "frequency": 12855
+    },
+    "J": {
+        "id": 97,
+        "frequency": 14245
+    },
+    "-": {
+        "id": 41,
+        "frequency": 10011
+    },
+    "R": {
+        "id": 36,
+        "frequency": 14044
+    },
+    "Y": {
+        "id": 99,
+        "frequency": 14302
+    },
+    "S": {
+        "id": 100,
+        "frequency": 14422
+    },
+    "[": {
+        "id": 101,
+        "frequency": 9961
+    }
+}

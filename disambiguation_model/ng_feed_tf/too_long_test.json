@@ -1,0 +1,236 @@
+[
+    {
+        "regex": "( \\ b . * <M0> . * \\ b ) { 5 , }",
+        "sentence": "lines with words that contain 5 or more of the string <M0>",
+        "label": 1,
+        "case": "]&Bp _+i&S@cFAC&dogYCiD~(.vf9$:D`dN)R;x:H6Ltsi1W5E-\\QOdogIJoxRi3$-Y`aTY}nNZj<m'(T|kSd^^N&dog5Ac:`12he4oMH:'27i~cWTz0_$Jj=gt~t dog@I3bALr 8+biLP4snDit0dogaWM'NQ*Id@a}b9[9rUxf_p-f{(g1kedogS|q`P\"?uQi~azELM]+i](\"&jMwaY!$Xdog6^rId]\\tR;=Ia`C&zj2y{g3<X{dD$jO24t 2:~+tr3*dogyde_B~=j2WTP!L~p*cydslXdog8~VZ.r`K|nhNl$oEVwtOLY{AnLvhW(S7dogN+Y=2@2a].Y23)WvzIy<WX2,dvig-0_dhi.dog:8J3c\\<4||FBGPdogP9di$s9o^SrXk:+^nzfQKgdogYkuS,0.mB^ZH8W$yl%mqs.6Lp+N:jB8ilgqVfc.dogDbKS?8q#(~c7@,QrSF6\\dog_qqivG:dRqdogn,Uid1W^]:vS80.5|^\\[!O2rf dogq7Re2d+v|+):AdogTBuvF+0)]SZ+mH+c\"x0dog(O:zFyPEZu8%|m,;i&aK@%L$l$dog-dt%CLmS-$XDyd*(?i3:% ~?dog^E;nLfiIw@*ME6>O-G3doggba\\KLV(%4yV=do|63>UY;iEd!U*ipb]+Z#0R*;udog}S#Y'#i:yZ`VU%w%y&O5dogkX#2=5ES1uc Efv.R)A1bw=W.6@OVdogxI&+VNG+q[v{TZqIR&dog(KzC8Nk*jGI\"^UTFy!Q"
+    },
+    {
+        "regex": "( \\ b . * <M0> . * \\ b ) { 5 , }",
+        "sentence": "lines with words that contain 5 or more of the string <M0>",
+        "label": 1,
+        "case": "19H4drKRdogGx;5T$':B ]a|waM!r`W0dogLhR!yL7sV=JR?JaVl:Le1<X}d:<l?H<VDB>dogm4C UiE{J0Bu5xLl~jF!jR1GqAnn:<yG\\!at432dogs_v4i#[EWI!Y@$<Let!V'<dogDWNuYUoT*~E0{oO$dog)f9.&~o{Q?:Hw*/,P%nm1:H%#v\"+Q`zXdogZ'bvdy%IXm 0f[idogt'dkP[vGD^I\\,=R9pL:G|6_0xQ?dogC3-.@9xwmlk2"
+    },
+    {
+        "regex": "( \\ b . * <M0> . * \\ b ) { 5 , }",
+        "sentence": "lines with words that contain 5 or more of the string <M0>",
+        "label": 1,
+        "case": ")'H`[ 9e=]Kvv\"yKSL&G h{dog>C#8eBV<O@'xLB^FNoMdog0&:9}$[/gQrw*Le+:JB_nA4iQVmI``eC+5qrgadSw;[&dogpQ1\\CSX-TB<ZlQqMNd+\\;*(sYdog^ A?}16YD1@TUO@AOwdog$R8%joK9XepZ\\6J(Jzz$_Vdog$';gjUd}A/\"\\i{R {fuj4dog&pz~%A1W{}<PI{dog6H+b`~jmKKZU7Hd-C54\\0Nv/zpdogN/EYt}>eS4\\l2|dJYKy_NT\"dogI2f}vj IG\\*z0|sjydogs2\" b0VCGr($q2i@Co'|z+Y\"K|Vdog,9mxe~nA.=IH$R\"1Ri<vI 1X'-]HtkCKD2PpdogsUn_>=D; tw<aC}pAxXk7tjg*/m2a6BfHkdogH;Nq\\&%zS t9b|nE>jU#&AKrO%_LJ{V1*4kH57Ee,dog9Pp)\"f!&@Ob{;n"
+    },
+    {
+        "regex": "( ( <M0> . * <M1> . * ) { 5 , } ) ( . * )",
+        "sentence": "lines starting with string <M0> and  <M1> , 5 or more times",
+        "label": 1,
+        "case": "dogvB~z~6Xhtruckha;Dlt6u;c,dog{'3Y} Df6rstruck6('=cZcYP*;4A'4Cg(}7Y]AOdogtruck%.b|)&&y3tTA1MdogHI`ap5_mZz,TEDQ*[truckKJd*(l\\$3j=S6nTcPM<(WJdog}4:K2<`4F[t'@QyJP=.I]kSEtruck.?x@IND(Wy@tL:FSU#7nCrCjdog?`s.a(;#~M<*<6?o_R,%L=truckk.J5j(@'e=OPkk.Adoga)B7Qdtruck>6,aGhb5!G\"[bB`/dogK|J.2_]Z&#OtruckzneddogzF^Co)truckpWC>9edogP`bdctruck|7ta@6dogz<a?B[DaN>qBR9JV4~ko^truck)\\R&c5ysRKJEw6A>X\\bJ~dogA_T+crN?En\\S#e#+PtruckJ(!@_IHhkq3Buv5\"4uEc-dogH|I5vw+@67wrtruckZ?/6:dogkX!gR#TJV;9u#Kj}*ltruck%P5.}qy`~-`t9ND$J9:c=]dog \\!ZTx#|^g\\b6d 7otruck'u'nV}Is~ U7pC{(ddog]_wU>56 QT?sAy{bL5E!(truck.dogE0qh,|ZK0UVhfjzKtruck +jtA=:dfBgjtrdogzEaNzjem;(l*7'a7?AtYtruck^z7Op?`UodogGCn0A:>8T7trucksR?^VR\\&V5?HE>*dogGKtruckOeAAP,<kNMy/R5|_dog(w2@H`(\\cD)`truckCfK8X5jlK[&%6dogJtruck6V)Vr]6ArlobgGdogEFb\">Y#\\rA:PklEBuftruck&x4r~[TgD[Ks1RTA9'dogA;v<\\'4)84~m1Y9&xRAEh-*<truck13%n.<@%U|~DdogjBW^{tC^'Z4!.x?,9)D>,ztruck3Y8QwF|dogY3m ,>ojcrT=>y;^]G6;~UO)2truckFXxA!Ev-wh7Ym(S8ddog^truckBdog/UStruckpd$Ru3tN^J6>-wdog7truck%- }*8LGJ?j9-U{81f]^0-WPe a3x0tnM$Q4fh1"
+    },
+    {
+        "regex": "( ( <M0> . * <M1> . * ) { 5 , } ) ( . * )",
+        "sentence": "lines starting with string <M0> and  <M1> , 5 or more times",
+        "label": 1,
+        "case": "dogKLC'-eZ}i^struck#(e#zCSrdog'3EC$B=PK\"p39LtruckDWedogAg#2$R8t2.GEuTad=p,v/$F},trucko6xm,PnCJv@Ju_bdog}5+: w/~truckBqP9dognjMV}{Z!Dqtruck2>|\"ppPM?*dogA+GTA^BoU4WD*lBl\\xghtruckj!+qeL@TWdog//)b.t:x1ED'@!LL>]yJu^.Ftruckx~_zym%hA27pQG&c8CzdogI?AP!wstruck,@Ae$3&7\"XB>cpd%Idogt:#Ny6+trucksy#GP[Y,r`4Sp?R!x_zdogWl@=&1TY&0U&S+}Z$Mtruck|X=ndog{g0?+%=PcEj+;truckX[5xwD$&]psVdogrg-Y[truckGgddS$#tiMP+LJPp(Qe^>{9OEna"
+    },
+    {
+        "regex": "( ( <M0> . * <M1> . * ) { 5 , } ) ( . * )",
+        "sentence": "lines starting with string <M0> and  <M1> , 5 or more times",
+        "label": 1,
+        "case": "dog;$p-Z^q:UtruckhI3v59%2g1_!Z)4RCtQnK.^IdoglstruckiR7LFowJ-u(IrdogacYj~8cr:Ptruckndog2oE#0N.>6R&truckN%a7dog\\ZQ<pEjctMiq^[QveJ7<6jow\"truckc&Q+,t!fS`mm5Z{Udog_zrJ_w9;DaF*je#z\\.1(truckIKbEsa_y-6a3A4ePdog4'!GyoDiAtruck'<Tx8dogD4X<%<|xiRXltruck\\G<37UzUlK7}xf#7I,B|dogR*FS7?%y|-(\\[|GWGr1rRtruckBQc>m{\\x#dogL|V@V(P|Qw,|N9OE-vaAz-truck>o(~_.vd*CGPEm.dogN>t_truck V1Z%0LtDjZ7sAgdogGd6truckdog\"LS>5s:9^M/J.M!9#O\"Zy~truckM#9/}|a4vg\"Ud3Kdogtruck)_5_zQ$KAWZR*i7EX,DdogXu &_J!uItruckXnJ+iu[qZ_Y$wMJ7WOf73!vAdogNEtruck')9)&dog{'Dltruckcx:T0~JEaj``hdog%$'#/,90*HgR\\L 02truckw6KRU[Vp[.ndogF0@f]a@rju48Yqqz/~81`truckU@dog1U_NoVtruck1<dK\"FbdoguMj7zztruck7Sfdog!tH+o6VattruckN+u'\\ZADA\"E}^Av <Epmo(dogV>Ga_I:#co(#ztruckt%JZxmFE zLKhHDNuW%yE"
+    },
+    {
+        "regex": "( ( <M0> . * <M1> . * ) { 5 , } ) ( . * )",
+        "sentence": "lines starting with string <M0> and  <M1> , 5 or more times",
+        "label": 1,
+        "case": "dogE]@JytkmT$Ld^g`cFW43Btruck',*o||dogtxX:YU[pso6 fv_iw1truckp43lbd}:k+VdogHtruck#cWF_N,-U;dog3P<-+j]zt#RBtruckWAf?GX,dogjf4{(<`2a{xO@kL(${$M n?truckAA*[f8\"sdog{=1`Z*W\\Qp[\"?tVE)}PtruckuTZ5bdogdRDuD,&truck%N[dogT9G:'=X4SCH\\B0Etruck*-YmS:2O7qN&dog/b?4xL=^+d&umh>aEvtruck3%w#<ZdogAMHTck^CXtruck!=[ZSjDv`I?-~&>8*;*gp~RBpdogcktruck.3b*7\\)2/Aw[&Lu$dogmEHtruckwN~BGEH+obIl<omJ~].:ldogz^SU-)=g<}.mPey+@B_:7}O_truckc8dog<(>8ha\"gb-[5Og%*-)'ZO(~truck2M\\?p,KUz`)6Rz-(c[#7xFm&2dog\\hH%KRk|j>TpETtruckc0MLdogtruck*:O-ieE_M3dog|fK;UGJ~oUM?(mM$qtruck:$H^--x6OiT4|@Zdog^9:?0M6truckI(Ndogvrm;7ik[>`'q]Q,+n~(;EtruckHLW79#7Idog[mr$f[\"c.Tv9)g7oBZ7truckFzM`XaH]YMS~#-RCnn^?^B+.dog|#04f'SX{Zlsa@wb:v$R&vVtruck=XXRdogdU&>truckM*T-MB2UYveXc}Ddog{$^b0Bsc\\L%vv=y*~?truck8edogdnV4\\truckF\"3]<(PE/@:u<\\z8.%vdTdog_*M^(truckbG*fG,Q@t5l G`KbN`YdogO(+U~truckyr!:+\\@!M{kZkVx|pWTdog`Ar\"JVKSccyHj~\\z,[truckUNwkr.dogMfY/PEkN|gCj.$8Ms`:iImWLrtruck_x;`UJ3b@?ERIK4[>&ru3,\\Q/{?/ZdSJ,Y*m"
+    },
+    {
+        "regex": "( ( <M0> . * <M1> . * ) { 5 , } ) ( . * )",
+        "sentence": "lines starting with string <M0> and  <M1> , 5 or more times",
+        "label": 1,
+        "case": "dogm0p0K0+e$]}_qXl?,kR2truckNvi681EdogI.H%&}Qe/D*R'/ 0ftruckJ>:sI+xj>L9gEmxaesusw3<W0dogE\"6Ye+truckFz`Q4NVvdog![,truckK?7IN<;znp>E1yn`LdogERu0j?]?0W4#431NlRl(`trucko&rMO}0_RD8+=n0gm@tvV<&KdoghYS$#2*Y*;H51sBIJLPO(Wc3_truckx0WYxCdogc~\\Dj>k>ej_?c_ /`Gtruck6OA3FDdog,ID\"E4oG4QA`ZM7qntruckdogP2V5Us0a(x3H7elXpZyOM<truckqc=tqj?X'8QpNCadogr)'Q{E\"eLv/l>>~-)'vE1truckvM u.dog 6;truckxr21ifd,2z'}vpiwpU5k7#HLdogreZa3BIDbY)(Gd;BbS!truck09Mwsf)P%$Zmz#(Aku>Idoga{L@ktitrucks<ak[9L4,QI||FR1\\4dogBtruck#'OEQ>pP`dog\"An1OaNtruck!rs(\\`LhzLh4~B\\F]qQ'&5dogb+Y)!X&MJ.E\"Mrtruckw('PsI$}Ox3&3m?mRJ=V0QnPdogeFYp1`>&o\"fi/-]ptruck\"=r3[2Cb5$^44!dogz=1eN|l`I9:kgUj?a2`~^Y0truck%(b{]dog%[;GLtruck2EV.9$Wq;}@d!!lWd[_)doga,ytruck-3dog0g^p}.kGmWtVY\\4_Fp*l*4truck}00!hgDtYdcSdogWF}ZtruckFz<%F|C*qmftHs52/dogzu`dtGXF&KG:>[vtruckc{wHV2ltj?,Ej@C*(1*iGdogJ3gpDYKW\"Ctpc,\"bquXJiA{2Struck7OX6DZdNmv?c+ldogQ5ERr(3] %3/$Mkocy8pZtruckn+%M~6<0,%?66{;=r}ds;2FdogOF=;k:z&4vs truck@7sRr F .IsI[2\"eB#{<| \\`dogS8<'truckD9BErp2oy=Ydog/eP:UC~d9qd&82kXPfqHtruck^e&U@4M8Ndog)1[y)e?xytruckwzG2unn}QldogyMCh(>q`;*:[\\*?N[Jf^NG}QRtruck3#DJ9fX`K2!c*vl#UpJ{SD)~N+nWxW]"
+    },
+    {
+        "regex": "( ( . * <M0> . * ) + ) . * ( <M1> ) . *",
+        "sentence": "lines containing string <M0> at least once before string <M1>",
+        "label": 1,
+        "case": "@dMp\\KczZ[UZW.dog/e[h8~6NBZkhRu|]:h3C5i-xZzKGX-\\8:{*``;Kwtdk]/dog;5PrZ9xTf7?A/k>I'w#hZ}`-:^;Sqdogu4)RT!*AQC%JJu.b0tdogZ[Q[L'@,]ka5HXJ;<UtW_X'5&Mag-.dogn+D4L3D\\q-2|C~7Hfdog-w7U ypp<'6Wn%dogBM8<tSc!=u*mL~]4R%:[\"JzodogBK`yYCI?5q8truckIy{$pXXB5Ja"
+    },
+    {
+        "regex": "( ( . * <M0> . * ) + ) . * ( <M1> ) . *",
+        "sentence": "lines containing string <M0> at least once before string <M1>",
+        "label": 1,
+        "case": "sYNZvrdogq?<~:W\"bo~Q$9D];:g+G<Hdog>iG)|QMqhhf8_dog1DJTjk(|DC9Nz3,TjN&P\\drezx/4vKV&@pY!}3PIS5:$RdogFXos_`,(_LYH^wW9TAT85Uk/g&4BY^iB{ rw=g@dog?{X5so|Dtp=R@5W:D{hgPi~ PDVwJ$}9Hr,;diM%6dogF^f1PM0mp,H>_y*\"w-!cad.#IrNe@0%#&FdogK+pz5U])<bjtL(p{6<!z]kolz_*~0|TBH5-$adog0.`dog[I\\dI:z;dog@0$!d#1z]\"_(3P\\o<4YWdogOwXCKb (,$8'T%_pAk!\"}eT^c|8?,fdog%YnS3|SJX7xpe67)jk= )443n7TadFh!rF@ASidogwoYNus|@tH(NySaGW9NM5Wu5r;.5eAmLo^;Y}=3C8/dog$4 yG\"kc8truckd}&^BSkDUe*Xk^B"
+    },
+    {
+        "regex": "( ( . * <M0> . * ) + ) . * ( <M1> ) . *",
+        "sentence": "lines containing string <M0> at least once before string <M1>",
+        "label": 1,
+        "case": "p+g5s*^)p/G(\\dog~oua.RGkMaP(OI>s&<mmbBwzzdog:b$PZM:E7'key>^'eS0Fdog~i4OS4>G?dog$j*soeW8K0nm^^$`rL:rvdog|j!vV\\[e$p%tdog!7POov:b}=lB`uLLAJzdogT :Yr(rtjVf^B_eG4@[O7\"I<:Edog4rpB4c\"K}w=h4BNeLVyhrr8f~'kPO}]a[dGY)k/kNF2dog@Y^F-~E`~dog)n&vL-Fu/FE^[&h SL@%+atgW.G11`N{6Gr07dogyIM1VbL=Dne`dux9D{7qyIdog!M(D2FhTeeZY:D5*GK.ts90k/`XsxPu!Np1ehz:truckgOIYY?\"0[&B"
+    },
+    {
+        "regex": "( . * [ <LOW> ] . * <M0> . * ) { 2 , }",
+        "sentence": "lines with 2 or more of a lower-case letter before string <M0>",
+        "label": 1,
+        "case": "z<$GdzD$C>Ev8p]nr;}v9w#L@Lm;1MWT2'b?QyD^!=UA?dogkSx^Dri@kV)D98y aG03T5}?I%bZ*{jA]D$p|Q_KN%v$=H\\e;69H\\dogL@b*4'ESOxwxd=B|5s^qZc70k#=z1o*WtulVR!dgD><\"/*`zdogKC~D1ZM!$f9aA&=d=:XX!|fsmh\"4iR>zk'fYWARkG{J2hdog^^+ld\"C<q5?j79`qx&r7uz{QjwdogNOAU"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines containing a vowel before the string <M0> , 5 or more times",
+        "label": 1,
+        "case": "UsvS^)LN!#l0MY?m1Ekdogvc\"M7^F>`f)eRGhX3325O/Odog}HmW;VG.fYhO$wB\\ydog-5d~ZxN!8~\"3)KSO-!.U3DAkeydogi<6P#=#dogY?LRFe+$ARJp:=a&>q<ij giJ:{-D*dog"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines containing a vowel before the string <M0> , 5 or more times",
+        "label": 1,
+        "case": "UD\"E~dogaR^[h4bZIwAUP3Mdog1)vaJ*+gcgNvv$Vzh][clIEC Vwdogen|+4Xc>Sf5  !sCQldog5j- =O}J(T+3P->On1ZZ`UAGwntn}$u=OdogkYzwcS#WU(\\jUj6i0f_bpdogx&zK|W^QCDx%/-uJH[as@bkTyCx3_l!10dbdog9MshYOh|~#Mj_hY*%/Lgs-oo,M`UBQ:JH]dogbd-D>ik\\:MY\"`dogkwk`iFnAB-pA"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines containing a vowel before the string <M0> , 5 or more times",
+        "label": 1,
+        "case": "a\\ih+;\"BSaQ\\V{M\"*,9*2UA|mdogB5iMjG~ub|Fci^O*y#5hA]\\=*Y50rhl2A+ UI<YQ&zTudogP.zkB]{EdC508%NcfI#8WC>jU4H~u6U+~@jChNdogP7[i1@3%4?,sv\")1j:O#c]rEUeFFzO#u\"{ _xv\\oXU%8OV|Ldogdd|O9bQmjB<EnewIY&r8lvkYGQdog&fuk@LjYo#&Xdog=j#bI_w#K\\]zY0FKxDo0+&cn38K+@@_2(zxHENTT-$^dog?FOEEm97 G)Qwy94i!7PbuS,s!BAcKuV:G,M5/RF?dogffxI+7+lQs5iTd(Y5@]3V17\"!-4[dog)b/51jZvEO.\"\\ePxGqT2hidog\"C#/~OvxkexdoguD2Yyw-$5s\\;s$L3aRu=#b?IdogmvUJ9x_5Z`mkX?OwWdogu|oRnun5u}(/{%Yf3urC1Wx4WR,-\"8\\-0Ocdog|E|@u>[9!zQKw$idogIG`1FPZbSPMF-ft}lf`b!E0D:u621=CD_dogLD$vd9Ls-ae\\oluNDsZ1O!_\\:5X(k1-RMmF,Gn?h|dogAhYEfxnxLW5|[i&}#Sdog)-=i(e@'CGmFHyf;8F<o}>wa^dog]@zdYo1@c=E9XeyOM0eTUGT]PAxdogRowo`!Lzd$hFa@)5fB?dog*9\\UqhmE:mn35{E*howvO1xi)W^V/_CTyu@PK/cmMdQM|0,dogpNrD!\"^Ey4y{3AC]g}dog{Z/A2WCB1bC"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines containing a vowel before the string <M0> , 5 or more times",
+        "label": 1,
+        "case": "o>)}XXJ%-G +iE!dog\"i:HCH?Z%;THnIDU=KF.uu:r~g6u)sCdogOml+}*L\\U$#LN&|ez$]&6EC:`m$z1jqA_(*2[9Udog4xMjiv8w)$D#l{f-Aj9kt`|i2,9ByZuI%+)4xA+bJ<]HcVm]dogF xN|~i%?\"TyNJSgez^Oki\\._FKdogt XCo%7{w<1\\Ze-t~8M`zg62UP80'Pdogl[0W+sP6v0m_W1FqBhY6E\"fi8[Nl_y5p@dog2oAx``Kgs{_qdogN,>ufya,U%>%Td0|K&{pK"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines containing a vowel before the string <M0> , 5 or more times",
+        "label": 1,
+        "case": "awu^dog.,&fEBs=JDdog~CPZ^[=s$I>8]usy'|9iEP)%}Xs>>R)dog^Ir#kwcdogK%,!drPTG.I)1`<mU'n%!|;}EFN'T/AHG3OY*dogdk4+*-<`h8D$<ku8e[kl$iEi6\\xK 5LgRdogEJ$fKIuGtc}{;RMa'C+lhJH'dog|#9uwqstdzU!N1I{N+8=mO jQdog;{3k7n;6rIkt[%uG{@qu<EJTa^:8F}J5pMb=q34l@YCNdog7o^`.TPdog)wx3zH{K05sZ2)4tl(xE^N<I1-AM1\\}^NJ39(F!j!n!q]eeDLdogE^3ttIO%dogUdogowSi$b{KR^c3gdogi0TD`5[N\\1argAHtSZ}DFSB>,}-h2Q&g?dog=4<;@Am%uyX][dpjA~g>-`\\)h!qSdog3rH$ .&o5DA}~fI;tY)9.=l>Sk>@dfMx$e2BdogLbt:A$EWT[mP}yWdog1/uM5KP^46$9eA\\L^(dog__ZP\"WljIdogSfQu^w-6#Au$Z[{,Gz?5#gp1mibydog^tJY&:Hh!.'tpBL^l|E{4c-W8xO^B2*z1dogHqkFI<NThAX \\&Ly2$TluA:MQ[dogA!)q,>Q\\gXaiOI(T.fEc\"?_Ls@O8FrrmywaOdog!`5xBE?y\"\"X_-VZUwB%CAcAW9dogE|jY-xGRY]4WFuJ8iEnd 4.](lC\\%;dog(P8dWZ[N;1tv%W`MPIAlO#\\>T@@RU)gn\"5[\"YN47vdog'Lhh7xtE}%7Sc#M,!4Y"
+    },
+    {
+        "regex": "( \\ b <M0> . * [ <VOW> ] . * \\ b ) { 2 , }",
+        "sentence": "lines with words and the string <M0> followed by a vowel at least 2 times",
+        "label": 1,
+        "case": "dog8<Mw_Z9e1AFO}hFR0&WiMdog'KnO\\\"68JWg(^=DXM`}p04g6adogF.O oH$e8dognHBZ=/Ppx^~-/^K5b/aM6*a4Ddog?2;jE/Q*I{r$|ooW`c^5:*>Eed}Fo|}=w?_|dSdog(\"Mos&\\hJSXlbl\"`nS0gU~uCM~$q_28!g;30Sh&n7fdogq/$6|GA<FyHMA\"XD)|Y%e:PJ]2$YPW\\<Pu^kdogU)>!*<.[Nm-<xBepqO%Sf)Tdog.q/0mRG,!5g7{4_\"#cWjuLVIeH'B 0Io2?8A3w#dogNRnJe#m&Nas(F66i82(QT+dogd$+8?;zU\\jfopL7eyI&3}-;d8bddog(T&\"IYm!v S['a!$$N4`M.xIxL+?l-]We:;$V29m+fI1QHWdogmws^FdkUy)jf-[2`=up2`:\"dogo\\8Qv@h~48{Ysc+iqhQZ5NAjNW?QB=e#qce>jydogwG$t2y\";`uIF3AQ>y'4e/g"
+    },
+    {
+        "regex": "( \\ b ( . * ) ( <M0> ) \\ b ) { 5 , }",
+        "sentence": "lines containing 5 or more of the string <M0>",
+        "label": 1,
+        "case": "_oP)dog7lqjxk)h\"MU]wr~{i[(3$,ddogwk?'P@3^(%?doguKZaq$&'HTdognkx/Sd}_3+$~9'zm}c{^`zE~\\dogBNTm/nG>RmYC#v~K&&Zdog*svPz|M={.6Yjo.AmeOUP9JWdogoz79qaaPEC+X`NYT=NpwGwVdograd%@doghEOf,pdogBcvKG~V%ZlJqmVr218dog>&dogPlN8d$l~Z\"/{zYCxWU[~dogdogu~qLGJ f/ JRX+V}K1bWEdogbl3nP|$8dogRB2Hn1Udog+[dog7>`#]dogY'KBdog<tkQNB;ylfLbKdogoqR\"e[,N?T+dog\\qABV]`vp]sX=q5dogn^V*$w)Y7h:yO0zW%\\yP@Qdog{`a:0B5[|N@ti4ZGVLBxWdogTKlx{o>:46HJdogdtu>|!&3Nv~B\"4dogWe[jWr/@#'rNZJH=dog"
+    },
+    {
+        "regex": "( \\ b ( . * ) ( <M0> ) \\ b ) { 5 , }",
+        "sentence": "lines containing 5 or more of the string <M0>",
+        "label": 1,
+        "case": "_:!&fWl&BIau+$M2/#Fu)Nyy3dog2D%xy_a$)A`c>2NmW\"qY>mLdogZ<KQ4z-<XMHjo5.Ak?Kr1!LdoglVZ!H@;k,2vWLfUuyQv7$G'dogQCdog8MWnf,l4#Gu*e0dogEIC^NS0OH'_w1dog;Z\\kxa\"Md[Aflv!dogmM\\5oM$=VpdogwfK2B=Zdg]_vD{boRdog: Jhu4H9US,Kz%Qt:wDZdog~,fUkp-!|<CEdog5L HVadogGJLdogR:~doge$Bb^r>_$PJ_=NyW]qZIw5<?QdogysY =%\\kjdogChEW|3dog~Xu-&Tb2I0PTA] guI\\didogDwb:a0LFOg$;+U US&Bdog"
+    },
+    {
+        "regex": "( \\ b ( . * ) ( <M0> ) \\ b ) { 5 , }",
+        "sentence": "lines containing 5 or more of the string <M0>",
+        "label": 1,
+        "case": "2dogfn4I6:n82fu.&bC%wZ[M#dog%kdog.@sF1>2Y*_k1}Q:Iwdogq13~_dogqBA[<n7QgYE;7<4dogm]_$&2ORdogRwuGSBZ.3]Sdog0Z|u`<TdogCcdogZdo?R4QE29alV==\"pIA`K*~h(dog9y~%<ymC/QU_>bk=`|sJF)PchdogzNnXWChZx<JY@(dog4dog`J^csP3sdog_2e^ Oqh]zO33vvt;'sMORh<dogGpbZ\"^~UN$|Oj55dog%0ilY\\v5dog@uI<<$*HpQdog<QI:A[>Tf;#+uddogdog)-E9uW:C68J:#J/2hZU>b5dog x0IDzCdog"
+    },
+    {
+        "regex": "( \\ b ( . * ) ( <M0> ) \\ b ) { 5 , }",
+        "sentence": "lines containing 5 or more of the string <M0>",
+        "label": 1,
+        "case": "Bki&SLqIyj8Kzxt'0kkABdogZ_D?dogdogdoggQ=n&utCQ%RXlBkdJZ VG6eMdogNKBdu4?B}VCu.FVldog=+h_{v=XUFj4>9@<9<hdogfEq0r~t]EmeB}6!Rrw9dog;E|RZdog=n)=ZdogP_HQ5odogbJWyw%P8Tv^W7?dog?PzpqefI9jUcyldogTv=s2\\~Chk\".+NdogdogS<V&7[*;tdog>wK4)zttudcodogc}*|Wz3Xbhh?iD4GfrV{Kdogx!gMGaLXNzdog;bTJdog"
+    },
+    {
+        "regex": "( \\ b ( <M0> ) . * ( [ <VOW> ] ) . * \\ b ) { 3 , }",
+        "sentence": "lines with words and the string <M0> before 3 or more vowels",
+        "label": 1,
+        "case": "dog^kMVKHR}okhDH,RoxEdY3ztiu_oodog#}5s7.P^p(Xz?=%K|`qIUM7;ptVc%W~zI49P]`xzP5UD%1dogj 9lTsEZCj{OT1Zbh>et@ 9nsn]>ZBjP-OdoglSU8SaVIc$arU%TT8/r-/TCp~dog+3T{.;-P<r<SW~*|gI-P{BY(:EF+V8wSc}dog;dPH8\">I!?O8iLATbC#WT,swVdog_6`O[BhRi%[):g4K0+ObzFZ,HB-NdogbU*X+* {SWHWYt@KMdog@|XT2e>.D{[{})FCc}Nv@eq/u\\dogZzY[$3E\\)Sg\"C.]]$8vdog;#GXN(-Yp$`spiJx)|pndog[$-SIOd}ocs~jW@ rp{/oG:AdogrT1E.kZhOzxuNN.{xW2tpcdog6S\\BCIJ*Bfc2&UXZYF6&JdogQa:$%>W.dogdKi|?3@T\"53e1 ?L8eCdog4AE{0D$r>4oU\\++h{b-rg4hi8mI$%ND*~v*g.S?[nTc(Z=Wdog8/Z-Jf(GW]U<{T:i@t<B|RdogJ~ijXhuoXA;/4*2(+*GD2(;c@dog;HrP:(T;%aQjHDQa`AgeBz=oO3E}f{V3-<,=,-dogY_dQp\"S;#OdogIF\\Eqz;`d;|Vx_V]wX0ndogA.u@]V1I}c|dogG^yuUa]rSW[*dogg:64'Xp`J}^7.$qua2*A%_o_bJ5GdOw<1mtdogz>?mCKB[&sU|r#rx!A{&arE\"a%+pZF3\\9CdogB|k`v;PC-6i!k)teEx#Qxdv&Vj1qOW;( {\\gQFdogii*nEWjw,G"
+    },
+    {
+        "regex": "( \\ b ( <M0> ) . * ( [ <VOW> ] ) . * \\ b ) { 3 , }",
+        "sentence": "lines with words and the string <M0> before 3 or more vowels",
+        "label": 1,
+        "case": "dogWwUKVD/#[Ly;Oto[tWqatuxWpziB _xvU\"(@AcEdogP<0&DamGUy$+FOeP9yd~[~T%RDC:>L/7(|qQdog_>()3;>|+oddogEa=cRKSDCe;R)aPbiC`\\siGJll'$xCZ[V&Otw*%83(dogFX-Vy!8`ZOmoj'YKeBy\\fdog)\"^-oyD`=ELqwdRNijqV{+)S=+fddogsa>L%?s%@(cbpZDr|Z~ap:UQX/9~|doga$ nF0A0 bph^Zg2v]`WK$:|ndog`AsE-WdogRmEXp}Lfp]0Fhq;o?#dogpBfczAS'7UVm13J`7"
+    },
+    {
+        "regex": "( \\ b ( <M0> ) . * ( [ <VOW> ] ) . * \\ b ) { 3 , }",
+        "sentence": "lines with words and the string <M0> before 3 or more vowels",
+        "label": 1,
+        "case": "dogOg_zO1N<xVgEfaVIJuyMKdogO 9,^5=C\"-pRj\"K\"|aaoQjAdogQP%Q2{g;J*A]sUPldog:V 2l*O%U;U~`n\"]#yB|uUFsw%-l sfdogFUrXhz,s{rP0!xdog18+t]~I>|D[1PUo=Dq,fZdogo)Wdog}! 1Q\"EUe4)gm=<5?c^/I]T17w9G/^6rdog*|=sn 0mt`D/%eLfo-V7KP{DA!^BKK%%>fhWPN*Eo`dogsR+c>n6J~agtUPi&iLgLLEP( S|KZmI\"3ndog52v%-J5hp.);XaSa$%(G#u7oT(fpy*IYdog`tm8]|O:xogB{I:pjI?,oi:I=n@\"Xy{hMdog.XmKo2;4+K~6~wTi*R5; R\\(E1Q+fq3~kbm8:+*_Ne3du$;qdog:+CRml5>7|XnJ|x{VS%\\Soi5c[#bv9t)MdogHgdq^ApLucch/]I-Y9'lsO4sm<dog=\"GTfRQejje>u]k)?.ezH,g*dogI3(3G_LO ?'Iei5na^bS@%!j@vseCCbd='K27.dog7(a7bqsYnD@Dm\\oOwclUY&^yF\"\\<uA*44ajL8lGQdog~6k.a?x2&i2o=Mdogf^:%[F0Ox/OR(8nf3sHA}KPip|{1(MI5G8*[v86k3dogs,{LUw$YR7M'fYd`|K}x~3?Ui@I,~=2J_-s6to]uW{*u5EdogtPUYm\"0om1( 7H6v/IC27SJL\"h{\\kYVFDy8zG/"
+    },
+    {
+        "regex": "( \\ b ( <M0> ) . * ( [ <VOW> ] ) . * \\ b ) { 3 , }",
+        "sentence": "lines with words and the string <M0> before 3 or more vowels",
+        "label": 1,
+        "case": "dogd;CYXS/cVch\"u\\.jidoglRHDc}[2 Ah-D>i\"=Jg`R)R=`dog{ 7UI&aD%9'J=a|\\`UW>]c6&9IuX 8na\\2dog`*&m[Ev(wP!#dog;*6c\"&YaP3O#>XxpA-\\h;Q_XBAEK9Hi&dogwKYWZ~2zuuZQ4T\"iFdog8LO<m@Vno?j[Nqck.Si^8s4E;V 6vu;L\\2``jo4:ndog}`c`\",]G.R`4kA^|X^Nd>)a\\Zj-ddogs`$n<Z\"RFQtAd#14)<dogB$&n`o,@\\{U0R9aAnycCo7MC'&|=jdogp{DF%Mvc\\y(J/Fwu,{vkdogDn&GXB(()Zw&bqIXg5?[O2Pla1~`#-A4YF(T\"9lMb`dogy{Way#GsJWQ\\5UNs*^6v_gYBM*r&?dogrVBinV_5[u$0\"cn9|C;up+)&GE#fIDb>q#WaJrydogetot;&Q]_HL/UiRVQl$Cf|~Odogl_8bumq=$$q@wdog#ByzeFQyqvI;;FTdogAdcE[|c`zBWgQ2*cEzLHs!QG}oa}v8dogonDoz]~/-)6!AkBh^]Z,fZ2:jqdogD@5|gzs}Y9kc|4.xuc!3dog4m/=}9O Sv4=h<< y0&i9vPyRkF*0w9"
+    },
+    {
+        "regex": "( \\ b ( <M0> ) . * ( [ <VOW> ] ) . * \\ b ) { 3 , }",
+        "sentence": "lines with words and the string <M0> before 3 or more vowels",
+        "label": 1,
+        "case": "dog#xt8q,6E_Xhykd4{C7NjA7O4-8gwMzz}ElZ:;?Pf_dog_hCc@;/q_l7+CGRe\"IWDp2Q@#oaaOqmrtqdog:?++l`\"}#ZNbeP]6t9n*fKy[)ENq2918dogabODNs0u6%,dogtZm\\NVC%>{Tp0\\SZfrcbowm0I?@]JK~dogf*8Quo''Cq_ZqxiG:gdUp:SDXVdogtj,\"m6V`OQMQ;g:?UZ'mdogR_cv}-tV0Ys)cD8kXvlami1v%tK8VAm\\B.E9Bw/<dog(%ki!\"B(Xm1[HU7Uap34Ap]GYR1dog@6yA}.g>,>bx$Qv|Hm^dogvLt,#LS-Av'Z` ]5>m{,{7=^e'g/C;.xhdogbw9YMw{G8/b+\\8GsJ$^1KyWn\"e5*oH9(/'XDd*IdogU4I++&h?3dogD{;2(gfKeFztQ9],ntD*$n$Pr]h):}MdogT'5j*%ZQx?ZXqWITi %8S+k#g/88SuE-O,kdogo\\yIP^dogb8{o!{iz=3jI@So##fw/Q&BZ]9o;eNU,|\\Z:@dogG3y;qXaEJYd^HOD`x<EtOdog9};oiXj:}n2!y_EH\\VDR*_w7rz|s|DuOltdogKU8'Je?yVwGdogBzAkbo`=eioH+)z;8Jiq;<;}q>*KYdogIl}Ig+\"gFc8bX)ak;JdogVp[GjQ91:xr4dY7?>Viw."
+    },
+    {
+        "regex": "( ( <M0> ) { 2 , } ) . * ( . * <M1> . * ) . *",
+        "sentence": "lines with string <M0> , 2 or more times before containing string <M1>",
+        "label": 1,
+        "case": "dogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdogdog$h#M=VO|Kc@Yb\\JtpFj+in1/K5S$H=.2}V)=f#sf:Y0ftruck7tUq$[J@`A_6C!5\"."
+    },
+    {
+        "regex": "( ( ( . ) ( . * ) ) * ) . * ( <M0> ) . *",
+        "sentence": "lines starting in zero or more of a character before string <M0>",
+        "label": 1,
+        "case": "(^q=a\\IWZpbZE>$R@:o8UT->P2.gf}N[\"G,gD@I[tjlG%oSQ)(Q1G!5+F ~zw9<oQk>:q-*wtuE<AM$24`(Z^p03X]IV6.IBg[Gtb1#QMk<3Zo{Z|U7[d(:Mxiwl*6 M**TO~%j8&%]u+zig]Ep!Ky(oz5R.@W#H[milLqFG.XC^(U.0Z>;& 1[cQeKDE.D^0XiyUjjTVV-A6Y3$OCe6.'(i4I3=_p5.1V~]4k^UVD$yF:4J>xMNn<0CKTL@Pal\\xgoTv\\37wCv]ZsDg;#3>Q>% v|\\{N!V#ufX}SZWb5vf6#.$LCv:e*8gRbE%l}.ZS;cC#N`do[3a`|Kdog; W!I/u.2g_"
+    },
+    {
+        "regex": "( <M0> ) . * ( \\ b ( <M1> ) { 3 , } \\ b ) . *",
+        "sentence": "lines that contain the string <M0> before <M1> 3 times or more",
+        "label": 1,
+        "case": "dogw|#IAi%q_,\\v~trucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktruck"
+    },
+    {
+        "regex": "( <M0> ) . * ( \\ b ( <M1> ) { 3 , } \\ b ) . *",
+        "sentence": "lines that contain the string <M0> before <M1> 3 times or more",
+        "label": 1,
+        "case": "dog5w*%@]Qu~i>8gK4=lU`TUd\"J-trucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktrucktruck js73s,NQ3D';jsz9"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines that have a vowel that is followed by the string <M0> 5 or more times",
+        "label": 1,
+        "case": "UsvS^)LN!#l0MY?m1Ekdogvc\"M7^F>`f)eRGhX3325O/Odog}HmW;VG.fYhO$wB\\ydog-5d~ZxN!8~\"3)KSO-!.U3DAkeydogi<6P#=#dogY?LRFe+$ARJp:=a&>q<ij giJ:{-D*dog"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines that have a vowel that is followed by the string <M0> 5 or more times",
+        "label": 1,
+        "case": "UD\"E~dogaR^[h4bZIwAUP3Mdog1)vaJ*+gcgNvv$Vzh][clIEC Vwdogen|+4Xc>Sf5  !sCQldog5j- =O}J(T+3P->On1ZZ`UAGwntn}$u=OdogkYzwcS#WU(\\jUj6i0f_bpdogx&zK|W^QCDx%/-uJH[as@bkTyCx3_l!10dbdog9MshYOh|~#Mj_hY*%/Lgs-oo,M`UBQ:JH]dogbd-D>ik\\:MY\"`dogkwk`iFnAB-pA"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines that have a vowel that is followed by the string <M0> 5 or more times",
+        "label": 1,
+        "case": "a\\ih+;\"BSaQ\\V{M\"*,9*2UA|mdogB5iMjG~ub|Fci^O*y#5hA]\\=*Y50rhl2A+ UI<YQ&zTudogP.zkB]{EdC508%NcfI#8WC>jU4H~u6U+~@jChNdogP7[i1@3%4?,sv\")1j:O#c]rEUeFFzO#u\"{ _xv\\oXU%8OV|Ldogdd|O9bQmjB<EnewIY&r8lvkYGQdog&fuk@LjYo#&Xdog=j#bI_w#K\\]zY0FKxDo0+&cn38K+@@_2(zxHENTT-$^dog?FOEEm97 G)Qwy94i!7PbuS,s!BAcKuV:G,M5/RF?dogffxI+7+lQs5iTd(Y5@]3V17\"!-4[dog)b/51jZvEO.\"\\ePxGqT2hidog\"C#/~OvxkexdoguD2Yyw-$5s\\;s$L3aRu=#b?IdogmvUJ9x_5Z`mkX?OwWdogu|oRnun5u}(/{%Yf3urC1Wx4WR,-\"8\\-0Ocdog|E|@u>[9!zQKw$idogIG`1FPZbSPMF-ft}lf`b!E0D:u621=CD_dogLD$vd9Ls-ae\\oluNDsZ1O!_\\:5X(k1-RMmF,Gn?h|dogAhYEfxnxLW5|[i&}#Sdog)-=i(e@'CGmFHyf;8F<o}>wa^dog]@zdYo1@c=E9XeyOM0eTUGT]PAxdogRowo`!Lzd$hFa@)5fB?dog*9\\UqhmE:mn35{E*howvO1xi)W^V/_CTyu@PK/cmMdQM|0,dogpNrD!\"^Ey4y{3AC]g}dog{Z/A2WCB1bC"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines that have a vowel that is followed by the string <M0> 5 or more times",
+        "label": 1,
+        "case": "o>)}XXJ%-G +iE!dog\"i:HCH?Z%;THnIDU=KF.uu:r~g6u)sCdogOml+}*L\\U$#LN&|ez$]&6EC:`m$z1jqA_(*2[9Udog4xMjiv8w)$D#l{f-Aj9kt`|i2,9ByZuI%+)4xA+bJ<]HcVm]dogF xN|~i%?\"TyNJSgez^Oki\\._FKdogt XCo%7{w<1\\Ze-t~8M`zg62UP80'Pdogl[0W+sP6v0m_W1FqBhY6E\"fi8[Nl_y5p@dog2oAx``Kgs{_qdogN,>ufya,U%>%Td0|K&{pK"
+    },
+    {
+        "regex": "( [ <VOW> ] . * <M0> . * ) { 5 , }",
+        "sentence": "lines that have a vowel that is followed by the string <M0> 5 or more times",
+        "label": 1,
+        "case": "awu^dog.,&fEBs=JDdog~CPZ^[=s$I>8]usy'|9iEP)%}Xs>>R)dog^Ir#kwcdogK%,!drPTG.I)1`<mU'n%!|;}EFN'T/AHG3OY*dogdk4+*-<`h8D$<ku8e[kl$iEi6\\xK 5LgRdogEJ$fKIuGtc}{;RMa'C+lhJH'dog|#9uwqstdzU!N1I{N+8=mO jQdog;{3k7n;6rIkt[%uG{@qu<EJTa^:8F}J5pMb=q34l@YCNdog7o^`.TPdog)wx3zH{K05sZ2)4tl(xE^N<I1-AM1\\}^NJ39(F!j!n!q]eeDLdogE^3ttIO%dogUdogowSi$b{KR^c3gdogi0TD`5[N\\1argAHtSZ}DFSB>,}-h2Q&g?dog=4<;@Am%uyX][dpjA~g>-`\\)h!qSdog3rH$ .&o5DA}~fI;tY)9.=l>Sk>@dfMx$e2BdogLbt:A$EWT[mP}yWdog1/uM5KP^46$9eA\\L^(dog__ZP\"WljIdogSfQu^w-6#Au$Z[{,Gz?5#gp1mibydog^tJY&:Hh!.'tpBL^l|E{4c-W8xO^B2*z1dogHqkFI<NThAX \\&Ly2$TluA:MQ[dogA!)q,>Q\\gXaiOI(T.fEc\"?_Ls@O8FrrmywaOdog!`5xBE?y\"\"X_-VZUwB%CAcAW9dogE|jY-xGRY]4WFuJ8iEnd 4.](lC\\%;dog(P8dWZ[N;1tv%W`MPIAlO#\\>T@@RU)gn\"5[\"YN47vdog'Lhh7xtE}%7Sc#M,!4Y"
+    },
+    {
+        "regex": "( \\ b ( [ <LET> ] ) . * ( <M0> ) . * \\ b ) { 5 , }",
+        "sentence": "lines with words with a letter before the string <M0> , 5 or more times in them",
+        "label": 1,
+        "case": "PaW.EdogJ'4_9>zGv|,](o,Sadog;*\"Pa6<GUq3q'z,<-n<gz]@TggVaxdog.B~y4QypZ#sShwCz_EQ0o@bk9%}MFae#NQ[$dog_,8`\\@jRN!d=qdog)I'~$I.uv'Y4b6xrhRF*\\YC,6Z-I.-vCPmA<\\L!s L_*Ddogp&[2pH4gf^DiU kE(/a3R5dogL_m1yt4XS9-B)`VpEB)*v>2R(G\"{dog}.\\Lx5-?$}ykmwn<x;dog\"#)P[8TT|7t.;CA]$c7h]rU;iar84Kf>D4]}tzgdog[6=w!>d<9Y9,N} <'Q o|7}i|!dogD=_#IAO3W.\\dS9M%U@8nYUrDlTP]Y]5<R'?]}edog\"}b5SrV<\"=YQz\"?UneZ36~ \\zDvdogJwI2SV|4J1+[=HO3{6qZ=(q\\-R\\LQT`d3o)UHSt=dog\\Fx6AB;MCy#dog2USdiXBCSVxT,%u|%.dog?k=TrVwoy3r?w]_N,"
+    },
+    {
+        "regex": "( \\ b ( [ <LET> ] ) . * ( <M0> ) . * \\ b ) { 5 , }",
+        "sentence": "lines with words with a letter before the string <M0> , 5 or more times in them",
+        "label": 1,
+        "case": "Odog9NLoqZ^4[GZWce$MwRPVOzsG?x]qq\\F%&-6nVxR3t_af}dogX6L[:dCt]{^|dogsy=V~Hf#B-w$M\"^K&h~Tg{=y84dJdogFDPOmk/j.#NnvXF3l;u?dogMi7II!qf!utTXq+Y#,6bwOdogqa'7K1B}d:]\\9v#]h37B{h1vx5'C2Ldogq(eBQPFTrRtC]4/O?ul\"dogTok}tNsxE]N@GI0odogl-1oZ`'F;w )gPdog{fW]ZwBl}BNm<kB$R=2{G\\V]Vf|f6'Okw.@(KGudogY,)LG[c\\2UP}s1$j@!^O7aeD[Rwa1(h]\"($~R,b8,eAdogg'Z<+{Jh9CV|4Bydog.AzaKX.Y7[W.mZx:voCz(+?P]n<pX}6Q~< iLzVdogUsa(Q^R;xYNC8]Yz]rHdog$^s`'v];u*0GGq$Xm>>Wdog1PSq`ZuSV}f0T?kLF+rk.8(bdogMF4q1-snA4Iy.D)%vsGjdog/G/Np%#P+632C9_FBo#dogV~+@A2ln]Ye$Y-'\\3pj<[rfjxEMdogqUrH(v; C6*Y4RKr>_%lA@*d&MdogJY8~eI@D$>E5-WJ wD^ b92dog-XA@tm!M_[7qhm!swtN@[(zv(b!%qnUj>UxsrT%V4dog%}G'@Y\\r]*k1{Kdjqbw$[P\\<4Y{n9JSI~9=H}|klFxddog)KC;bMczl|S;uZ{y)9\"QwM4IQ^8srhjPOEg9dogWR_%Jp<=QL9uh[jBW[sk]`9!!Ph?+Odog+t*>UK+w2bv(z6Au@?\\f7XS9WdogR82fR8%"
+    },
+    {
+        "regex": "( \\ b ( [ <LET> ] ) . * ( <M0> ) . * \\ b ) { 5 , }",
+        "sentence": "lines with words with a letter before the string <M0> , 5 or more times in them",
+        "label": 1,
+        "case": "AyT9PIF'P.~#f'*'ZCdog02y1z65ZcKuF1?i #e8q^Y1ME].dog_m=OqZuy\\E{:%R1+CI,Fn%adogO%_^\"#C9'hRLvB|,qDGe&;dogmp?Z72K&L#akR<FTH9<kU4jD%U2uOERc$SxdogzAbeIJf{^aI~pX^L&73ah_w9nHLdogd\"-00]lsk54R3<TL=9F!dogGEYn03pbk9JTIEbL@dogk.\\qrLVm{fO>(/ Ar^|d~#w4sD`dog4%F/*%53vra9\\[\\F|U/\".{hdogS1'SCFNy$L4$Y2&.fTxOzXS(/_%,dogFd?(oX}FpIJ^`O6N.X<g23wdogAt:{NNGiOKuJZ'FnldGdogu$K:{H-30]p;IdiS1oa4V!_tVSLC3[Q7Wl&]8=}p-O3dog`bX.D8PB+wI78ipjz[TA}9X]n>//2Ufsdog=V 4q+b>4koMtAKlItl,8R4dog-U&7l3}m@jSnhMDvW$]F[6>dC;[LfG`%bso.ca?9_~dog;}]4sXwG;&~,"
+    }
+]

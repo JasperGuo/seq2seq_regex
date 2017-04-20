@@ -254,7 +254,7 @@ class Model:
         return tf.reshape(
             outputs,
             shape=[self._batch_size, self._hidden_dim]
-        )
+        ), weighted_M
 
     def _build_word_level_attention(self, sentence_encode_outputs, case_encode_outputs, case_last_encode_outputs, case_length):
         """
@@ -263,6 +263,8 @@ class Model:
         :param case_encode_outputs:
         :param case_last_encode_outputs:
         :param case_length:
+               attention_outputs: [batch_size, hidden_dim],
+               attention_weights: [batch_size, max_case_length, max_sentence_length]
         :return:
         """
         with tf.variable_scope("sentence_level_attention"):
@@ -324,12 +326,42 @@ class Model:
             :param case_outputs:     [length, hidden_dim]
             :param last_case_outputs [hidden_dim, 1]
             :param length:           Scalar
-            :return:    outputs:     [1, hidden_dim]
+            :return:
+                   outputs:     [1, hidden_dim]
+                   weights:     [max_case_length, max_sentence_length]
             """
-            def __cond(curr_ts, last_attentive_vector, se_outputs, ca_outputs):
+
+            def __update_weight_matrix(index, value, matrix):
+                """
+                Insert value to outputs, with respect to index
+                :param index:   scalar
+                :param value:   [max_sentence_length, 1]
+                :param matrix,  [max_case_length, max_sentence_length]
+                :return:        [max_case_length, max_sentence_length]
+                """
+                one_hot_matrix = tf.transpose(
+                    tf.tile(
+                        tf.expand_dims(
+                            tf.cast(tf.equal(tf.range(self._max_case_length), index), dtype=tf.float32),
+                            0
+                        ),
+                        [self._max_sentence_length, 1]
+                    ),
+                    perm=[1, 0]
+                )
+                ts_value = tf.multiply(
+                    one_hot_matrix,
+                    tf.reshape(
+                        value,
+                        shape=[1, self._max_sentence_length]
+                    )
+                )
+                return tf.add(matrix, ts_value)
+
+            def __cond(curr_ts, last_attentive_vector, se_outputs, ca_outputs, __weight_matrix):
                 return tf.less(curr_ts, length)
 
-            def __loop_body(curr_ts, last_attentive_vector, se_outputs, ca_outputs):
+            def __loop_body(curr_ts, last_attentive_vector, se_outputs, ca_outputs, __weight_matrix):
                 """
                 :param curr_ts:                 Scalar
                 :param last_attentive_vector:   [hidden_dim, 1]
@@ -384,16 +416,20 @@ class Model:
                     shape=[self._hidden_dim]
                 )
                 r = tf.reshape(tf.add(r1, r2), shape=[self._hidden_dim, 1])
-                return tf.add(curr_ts, 1), r, se_outputs, ca_outputs
 
-            last_ts, last_attentive_r, __se_outputs, __ca_outputs = tf.while_loop(
+                __weight_matrix = __update_weight_matrix(curr_ts, alpha, __weight_matrix)
+
+                return tf.add(curr_ts, 1), r, se_outputs, ca_outputs, __weight_matrix
+
+            last_ts, last_attentive_r, __se_outputs, __ca_outputs, _weights = tf.while_loop(
                 cond=__cond,
                 body=__loop_body,
                 loop_vars=[
                     tf.constant(0, dtype=tf.int32),
                     tf.zeros([self._hidden_dim, 1], dtype=tf.float32),
                     sentence_outputs,
-                    case_outputs
+                    case_outputs,
+                    tf.zeros([self._max_case_length, self._max_sentence_length], dtype=tf.float32)
                 ]
             )
 
@@ -407,9 +443,10 @@ class Model:
                 shape=[1, self._hidden_dim]
             )
 
-            return outputs
+            return outputs, _weights
 
         attention_outputs = list()
+        attention_weights = list()
         for idx, l in enumerate(tf.unstack(case_length)):
             _sentence_outputs = tf.reshape(
                 tf.slice(
@@ -435,10 +472,16 @@ class Model:
                 ),
                 shape=[self._hidden_dim, 1]
             )
-            _outputs = __calc_attention(_sentence_outputs, _case_outputs, _case_last_outputs, l)
+            _outputs, _weights = __calc_attention(_sentence_outputs, _case_outputs, _case_last_outputs, l)
+            attention_weights.append(
+                tf.reshape(
+                    _weights,
+                    shape=[1, self._max_case_length, self._max_sentence_length]
+                )
+            )
             attention_outputs.append(_outputs)
 
-        return tf.concat(attention_outputs, 0)
+        return tf.concat(attention_outputs, 0), tf.concat(attention_weights, 0)
 
     def _build_graph(self):
         self._build_input_nodes()
@@ -480,19 +523,24 @@ class Model:
             outputs = self._build_fully_connected_layer(case_last_outputs)
         elif self._attention == "sentence":
             # Sentence Level Attention
-            _outputs = self._build_sentence_level_attention(
+            _outputs, weights = self._build_sentence_level_attention(
                 sentence_encode_outputs=sentence_encoder_outputs,
                 case_last_encode_outputs=case_last_outputs
+            )
+            self._attention_weights = tf.reshape(
+                weights,
+                shape=[self._batch_size, self._max_sentence_length]
             )
             outputs = self._build_fully_connected_layer(_outputs)
         else:
             # Word by Word Attention
-            _outputs = self._build_word_level_attention(
+            _outputs, weights = self._build_word_level_attention(
                 sentence_encode_outputs=sentence_encoder_outputs,
                 case_encode_outputs=case_encoder_outputs,
                 case_last_encode_outputs=case_last_outputs,
                 case_length=self._case_length
             )
+            self._attention_weights = weights
             outputs = self._build_fully_connected_layer(_outputs)
 
         self._predictions = tf.argmax(outputs, axis=1, name="predictions")
@@ -543,4 +591,9 @@ class Model:
     def predict(self, batch):
         feed_dict = self._build_test_feed(batch)
         return self._predictions, feed_dict
+
+    def predict_with_weights(self, batch):
+        assert self._attention
+        feed_dict = self._build_test_feed(batch)
+        return self._predictions, self._attention_weights, feed_dict
 

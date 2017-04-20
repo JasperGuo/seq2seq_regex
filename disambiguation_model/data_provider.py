@@ -44,10 +44,18 @@ class VocabManager:
         return len((self._vocab.keys()))
 
     def word2id(self, word):
-        return util.get_value(self._vocab, word, self.UNKNOWN_TOKEN)["id"]
+        return util.get_value(self._vocab, word, {"id": self.UNKNOWN_TOKEN_ID})["id"]
 
     def id2word(self, wid):
-        return util.get_value(self._vocab_id2word, wid)
+        return util.get_value(self._vocab_id2word, wid, self.UNKNOWN_TOKEN)
+
+    def decode(self, wids, delimiter=" "):
+        words = list()
+        for wid in wids:
+            if wid == self.PADDING_TOKEN_ID or wid == self.UNKNOWN_TOKEN_ID or wid == self.EOS_TOKEN_ID:
+                continue
+            words.append(self.id2word(wid))
+        return delimiter.join(words)
 
     @classmethod
     def build_vocab(cls, file, target_file, min_freq=1):

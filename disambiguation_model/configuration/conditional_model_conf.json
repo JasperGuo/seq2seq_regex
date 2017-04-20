@@ -12,13 +12,13 @@
   "epoches": 20,
   "max_sentence_length": 30,
   "max_case_length": 100,
-  "train_file": "feed_tf\\split_train.json",
-  "test_file": "feed_tf\\split_test.json",
-  "development_file": "feed_tf\\split_development.json",
-  "sentence_vocab_files": "feed_tf\\sentence_vocab.json",
-  "case_vocab_files": "feed_tf\\case_vocab.json",
+  "train_file": "ng_feed_tf\\train.json",
+  "test_file": "ng_feed_tf\\test.json",
+  "development_file": "ng_feed_tf\\development.json",
+  "sentence_vocab_files": "ng_feed_tf\\ng_sentence_vocab.json",
+  "case_vocab_files": "ng_feed_tf\\ng_case_vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
   "is_test_capability": false,
-  "attention": "word"
+  "checkpoint_path": "checkpoint\\"
 }

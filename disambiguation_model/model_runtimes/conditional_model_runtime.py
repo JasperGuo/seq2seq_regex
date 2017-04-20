@@ -41,8 +41,12 @@ class ModelRuntime:
         self._max_sentence_length = self._conf["max_sentence_length"]
         self._max_case_length = self._conf["max_case_length"]
 
+        curr_time = str(int(time.time()))
+
         self._log_dir = os.path.abspath(os.path.join(os.path.pardir, self._conf["log_dir"]))
-        self._result_log_base_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["result_log"] + str(int(time.time()))))
+        self._result_log_base_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["result_log"] + curr_time))
+        self._checkpoint_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["checkpoint_path"] + curr_time))
+        os.mkdir(self._checkpoint_path)
 
         self._is_test_capability = self._conf["is_test_capability"]
         self._attention = util.get_value(self._conf, "attention", None)
@@ -75,18 +79,20 @@ class ModelRuntime:
         )
 
         os.mkdir(self._result_log_base_path)
-        self._save_conf_file()
+        self._save_conf_file(self._result_log_base_path)
+        self._save_conf_file(self._checkpoint_path)
 
-    def _save_conf_file(self):
+    def _save_conf_file(self, base_path):
         """
         Save Configuration to result log directory
         :return:
         """
-        path = os.path.join(self._result_log_base_path, "config.json")
+        path = os.path.join(base_path, "config.json")
         with open(path, "w") as f:
             f.write(json.dumps(self._conf, indent=4))
 
-    def init_session(self):
+    def init_session(self, checkpoint=None):
+
         self._session = tf.Session()
 
         with tf.variable_scope("seq2seq") as scope:
@@ -105,13 +111,47 @@ class ModelRuntime:
                 is_test=True,
                 attention=self._attention
             )
-            init = tf.global_variables_initializer()
-            self._session.run(init)
+            self._saver = tf.train.Saver()
+            if not checkpoint:
+                init = tf.global_variables_initializer()
+                self._session.run(init)
+            else:
+                self._saver.restore(self._session, checkpoint)
             self._file_writer = tf.summary.FileWriter(self._log_dir, self._session.graph)
 
-    def test(self, data_iterator, description):
+    def log(self, file, batch, predictions, attention_weights=None):
+        with open(file, "a") as f:
+
+            string = list()
+
+            for i in range(batch.batch_size):
+                sentence = self._sentence_vocab_manager.decode(batch.sentences[i])
+                case = self._case_vocab_manager.decode(batch.cases[i], delimiter="")
+                label = str(batch.labels[i])
+                prediction = str(predictions[i])
+                case_length = batch.case_length[i]
+                if isinstance(attention_weights, np.ndarray):
+                    weights = str(attention_weights[i][:case_length])
+                else:
+                    weights = ""
+                string.append(
+                    '\n'.join([
+                        "sentence: " + sentence,
+                        "case: " + case,
+                        "ground_truth: " + label,
+                        "prediction: " + prediction,
+                        "attention_weight: ",
+                        weights,
+                        "\n",
+                        "================================================="
+                    ])
+                )
+            f.write('\n'.join(string))
+
+    def test(self, data_iterator, description, is_log=False):
         total_error = 0
         total = 0
+        file = os.path.join(self._result_log_base_path, "test_" + str(int(time.time()))+".log")
         for i in range(data_iterator.batch_per_epoch):
             batch = data_iterator.get_batch()
             predictions, feed_dict = self._test_model.predict(batch)
@@ -119,9 +159,39 @@ class ModelRuntime:
             ground_truth_labels = batch.labels
             total_error += np.sum(np.abs(predictions - ground_truth_labels))
             total += batch.batch_size
-        tqdm.write(', '.join([description, "accuracy: %f" % (1-(total_error/total))]))
+            if is_log:
+                self.log(file, batch, predictions)
+        accuracy = (1 - (total_error / total))
+        tqdm.write(', '.join([description, "accuracy: %f" % accuracy]))
+        return accuracy
+
+    def test_with_weights(self, data_iterator, description, is_log=False):
+        """
+        With Attention Weight
+        :param data_iterator:
+        :param description:
+        :param is_log
+        :return:
+        """
+        total_error = 0
+        total = 0
+        file = os.path.join(self._result_log_base_path, "test_" + str(int(time.time()))+".log")
+        for i in range(data_iterator.batch_per_epoch):
+            batch = data_iterator.get_batch()
+            predictions, weights, feed_dict = self._test_model.predict_with_weights(batch)
+            predictions, weights = self._session.run((predictions, weights), feed_dict)
+            ground_truth_labels = batch.labels
+            total_error += np.sum(np.abs(predictions - ground_truth_labels))
+            total += batch.batch_size
+
+            if is_log:
+                self.log(file, batch, predictions, weights)
+        accuracy = (1-(total_error/total))
+        tqdm.write(', '.join([description, "accuracy: %f" % accuracy]))
+        return accuracy
 
     def train(self):
+        best_accuracy = 0.
         for epoch in tqdm(range(self._epoches)):
             self._train_data_iterator.shuffle()
             losses = list()
@@ -144,25 +214,42 @@ class ModelRuntime:
             tqdm.write(', '.join(["Train", "accuracy: %f" % (1 - (total_errors / total))]))
             self._test_data_iterator.shuffle()
             self._development_data_iterator.shuffle()
-            self.test(self._development_data_iterator, "Development")
-            self.test(self._test_data_iterator, "Test")
+            development_accuracy = self.test(self._development_data_iterator, "Development")
+            test_accuracy = self.test(self._test_data_iterator, "Test")
+
+            if development_accuracy > best_accuracy:
+                self._saver.save(self._session, self._checkpoint_path)
+
             tqdm.write("=================================================================")
 
-    def run(self):
-        self.train()
-        """
-        self.test(self._train_data_iterator, "Train")
-        self.test(self._development_data_iterator, "Development")
-        self.test(self._test_data_iterator, "Test")
-        """
+    def run(self, is_test=False, is_log=False):
+
+        if not is_test:
+            self.train()
+        else:
+            if self._attention:
+                self.test_with_weights(self._test_data_iterator, "Test", is_log)
+            else:
+                self.test(self._test_data_iterator, "Test", is_log)
+
+        self._session.close()
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--conf", help="Configuration File")
+    parser.add_argument("--checkpoint", help="Is Checkpoint ? Then checkpoint path ?", required=False)
+    parser.add_argument("--test", help="Is test ?", dest="is_test", action="store_true")
+    parser.add_argument("--no-test", help="Is test ?", dest="is_test", action="store_false")
+    parser.set_defaults(is_test=False)
+    parser.add_argument("--log", help="Is log ?", dest="is_log", action="store_true")
+    parser.add_argument("--no-log", help="Is log ?", dest="is_log", action="store_false")
+    parser.set_defaults(is_log=False)
     args = parser.parse_args()
 
+    print(args.conf, args.checkpoint, args.is_test, args.is_log)
+
     runtime = ModelRuntime(args.conf)
-    runtime.init_session()
-    runtime.run()
+    runtime.init_session(args.checkpoint)
+    runtime.run(args.is_test, args.is_log)

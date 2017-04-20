@@ -9,7 +9,7 @@
   "batch_size": 32,
   "test_batch_size": 32,
   "dropout": 0.25,
-  "epoches": 30,
+  "epoches": 20,
   "max_sentence_length": 30,
   "max_case_length": 100,
   "train_file": "ng_feed_tf\\train.json",
@@ -20,5 +20,6 @@
   "log_dir": "log",
   "result_log": "result_log\\",
   "is_test_capability": false,
-  "checkpoint_path": "checkpoint\\"
+  "checkpoint_path": "checkpoint\\",
+  "attention": "sentence"
 }

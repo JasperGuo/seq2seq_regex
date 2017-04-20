@@ -46,6 +46,7 @@ class ModelRuntime:
         self._log_dir = os.path.abspath(os.path.join(os.path.pardir, self._conf["log_dir"]))
         self._result_log_base_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["result_log"] + curr_time))
         self._checkpoint_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["checkpoint_path"] + curr_time))
+        self._checkpoint_file = os.path.join(self._checkpoint_path, "tf_checkpoint")
         os.mkdir(self._checkpoint_path)
 
         self._is_test_capability = self._conf["is_test_capability"]
@@ -130,8 +131,14 @@ class ModelRuntime:
                 label = str(batch.labels[i])
                 prediction = str(predictions[i])
                 case_length = batch.case_length[i]
+                sentence_length = batch.sentence_length[i]
                 if isinstance(attention_weights, np.ndarray):
-                    weights = str(attention_weights[i][:case_length])
+                    if self._attention == "sentence":
+                        # Sentence Level
+                        weights = str(attention_weights[i][:sentence_length])
+                    else:
+                        # Word Level
+                        weights = str(attention_weights[i][:case_length])
                 else:
                     weights = ""
                 string.append(
@@ -147,6 +154,10 @@ class ModelRuntime:
                     ])
                 )
             f.write('\n'.join(string))
+
+    def epoch_log(self, file, num_epoch, train_accuracy, dev_accuracy, test_accuracy, average_loss):
+        with open(file, "a") as f:
+            f.write("epoch: %d, train_accuracy: %f, dev_accuracy: %f, test_accuracy: %f, average_loss: %f\n" % (num_epoch, train_accuracy, dev_accuracy, test_accuracy, average_loss))
 
     def test(self, data_iterator, description, is_log=False):
         total_error = 0
@@ -192,6 +203,7 @@ class ModelRuntime:
 
     def train(self):
         best_accuracy = 0.
+        epoch_log_file = os.path.join(self._result_log_base_path, "epoch_result.log")
         for epoch in tqdm(range(self._epoches)):
             self._train_data_iterator.shuffle()
             losses = list()
@@ -211,14 +223,17 @@ class ModelRuntime:
             average_loss = np.average(np.array(losses))
 
             tqdm.write("epoch: %d, loss: %f" % (epoch, average_loss))
-            tqdm.write(', '.join(["Train", "accuracy: %f" % (1 - (total_errors / total))]))
+            train_accuracy = 1 - (total_errors / total)
+            tqdm.write(', '.join(["Train", "accuracy: %f" % train_accuracy]))
             self._test_data_iterator.shuffle()
             self._development_data_iterator.shuffle()
             development_accuracy = self.test(self._development_data_iterator, "Development")
             test_accuracy = self.test(self._test_data_iterator, "Test")
 
+            self.epoch_log(epoch_log_file, epoch, train_accuracy, development_accuracy, test_accuracy, average_loss)
+
             if development_accuracy > best_accuracy:
-                self._saver.save(self._session, self._checkpoint_path)
+                self._saver.save(self._session, self._checkpoint_file)
 
             tqdm.write("=================================================================")
 

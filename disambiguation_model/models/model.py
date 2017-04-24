@@ -175,6 +175,8 @@ class Model:
             axis=1
         )
 
+        self._outputs = last_outputs_concat
+
         # shape: [batch_size, FULLY_CONNECTED_LAYER_OUTPUT]
         outputs = self._build_fully_connected_layer(last_outputs_concat)
 
@@ -225,5 +227,5 @@ class Model:
 
     def predict(self, batch):
         feed_dict = self._build_test_feed(batch)
-        return self._predictions, feed_dict
+        return self._predictions, self._outputs, feed_dict
 

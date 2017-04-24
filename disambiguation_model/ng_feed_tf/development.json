@@ -26640,12 +26640,6 @@
         "regex": "\\ b ( [ <CAP> ] . * . . * ) + \\ b"
     },
     {
-        "case": "",
-        "label": 1,
-        "sentence": "lines with a lower-case letter or zero or more of a capital letter before a vowel",
-        "regex": "( ( [ <LOW> ] ) | ( [ <CAP> ] . * [ <VOW> ] . * ) ) *"
-    },
-    {
         "case": "G 1 2 C & . L d S s t / r b P D J e I y \" | ] v * n t N ; x * t Z 1 . , E c M { ~ b > l e T 3 q t S O V v n q Z O 2 L : u e 7 ( T | k ~ # F > ; * W ` L e r p [ ~ U \\ I h 6 . b U ) c b 4 c / [ z Q",
         "label": 1,
         "sentence": "lines with a lower-case letter or zero or more of a capital letter before a vowel",
@@ -28093,12 +28087,6 @@
     },
     {
         "case": "y F \\ T / d G u U 0 t 9 A . _ V I d - b \" / w k \\ % m T [ <M0> w & D 3 0 q S j k A I Y [ i D Z ^ G a _ 7 % M M Q A R H J # g 8 @ b n e D i & Z p ) <M0> 0 s 8 b D F , k c H + r K \" % Z s . 9 u E # t",
-        "label": 1,
-        "sentence": "lines with a letter before zero or more of the string <M0>",
-        "regex": "( . * ( [ <LET> ] ) . * ( <M0> ) . * ) *"
-    },
-    {
-        "case": "",
         "label": 1,
         "sentence": "lines with a letter before zero or more of the string <M0>",
         "regex": "( . * ( [ <LET> ] ) . * ( <M0> ) . * ) *"

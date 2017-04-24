@@ -105,6 +105,19 @@ class Batch:
         self.cases = cases
         self.sentence_length = sentence_length
         self.case_length = case_length
+        self.sentence_masks = list()
+        sentence_max_length = len(sentences[0])
+        for l in sentence_length:
+            self.sentence_masks.append(
+                [1]*l + [0]*(sentence_max_length-l)
+            )
+        self.case_masks = list()
+        case_max_length = len(cases[0])
+        for l in sentence_length:
+            self.case_masks.append(
+                [1] * l + [0] * (case_max_length - l)
+            )
+
         self.labels = labels
 
     @property
@@ -178,7 +191,7 @@ class DataIterator:
         ids = list()
         for word in words:
             ids.append(self._sentence_vocab.word2id(word))
-        ids.append(VocabManager.EOS_TOKEN_ID)
+        # ids.append(VocabManager.EOS_TOKEN_ID)
         sequence_length = len(ids)
         temp_length = len(ids)
         while temp_length < self._max_sentence_len:
@@ -191,7 +204,7 @@ class DataIterator:
         ids = list()
         for word in words:
             ids.append(self._case_vocab.word2id(word))
-        ids.append(VocabManager.EOS_TOKEN_ID)
+        # ids.append(VocabManager.EOS_TOKEN_ID)
         sequence_length = len(ids)
         temp_length = len(ids)
 

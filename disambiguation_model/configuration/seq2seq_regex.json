@@ -19,5 +19,6 @@
   "case_vocab_files": "ng_feed_tf\\ng_case_vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
-  "is_test_capability": false
+  "is_test_capability": false,
+  "checkpoint_path": "checkpoint\\"
 }

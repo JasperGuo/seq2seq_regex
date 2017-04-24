@@ -12,6 +12,22 @@ import tensorflow as tf
 from tensorflow.contrib.rnn import LSTMCell
 
 
+def softmax_with_mask(tensor, mask):
+    """
+    Calculate Softmax with mask
+    :param tensor: [shape1, shape2]
+    :param mask:   [shape1, shape2]
+    :return:
+    """
+    exp_tensor = tf.exp(tensor)
+    masked_exp_tensor = tf.multiply(exp_tensor, mask)
+    total = tf.reshape(
+        tf.reduce_sum(masked_exp_tensor, axis=1),
+        shape=[-1, 1]
+    )
+    return tf.div(masked_exp_tensor, total)
+
+
 class Model:
 
     FULLY_CONNECTED_LAYER_OUTPUT = 2
@@ -75,6 +91,8 @@ class Model:
             self._case_inputs = tf.placeholder(tf.int32, [self._batch_size, self._max_case_length], name="case_inputs")
             self._sentence_length = tf.placeholder(tf.int32, [self._batch_size], name="source_length")
             self._case_length = tf.placeholder(tf.int32, [self._batch_size], name="case_length")
+            self._sentence_masks = tf.placeholder(tf.float32, [self._batch_size, self._max_sentence_length], name="sentence_mask")
+            self._case_masks = tf.placeholder(tf.float32, [self._batch_size, self._max_case_length], name="case_mask")
             self._rnn_output_keep_prob = tf.placeholder(tf.float32, name="output_keep_prob")
             self._rnn_input_keep_prob = tf.placeholder(tf.float32, name="input_keep_prob")
             self._labels = tf.placeholder(tf.int32, [self._batch_size], name="labels")
@@ -140,11 +158,12 @@ class Model:
             )
             return outputs
 
-    def _build_sentence_level_attention(self, sentence_encode_outputs, case_last_encode_outputs):
+    def _build_sentence_level_attention(self, sentence_encode_outputs, case_last_encode_outputs, sentence_masks):
         """
         Build Sentence Level Attention Layer
         :param sentence_encode_outputs:
         :param case_last_encode_outputs: [batch_size, hidden_dim]
+        :param sentence_masks:           [batch_size, max_sentence_length]
         :return:
         """
         with tf.variable_scope("sentence_level_attention"):
@@ -198,14 +217,15 @@ class Model:
 
             # Shape: [batch_size, max_length, 1]
             weighted_M = tf.reshape(
-                tf.nn.softmax(tf.reshape(
+                softmax_with_mask(
+                    tf.reshape(
                         tf.map_fn(
                             lambda x: tf.matmul(weight_, x, transpose_a=True),
                             elems=M
                         ),
                         shape=[self._batch_size, self._max_sentence_length]
                     ),
-                    dim=-1
+                    sentence_masks
                 ),
                 shape=[self._batch_size, self._max_sentence_length, 1]
             )
@@ -256,7 +276,7 @@ class Model:
             shape=[self._batch_size, self._hidden_dim]
         ), weighted_M
 
-    def _build_word_level_attention(self, sentence_encode_outputs, case_encode_outputs, case_last_encode_outputs, case_length):
+    def _build_word_level_attention(self, sentence_encode_outputs, case_encode_outputs, case_last_encode_outputs, case_length, sentence_masks):
         """
         Build Word by Word Attention
         :param sentence_encode_outputs:
@@ -320,12 +340,13 @@ class Model:
                 name="weight_x"
             )
 
-        def __calc_attention(sentence_outputs, case_outputs, last_case_outputs, length):
+        def __calc_attention(sentence_outputs, case_outputs, last_case_outputs, length, __sentence_mask):
             """
-            :param sentence_outputs: [max_length, hidden_dim]
+            :param sentence_outputs: [max_sentence_length, hidden_dim]
             :param case_outputs:     [length, hidden_dim]
             :param last_case_outputs [hidden_dim, 1]
             :param length:           Scalar
+            :param __sentence_mask   Sentence mask, [1, max_sentence_length]
             :return:
                    outputs:     [1, hidden_dim]
                    weights:     [max_case_length, max_sentence_length]
@@ -395,10 +416,13 @@ class Model:
 
                 # Shape: [max_length, 1]
                 alpha = tf.reshape(
-                    tf.nn.softmax(tf.matmul(
-                        tf.reshape(weight_, shape=[1, self._hidden_dim]),
-                        M
-                    )),
+                    softmax_with_mask(
+                        tf.matmul(
+                            tf.reshape(weight_, shape=[1, self._hidden_dim]),
+                            M
+                        ),
+                        __sentence_mask
+                    ),
                     shape=[self._max_sentence_length, 1]
                 )
                 # Shape: [hidden_dim]
@@ -472,7 +496,15 @@ class Model:
                 ),
                 shape=[self._hidden_dim, 1]
             )
-            _outputs, _weights = __calc_attention(_sentence_outputs, _case_outputs, _case_last_outputs, l)
+            _sentence_mask = tf.reshape(
+                tf.slice(
+                    sentence_masks,
+                    begin=[idx, 0],
+                    size=[1, self._max_sentence_length]
+                ),
+                shape=[1, self._max_sentence_length]
+            )
+            _outputs, _weights = __calc_attention(_sentence_outputs, _case_outputs, _case_last_outputs, l, _sentence_mask)
             attention_weights.append(
                 tf.reshape(
                     _weights,
@@ -525,7 +557,8 @@ class Model:
             # Sentence Level Attention
             _outputs, weights = self._build_sentence_level_attention(
                 sentence_encode_outputs=sentence_encoder_outputs,
-                case_last_encode_outputs=case_last_outputs
+                case_last_encode_outputs=case_last_outputs,
+                sentence_masks=self._sentence_masks
             )
             self._attention_weights = tf.reshape(
                 weights,
@@ -538,7 +571,8 @@ class Model:
                 sentence_encode_outputs=sentence_encoder_outputs,
                 case_encode_outputs=case_encoder_outputs,
                 case_last_encode_outputs=case_last_outputs,
-                case_length=self._case_length
+                case_length=self._case_length,
+                sentence_masks=self._sentence_masks
             )
             self._attention_weights = weights
             outputs = self._build_fully_connected_layer(_outputs)
@@ -568,6 +602,8 @@ class Model:
         feed_dict[self._sentence_length] = batch.sentence_length
         feed_dict[self._case_inputs] = batch.cases
         feed_dict[self._case_length] = batch.case_length
+        feed_dict[self._case_masks] = batch.case_masks
+        feed_dict[self._sentence_masks] = batch.sentence_masks
         feed_dict[self._labels] = batch.labels
         feed_dict[self._rnn_input_keep_prob] = 1. - self._dropout
         feed_dict[self._rnn_output_keep_prob] = 1. - self._dropout
@@ -579,6 +615,8 @@ class Model:
         feed_dict[self._sentence_length] = batch.sentence_length
         feed_dict[self._case_inputs] = batch.cases
         feed_dict[self._case_length] = batch.case_length
+        feed_dict[self._case_masks] = batch.case_masks
+        feed_dict[self._sentence_masks] = batch.sentence_masks
         feed_dict[self._rnn_input_keep_prob] = 1.
         feed_dict[self._rnn_output_keep_prob] = 1.
         return feed_dict

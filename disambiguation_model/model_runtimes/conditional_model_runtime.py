@@ -301,6 +301,7 @@ class ModelRuntime:
 
             if development_accuracy > best_accuracy:
                 self._saver.save(self._session, self._checkpoint_file)
+                best_accuracy = development_accuracy
 
             tqdm.write("=================================================================")
 

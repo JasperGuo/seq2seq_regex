@@ -101,7 +101,7 @@ class Batch:
     """
     Batch Data
     """
-    def __init__(self, sentences, cases, sentence_length, case_length, regexs, regex_length):
+    def __init__(self, sentences, cases, sentence_length, case_length, regexs, regex_length, regex_targets):
         """
         :param sentences:
         :param cases:
@@ -115,6 +115,7 @@ class Batch:
         self.sentence_length = sentence_length
         self.case_length = case_length
         self.regexs = regexs
+        self._regex_targets = regex_targets
         self.regex_length = regex_length
 
         self.sentence_masks = list()
@@ -140,6 +141,7 @@ class Batch:
         print(self.cases)
         print(self.case_length)
         print(self.regexs)
+        print(self._regex_targets)
         print(self.regex_length)
         print(self.sentence_masks)
         print(self.case_masks)
@@ -273,8 +275,11 @@ class DataIterator:
         case_length = list()
         regex_length = list()
         regex_samples = list()
+        # Remove GO TOKEN ID
+        regex_targets = list()
 
         for s in samples:
+            regex_targets.append(s["regex"][1:])
             for i in range(self._case_num):
                 sentence_samples.append(s["sentence"])
                 sentence_length.append(s["sentence_length"])
@@ -289,5 +294,6 @@ class DataIterator:
             sentence_length=sentence_length,
             case_length=case_length,
             regexs=regex_samples,
-            regex_length=regex_length
+            regex_length=regex_length,
+            regex_targets=regex_targets
         )

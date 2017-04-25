@@ -560,7 +560,7 @@ class Model:
         # training, define loss
         with tf.name_scope("loss"):
             self._loss = tf.nn.sparse_softmax_cross_entropy_with_logits(
-                labels=self._regex_inputs,
+                labels=self._regex_targets,
                 logits=softmax_outputs
             )
 

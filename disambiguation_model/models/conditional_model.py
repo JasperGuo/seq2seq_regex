@@ -552,6 +552,7 @@ class Model:
 
         if not self._attention:
             # shape: [batch_size, FULLY_CONNECTED_LAYER_OUTPUT]
+            self._outputs = case_last_outputs
             outputs = self._build_fully_connected_layer(case_last_outputs)
         elif self._attention == "sentence":
             # Sentence Level Attention
@@ -560,6 +561,7 @@ class Model:
                 case_last_encode_outputs=case_last_outputs,
                 sentence_masks=self._sentence_masks
             )
+            self._outputs = _outputs
             self._attention_weights = tf.reshape(
                 weights,
                 shape=[self._batch_size, self._max_sentence_length]
@@ -574,6 +576,7 @@ class Model:
                 case_length=self._case_length,
                 sentence_masks=self._sentence_masks
             )
+            self._outputs = _outputs
             self._attention_weights = weights
             outputs = self._build_fully_connected_layer(_outputs)
 
@@ -628,10 +631,10 @@ class Model:
 
     def predict(self, batch):
         feed_dict = self._build_test_feed(batch)
-        return self._predictions, feed_dict
+        return self._predictions, self._outputs, feed_dict
 
     def predict_with_weights(self, batch):
         assert self._attention
         feed_dict = self._build_test_feed(batch)
-        return self._predictions, self._attention_weights, feed_dict
+        return self._predictions, self._outputs, self._attention_weights, feed_dict
 

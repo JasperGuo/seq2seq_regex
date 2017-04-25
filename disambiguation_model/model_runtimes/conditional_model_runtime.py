@@ -42,7 +42,7 @@ class ModelRuntime:
         self._max_case_length = self._conf["max_case_length"]
 
         curr_time = str(int(time.time()))
-
+        self._curr_time = curr_time
         self._log_dir = os.path.abspath(os.path.join(os.path.pardir, self._conf["log_dir"]))
         self._result_log_base_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["result_log"] + curr_time))
         self._checkpoint_path = os.path.abspath(os.path.join(os.path.pardir, self._conf["checkpoint_path"] + curr_time))
@@ -163,15 +163,49 @@ class ModelRuntime:
         total_error = 0
         total = 0
         file = os.path.join(self._result_log_base_path, "test_" + str(int(time.time()))+".log")
+        positive_vector_representation_file = os.path.join(self._result_log_base_path,
+                                                           "positive_vector_" + self._curr_time + ".npy")
+        negative_vector_representation_file = os.path.join(self._result_log_base_path,
+                                                           "negative_vector_" + self._curr_time + ".npy")
+        positive_vector_representation = None
+        negative_vector_representation = None
         for i in range(data_iterator.batch_per_epoch):
             batch = data_iterator.get_batch()
-            predictions, feed_dict = self._test_model.predict(batch)
-            predictions = self._session.run(predictions, feed_dict)
+            predictions, outputs, feed_dict = self._test_model.predict(batch)
+            predictions, outputs = self._session.run((predictions, outputs), feed_dict)
             ground_truth_labels = batch.labels
             total_error += np.sum(np.abs(predictions - ground_truth_labels))
             total += batch.batch_size
+
             if is_log:
+                temp_positive = list()
+                temp_negative = list()
+                for idx, label in enumerate(ground_truth_labels):
+                    if label == 1:
+                        temp_positive.append(outputs[idx])
+                    else:
+                        temp_negative.append(outputs[idx])
+                if len(temp_positive) > 0:
+                    temp_positive_array = np.array(temp_positive)
+                    if not isinstance(positive_vector_representation, np.ndarray):
+                        positive_vector_representation = temp_positive_array
+                    else:
+                        positive_vector_representation = np.concatenate((positive_vector_representation, temp_positive_array), axis=0)
+
+                if len(temp_negative) > 0:
+                    temp_negative_array = np.array(temp_negative)
+                    if not isinstance(negative_vector_representation, np.ndarray):
+                        negative_vector_representation = temp_negative_array
+                    else:
+                        negative_vector_representation = np.concatenate(
+                            (negative_vector_representation, temp_negative_array), axis=0)
+
                 self.log(file, batch, predictions)
+
+        if is_log:
+            np.save(positive_vector_representation_file, positive_vector_representation)
+            np.save(negative_vector_representation_file, negative_vector_representation)
+
         accuracy = (1 - (total_error / total))
         tqdm.write(', '.join([description, "accuracy: %f" % accuracy]))
         return accuracy
@@ -187,16 +221,49 @@ class ModelRuntime:
         total_error = 0
         total = 0
         file = os.path.join(self._result_log_base_path, "test_" + str(int(time.time()))+".log")
+        positive_vector_representation_file = os.path.join(self._result_log_base_path,
+                                                           "positive_vector_" + self._curr_time + ".npy")
+        negative_vector_representation_file = os.path.join(self._result_log_base_path,
+                                                           "negative_vector_" + self._curr_time + ".npy")
+        positive_vector_representation = None
+        negative_vector_representation = None
         for i in range(data_iterator.batch_per_epoch):
             batch = data_iterator.get_batch()
-            predictions, weights, feed_dict = self._test_model.predict_with_weights(batch)
-            predictions, weights = self._session.run((predictions, weights), feed_dict)
+            predictions, outputs, weights, feed_dict = self._test_model.predict_with_weights(batch)
+            predictions, outputs, weights = self._session.run((predictions, outputs, weights), feed_dict)
             ground_truth_labels = batch.labels
             total_error += np.sum(np.abs(predictions - ground_truth_labels))
             total += batch.batch_size
 
             if is_log:
-                self.log(file, batch, predictions, weights)
+                temp_positive = list()
+                temp_negative = list()
+                for idx, label in enumerate(ground_truth_labels):
+                    if label == 1:
+                        temp_positive.append(outputs[idx])
+                    else:
+                        temp_negative.append(outputs[idx])
+                if len(temp_positive) > 0:
+                    temp_positive_array = np.array(temp_positive)
+                    if not isinstance(positive_vector_representation, np.ndarray):
+                        positive_vector_representation = temp_positive_array
+                    else:
+                        positive_vector_representation = np.concatenate(
+                            (positive_vector_representation, temp_positive_array), axis=0)
+
+                if len(temp_negative) > 0:
+                    temp_negative_array = np.array(temp_negative)
+                    if not isinstance(negative_vector_representation, np.ndarray):
+                        negative_vector_representation = temp_negative_array
+                    else:
+                        negative_vector_representation = np.concatenate(
+                            (negative_vector_representation, temp_negative_array), axis=0)
+
+                self.log(file, batch, predictions)
+
+        if is_log:
+            np.save(positive_vector_representation_file, positive_vector_representation)
+            np.save(negative_vector_representation_file, negative_vector_representation)
         accuracy = (1-(total_error/total))
         tqdm.write(', '.join([description, "accuracy: %f" % accuracy]))
         return accuracy

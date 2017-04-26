@@ -121,7 +121,7 @@ class Model:
                                                    name="sentence_inputs")
             self._case_inputs = tf.placeholder(tf.int32, [self._actual_batch_size, self._max_case_length],
                                                name="case_inputs")
-            self._sentence_length = tf.placeholder(tf.int32, [self._actual_batch_size], name="source_length")
+            self._sentence_length = tf.placeholder(tf.int32, [self._actual_batch_size], name="sentence_length")
             self._case_length = tf.placeholder(tf.int32, [self._actual_batch_size], name="case_length")
             self._sentence_masks = tf.placeholder(tf.float32, [self._actual_batch_size, self._max_sentence_length],
                                                   name="sentence_masks")
@@ -131,9 +131,9 @@ class Model:
             self._rnn_input_keep_prob = tf.placeholder(tf.float32, name="input_keep_prob")
 
             if not self._is_test:
-                self._regex_inputs = tf.placeholder(tf.float32, [self._actual_batch_size, self._max_regex_length],
+                self._regex_inputs = tf.placeholder(tf.int32, [self._actual_batch_size, self._max_regex_length],
                                                     name="regex_inputs")
-                self._regex_targets = tf.placeholder(tf.float32, [self._batch_size, self._max_regex_length],
+                self._regex_targets = tf.placeholder(tf.int32, [self._batch_size, self._max_regex_length],
                                                      name="regex_targets")
 
     def _build_sentence_rnn(self, sentence_embedded, sequence_length):
@@ -231,33 +231,46 @@ class Model:
             )
             return regex_cell
 
-    def _calc_regex_sentence_attention(self, hs, sentence_outputs, sentence_masks):
+    def _build_attention_parameters(self):
+        with tf.variable_scope("regex_sentence_attention"):
+            rs_weight_a = tf.get_variable(
+                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim], dtype=tf.float32),
+                name="weight_a"
+            )
+            rs_weight_c = tf.get_variable(
+                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim * 2], dtype=tf.float32),
+                name="weight_c"
+            )
+
+        with tf.variable_scope("regex_case_attention"):
+            rc_weight_a = tf.get_variable(
+                initializer=tf.truncated_normal([self._hidden_dim * 2, self._hidden_dim], dtype=tf.float32, stddev=0.5),
+                name="weight_a"
+            )
+            rc_weight_c = tf.get_variable(
+                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim * 2], dtype=tf.float32, stddev=0.5),
+                name="weight_c"
+            )
+
+        return rs_weight_a, rs_weight_c, rc_weight_a, rc_weight_c
+
+    def _calc_regex_sentence_attention(self, weight_a, weight_c, hs, sentence_outputs, sentence_masks):
         """
         Calculate regex and sentence attention
-        :param hs:                  [batch_size, 1, hidden_dim]
+        :param weight_a:            [hidden_dim, hidden_dim],
+        :param weight_c:            [hidden_dim, hidden_dim*2]
+        :param hs:                  [batch_size, hidden_dim]
         :param sentence_outputs:    [batch_size, max_sentence_len, hidden_dim]
         :param sentence_masks:      [batch_size, max_sentence_len]
         :return:
             [batch_size, hidden_dim]
         """
-        with tf.variable_scope("regex_sentence_attention"):
-            weight_a = tf.get_variable(
-                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim], dtype=tf.float32),
-                name="weight_a"
-            )
-            weight_c = tf.get_variable(
-                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim * 2], dtype=tf.float32),
-                name="weight_a"
-            )
 
         with tf.name_scope("calc_regex_sentence_attention"):
             # [batch_size*hidden_dim, 1]
             _scores = tf.reshape(
-                tf.map_fn(
-                    lambda x: tf.matmul(x, weight_a),
-                    elems=hs
-                ),
-                shape=[self._actual_batch_size * self._hidden_dim, 1]
+                tf.matmul(hs, weight_a),
+                shape=[self._actual_batch_size*self._hidden_dim, 1]
             )
             # [batch_size*hidden_dim, max_sentence_length]
             transposed_sentence_outputs = tf.reshape(
@@ -281,7 +294,7 @@ class Model:
             softmax_weights = softmax_with_mask(scores, sentence_masks)
             # [batch_size, max_sentence_length]
             reshaped_weights = tf.reshape(
-                softmax_weights, shape=[-1, -1, 1]
+                softmax_weights, shape=[self._actual_batch_size, self._max_sentence_length, 1]
             )
             # context_vector, [batch_size, hidden_dim]
             context_vector = tf.reduce_sum(
@@ -302,24 +315,17 @@ class Model:
             )
             return attentive_hs
 
-    def _calc_regex_case_attention(self, hs, sentence_attentive_hs, case_outputs, case_masks):
+    def _calc_regex_case_attention(self, weight_a, weight_c, hs, sentence_attentive_hs, case_outputs, case_masks):
         """
         Concatenate hs and sentence_attentive_hs
-        :param hs:                      [batch_size, 1, hidden_dim]
+        :param weight_a:                [hidden_dim*2, hidden_dim]
+        :param weight_c:                [hidden_dim, hidden_dim*2]
+        :param hs:                      [batch_size, hidden_dim]
         :param sentence_attentive_hs:   [batch_size, hidden_dim]
         :param case_outputs:            [batch_size, max_case_length, hidden_dim]
         :param case_masks:              [batch_size, max_case_length]
         :return:
         """
-        with tf.variable_scope("regex_case_attention"):
-            weight_a = tf.get_variable(
-                initializer=tf.truncated_normal([self._hidden_dim * 2, self._hidden_dim], dtype=tf.float32),
-                name="weight_a"
-            )
-            weight_c = tf.get_variable(
-                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim * 2], dtype=tf.float32),
-                name="weight_a"
-            )
         with tf.name_scope("calc_regex_case_attention"):
             # [batch_size, hidden_dim*2]
             _hs = tf.concat(
@@ -331,13 +337,7 @@ class Model:
             )
             # [batch_size*hidden_dim, 1]
             _scores = tf.reshape(
-                tf.map_fn(
-                    lambda x: tf.matmul(x, weight_a),
-                    elems=tf.reshape(
-                        _hs,
-                        shape=[-1, 1, self._hidden_dim * 2]
-                    )
-                ),
+                tf.matmul(_hs, weight_a),
                 shape=[self._actual_batch_size * self._hidden_dim, 1]
             )
             # [batch_size*hidden_dim, max_case_length]
@@ -362,7 +362,7 @@ class Model:
             softmax_weights = softmax_with_mask(scores, case_masks)
             # [batch_size, max_case_length]
             reshaped_weights = tf.reshape(
-                softmax_weights, shape=[-1, -1, 1]
+                softmax_weights, shape=[self._actual_batch_size, self._max_case_length, 1]
             )
             # context_vector, [batch_size, hidden_dim]
             context_vector = tf.reduce_sum(
@@ -400,15 +400,17 @@ class Model:
         with tf.variable_scope("regex_decoder"):
             regex_cell = self._build_decoder_cell()
 
+        rs_weight_a, rs_weight_c, rc_weight_a, rc_weight_c = self._build_attention_parameters()
+
         with tf.name_scope("train_decode"):
             def __cond(curr_ts, last_decoder_states, last_hs, decoder_outputs_array):
                 return tf.less(curr_ts, self._max_regex_length)
 
-            def __loop_body(curr_ts, last_decoder_states, last_hs, decoder_outputs_array):
+            def __loop_body(curr_ts, _last_decoder_states, last_hs, decoder_outputs_array):
                 """
                 Run Decode step by step
                 :param curr_ts:               Scalar
-                :param last_decoder_states:   LSTMStateTuple
+                :param _last_decoder_states:   LSTMStateTuple
                 :param last_hs:               [batch_size, hidden_dim]
                 :param decoder_outputs_array: TensorArray
                 :return:
@@ -423,29 +425,54 @@ class Model:
                 sentence_attentive_vector = self._calc_regex_sentence_attention(
                     hs=last_hs,
                     sentence_outputs=sentence_outputs,
-                    sentence_masks=self._sentence_masks
+                    sentence_masks=self._sentence_masks,
+                    weight_c=rs_weight_c,
+                    weight_a=rs_weight_a
                 )
 
                 case_attentive_vector = self._calc_regex_case_attention(
                     hs=last_hs,
                     sentence_attentive_hs=sentence_attentive_vector,
                     case_outputs=case_outputs,
-                    case_masks=self._case_masks
+                    case_masks=self._case_masks,
+                    weight_c=rc_weight_c,
+                    weight_a=rc_weight_a
                 )
 
-                _inputs = tf.concat((inputs, sentence_attentive_vector, case_attentive_vector), axis=1)
+                _inputs = tf.concat(
+                    (
+                        inputs,
+                        tf.reshape(
+                            sentence_attentive_vector,
+                            shape=[self._actual_batch_size, 1, self._hidden_dim]
+                        ),
+                        tf.reshape(
+                            case_attentive_vector,
+                            shape=[self._actual_batch_size, 1, self._hidden_dim]
+                        )
+                    ),
+                    axis=2
+                )
 
                 _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(
                     cell=regex_cell,
                     inputs=_inputs,
                     dtype=tf.float32,
-                    initial_state=last_decoder_states,
+                    initial_state=_last_decoder_states,
                 )
-                decoder_outputs_array = decoder_outputs_array.write(curr_ts, _decoder_outputs)
+                decoder_outputs_array = decoder_outputs_array.write(
+                    curr_ts,
+                    tf.reshape(
+                        _decoder_outputs,
+                        shape=[self._actual_batch_size, self._hidden_dim]
+                    )
+                )
 
                 next_ts = tf.add(curr_ts, 1)
 
-                return next_ts, _decoder_states, _decoder_outputs, decoder_outputs_array
+                reshaped_decoder_outputs = tf.reshape(_decoder_outputs, shape=[self._actual_batch_size, self._hidden_dim])
+
+                return next_ts, _decoder_states, reshaped_decoder_outputs, decoder_outputs_array
 
             total_ts, last_decoder_states, last_hidden_states, decoder_outputs = tf.while_loop(
                 body=__loop_body,
@@ -459,7 +486,10 @@ class Model:
             )
 
             # [batch_size, max_regex_length, hidden_dim]
-            decoder_outputs = decoder_outputs.stack(name="regex_outputs")
+            decoder_outputs = tf.transpose(
+                decoder_outputs.stack(name="regex_outputs"),
+                perm=[1, 0, 2]
+            )
 
         with tf.variable_scope("max_pooling"):
             pooling_weight = tf.get_variable(
@@ -497,6 +527,173 @@ class Model:
                 axis=3
             )
             return max_pooling_result
+
+    def _test_decode(self, sentence_outputs, case_outputs, encoder_states, encoder_hidden_states):
+        """
+        Build Test
+        Test Batch Size: 1
+        :param sentence_outputs:        [1*case_num, max_sentence_len, hidden_dim]
+        :param case_outputs:            [1*case_num, max_case_len, hidden_dim]
+        :param encoder_states:          LSTMStateTuple
+        :param encoder_hidden_states:   [1*case_num, hidden_dim]
+        :return:
+        """
+        assert self._is_test
+        regex_embedding = self._build_regex_embedding_layer()
+
+        with tf.variable_scope("regex_decoder"):
+            regex_cell = self._build_decoder_cell()
+
+        with tf.variable_scope("max_pooling"):
+            pooling_weight = tf.get_variable(
+                initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim], stddev=0.5),
+                name="weight"
+            )
+
+        with tf.variable_scope("prediction_softmax"):
+            softmax_weights = tf.get_variable(
+                initializer=tf.truncated_normal(
+                    [self._regex_vocab_manager.vocab_len, self._hidden_dim],
+                    stddev=0.5
+                ),
+                name="prediction_softmax_weight"
+            )
+
+        rs_weight_a, rs_weight_c, rc_weight_a, rc_weight_c = self._build_attention_parameters()
+
+        with tf.name_scope("test_decode"):
+            def __cond(curr_ts, last_decoder_states, last_hs, last_prediction, decoder_outputs_array, prediction_array):
+                return tf.less(curr_ts, self._max_regex_length)
+
+            def __loop_body(curr_ts, last_decoder_states, last_hs, last_prediction, decoder_outputs_array, prediction_array):
+                """
+                Run Decode step by step
+                :param curr_ts:               Scalar
+                :param last_decoder_states:   LSTMStateTuple
+                :param last_hs:               [case_num, hidden_dim]
+                :param last_prediction:       [case_num], index
+                :param decoder_outputs_array: TensorArray
+                :param prediction_array:      TensorArray
+                :return:
+                """
+
+                inputs = tf.nn.embedding_lookup(
+                    params=regex_embedding,
+                    ids=tf.reshape(
+                        last_prediction,
+                        shape=[self._case_num, 1]
+                    )
+                )
+
+                sentence_attentive_vector = self._calc_regex_sentence_attention(
+                    hs=last_hs,
+                    sentence_outputs=sentence_outputs,
+                    sentence_masks=self._sentence_masks,
+                    weight_c=rs_weight_c,
+                    weight_a=rs_weight_a
+                )
+
+                case_attentive_vector = self._calc_regex_case_attention(
+                    hs=last_hs,
+                    sentence_attentive_hs=sentence_attentive_vector,
+                    case_outputs=case_outputs,
+                    case_masks=self._case_masks,
+                    weight_c=rc_weight_c,
+                    weight_a=rc_weight_a
+                )
+
+                _inputs = tf.concat(
+                    (
+                        inputs,
+                        tf.reshape(
+                            sentence_attentive_vector,
+                            shape=[self._actual_batch_size, 1, self._hidden_dim]
+                        ),
+                        tf.reshape(
+                            case_attentive_vector,
+                            shape=[self._actual_batch_size, 1, self._hidden_dim]
+                        )
+                    ),
+                    axis=2
+                )
+
+                _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(
+                    cell=regex_cell,
+                    inputs=_inputs,
+                    dtype=tf.float32,
+                    initial_state=last_decoder_states,
+                )
+
+                next_ts = tf.add(curr_ts, 1)
+
+                # Max pooling
+                weighted_outputs = tf.reshape(
+                    tf.tanh(
+                        tf.matmul(
+                            pooling_weight,
+                            tf.reshape(
+                                _decoder_outputs,
+                                shape=[self._actual_batch_size, self._hidden_dim]
+                            ),
+                            transpose_b=True
+                        )
+                    ),
+                    shape=[self._case_num, self._hidden_dim]
+                )
+
+                divided_outputs = tf.transpose(
+                    weighted_outputs,
+                    perm=[1, 0]
+                )
+
+                # [hidden_dim]
+                max_pooling_result = tf.reduce_max(
+                    divided_outputs,
+                    axis=1
+                )
+
+                decoder_outputs_array = decoder_outputs_array.write(curr_ts, max_pooling_result)
+
+                _weighted = tf.reshape(
+                    tf.matmul(
+                        softmax_weights,
+                        tf.reshape(max_pooling_result,
+                                   shape=[self._hidden_dim, 1])
+                    ),
+                    shape=[self._regex_vocab_manager.vocab_len]
+                )
+                softmax_outputs = tf.nn.softmax(_weighted)
+
+                curr_prediction = tf.cast(tf.arg_max(softmax_outputs, dimension=0), dtype=tf.int32)
+
+                prediction_array = prediction_array.write(curr_ts, curr_prediction)
+
+                copy_prediction = tf.multiply(
+                    tf.ones([self._case_num], dtype=tf.int32),
+                    curr_prediction
+                )
+
+                reshaped_decoder_outputs = tf.reshape(_decoder_outputs,
+                                                      shape=[self._case_num, self._hidden_dim])
+
+                return next_ts, _decoder_states, reshaped_decoder_outputs, copy_prediction, decoder_outputs_array, prediction_array
+
+            total_ts, last_decoder_states, last_hidden_states, prediction, decoder_outputs, all_predictions = tf.while_loop(
+                body=__loop_body,
+                cond=__cond,
+                loop_vars=[
+                    tf.constant(0),
+                    encoder_states,
+                    encoder_hidden_states,
+                    tf.constant([self._regex_vocab_manager.GO_TOKEN_ID]*self._case_num, dtype=tf.int32),
+                    tf.TensorArray(dtype=tf.float32, size=self._max_regex_length),
+                    tf.TensorArray(dtype=tf.int32, size=self._max_regex_length)
+                ]
+            )
+            # [max_regex_length]
+            prediction_tensor = all_predictions.stack(name="regex_predictions")
+
+            return prediction_tensor
 
     def _build_train_graph(self):
         """
@@ -575,7 +772,6 @@ class Model:
 
     def _build_test_graph(self):
         self._build_input_nodes()
-        self._build_input_nodes()
 
         sentence_encoder_outputs, case_encoder_outputs, case_encoder_states = self._encode()
 
@@ -595,7 +791,15 @@ class Model:
             get_last_relevant(case_encoder_outputs, self._case_length),
             shape=[-1, self._hidden_dim]
         )
-        pass
+
+        predictions = self._test_decode(
+            sentence_outputs=sentence_encoder_outputs,
+            case_outputs=case_encoder_outputs,
+            encoder_states=case_encoder_states,
+            encoder_hidden_states=case_last_outputs
+        )
+
+        self._predictions = predictions
 
     def _build_train_feed(self, batch):
         feed_dict = dict()
@@ -605,6 +809,8 @@ class Model:
         feed_dict[self._case_length] = batch.case_length
         feed_dict[self._sentence_masks] = batch.sentence_masks
         feed_dict[self._case_masks] = batch.case_masks
+        feed_dict[self._regex_inputs] = batch.regexs
+        feed_dict[self._regex_targets] = batch.regex_targets
         feed_dict[self._rnn_input_keep_prob] = 1. - self._dropout
         feed_dict[self._rnn_output_keep_prob] = 1. - self._dropout
         return feed_dict

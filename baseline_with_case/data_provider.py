@@ -115,7 +115,7 @@ class Batch:
         self.sentence_length = sentence_length
         self.case_length = case_length
         self.regexs = regexs
-        self._regex_targets = regex_targets
+        self.regex_targets = regex_targets
         self.regex_length = regex_length
 
         self.sentence_masks = list()
@@ -126,14 +126,14 @@ class Batch:
             )
         self.case_masks = list()
         case_max_length = len(cases[0])
-        for l in sentence_length:
+        for l in case_length:
             self.case_masks.append(
                 [1] * l + [0] * (case_max_length - l)
             )
 
     @property
     def batch_size(self):
-        return len(self.sentence_length)
+        return len(self.regex_targets)
 
     def _print(self):
         print(self.sentences)
@@ -141,7 +141,7 @@ class Batch:
         print(self.cases)
         print(self.case_length)
         print(self.regexs)
-        print(self._regex_targets)
+        print(self.regex_targets)
         print(self.regex_length)
         print(self.sentence_masks)
         print(self.case_masks)
@@ -177,9 +177,14 @@ class DataIterator:
         rm_list = list()
         for value in self._data:
             sentence = value["sentence"]
-            case = value["case"]
-            if len(sentence) > self._max_sentence_len or len(case) > self._max_case_len:
+            regex = value["regex"]
+            if len(sentence) > self._max_sentence_len or len(regex) > self._max_regex_len:
                 rm_list.append(value)
+                continue
+            for case in value["case"]:
+                if len(case[0]) > self._max_case_len:
+                    rm_list.append(value)
+                    break
         for r in rm_list:
             self._data.remove(r)
 
@@ -279,7 +284,7 @@ class DataIterator:
         regex_targets = list()
 
         for s in samples:
-            regex_targets.append(s["regex"][1:])
+            regex_targets.append(s["regex"][1:] + [VocabManager.PADDING_TOKEN_ID])
             for i in range(self._case_num):
                 sentence_samples.append(s["sentence"])
                 sentence_length.append(s["sentence_length"])

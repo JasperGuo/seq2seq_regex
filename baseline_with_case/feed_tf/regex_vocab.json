@@ -1,0 +1,122 @@
+{
+	"<M0>": {
+		"id": 4,
+		"frequency": 3136
+	},
+	"(": {
+		"id": 16,
+		"frequency": 18474
+	},
+	"2": {
+		"id": 6,
+		"frequency": 875
+	},
+	"<U>": {
+		"id": 1,
+		"frequency": 0
+	},
+	"<VOW>": {
+		"id": 7,
+		"frequency": 1683
+	},
+	"b": {
+		"id": 8,
+		"frequency": 2394
+	},
+	"|": {
+		"id": 21,
+		"frequency": 3834
+	},
+	"<LET>": {
+		"id": 10,
+		"frequency": 1633
+	},
+	"*": {
+		"id": 11,
+		"frequency": 12280
+	},
+	"]": {
+		"id": 12,
+		"frequency": 8312
+	},
+	".": {
+		"id": 13,
+		"frequency": 13375
+	},
+	"<LOW>": {
+		"id": 9,
+		"frequency": 1668
+	},
+	"+": {
+		"id": 15,
+		"frequency": 1034
+	},
+	"}": {
+		"id": 5,
+		"frequency": 1732
+	},
+	"<CAP>": {
+		"id": 17,
+		"frequency": 1677
+	},
+	"<NUM>": {
+		"id": 14,
+		"frequency": 1651
+	},
+	")": {
+		"id": 19,
+		"frequency": 18474
+	},
+	"<EOS>": {
+		"id": 3,
+		"frequency": 0
+	},
+	"{": {
+		"id": 20,
+		"frequency": 1732
+	},
+	"\\": {
+		"id": 27,
+		"frequency": 2394
+	},
+	"<P>": {
+		"id": 0,
+		"frequency": 0
+	},
+	"[": {
+		"id": 22,
+		"frequency": 8312
+	},
+	"<M1>": {
+		"id": 23,
+		"frequency": 831
+	},
+	"<M2>": {
+		"id": 24,
+		"frequency": 98
+	},
+	"5": {
+		"id": 25,
+		"frequency": 271
+	},
+	"4": {
+		"id": 26,
+		"frequency": 286
+	},
+	"<GO>": {
+		"id": 2,
+		"frequency": 0
+	},
+	"<M3>": {
+		"id": 18,
+		"frequency": 6
+	},
+	"3": {
+		"id": 28,
+		"frequency": 299
+	},
+	",": {
+		"id": 29,
+		"frequency": 1732
+	}
+}

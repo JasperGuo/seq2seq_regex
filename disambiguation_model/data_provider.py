@@ -113,7 +113,7 @@ class Batch:
             )
         self.case_masks = list()
         case_max_length = len(cases[0])
-        for l in sentence_length:
+        for l in case_length:
             self.case_masks.append(
                 [1] * l + [0] * (case_max_length - l)
             )

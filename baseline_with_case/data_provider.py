@@ -130,6 +130,12 @@ class Batch:
             self.case_masks.append(
                 [1] * l + [0] * (case_max_length - l)
             )
+        self.regex_masks = []
+        regex_max_length = len(self.regex_targets[0])
+        for l in regex_targets:
+            self.regex_masks.append(
+                [1]*len(l) + [0]*(regex_max_length - len(l))
+            )
 
     @property
     def batch_size(self):

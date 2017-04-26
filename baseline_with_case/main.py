@@ -128,7 +128,7 @@ class ModelRuntime:
             self._file_writer = tf.summary.FileWriter(self._log_dir, self._session.graph)
 
     def log(self, file, source, cases, ground_truth, prediction, diff, dfa_diff, score=0.0):
-        source = 'S: ' + self._sentence_vocab_manager.decode_source(source)
+        source = 'S: ' + self._sentence_vocab_manager.decode(source)
 
         case_str = list()
         for case in cases:
@@ -224,7 +224,7 @@ class ModelRuntime:
             total += batch.batch_size
 
             if is_log:
-                self.log(file, batch.sentences[0], batch.cases, predictions, batch.regex_targets[0], exact_match, dfa_correct)
+                self.log(file, batch.sentences[0], batch.cases, batch.regex_targets[0], predictions, exact_match, dfa_correct)
 
         accuracy = set_exact_match/total
         dfa_accuracy = set_dfa_match/total
@@ -260,7 +260,7 @@ class ModelRuntime:
             self._test_data_iterator.shuffle()
             self._development_data_iterator.shuffle()
 
-            development_exact_accuracy, development_dfa_accuracy = self.test(self._development_data_iterator, "Development")
+            development_exact_accuracy, development_dfa_accuracy = self.test(self._development_data_iterator, "Development", is_log=True)
             test_exact_accuracy, test_dfa_accuracy = self.test(self._test_data_iterator, "Test")
 
             self.epoch_log(epoch_log_file, epoch, train_accuracy, development_exact_accuracy, test_exact_accuracy, average_loss)

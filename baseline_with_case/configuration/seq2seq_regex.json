@@ -9,7 +9,7 @@
   "batch_size": 32,
   "test_batch_size": 32,
   "dropout": 0.25,
-  "epoches": 5,
+  "epoches": 150,
   "max_sentence_length": 30,
   "max_regex_length": 40,
   "max_case_length": 100,

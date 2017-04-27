@@ -229,7 +229,7 @@ class ModelRuntime:
         accuracy = set_exact_match/total
         dfa_accuracy = set_dfa_match/total
         tqdm.write(', '.join([description, "exact_match_accuracy: %f, dfa_match_accuracy: %f" % (accuracy, dfa_accuracy)]))
-        return set_exact_match, set_dfa_match
+        return accuracy, dfa_accuracy
 
     def train(self):
         best_accuracy = 0.

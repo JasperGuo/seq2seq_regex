@@ -23,5 +23,8 @@
   "result_log": "result_log",
   "is_test_capability": false,
   "checkpoint_path": "checkpoint",
-  "case_num": 2
+  "case_num": 2,
+  "is_pretrained_embedding_used": false,
+  "sentence_word_pretrained_embedding_path": "",
+  "case_word_pretrained_embedding_path": ""
 }

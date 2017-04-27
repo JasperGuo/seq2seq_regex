@@ -39,6 +39,16 @@ class ModelRuntime:
         self._max_case_length = self._conf["max_case_length"]
         self._max_regex_length = self._conf["max_regex_length"]
         self._case_num = self._conf["case_num"]
+        self._is_pretrained_embedding_used = self._conf["is_pretrained_embedding_used"]
+        self._sentence_word_pretrained_embedding_path = self._conf["sentence_word_pretrained_embedding_path"]
+        self._case_word_pretrained_embedding_path = self._conf["case_word_pretrained_embedding_path"]
+
+        if self._is_pretrained_embedding_used:
+            self._sentence_embedding = self._load_pretrain_embedding(self._sentence_word_pretrained_embedding_path)
+            self._case_embedding = self._load_pretrain_embedding(self._case_word_pretrained_embedding_path)
+        else:
+            self._sentence_embedding = None
+            self._case_embedding = None
 
         self._curr_time = str(int(time.time()))
         self._log_dir = os.path.abspath(self._conf["log_dir"])
@@ -100,6 +110,9 @@ class ModelRuntime:
         with open(path, "w") as f:
             f.write(json.dumps(self._conf, indent=4))
 
+    def _load_pretrain_embedding(self, path):
+        return np.load(path)
+
     def init_session(self, checkpoint=None):
         self._session = tf.Session()
 
@@ -109,7 +122,9 @@ class ModelRuntime:
                 self._case_vocab_manager,
                 self._regex_vocab_manager,
                 self._conf,
-                is_test=False
+                is_test=False,
+                pretrained_sentence_embedding=self._sentence_embedding,
+                pretrained_case_embedding=self._case_embedding
             )
             scope.reuse_variables()
             self._test_model = Model(
@@ -117,7 +132,9 @@ class ModelRuntime:
                 self._case_vocab_manager,
                 self._regex_vocab_manager,
                 self._conf,
-                is_test=True
+                is_test=True,
+                pretrained_sentence_embedding=self._sentence_embedding,
+                pretrained_case_embedding=self._case_embedding
             )
             self._saver = tf.train.Saver()
             if not checkpoint:

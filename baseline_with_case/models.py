@@ -32,8 +32,8 @@ def softmax_with_mask(tensor, mask):
 class Model:
     epsilon = 1e-5
 
-    def __init__(self, sentence_vocab_manager, case_vocab_manager, regex_vocab_manager, opts, attention=None,
-                 is_test=False):
+    def __init__(self, sentence_vocab_manager, case_vocab_manager, regex_vocab_manager, opts,
+                 is_test=False, pretrained_sentence_embedding=None, pretrained_case_embedding=None):
         self._sentence_vocab_manager = sentence_vocab_manager
         self._case_vocab_manager = case_vocab_manager
         self._regex_vocab_manager = regex_vocab_manager
@@ -53,7 +53,9 @@ class Model:
         self._actual_batch_size = self._batch_size * self._case_num
 
         self._is_test = is_test
-        self._attention = attention
+
+        self._pretrained_sentence_embedding = pretrained_sentence_embedding
+        self._pretrained_case_embedding = pretrained_case_embedding
 
         if self._is_test:
             self._batch_size = 1
@@ -64,38 +66,70 @@ class Model:
         else:
             self._build_test_graph()
 
-    def _build_sentence_embedding_layer(self):
+    def _build_sentence_embedding_layer(self, pretrained_sentence_word_embedding=None):
+        """
+        Build sentence word embedding
+        :param pretrained_sentence_word_embedding:
+        :return:
+        """
         with tf.variable_scope("sentence_embedding_layer"):
-            sentence_embedding = tf.get_variable(
-                initializer=tf.truncated_normal(
-                    [self._sentence_vocab_manager.vocab_len - 1, self._embedding_dim],
-                    stddev=0.5
-                ),
-                name='sentence_embedding'
-            )
-            pad_embeddings = tf.get_variable(
-                initializer=tf.zeros([1, self._embedding_dim]),
-                name="sentence_pad_embedding",
-                trainable=False
-            )
-            sentence_embedding = tf.concat(values=[pad_embeddings, sentence_embedding], axis=0)
+            if not pretrained_sentence_word_embedding:
+                sentence_embedding = tf.get_variable(
+                    initializer=tf.truncated_normal(
+                        [self._sentence_vocab_manager.vocab_len - 1, self._embedding_dim],
+                        stddev=0.5
+                    ),
+                    name='sentence_embedding'
+                )
+                pad_embeddings = tf.get_variable(
+                    initializer=tf.zeros([1, self._embedding_dim]),
+                    name="sentence_pad_embedding",
+                    trainable=False
+                )
+                sentence_embedding = tf.concat(values=[pad_embeddings, sentence_embedding], axis=0)
+            else:
+                # use pretrained sentence word embedding
+                sentence_embedding = tf.get_variable(
+                    name="sentence_embedding",
+                    trainable=True,
+                    shape=[self._sentence_vocab_manager.vocab_len, self._embedding_dim],
+                    dtype=tf.float32,
+                    initializer=tf.constant_initializer(pretrained_sentence_word_embedding)
+                )
+                tf.assign(sentence_embedding, pretrained_sentence_word_embedding)
+
             return sentence_embedding
 
-    def _build_case_embedding_layer(self):
+    def _build_case_embedding_layer(self, pretrained_case_word_embedding=None):
+        """
+        Build test case embedding
+        :param pretrained_case_word_embedding:
+        :return:
+        """
         with tf.variable_scope("case_embedding_layer"):
-            case_embedding = tf.get_variable(
-                initializer=tf.truncated_normal(
-                    [self._case_vocab_manager.vocab_len - 1, self._embedding_dim],
-                    stddev=0.5
-                ),
-                name='case_embedding'
-            )
-            pad_embeddings = tf.get_variable(
-                initializer=tf.zeros([1, self._embedding_dim]),
-                name="case_pad_embedding",
-                trainable=False
-            )
-            case_embedding = tf.concat(values=[pad_embeddings, case_embedding], axis=0)
+            if not pretrained_case_word_embedding:
+                case_embedding = tf.get_variable(
+                    initializer=tf.truncated_normal(
+                        [self._case_vocab_manager.vocab_len - 1, self._embedding_dim],
+                        stddev=0.5
+                    ),
+                    name='case_embedding'
+                )
+                pad_embeddings = tf.get_variable(
+                    initializer=tf.zeros([1, self._embedding_dim]),
+                    name="case_pad_embedding",
+                    trainable=False
+                )
+                case_embedding = tf.concat(values=[pad_embeddings, case_embedding], axis=0)
+            else:
+                # use pretrained case word embedding
+                case_embedding = tf.get_variable(
+                    name="case_embedding",
+                    trainable=True,
+                    shape=[self._case_vocab_manager.vocab_len, self._embedding_dim],
+                    dtype=tf.float32,
+                    initializer=tf.constant_initializer(pretrained_case_word_embedding)
+                )
             return case_embedding
 
     def _build_regex_embedding_layer(self):
@@ -115,7 +149,7 @@ class Model:
             regex_embedding = tf.concat(values=[pad_embeddings, regex_embedding], axis=0)
             return regex_embedding
 
-    def _build_input_nodes(self):
+    def _build_input_nodes(self, is_pretrained_embedding_used=False):
         with tf.name_scope('model_placeholder'):
             self._sentence_inputs = tf.placeholder(tf.int32, [self._actual_batch_size, self._max_sentence_length],
                                                    name="sentence_inputs")
@@ -194,8 +228,8 @@ class Model:
         Encode sentence and test case
         :return:
         """
-        sentence_embedding = self._build_sentence_embedding_layer()
-        case_embedding = self._build_case_embedding_layer()
+        sentence_embedding = self._build_sentence_embedding_layer(self._pretrained_sentence_embedding)
+        case_embedding = self._build_case_embedding_layer(self._pretrained_case_embedding)
 
         sentence_embedded = tf.nn.embedding_lookup(sentence_embedding, self._sentence_inputs)
         case_embedded = tf.nn.embedding_lookup(case_embedding, self._case_inputs)

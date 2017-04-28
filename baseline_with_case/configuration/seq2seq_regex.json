@@ -23,9 +23,9 @@
   "result_log": "result_log",
   "is_test_capability": false,
   "checkpoint_path": "checkpoint",
-  "case_num": 2,
+  "case_num": 1,
   "is_pretrained_embedding_used": true,
   "sentence_word_pretrained_embedding_path": "pretrained_embedding\\sentence_embedding.npy",
   "case_word_pretrained_embedding_path": "pretrained_embedding\\case_embedding.npy",
-  "is_embedding_fine_tuned": false
+  "is_embedding_fine_tuned": true
 }

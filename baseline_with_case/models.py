@@ -1,7 +1,5 @@
 # coding=utf8
 
-# coding=utf8
-
 """
 Conditional Classification model, encode the test case conditioned on the sentence
 """
@@ -96,7 +94,7 @@ class Model:
                 sentence_embedding = tf.get_variable(
                     name="sentence_embedding",
                     trainable=self._is_embedding_fine_tune,
-                    shape=[self._sentence_vocab_manager.vocab_len, self._embedding_dim],
+                    shape=[self._sentence_vocab_manager.vocab_len - 1, self._embedding_dim],
                     dtype=tf.float32,
                     initializer=tf.constant_initializer(pretrained_sentence_word_embedding)
                 )
@@ -128,7 +126,7 @@ class Model:
                 case_embedding = tf.get_variable(
                     name="case_embedding",
                     trainable=self._is_embedding_fine_tune,
-                    shape=[self._case_vocab_manager.vocab_len-1, self._embedding_dim],
+                    shape=[self._case_vocab_manager.vocab_len - 1, self._embedding_dim],
                     dtype=tf.float32,
                     initializer=tf.constant_initializer(pretrained_case_word_embedding)
                 )

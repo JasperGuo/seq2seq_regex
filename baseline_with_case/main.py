@@ -268,6 +268,7 @@ class ModelRuntime:
                 train_exact_match += exact_match
                 total += batch.batch_size
 
+            tqdm.write(np.array_str(np.array(losses)))
             average_loss = np.average(np.array(losses))
 
             tqdm.write("epoch: %d, loss: %f" % (epoch, average_loss))

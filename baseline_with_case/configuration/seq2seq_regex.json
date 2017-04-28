@@ -1,6 +1,6 @@
 {
   "name": "baseline_with_case",
-  "learning_rate": 0.00005,
+  "learning_rate": 0.0001,
   "optimizer": "AdamOptimizer",
   "gradient_clip": 5,
   "embedding_dim": 150,
@@ -24,7 +24,8 @@
   "is_test_capability": false,
   "checkpoint_path": "checkpoint",
   "case_num": 2,
-  "is_pretrained_embedding_used": false,
+  "is_pretrained_embedding_used": true,
   "sentence_word_pretrained_embedding_path": "pretrained_embedding\\sentence_embedding.npy",
-  "case_word_pretrained_embedding_path": "pretrained_embedding\\case_embedding.npy"
+  "case_word_pretrained_embedding_path": "pretrained_embedding\\case_embedding.npy",
+  "is_embedding_fine_tuned": false
 }

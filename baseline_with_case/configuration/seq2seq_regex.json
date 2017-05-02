@@ -27,5 +27,7 @@
   "is_pretrained_embedding_used": true,
   "sentence_word_pretrained_embedding_path": "pretrained_embedding\\sentence_embedding.npy",
   "case_word_pretrained_embedding_path": "pretrained_embedding\\case_embedding.npy",
-  "is_embedding_fine_tuned": true
+  "is_embedding_fine_tuned": true,
+  "is_regex_sentence_attention": true,
+  "is_regex_case_attention": true
 }

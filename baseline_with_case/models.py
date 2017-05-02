@@ -49,6 +49,8 @@ class Model:
 
         self._batch_size = util.get_value(opts, "batch_size", 5)
         self._case_num = util.get_value(opts, "case_num", 5)
+        self._is_regex_sentence_attention = util.get_value(opts, "is_regex_sentence_attention", True)
+        self._is_regex_case_attention = util.get_value(opts, "is_regex_case_attention", True)
 
         self._is_embedding_fine_tune = util.get_value(opts, "is_embedding_fine_tuned", True)
 
@@ -268,7 +270,7 @@ class Model:
             )
             return regex_cell
 
-    def _build_attention_parameters(self):
+    def _build_regex_sentence_attention_parameters(self):
         with tf.variable_scope("regex_sentence_attention"):
             rs_weight_a = tf.get_variable(
                 initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim], dtype=tf.float32),
@@ -278,7 +280,9 @@ class Model:
                 initializer=tf.truncated_normal([self._hidden_dim, self._hidden_dim * 2], dtype=tf.float32),
                 name="weight_c"
             )
+        return rs_weight_a, rs_weight_c
 
+    def _build_regex_case_attention_parameters(self):
         with tf.variable_scope("regex_case_attention"):
             rc_weight_a = tf.get_variable(
                 initializer=tf.truncated_normal([self._hidden_dim * 2, self._hidden_dim], dtype=tf.float32, stddev=0.5),
@@ -289,7 +293,7 @@ class Model:
                 name="weight_c"
             )
 
-        return rs_weight_a, rs_weight_c, rc_weight_a, rc_weight_c
+        return rc_weight_a, rc_weight_c
 
     def _calc_regex_sentence_attention(self, weight_a, weight_c, hs, sentence_outputs, sentence_masks):
         """
@@ -440,7 +444,15 @@ class Model:
         with tf.variable_scope("regex_decoder"):
             regex_cell = self._build_decoder_cell()
 
-        rs_weight_a, rs_weight_c, rc_weight_a, rc_weight_c = self._build_attention_parameters()
+        if self._is_regex_sentence_attention:
+            rs_weight_a, rs_weight_c = self._build_regex_sentence_attention_parameters()
+        else:
+            rs_weight_a, rs_weight_c = None, None
+
+        if self._is_regex_case_attention:
+            rc_weight_a, rc_weight_c = self._build_regex_case_attention_parameters()
+        else:
+            rc_weight_a, rc_weight_c = None, None
 
         with tf.name_scope("train_decode"):
             def __cond(curr_ts, last_decoder_states, last_hs, decoder_outputs_array):
@@ -462,37 +474,62 @@ class Model:
                     size=[self._actual_batch_size, 1, self._embedding_dim]
                 )
 
-                sentence_attentive_vector = self._calc_regex_sentence_attention(
-                    hs=last_hs,
-                    sentence_outputs=sentence_outputs,
-                    sentence_masks=self._sentence_masks,
-                    weight_c=rs_weight_c,
-                    weight_a=rs_weight_a
-                )
+                if self._is_regex_sentence_attention and self._is_regex_case_attention:
 
-                case_attentive_vector = self._calc_regex_case_attention(
-                    hs=last_hs,
-                    sentence_attentive_hs=sentence_attentive_vector,
-                    case_outputs=case_outputs,
-                    case_masks=self._case_masks,
-                    weight_c=rc_weight_c,
-                    weight_a=rc_weight_a
-                )
+                    sentence_attentive_vector = self._calc_regex_sentence_attention(
+                        hs=last_hs,
+                        sentence_outputs=sentence_outputs,
+                        sentence_masks=self._sentence_masks,
+                        weight_c=rs_weight_c,
+                        weight_a=rs_weight_a
+                    )
 
-                _inputs = tf.concat(
-                    (
-                        inputs,
-                        tf.reshape(
-                            sentence_attentive_vector,
-                            shape=[self._actual_batch_size, 1, self._hidden_dim]
+                    case_attentive_vector = self._calc_regex_case_attention(
+                        hs=last_hs,
+                        sentence_attentive_hs=sentence_attentive_vector,
+                        case_outputs=case_outputs,
+                        case_masks=self._case_masks,
+                        weight_c=rc_weight_c,
+                        weight_a=rc_weight_a
+                    )
+
+                    _inputs = tf.concat(
+                        (
+                            inputs,
+                            tf.reshape(
+                                sentence_attentive_vector,
+                                shape=[self._actual_batch_size, 1, self._hidden_dim]
+                            ),
+                            tf.reshape(
+                                case_attentive_vector,
+                                shape=[self._actual_batch_size, 1, self._hidden_dim]
+                            )
                         ),
-                        tf.reshape(
-                            case_attentive_vector,
-                            shape=[self._actual_batch_size, 1, self._hidden_dim]
-                        )
-                    ),
-                    axis=2
-                )
+                        axis=2
+                    )
+                elif self._is_regex_sentence_attention and not self._is_regex_case_attention:
+
+                    sentence_attentive_vector = self._calc_regex_sentence_attention(
+                        hs=last_hs,
+                        sentence_outputs=sentence_outputs,
+                        sentence_masks=self._sentence_masks,
+                        weight_c=rs_weight_c,
+                        weight_a=rs_weight_a
+                    )
+
+                    _inputs = tf.concat(
+                        (
+                            inputs,
+                            tf.reshape(
+                                sentence_attentive_vector,
+                                shape=[self._actual_batch_size, 1, self._hidden_dim]
+                            )
+                        ),
+                        axis=2
+                    )
+
+                else:
+                    _inputs = inputs
 
                 _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(
                     cell=regex_cell,
@@ -604,7 +641,15 @@ class Model:
                 name="prediction_softmax_weight"
             )
 
-        rs_weight_a, rs_weight_c, rc_weight_a, rc_weight_c = self._build_attention_parameters()
+        if self._is_regex_sentence_attention:
+            rs_weight_a, rs_weight_c = self._build_regex_sentence_attention_parameters()
+        else:
+            rs_weight_a, rs_weight_c = None, None
+
+        if self._is_regex_case_attention:
+            rc_weight_a, rc_weight_c = self._build_regex_case_attention_parameters()
+        else:
+            rc_weight_a, rc_weight_c = None, None
 
         with tf.name_scope("test_decode"):
             def __cond(curr_ts, last_decoder_states, last_hs, last_prediction, decoder_outputs_array, prediction_array):
@@ -631,37 +676,71 @@ class Model:
                     )
                 )
 
-                sentence_attentive_vector = self._calc_regex_sentence_attention(
-                    hs=last_hs,
-                    sentence_outputs=sentence_outputs,
-                    sentence_masks=self._sentence_masks,
-                    weight_c=rs_weight_c,
-                    weight_a=rs_weight_a
-                )
+                if self._is_regex_sentence_attention and self._is_regex_case_attention:
+                    """
+                    Both sentence attention and case attention
+                    """
+                    sentence_attentive_vector = self._calc_regex_sentence_attention(
+                        hs=last_hs,
+                        sentence_outputs=sentence_outputs,
+                        sentence_masks=self._sentence_masks,
+                        weight_c=rs_weight_c,
+                        weight_a=rs_weight_a
+                    )
 
-                case_attentive_vector = self._calc_regex_case_attention(
-                    hs=last_hs,
-                    sentence_attentive_hs=sentence_attentive_vector,
-                    case_outputs=case_outputs,
-                    case_masks=self._case_masks,
-                    weight_c=rc_weight_c,
-                    weight_a=rc_weight_a
-                )
+                    case_attentive_vector = self._calc_regex_case_attention(
+                        hs=last_hs,
+                        sentence_attentive_hs=sentence_attentive_vector,
+                        case_outputs=case_outputs,
+                        case_masks=self._case_masks,
+                        weight_c=rc_weight_c,
+                        weight_a=rc_weight_a
+                    )
 
-                _inputs = tf.concat(
-                    (
-                        inputs,
-                        tf.reshape(
-                            sentence_attentive_vector,
-                            shape=[self._actual_batch_size, 1, self._hidden_dim]
+                    _inputs = tf.concat(
+                        (
+                            inputs,
+                            tf.reshape(
+                                sentence_attentive_vector,
+                                shape=[self._actual_batch_size, 1, self._hidden_dim]
+                            ),
+                            tf.reshape(
+                                case_attentive_vector,
+                                shape=[self._actual_batch_size, 1, self._hidden_dim]
+                            )
                         ),
-                        tf.reshape(
-                            case_attentive_vector,
-                            shape=[self._actual_batch_size, 1, self._hidden_dim]
-                        )
-                    ),
-                    axis=2
-                )
+                        axis=2
+                    )
+                elif self._is_regex_sentence_attention and not self._is_regex_case_attention:
+
+                    """
+                    Sentence attention only
+                    """
+
+                    sentence_attentive_vector = self._calc_regex_sentence_attention(
+                        hs=last_hs,
+                        sentence_outputs=sentence_outputs,
+                        sentence_masks=self._sentence_masks,
+                        weight_c=rs_weight_c,
+                        weight_a=rs_weight_a
+                    )
+
+                    _inputs = tf.concat(
+                        (
+                            inputs,
+                            tf.reshape(
+                                sentence_attentive_vector,
+                                shape=[self._actual_batch_size, 1, self._hidden_dim]
+                            )
+                        ),
+                        axis=2
+                    )
+
+                else:
+                    """
+                    No attention
+                    """
+                    _inputs = inputs
 
                 _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(
                     cell=regex_cell,

@@ -279,9 +279,9 @@ class ModelRuntime:
             self._development_data_iterator.shuffle()
 
             development_exact_accuracy, development_dfa_accuracy = self.test(self._development_data_iterator, "Development", is_log=True)
-            test_exact_accuracy, test_dfa_accuracy = self.test(self._test_data_iterator, "Test")
+            # test_exact_accuracy, test_dfa_accuracy = self.test(self._test_data_iterator, "Test")
 
-            self.epoch_log(epoch_log_file, epoch, train_accuracy, development_exact_accuracy, test_exact_accuracy, average_loss)
+            self.epoch_log(epoch_log_file, epoch, train_accuracy, development_exact_accuracy, 0.00, average_loss)
 
             if development_exact_accuracy > best_accuracy:
                 self._saver.save(self._session, self._checkpoint_file)

@@ -872,13 +872,54 @@ class Model:
 
             self._predictions = tf.arg_max(softmax_outputs, dimension=2)
 
+            softmax_outputs = tf.add(softmax_outputs,
+                                     tf.constant(self.epsilon, dtype=tf.float32))
+
         # training, define loss
         with tf.name_scope("loss"):
+
+            first_prefix_index = tf.tile(
+                tf.reshape(
+                    tf.range(self._batch_size),
+                    shape=[self._batch_size, 1]
+                ),
+                [1, self._max_regex_length]
+            )
+            second_prefix_index = tf.transpose(
+                tf.tile(
+                    tf.reshape(
+                        tf.range(self._max_regex_length),
+                        shape=[self._max_regex_length, 1]
+                    ),
+                    [1, self._batch_size]
+                )
+            )
+            stacked_prefix = tf.stack([first_prefix_index, second_prefix_index], axis=2)
+            truth_regex_indices = tf.concat(
+                [
+                    stacked_prefix,
+                    tf.reshape(self._regex_targets, shape=[self._batch_size, self._max_regex_length, 1])
+                ],
+                axis=2
+            )
+
+            truth_regex_probs = tf.gather_nd(softmax_outputs, truth_regex_indices)
+
+            self._loss = tf.negative(
+                tf.reduce_mean(
+                    tf.reduce_sum(
+                        tf.log(truth_regex_probs), axis=1
+                    )
+                )
+            )
+
+            """
             self._loss = tf.contrib.seq2seq.sequence_loss(
                 logits=_weighted,
                 targets=self._regex_targets,
                 weights=self._regex_masks
             )
+            """
 
         with tf.name_scope('back_propagation'):
             optimizer = tf.train.AdamOptimizer(learning_rate=self._learning_rate)

@@ -43,7 +43,6 @@ class Model:
         self._max_case_length = util.get_value(opts, "max_case_length", 100)
         self._max_regex_length = util.get_value(opts, "max_regex_length", 40)
         self._embedding_dim = util.get_value(opts, "embedding_dim", 150)
-        self._learning_rate = util.get_value(opts, "learning_rate", 0.01)
         self._gradient_clip = util.get_value(opts, "gradient_clip", 5)
         self._dropout = util.get_value(opts, "dropout", 0.25)
 
@@ -174,6 +173,8 @@ class Model:
                                                      name="regex_targets")
                 self._regex_masks = tf.placeholder(tf.float32, [self._batch_size, self._max_regex_length],
                                                    name="regex_targets")
+
+                self._learning_rate = tf.placeholder(tf.float32, name="learning_rate")
 
     def _build_sentence_rnn(self, sentence_embedded, sequence_length):
         with tf.variable_scope("sentence_encoder"):
@@ -974,6 +975,7 @@ class Model:
         feed_dict[self._regex_masks] = batch.regex_masks
         feed_dict[self._rnn_input_keep_prob] = 1. - self._dropout
         feed_dict[self._rnn_output_keep_prob] = 1. - self._dropout
+        feed_dict[self._learning_rate] = batch.learning_rate
         return feed_dict
 
     def _build_test_feed(self, batch):

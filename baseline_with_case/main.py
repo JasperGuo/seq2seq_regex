@@ -57,9 +57,15 @@ class ModelRuntime:
 
         self._checkpoint_path = os.path.abspath(os.path.join(self._conf["checkpoint_path"], self._curr_time))
         self._checkpoint_file = os.path.join(self._checkpoint_path, "tf_checkpoint")
+        self._best_checkpoint_file = os.path.join(os.path.curdir, self._checkpoint_path, "tf_best_checkpoint")
 
         os.mkdir(self._checkpoint_path)
         self._is_test_capability = self._conf["is_test_capability"]
+
+        # Learning Rate Strategy
+        self._default_learning_rate = self._conf["default_learning_rate"]
+        self._learning_rate_decay_interval = self._conf["learning_rate_decay_interval"]
+        self._learning_rate_decay_factor = self._conf["learning_rate_decay_factor"]
 
         self._train_data_iterator = DataIterator(
             os.path.abspath(self._conf["train_file"]),
@@ -251,6 +257,8 @@ class ModelRuntime:
     def train(self):
         best_accuracy = 0.
         epoch_log_file = os.path.join(self._result_log_base_path, "epoch_result.log")
+        curr_learning_rate = self._default_learning_rate
+        last_updated_epoch = 0
         for epoch in tqdm(range(self._epoches)):
             self._train_data_iterator.shuffle()
             losses = list()
@@ -258,6 +266,7 @@ class ModelRuntime:
             train_exact_match = 0
             for i in tqdm(range(self._train_data_iterator.batch_per_epoch)):
                 batch = self._train_data_iterator.get_batch()
+                batch.learning_rate = curr_learning_rate
                 predictions, loss, optimizer, feed_dict = self._train_model.train(batch)
                 predictions, loss, optimizer = self._session.run((
                     predictions, loss, optimizer,
@@ -278,15 +287,21 @@ class ModelRuntime:
             self._test_data_iterator.shuffle()
             self._development_data_iterator.shuffle()
 
-            development_exact_accuracy, development_dfa_accuracy = self.test(self._development_data_iterator, "Development", is_log=True)
+            development_exact_accuracy, development_dfa_accuracy = self.test(self._development_data_iterator, "Development", is_log=False)
             # test_exact_accuracy, test_dfa_accuracy = self.test(self._test_data_iterator, "Test")
 
             self.epoch_log(epoch_log_file, epoch, train_accuracy, development_exact_accuracy, 0.00, average_loss)
 
+            # Decay Learning rate
+            if epoch - last_updated_epoch >= self._learning_rate_decay_interval:
+                curr_learning_rate = curr_learning_rate * self._learning_rate_decay_factor
+
             if development_exact_accuracy > best_accuracy:
-                self._saver.save(self._session, self._checkpoint_file)
+                self._saver.save(self._session, self._best_checkpoint_file)
                 best_accuracy = development_exact_accuracy
             tqdm.write("=================================================================")
+        else:
+            self._saver.save(self._session, self._checkpoint_file)
 
     def run(self, is_test=False, is_log=False):
         if not is_test:

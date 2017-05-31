@@ -136,6 +136,15 @@ class Batch:
             self.regex_masks.append(
                 [1]*len(l) + [0]*(regex_max_length - len(l))
             )
+        self._learning_rate = 0.0
+
+    @property
+    def learning_rate(self):
+        return self._learning_rate
+
+    @learning_rate.setter
+    def learning_rate(self, rate):
+        self._learning_rate = rate
 
     @property
     def batch_size(self):

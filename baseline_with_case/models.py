@@ -60,9 +60,11 @@ class Model:
         self._pretrained_sentence_embedding = pretrained_sentence_embedding
         self._pretrained_case_embedding = pretrained_case_embedding
 
+        """
         if self._is_test:
             self._batch_size = 1
             self._actual_batch_size = self._case_num
+        """
 
         if not self._is_test:
             self._build_train_graph()
@@ -614,11 +616,11 @@ class Model:
     def _test_decode(self, sentence_outputs, case_outputs, encoder_states, encoder_hidden_states):
         """
         Build Test
-        Test Batch Size: 1
-        :param sentence_outputs:        [1*case_num, max_sentence_len, hidden_dim]
-        :param case_outputs:            [1*case_num, max_case_len, hidden_dim]
+        Support batch
+        :param sentence_outputs:        [batch_size*case_num, max_sentence_len, hidden_dim]
+        :param case_outputs:            [batch_size*case_num, max_case_len, hidden_dim]
         :param encoder_states:          LSTMStateTuple
-        :param encoder_hidden_states:   [1*case_num, hidden_dim]
+        :param encoder_hidden_states:   [batch_size*case_num, hidden_dim]
         :return:
         """
         assert self._is_test
@@ -662,18 +664,19 @@ class Model:
                 Run Decode step by step
                 :param curr_ts:               Scalar
                 :param last_decoder_states:   LSTMStateTuple
-                :param last_hs:               [case_num, hidden_dim]
-                :param last_prediction:       [case_num], index
+                :param last_hs:               [batch_size*case_num, hidden_dim]
+                :param last_prediction:       [batch_size*case_num], index
                 :param decoder_outputs_array: TensorArray
                 :param prediction_array:      TensorArray
                 :return:
                 """
 
+                # Shape: [batch_size*case_num, 1, regex_embedding]
                 inputs = tf.nn.embedding_lookup(
                     params=regex_embedding,
                     ids=tf.reshape(
                         last_prediction,
-                        shape=[self._case_num, 1]
+                        shape=[self._actual_batch_size, 1]
                     )
                 )
 
@@ -743,6 +746,7 @@ class Model:
                     """
                     _inputs = inputs
 
+                # _decoder_outputs, Shape: [batch_size*case_num, 1, hidden_dim]
                 _decoder_outputs, _decoder_states = tf.nn.dynamic_rnn(
                     cell=regex_cell,
                     inputs=_inputs,
@@ -753,47 +757,68 @@ class Model:
                 next_ts = tf.add(curr_ts, 1)
 
                 # Max pooling
-                # [hidden_dim, case_num]
-                weighted_outputs = tf.tanh(
-                    tf.matmul(
-                        pooling_weight,
-                        tf.reshape(
-                            _decoder_outputs,
-                            shape=[self._case_num, self._hidden_dim]
-                        ),
-                        transpose_b=True
-                    )
+                # [batch_size*case_num, hidden_dim]
+                weighted_outputs = tf.transpose(
+                    tf.tanh(
+                        tf.matmul(
+                            pooling_weight,
+                            tf.reshape(
+                                _decoder_outputs,
+                                shape=[self._actual_batch_size, self._hidden_dim]
+                            ),
+                            transpose_b=True
+                        )
+                    ),
+                    perm=[1, 0]
                 )
 
-                # [hidden_dim]
+                # Shape: [batch_size, hidden_dim, case_num]
+                divided_outputs = tf.transpose(
+                    tf.reshape(
+                        weighted_outputs,
+                        shape=[self._batch_size, self._case_num, self._hidden_dim]
+                    ),
+                    perm=[0, 2, 1]
+                )
+
+                # [batch_size, hidden_dim]
                 max_pooling_result = tf.reduce_max(
-                    weighted_outputs,
-                    axis=1
+                    divided_outputs,
+                    axis=2
                 )
 
                 decoder_outputs_array = decoder_outputs_array.write(curr_ts, max_pooling_result)
 
                 _weighted = tf.reshape(
                     tf.matmul(
-                        softmax_weights,
                         tf.reshape(max_pooling_result,
-                                   shape=[self._hidden_dim, 1])
+                                   shape=[self._batch_size, self._hidden_dim]),
+                        softmax_weights,
+                        transpose_b=True
                     ),
-                    shape=[self._regex_vocab_manager.vocab_len]
+                    shape=[self._batch_size, self._regex_vocab_manager.vocab_len]
                 )
-                softmax_outputs = tf.nn.softmax(_weighted)
+                # Shape: [batch_size, regex_vocab_len]
+                softmax_outputs = tf.nn.softmax(_weighted, dim=-1)
 
-                curr_prediction = tf.cast(tf.arg_max(softmax_outputs, dimension=0), dtype=tf.int32)
+                # Shape: [batch_size]
+                curr_prediction = tf.cast(tf.arg_max(softmax_outputs, dimension=1), dtype=tf.int32)
 
                 prediction_array = prediction_array.write(curr_ts, curr_prediction)
 
-                copy_prediction = tf.multiply(
-                    tf.ones([self._case_num], dtype=tf.int32),
-                    curr_prediction
+                copy_prediction = tf.reshape(
+                    tf.tile(
+                        tf.reshape(
+                            curr_prediction,
+                            shape=[self._batch_size, 1]
+                        ),
+                        [1, self._case_num]
+                    ),
+                    shape=[self._actual_batch_size]
                 )
 
                 reshaped_decoder_outputs = tf.reshape(_decoder_outputs,
-                                                      shape=[self._case_num, self._hidden_dim])
+                                                      shape=[self._actual_batch_size, self._hidden_dim])
 
                 return next_ts, _decoder_states, reshaped_decoder_outputs, copy_prediction, decoder_outputs_array, prediction_array
 
@@ -804,13 +829,16 @@ class Model:
                     tf.constant(0),
                     encoder_states,
                     encoder_hidden_states,
-                    tf.constant([self._regex_vocab_manager.GO_TOKEN_ID] * self._case_num, dtype=tf.int32),
+                    tf.constant([self._regex_vocab_manager.GO_TOKEN_ID] * self._actual_batch_size, dtype=tf.int32),
                     tf.TensorArray(dtype=tf.float32, size=self._max_regex_length),
                     tf.TensorArray(dtype=tf.int32, size=self._max_regex_length)
                 ]
             )
-            # [max_regex_length]
-            prediction_tensor = all_predictions.stack(name="regex_predictions")
+            # [batch_size, max_regex_length]
+            prediction_tensor = tf.transpose(
+                all_predictions.stack(name="regex_predictions"),
+                perm=[1, 0]
+            )
 
             return prediction_tensor
 
@@ -953,6 +981,7 @@ class Model:
             shape=[-1, self._hidden_dim]
         )
 
+        # Shape: [batch_size, max_regex_len]
         predictions = self._test_decode(
             sentence_outputs=sentence_encoder_outputs,
             case_outputs=case_encoder_outputs,

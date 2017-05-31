@@ -87,7 +87,7 @@ class ModelRuntime:
             self._max_sentence_length,
             self._max_case_length,
             self._max_regex_length,
-            1,
+            self._batch_size,
             self._case_num
         )
 
@@ -99,7 +99,7 @@ class ModelRuntime:
             self._max_sentence_length,
             self._max_case_length,
             self._max_regex_length,
-            1,
+            self._batch_size,
             self._case_num
         )
 

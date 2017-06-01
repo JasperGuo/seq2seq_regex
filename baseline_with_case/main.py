@@ -116,7 +116,7 @@ class ModelRuntime:
         """
         path = os.path.join(base_path, "config.json")
         with open(path, "w") as f:
-            f.write(json.dumps(self._conf, indent=4))
+            f.write(json.dumps(self._conf, indent=4, sort_keys=True))
 
     def _load_pretrain_embedding(self, path):
         return np.load(path)
@@ -238,10 +238,12 @@ class ModelRuntime:
         tqdm.write("Testing...")
         for i in tqdm(range(data_iterator.batch_per_epoch)):
             batch = data_iterator.get_batch()
-            predictions, feed_dict = self._test_model.predict(batch)
-            predictions = self._session.run(predictions, feed_dict)
 
             if not self._is_beam_search:
+
+                predictions, feed_dict = self._test_model.predict(batch)
+                predictions = self._session.run(predictions, feed_dict)
+
                 _predictions = predictions.reshape(
                     [batch.batch_size, self._max_regex_length]
                 )
@@ -260,11 +262,21 @@ class ModelRuntime:
                         cases_idx += self._case_num
 
             else:
+
+                predictions, predictions_logprobs, feed_dict = self._test_model.predict(batch)
+                predictions, logprobs = self._session.run((predictions, predictions_logprobs,), feed_dict)
+
                 _predictions = predictions.reshape(
                     [batch.batch_size, self._beam_size, self._max_regex_length]
                 )
+
+                _logprobs = np.reshape(
+                    logprobs,
+                    [self._batch_size, self._beam_size]
+                )
+
                 cases_idx = 0
-                for p, t in zip(_predictions, batch.regex_targets):
+                for p, probs, t in zip(_predictions, _logprobs, batch.regex_targets):
                     tiled_t = np.reshape(
                         np.tile(np.array(t), [self._beam_size]),
                         [self._beam_size, self._max_regex_length]
@@ -282,8 +294,8 @@ class ModelRuntime:
 
                     cases_idx += self._case_num
 
-                    for _p, em, dc in zip(p, exact_match, dfa_correct):
-                        self.log(file, sentence, cases, t, _p, em, dc)
+                    for _p, prob, em, dc in zip(p, probs, exact_match, dfa_correct):
+                        self.log(file, sentence, cases, t, _p, em, dc, score=prob)
 
         accuracy = set_exact_match/total
         dfa_accuracy = set_dfa_match/total

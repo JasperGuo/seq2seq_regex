@@ -1488,7 +1488,7 @@ class Model:
                 ]
             )
 
-            return all_predictions
+            return all_predictions, all_logprobs
 
     def _beam_predict(self, softmax_outputs, prev_logprobs, mask):
         """
@@ -1741,12 +1741,14 @@ class Model:
         )
 
         if self._is_beam_search:
-            predictions = self._beam_search_decode(
+            predictions, predictions_logprobs = self._beam_search_decode(
                 sentence_outputs=sentence_encoder_outputs,
                 case_outputs=case_encoder_outputs,
                 encoder_states=case_encoder_states,
                 encoder_hidden_states=case_last_outputs
             )
+
+            self._predictions_logprobs = predictions_logprobs
         else:
 
             # Shape: [batch_size, max_regex_len]
@@ -1794,4 +1796,7 @@ class Model:
 
     def predict(self, batch):
         feed_dict = self._build_test_feed(batch)
+
+        if self._is_test and self._is_beam_search:
+            return self._predictions, self._predictions_logprobs, feed_dict
         return self._predictions, feed_dict

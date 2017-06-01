@@ -42,6 +42,8 @@ class ModelRuntime:
         self._is_pretrained_embedding_used = self._conf["is_pretrained_embedding_used"]
         self._sentence_word_pretrained_embedding_path = self._conf["sentence_word_pretrained_embedding_path"]
         self._case_word_pretrained_embedding_path = self._conf["case_word_pretrained_embedding_path"]
+        self._is_beam_search = self._conf["is_beam_search"]
+        self._beam_size = self._conf["beam_size"]
 
         if self._is_pretrained_embedding_used:
             self._sentence_embedding = self._load_pretrain_embedding(self._sentence_word_pretrained_embedding_path)
@@ -216,15 +218,16 @@ class ModelRuntime:
         """
         Check accuracy in batch
         :return:
+            list, list
         """
-        exact_correct = 0
-        dfa_correct = 0
+        exact_correct = list()
+        dfa_correct = list()
         for (prediction, ground_truth) in zip(predictions, ground_truths):
             ground_truth = np.array(ground_truth)
             padded_seq = np.concatenate((prediction, np.array([0] * (len(ground_truth) - len(prediction)))), axis=0)
             e, d = self._calc_accuracy(ground_truth, padded_seq, is_dfa_test=is_dfa_test)
-            exact_correct += e
-            dfa_correct += d
+            exact_correct.append(int(e))
+            dfa_correct.append(int(d))
         return exact_correct, dfa_correct
 
     def test(self, data_iterator, description, is_log=False):
@@ -237,17 +240,50 @@ class ModelRuntime:
             batch = data_iterator.get_batch()
             predictions, feed_dict = self._test_model.predict(batch)
             predictions = self._session.run(predictions, feed_dict)
-            _predictions = predictions.reshape(
-                [batch.batch_size, self._max_regex_length]
-            )
 
-            exact_match, dfa_correct = self._calc_batch_accuracy(_predictions, batch.regex_targets)
-            set_exact_match += exact_match
-            set_dfa_match += dfa_correct
-            total += batch.batch_size
+            if not self._is_beam_search:
+                _predictions = predictions.reshape(
+                    [batch.batch_size, self._max_regex_length]
+                )
 
-            if is_log:
-                self.log(file, batch.sentences[0], batch.cases, batch.regex_targets[0], predictions, exact_match, dfa_correct)
+                exact_match, dfa_correct = self._calc_batch_accuracy(_predictions, batch.regex_targets)
+                set_exact_match += sum(exact_match)
+                set_dfa_match += sum(dfa_correct)
+                total += batch.batch_size
+
+                if is_log:
+                    cases_idx = 0
+                    for p, t, em, dc in zip(_predictions, batch.regex_targets, exact_match, dfa_correct):
+                        s = batch.sentences[cases_idx:cases_idx+self._case_num][0]
+                        cases = batch.cases[cases_idx:cases_idx + self._case_num]
+                        self.log(file, s, cases, t, p, em, dc)
+                        cases_idx += self._case_num
+
+            else:
+                _predictions = predictions.reshape(
+                    [batch.batch_size, self._beam_size, self._max_regex_length]
+                )
+                cases_idx = 0
+                for p, t in zip(_predictions, batch.regex_targets):
+                    tiled_t = np.reshape(
+                        np.tile(np.array(t), [self._beam_size]),
+                        [self._beam_size, self._max_regex_length]
+                    )
+                    exact_match, dfa_correct = self._calc_batch_accuracy(
+                        p, tiled_t
+                    )
+                    cases = batch.cases[cases_idx:cases_idx+self._case_num]
+                    sentence = batch.sentences[cases_idx:cases_idx+self._case_num][0]
+                    if sum(exact_match) > 0:
+                        set_exact_match += 1
+                    if sum(dfa_correct) > 0:
+                        set_dfa_match += 1
+                    total += 1
+
+                    cases_idx += self._case_num
+
+                    for _p, em, dc in zip(p, exact_match, dfa_correct):
+                        self.log(file, sentence, cases, t, _p, em, dc)
 
         accuracy = set_exact_match/total
         dfa_accuracy = set_dfa_match/total
@@ -274,7 +310,7 @@ class ModelRuntime:
                 losses.append(loss)
 
                 exact_match, dfa_correct = self._calc_batch_accuracy(predictions, batch.regex_targets)
-                train_exact_match += exact_match
+                train_exact_match += sum(exact_match)
                 total += batch.batch_size
 
             tqdm.write(np.array_str(np.array(losses)))

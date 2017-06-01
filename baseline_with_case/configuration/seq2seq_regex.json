@@ -1,6 +1,6 @@
 {
   "name": "baseline_with_case",
-  "default_learning_rate": 0.001,
+  "default_learning_rate": 0.0005,
   "learning_rate_decay_factor": 0.98,
   "learning_rate_decay_interval": 10,
   "optimizer": "AdamOptimizer",
@@ -11,7 +11,7 @@
   "batch_size": 32,
   "test_batch_size": 1,
   "dropout": 0.25,
-  "epoches": 150,
+  "epoches": 300,
   "max_sentence_length": 30,
   "max_regex_length": 40,
   "max_case_length": 100,
@@ -26,10 +26,12 @@
   "is_test_capability": false,
   "checkpoint_path": "checkpoint",
   "case_num": 2,
-  "is_pretrained_embedding_used": false,
+  "is_pretrained_embedding_used": true,
   "sentence_word_pretrained_embedding_path": "pretrained_embedding\\sentence_embedding.npy",
   "case_word_pretrained_embedding_path": "pretrained_embedding\\case_embedding.npy",
-  "is_embedding_fine_tuned": false,
+  "is_embedding_fine_tuned": true,
   "is_regex_sentence_attention": true,
-  "is_regex_case_attention": true
+  "is_regex_case_attention": true,
+  "is_beam_search": true,
+  "beam_size": 1
 }

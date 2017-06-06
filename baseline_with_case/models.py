@@ -1631,8 +1631,8 @@ class Model:
         max_pooling_result = self._train_decode(
             sentence_outputs=sentence_encoder_outputs,
             case_outputs=case_encoder_outputs,
-            encoder_states=sentence_encoder_states,
-            encoder_hidden_states=sentence_last_outputs
+            encoder_states=case_encoder_states,
+            encoder_hidden_states=case_last_outputs
         )
 
         with tf.variable_scope("prediction_softmax"):
@@ -1744,8 +1744,8 @@ class Model:
             predictions, predictions_logprobs = self._beam_search_decode(
                 sentence_outputs=sentence_encoder_outputs,
                 case_outputs=case_encoder_outputs,
-                encoder_states=sentence_encoder_states,
-                encoder_hidden_states=sentence_last_outputs
+                encoder_states=case_encoder_states,
+                encoder_hidden_states=case_last_outputs
             )
 
             self._predictions_logprobs = predictions_logprobs
@@ -1755,8 +1755,8 @@ class Model:
             predictions = self._test_decode(
                 sentence_outputs=sentence_encoder_outputs,
                 case_outputs=case_encoder_outputs,
-                encoder_states=sentence_encoder_states,
-                encoder_hidden_states=sentence_last_outputs
+                encoder_states=case_encoder_states,
+                encoder_hidden_states=case_last_outputs
             )
 
         self._predictions = predictions

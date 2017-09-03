@@ -1,0 +1,3 @@
+model_checkpoint_path: "D:\\JLOU\\student\\jiaqiguo\\seq2seq_regex\\baseline_with_case\\checkpoint\\1504233648\\tf_checkpoint"
+all_model_checkpoint_paths: "D:\\JLOU\\student\\jiaqiguo\\seq2seq_regex\\baseline_with_case\\checkpoint\\1504233648\\tf_best_checkpoint"
+all_model_checkpoint_paths: "D:\\JLOU\\student\\jiaqiguo\\seq2seq_regex\\baseline_with_case\\checkpoint\\1504233648\\tf_checkpoint"

@@ -1,0 +1,1570 @@
+{
+    "<M0>:": {
+        "id": 4,
+        "frequency": 1
+    },
+    "normal": {
+        "id": 5,
+        "frequency": 1
+    },
+    "even": {
+        "id": 6,
+        "frequency": 1
+    },
+    "basis": {
+        "id": 7,
+        "frequency": 1
+    },
+    "4": {
+        "id": 8,
+        "frequency": 286
+    },
+    "occurence": {
+        "id": 9,
+        "frequency": 2
+    },
+    "string": {
+        "id": 10,
+        "frequency": 2944
+    },
+    "digits": {
+        "id": 11,
+        "frequency": 1
+    },
+    "lined": {
+        "id": 12,
+        "frequency": 2
+    },
+    "which": {
+        "id": 13,
+        "frequency": 246
+    },
+    "man": {
+        "id": 14,
+        "frequency": 1
+    },
+    "at": {
+        "id": 15,
+        "frequency": 789
+    },
+    "contaiing": {
+        "id": 16,
+        "frequency": 1
+    },
+    "type": {
+        "id": 17,
+        "frequency": 2
+    },
+    "where": {
+        "id": 18,
+        "frequency": 46
+    },
+    "characters": {
+        "id": 19,
+        "frequency": 118
+    },
+    "by": {
+        "id": 20,
+        "frequency": 942
+    },
+    "preceeding": {
+        "id": 95,
+        "frequency": 1
+    },
+    "succeeds": {
+        "id": 22,
+        "frequency": 1
+    },
+    "having": {
+        "id": 23,
+        "frequency": 165
+    },
+    "numbering": {
+        "id": 24,
+        "frequency": 3
+    },
+    "above": {
+        "id": 25,
+        "frequency": 1
+    },
+    "use": {
+        "id": 26,
+        "frequency": 7
+    },
+    "small-case": {
+        "id": 27,
+        "frequency": 1
+    },
+    "lot": {
+        "id": 388,
+        "frequency": 1
+    },
+    "consecutive": {
+        "id": 28,
+        "frequency": 2
+    },
+    "finish": {
+        "id": 29,
+        "frequency": 2
+    },
+    "characte": {
+        "id": 30,
+        "frequency": 1
+    },
+    "have": {
+        "id": 31,
+        "frequency": 357
+    },
+    "friend": {
+        "id": 32,
+        "frequency": 1
+    },
+    "treats": {
+        "id": 33,
+        "frequency": 1
+    },
+    "beginnig": {
+        "id": 34,
+        "frequency": 1
+    },
+    "named": {
+        "id": 380,
+        "frequency": 2
+    },
+    "off": {
+        "id": 35,
+        "frequency": 1
+    },
+    "occurrence": {
+        "id": 335,
+        "frequency": 6
+    },
+    "daphne12": {
+        "id": 37,
+        "frequency": 1
+    },
+    "uppe": {
+        "id": 38,
+        "frequency": 1
+    },
+    "contaning": {
+        "id": 39,
+        "frequency": 1
+    },
+    "nes": {
+        "id": 40,
+        "frequency": 1
+    },
+    "lettered": {
+        "id": 41,
+        "frequency": 1
+    },
+    "ot": {
+        "id": 42,
+        "frequency": 1
+    },
+    ":": {
+        "id": 43,
+        "frequency": 3
+    },
+    "else": {
+        "id": 44,
+        "frequency": 1
+    },
+    "ends": {
+        "id": 69,
+        "frequency": 13
+    },
+    "appear": {
+        "id": 47,
+        "frequency": 46
+    },
+    "tthem": {
+        "id": 48,
+        "frequency": 1
+    },
+    "precedig": {
+        "id": 49,
+        "frequency": 1
+    },
+    "of": {
+        "id": 50,
+        "frequency": 499
+    },
+    "subsequent": {
+        "id": 51,
+        "frequency": 1
+    },
+    "<M2>": {
+        "id": 52,
+        "frequency": 99
+    },
+    "with": {
+        "id": 206,
+        "frequency": 4971
+    },
+    "follwed": {
+        "id": 54,
+        "frequency": 1
+    },
+    "as": {
+        "id": 55,
+        "frequency": 5
+    },
+    "lettere": {
+        "id": 56,
+        "frequency": 3
+    },
+    "1": {
+        "id": 57,
+        "frequency": 210
+    },
+    "going": {
+        "id": 207,
+        "frequency": 2
+    },
+    "code": {
+        "id": 59,
+        "frequency": 1
+    },
+    "capitol": {
+        "id": 60,
+        "frequency": 2
+    },
+    "the": {
+        "id": 61,
+        "frequency": 2288
+    },
+    "some": {
+        "id": 62,
+        "frequency": 1
+    },
+    "upper": {
+        "id": 63,
+        "frequency": 122
+    },
+    "determine": {
+        "id": 64,
+        "frequency": 1
+    },
+    "first": {
+        "id": 65,
+        "frequency": 9
+    },
+    "-": {
+        "id": 66,
+        "frequency": 5
+    },
+    "specialty": {
+        "id": 67,
+        "frequency": 1
+    },
+    "th": {
+        "id": 68,
+        "frequency": 1
+    },
+    "up": {
+        "id": 45,
+        "frequency": 3
+    },
+    "precedes": {
+        "id": 70,
+        "frequency": 18
+    },
+    "placed": {
+        "id": 71,
+        "frequency": 1
+    },
+    "uppercae": {
+        "id": 72,
+        "frequency": 1
+    },
+    "within": {
+        "id": 73,
+        "frequency": 4
+    },
+    "there's": {
+        "id": 74,
+        "frequency": 1
+    },
+    "succession:": {
+        "id": 75,
+        "frequency": 1
+    },
+    "capital": {
+        "id": 184,
+        "frequency": 1419
+    },
+    "tines": {
+        "id": 78,
+        "frequency": 1
+    },
+    "uppercase": {
+        "id": 79,
+        "frequency": 32
+    },
+    "time": {
+        "id": 80,
+        "frequency": 58
+    },
+    "occuring": {
+        "id": 81,
+        "frequency": 6
+    },
+    "instance": {
+        "id": 82,
+        "frequency": 6
+    },
+    "capitals": {
+        "id": 83,
+        "frequency": 2
+    },
+    "ring": {
+        "id": 84,
+        "frequency": 2
+    },
+    "used": {
+        "id": 85,
+        "frequency": 1
+    },
+    "terminate": {
+        "id": 86,
+        "frequency": 1
+    },
+    "occurrences": {
+        "id": 87,
+        "frequency": 12
+    },
+    "its": {
+        "id": 88,
+        "frequency": 1
+    },
+    "tmes": {
+        "id": 89,
+        "frequency": 1
+    },
+    "iin": {
+        "id": 90,
+        "frequency": 2
+    },
+    "precede": {
+        "id": 91,
+        "frequency": 1
+    },
+    "either": {
+        "id": 92,
+        "frequency": 427
+    },
+    "three:": {
+        "id": 93,
+        "frequency": 1
+    },
+    "digit": {
+        "id": 230,
+        "frequency": 1
+    },
+    "lover-case": {
+        "id": 96,
+        "frequency": 1
+    },
+    "sell": {
+        "id": 238,
+        "frequency": 1
+    },
+    "numbers": {
+        "id": 98,
+        "frequency": 93
+    },
+    "conclude": {
+        "id": 99,
+        "frequency": 6
+    },
+    "food": {
+        "id": 214,
+        "frequency": 1
+    },
+    "rate": {
+        "id": 101,
+        "frequency": 1
+    },
+    "items": {
+        "id": 367,
+        "frequency": 481
+    },
+    "withe": {
+        "id": 102,
+        "frequency": 1
+    },
+    "be": {
+        "id": 103,
+        "frequency": 4
+    },
+    "containing": {
+        "id": 104,
+        "frequency": 928
+    },
+    "containg": {
+        "id": 269,
+        "frequency": 3
+    },
+    "presence": {
+        "id": 106,
+        "frequency": 1
+    },
+    "mroe": {
+        "id": 107,
+        "frequency": 1
+    },
+    "coming": {
+        "id": 108,
+        "frequency": 31
+    },
+    "were": {
+        "id": 109,
+        "frequency": 1
+    },
+    "include": {
+        "id": 297,
+        "frequency": 9
+    },
+    "<P>": {
+        "id": 0,
+        "frequency": 0
+    },
+    "in": {
+        "id": 112,
+        "frequency": 672
+    },
+    "have2or": {
+        "id": 113,
+        "frequency": 1
+    },
+    "preceding": {
+        "id": 114,
+        "frequency": 472
+    },
+    "sting": {
+        "id": 115,
+        "frequency": 1
+    },
+    "fo": {
+        "id": 116,
+        "frequency": 1
+    },
+    "letteres": {
+        "id": 117,
+        "frequency": 1
+    },
+    "sweaters": {
+        "id": 118,
+        "frequency": 1
+    },
+    "that's": {
+        "id": 119,
+        "frequency": 7
+    },
+    "ending": {
+        "id": 120,
+        "frequency": 637
+    },
+    "0": {
+        "id": 121,
+        "frequency": 17
+    },
+    ";": {
+        "id": 122,
+        "frequency": 9
+    },
+    "lowe-case": {
+        "id": 123,
+        "frequency": 1
+    },
+    "number": {
+        "id": 286,
+        "frequency": 1407
+    },
+    ".": {
+        "id": 124,
+        "frequency": 625
+    },
+    "whixh": {
+        "id": 221,
+        "frequency": 1
+    },
+    "3": {
+        "id": 126,
+        "frequency": 279
+    },
+    "that": {
+        "id": 127,
+        "frequency": 751
+    },
+    "walk": {
+        "id": 128,
+        "frequency": 1
+    },
+    "letters": {
+        "id": 129,
+        "frequency": 257
+    },
+    "you": {
+        "id": 130,
+        "frequency": 3
+    },
+    "incidents": {
+        "id": 131,
+        "frequency": 1
+    },
+    "do": {
+        "id": 132,
+        "frequency": 6
+    },
+    "wih": {
+        "id": 133,
+        "frequency": 1
+    },
+    "zero": {
+        "id": 134,
+        "frequency": 419
+    },
+    "sequence": {
+        "id": 135,
+        "frequency": 1
+    },
+    "need": {
+        "id": 136,
+        "frequency": 3
+    },
+    "directly": {
+        "id": 137,
+        "frequency": 1
+    },
+    "following": {
+        "id": 138,
+        "frequency": 46
+    },
+    "caee": {
+        "id": 139,
+        "frequency": 1
+    },
+    "feature": {
+        "id": 140,
+        "frequency": 2
+    },
+    "both": {
+        "id": 141,
+        "frequency": 3
+    },
+    "listed": {
+        "id": 142,
+        "frequency": 1
+    },
+    "doesn't": {
+        "id": 143,
+        "frequency": 2
+    },
+    "acapital": {
+        "id": 144,
+        "frequency": 1
+    },
+    "begin": {
+        "id": 145,
+        "frequency": 39
+    },
+    "words": {
+        "id": 146,
+        "frequency": 1004
+    },
+    "nothing": {
+        "id": 147,
+        "frequency": 1
+    },
+    "no": {
+        "id": 148,
+        "frequency": 25
+    },
+    "follow": {
+        "id": 149,
+        "frequency": 3
+    },
+    "less": {
+        "id": 213,
+        "frequency": 11
+    },
+    "equal": {
+        "id": 150,
+        "frequency": 3
+    },
+    "showing": {
+        "id": 151,
+        "frequency": 2
+    },
+    "username": {
+        "id": 152,
+        "frequency": 1
+    },
+    "term": {
+        "id": 154,
+        "frequency": 1
+    },
+    "occurs": {
+        "id": 172,
+        "frequency": 9
+    },
+    "containging": {
+        "id": 94,
+        "frequency": 2
+    },
+    "but": {
+        "id": 157,
+        "frequency": 3
+    },
+    "whose": {
+        "id": 158,
+        "frequency": 2
+    },
+    "i": {
+        "id": 159,
+        "frequency": 4
+    },
+    "leading": {
+        "id": 160,
+        "frequency": 1
+    },
+    "being": {
+        "id": 161,
+        "frequency": 5
+    },
+    "liens": {
+        "id": 162,
+        "frequency": 3
+    },
+    "follows": {
+        "id": 163,
+        "frequency": 5
+    },
+    "these": {
+        "id": 186,
+        "frequency": 5
+    },
+    "like": {
+        "id": 164,
+        "frequency": 1
+    },
+    "starts": {
+        "id": 166,
+        "frequency": 5
+    },
+    "least": {
+        "id": 168,
+        "frequency": 765
+    },
+    "combination": {
+        "id": 169,
+        "frequency": 3
+    },
+    "<GO>": {
+        "id": 2,
+        "frequency": 0
+    },
+    "pet": {
+        "id": 171,
+        "frequency": 1
+    },
+    "containe": {
+        "id": 155,
+        "frequency": 1
+    },
+    "would": {
+        "id": 173,
+        "frequency": 1
+    },
+    "occasion": {
+        "id": 174,
+        "frequency": 1
+    },
+    "and": {
+        "id": 175,
+        "frequency": 387
+    },
+    "ling": {
+        "id": 176,
+        "frequency": 1
+    },
+    "line": {
+        "id": 281,
+        "frequency": 41
+    },
+    "zer": {
+        "id": 178,
+        "frequency": 1
+    },
+    "so": {
+        "id": 294,
+        "frequency": 2
+    },
+    "ines": {
+        "id": 180,
+        "frequency": 3
+    },
+    "lower": {
+        "id": 293,
+        "frequency": 116
+    },
+    "only": {
+        "id": 182,
+        "frequency": 181
+    },
+    "something": {
+        "id": 298,
+        "frequency": 1
+    },
+    "ore": {
+        "id": 185,
+        "frequency": 8
+    },
+    "summary:": {
+        "id": 316,
+        "frequency": 1
+    },
+    "captial": {
+        "id": 187,
+        "frequency": 1
+    },
+    "my": {
+        "id": 189,
+        "frequency": 3
+    },
+    "vowels": {
+        "id": 190,
+        "frequency": 101
+    },
+    "additional": {
+        "id": 236,
+        "frequency": 1
+    },
+    "word": {
+        "id": 192,
+        "frequency": 110
+    },
+    "does": {
+        "id": 193,
+        "frequency": 2
+    },
+    "once": {
+        "id": 194,
+        "frequency": 229
+    },
+    "afterwards": {
+        "id": 195,
+        "frequency": 2
+    },
+    "is": {
+        "id": 196,
+        "frequency": 79
+    },
+    "ro": {
+        "id": 197,
+        "frequency": 2
+    },
+    "than": {
+        "id": 198,
+        "frequency": 28
+    },
+    "misty": {
+        "id": 199,
+        "frequency": 1
+    },
+    "wherein": {
+        "id": 200,
+        "frequency": 14
+    },
+    "present": {
+        "id": 201,
+        "frequency": 8
+    },
+    "more": {
+        "id": 202,
+        "frequency": 1589
+    },
+    "regular": {
+        "id": 203,
+        "frequency": 1
+    },
+    "occurrr": {
+        "id": 204,
+        "frequency": 1
+    },
+    "a": {
+        "id": 205,
+        "frequency": 6999
+    },
+    "immediately": {
+        "id": 53,
+        "frequency": 1
+    },
+    "front": {
+        "id": 58,
+        "frequency": 9
+    },
+    "after": {
+        "id": 208,
+        "frequency": 221
+    },
+    "class": {
+        "id": 209,
+        "frequency": 2
+    },
+    "other": {
+        "id": 210,
+        "frequency": 2
+    },
+    "item": {
+        "id": 211,
+        "frequency": 1
+    },
+    ",": {
+        "id": 212,
+        "frequency": 2433
+    },
+    "come": {
+        "id": 165,
+        "frequency": 11
+    },
+    "phrases": {
+        "id": 100,
+        "frequency": 1
+    },
+    "lowercase": {
+        "id": 215,
+        "frequency": 25
+    },
+    "or": {
+        "id": 216,
+        "frequency": 4410
+    },
+    "had": {
+        "id": 217,
+        "frequency": 1
+    },
+    "5": {
+        "id": 218,
+        "frequency": 272
+    },
+    "concluding": {
+        "id": 219,
+        "frequency": 2
+    },
+    "vowel:": {
+        "id": 220,
+        "frequency": 1
+    },
+    "elements": {
+        "id": 125,
+        "frequency": 1
+    },
+    "letter": {
+        "id": 222,
+        "frequency": 4310
+    },
+    "just": {
+        "id": 223,
+        "frequency": 2
+    },
+    "twice": {
+        "id": 224,
+        "frequency": 60
+    },
+    "all": {
+        "id": 225,
+        "frequency": 15
+    },
+    "any": {
+        "id": 226,
+        "frequency": 57
+    },
+    "are": {
+        "id": 227,
+        "frequency": 119
+    },
+    "thst": {
+        "id": 228,
+        "frequency": 1
+    },
+    "sister's": {
+        "id": 229,
+        "frequency": 1
+    },
+    "then": {
+        "id": 231,
+        "frequency": 207
+    },
+    "capitalized": {
+        "id": 232,
+        "frequency": 4
+    },
+    "contain2or": {
+        "id": 384,
+        "frequency": 1
+    },
+    "appearance": {
+        "id": 233,
+        "frequency": 1
+    },
+    "contained": {
+        "id": 234,
+        "frequency": 7
+    },
+    "start": {
+        "id": 235,
+        "frequency": 43
+    },
+    "comes": {
+        "id": 237,
+        "frequency": 13
+    },
+    "lease": {
+        "id": 97,
+        "frequency": 2
+    },
+    "must": {
+        "id": 239,
+        "frequency": 17
+    },
+    "don't": {
+        "id": 240,
+        "frequency": 2
+    },
+    "order:": {
+        "id": 241,
+        "frequency": 1
+    },
+    "2": {
+        "id": 242,
+        "frequency": 813
+    },
+    "they": {
+        "id": 170,
+        "frequency": 3
+    },
+    "case": {
+        "id": 244,
+        "frequency": 224
+    },
+    "alphabet": {
+        "id": 245,
+        "frequency": 7
+    },
+    "included": {
+        "id": 246,
+        "frequency": 1
+    },
+    "appearances": {
+        "id": 314,
+        "frequency": 1
+    },
+    "things": {
+        "id": 247,
+        "frequency": 1
+    },
+    "has": {
+        "id": 248,
+        "frequency": 10
+    },
+    "u": {
+        "id": 249,
+        "frequency": 3
+    },
+    "final": {
+        "id": 250,
+        "frequency": 1
+    },
+    "your": {
+        "id": 373,
+        "frequency": 4
+    },
+    "combinations": {
+        "id": 251,
+        "frequency": 17
+    },
+    "hat": {
+        "id": 307,
+        "frequency": 1
+    },
+    "capitla": {
+        "id": 253,
+        "frequency": 1
+    },
+    "possessing": {
+        "id": 254,
+        "frequency": 1
+    },
+    "to": {
+        "id": 255,
+        "frequency": 35
+    },
+    "these:": {
+        "id": 256,
+        "frequency": 1
+    },
+    "case-letter": {
+        "id": 257,
+        "frequency": 3
+    },
+    "tring": {
+        "id": 258,
+        "frequency": 1
+    },
+    "open": {
+        "id": 259,
+        "frequency": 1
+    },
+    "can": {
+        "id": 260,
+        "frequency": 4
+    },
+    "truck": {
+        "id": 261,
+        "frequency": 5
+    },
+    "upper-case": {
+        "id": 262,
+        "frequency": 15
+    },
+    "repeated": {
+        "id": 264,
+        "frequency": 14
+    },
+    "stating": {
+        "id": 265,
+        "frequency": 21
+    },
+    "greater": {
+        "id": 266,
+        "frequency": 18
+    },
+    "strings": {
+        "id": 267,
+        "frequency": 59
+    },
+    "using": {
+        "id": 268,
+        "frequency": 2
+    },
+    "leter": {
+        "id": 105,
+        "frequency": 2
+    },
+    "might": {
+        "id": 270,
+        "frequency": 1
+    },
+    "charactered": {
+        "id": 271,
+        "frequency": 1
+    },
+    "if": {
+        "id": 272,
+        "frequency": 3
+    },
+    "<M0>": {
+        "id": 273,
+        "frequency": 3098
+    },
+    "multiple": {
+        "id": 274,
+        "frequency": 4
+    },
+    "least2times": {
+        "id": 275,
+        "frequency": 1
+    },
+    "contains": {
+        "id": 276,
+        "frequency": 7
+    },
+    "contating": {
+        "id": 277,
+        "frequency": 2
+    },
+    "occurring": {
+        "id": 278,
+        "frequency": 29
+    },
+    "ha": {
+        "id": 279,
+        "frequency": 1
+    },
+    "walking": {
+        "id": 280,
+        "frequency": 1
+    },
+    "bigis": {
+        "id": 177,
+        "frequency": 1
+    },
+    "includes": {
+        "id": 282,
+        "frequency": 1
+    },
+    "daily": {
+        "id": 283,
+        "frequency": 1
+    },
+    "appearing": {
+        "id": 284,
+        "frequency": 1
+    },
+    "cased": {
+        "id": 285,
+        "frequency": 3
+    },
+    "thrice": {
+        "id": 243,
+        "frequency": 20
+    },
+    "end": {
+        "id": 287,
+        "frequency": 146
+    },
+    "character": {
+        "id": 288,
+        "frequency": 1577
+    },
+    "<M1>": {
+        "id": 289,
+        "frequency": 819
+    },
+    "e": {
+        "id": 290,
+        "frequency": 3
+    },
+    "seen": {
+        "id": 291,
+        "frequency": 4
+    },
+    "repeat": {
+        "id": 292,
+        "frequency": 1
+    },
+    "maybe": {
+        "id": 181,
+        "frequency": 1
+    },
+    "also": {
+        "id": 351,
+        "frequency": 7
+    },
+    "works": {
+        "id": 179,
+        "frequency": 1
+    },
+    "stores": {
+        "id": 295,
+        "frequency": 1
+    },
+    "instances": {
+        "id": 296,
+        "frequency": 5
+    },
+    "there": {
+        "id": 110,
+        "frequency": 15
+    },
+    "sentence:": {
+        "id": 183,
+        "frequency": 1
+    },
+    "toys": {
+        "id": 299,
+        "frequency": 1
+    },
+    "times": {
+        "id": 300,
+        "frequency": 1245
+    },
+    "single": {
+        "id": 77,
+        "frequency": 1
+    },
+    "amount": {
+        "id": 302,
+        "frequency": 1
+    },
+    "iether": {
+        "id": 303,
+        "frequency": 1
+    },
+    "occur": {
+        "id": 304,
+        "frequency": 3
+    },
+    "have5or": {
+        "id": 305,
+        "frequency": 2
+    },
+    "dog": {
+        "id": 306,
+        "frequency": 35
+    },
+    "before": {
+        "id": 252,
+        "frequency": 2059
+    },
+    "fun": {
+        "id": 308,
+        "frequency": 1
+    },
+    "small": {
+        "id": 309,
+        "frequency": 152
+    },
+    "lower-case": {
+        "id": 310,
+        "frequency": 1304
+    },
+    "staring": {
+        "id": 311,
+        "frequency": 3
+    },
+    "order": {
+        "id": 156,
+        "frequency": 1
+    },
+    "identify": {
+        "id": 312,
+        "frequency": 2
+    },
+    "between": {
+        "id": 345,
+        "frequency": 2
+    },
+    "whiich": {
+        "id": 313,
+        "frequency": 2
+    },
+    "it": {
+        "id": 301,
+        "frequency": 42
+    },
+    "vowel": {
+        "id": 188,
+        "frequency": 1552
+    },
+    "shows": {
+        "id": 322,
+        "frequency": 2
+    },
+    "lies": {
+        "id": 317,
+        "frequency": 2
+    },
+    "took": {
+        "id": 318,
+        "frequency": 1
+    },
+    "started": {
+        "id": 319,
+        "frequency": 1
+    },
+    ">=": {
+        "id": 320,
+        "frequency": 1
+    },
+    "opening": {
+        "id": 321,
+        "frequency": 1
+    },
+    "should": {
+        "id": 323,
+        "frequency": 9
+    },
+    "begins": {
+        "id": 324,
+        "frequency": 1
+    },
+    "alphanumeric": {
+        "id": 325,
+        "frequency": 1
+    },
+    "beforehand": {
+        "id": 326,
+        "frequency": 2
+    },
+    "sets": {
+        "id": 327,
+        "frequency": 1
+    },
+    "each": {
+        "id": 328,
+        "frequency": 5
+    },
+    "<M3>": {
+        "id": 329,
+        "frequency": 6
+    },
+    "lives": {
+        "id": 330,
+        "frequency": 1
+    },
+    "preceded": {
+        "id": 331,
+        "frequency": 87
+    },
+    "may": {
+        "id": 332,
+        "frequency": 7
+    },
+    "will": {
+        "id": 333,
+        "frequency": 1
+    },
+    "beds": {
+        "id": 334,
+        "frequency": 1
+    },
+    "certain": {
+        "id": 36,
+        "frequency": 1
+    },
+    "long": {
+        "id": 336,
+        "frequency": 6
+    },
+    "terminating": {
+        "id": 337,
+        "frequency": 38
+    },
+    "them": {
+        "id": 21,
+        "frequency": 241
+    },
+    "lends": {
+        "id": 338,
+        "frequency": 1
+    },
+    "finishing": {
+        "id": 339,
+        "frequency": 12
+    },
+    "second": {
+        "id": 340,
+        "frequency": 1
+    },
+    "strong": {
+        "id": 341,
+        "frequency": 1
+    },
+    "such": {
+        "id": 342,
+        "frequency": 1
+    },
+    "for": {
+        "id": 343,
+        "frequency": 2
+    },
+    "minimum": {
+        "id": 344,
+        "frequency": 20
+    },
+    "beging": {
+        "id": 46,
+        "frequency": 2
+    },
+    "same": {
+        "id": 346,
+        "frequency": 1
+    },
+    "o": {
+        "id": 347,
+        "frequency": 3
+    },
+    "occring": {
+        "id": 191,
+        "frequency": 1
+    },
+    "terminates": {
+        "id": 349,
+        "frequency": 1
+    },
+    "following:": {
+        "id": 350,
+        "frequency": 8
+    },
+    "starting": {
+        "id": 111,
+        "frequency": 395
+    },
+    "without": {
+        "id": 352,
+        "frequency": 23
+    },
+    "non-capital": {
+        "id": 353,
+        "frequency": 1
+    },
+    "occurance": {
+        "id": 354,
+        "frequency": 1
+    },
+    "another": {
+        "id": 355,
+        "frequency": 5
+    },
+    "<EOS>": {
+        "id": 3,
+        "frequency": 0
+    },
+    "succeeded": {
+        "id": 356,
+        "frequency": 5
+    },
+    "on": {
+        "id": 357,
+        "frequency": 5
+    },
+    "not": {
+        "id": 358,
+        "frequency": 9
+    },
+    "here": {
+        "id": 359,
+        "frequency": 1
+    },
+    "including": {
+        "id": 76,
+        "frequency": 2
+    },
+    "choice": {
+        "id": 361,
+        "frequency": 3
+    },
+    "he": {
+        "id": 389,
+        "frequency": 2
+    },
+    "beginning": {
+        "id": 363,
+        "frequency": 73
+    },
+    "prior": {
+        "id": 364,
+        "frequency": 22
+    },
+    "lines": {
+        "id": 365,
+        "frequency": 5464
+    },
+    "<U>": {
+        "id": 1,
+        "frequency": 0
+    },
+    "t": {
+        "id": 366,
+        "frequency": 1
+    },
+    "numeral": {
+        "id": 167,
+        "frequency": 144
+    },
+    "best": {
+        "id": 368,
+        "frequency": 1
+    },
+    "followed": {
+        "id": 369,
+        "frequency": 844
+    },
+    "total": {
+        "id": 370,
+        "frequency": 2
+    },
+    "character/vowel": {
+        "id": 371,
+        "frequency": 1
+    },
+    "lower-cast": {
+        "id": 372,
+        "frequency": 1
+    },
+    "occasions": {
+        "id": 315,
+        "frequency": 1
+    },
+    "bark": {
+        "id": 374,
+        "frequency": 1
+    },
+    "finally": {
+        "id": 375,
+        "frequency": 1
+    },
+    "plus": {
+        "id": 360,
+        "frequency": 1
+    },
+    "singular": {
+        "id": 376,
+        "frequency": 1
+    },
+    "appears": {
+        "id": 377,
+        "frequency": 12
+    },
+    "consisting": {
+        "id": 378,
+        "frequency": 5
+    },
+    "an": {
+        "id": 379,
+        "frequency": 165
+    },
+    "higher": {
+        "id": 348,
+        "frequency": 1
+    },
+    "ahead": {
+        "id": 381,
+        "frequency": 1
+    },
+    "character`": {
+        "id": 382,
+        "frequency": 1
+    },
+    "terminal": {
+        "id": 383,
+        "frequency": 1
+    },
+    "consist": {
+        "id": 153,
+        "frequency": 1
+    },
+    "kind": {
+        "id": 385,
+        "frequency": 2
+    },
+    "contain": {
+        "id": 386,
+        "frequency": 259
+    },
+    "yelling": {
+        "id": 387,
+        "frequency": 1
+    },
+    "over": {
+        "id": 263,
+        "frequency": 9
+    },
+    "every": {
+        "id": 362,
+        "frequency": 1
+    },
+    "last": {
+        "id": 390,
+        "frequency": 4
+    },
+    "well": {
+        "id": 391,
+        "frequency": 1
+    }
+}

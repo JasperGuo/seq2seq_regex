@@ -22,5 +22,6 @@
   "vocab_files": "feed_tf\\vocab.json",
   "log_dir": "log",
   "result_log": "result_log\\",
+  "checkpoint_path": "checkpoint",
   "is_test_capability": false
 }

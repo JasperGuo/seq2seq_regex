@@ -10,6 +10,7 @@ sys.path += [".."]
 
 import util
 import json
+import math
 import random
 
 
@@ -159,7 +160,7 @@ class DataIterator:
 
         return data
 
-    def __init__(self, data, max_x_len, max_y_len, epoch_cb=None):
+    def __init__(self, data, max_x_len, max_y_len, batch_size):
         """
         :param data: json file path
         :param max_x_len:
@@ -183,23 +184,16 @@ class DataIterator:
             self._data.remove(r)
 
         self._size = len(self._data)
+        self._batch_size = batch_size
+        self._batch_per_epoch = math.floor(self._size / self._batch_size)
 
-        if epoch_cb:
-            self._epoch_cb = epoch_cb
-        else:
-            self._epoch_cb = None
+    @property
+    def batch_per_epoch(self):
+        return self._batch_per_epoch
 
     @property
     def epoch(self):
         return self._epochs
-
-    @property
-    def epoch_cb(self):
-        raise Exception
-
-    @epoch_cb.setter
-    def epoch_cb(self, cb):
-        self._epoch_cb = cb
 
     def shuffle(self):
         random.shuffle(self._data)
@@ -261,21 +255,17 @@ class DataIterator:
         else:
             return [1.0] * first_pad_idx + [0.0] * (self._max_y_len - first_pad_idx)
 
-    def get_batch(self, n):
+    def get_batch(self):
         """
         :param n:                  batch size
         :return: source samples, target samples
         """
-        if self._cursor + n > self._size:
-            self._epochs += 1
-            self.shuffle()
-            self._cursor = 0
+        
+        if self._cursor + self._batch_size > self._size:
+            raise IndexError("Index Error")
 
-            if self._epoch_cb:
-                self._epoch_cb(self._epochs)
-
-        samples = self._data[self._cursor:self._cursor + n]
-        self._cursor += n
+        samples = self._data[self._cursor:self._cursor + self._batch_size]
+        self._cursor += self._batch_size
         source_sample = [s["source"] for s in samples]
         target_sample = [s["target"] for s in samples]
         weights = [s["weight"] for s in samples]

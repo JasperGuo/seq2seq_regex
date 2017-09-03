@@ -269,9 +269,6 @@ class ModelRuntime:
         else:
             self.test(self._test_data_iterator, "Test", is_log)
         self._session.close()
-    
-    def test_checkpoint(self):
-        self._saver.save(self._session, self._best_checkpoint_file)
 
 
 if __name__ == "__main__":
@@ -291,5 +288,4 @@ if __name__ == "__main__":
 
     runtime = ModelRuntime(args.conf)
     runtime.init_session(args.checkpoint)
-    # runtime.run(args.is_test, args.is_log)
-    runtime.test_checkpoint()
+    runtime.run(args.is_test, args.is_log)

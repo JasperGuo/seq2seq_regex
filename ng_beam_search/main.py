@@ -100,12 +100,12 @@ class ModelRuntime:
                 self._conf,
                 is_test=False
             )
-            # scope.reuse_variables()
-            # self._test_model = Model(
-            #     self._vocab_manager,
-            #     self._conf,
-            #     is_test=True,
-            # )
+            scope.reuse_variables()
+            self._test_model = Model(
+                self._vocab_manager,
+                self._conf,
+                is_test=True,
+            )
             self._saver = tf.train.Saver()
             if not checkpoint:
                 init = tf.global_variables_initializer()
@@ -216,8 +216,8 @@ class ModelRuntime:
                 dfa_matches.append(dfa_equality)
 
             if is_log:
-                for _p, prob, em, dc in zip(_predictions, probs, exact_match, dfa_correct):
-                    self.log(file, sentence, t, _p, em, dc, score=prob)
+                for _p, prob, em, dc in zip(_predictions, logprobs, exact_matches, dfa_matches):
+                    self.log(file, batch.encoder_seq[0], batch.target_seq[0], _p, em, dc, score=prob)
             
             e = True in exact_matches
             d = True in dfa_matches

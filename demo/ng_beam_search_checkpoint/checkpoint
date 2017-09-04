@@ -1,0 +1,2 @@
+model_checkpoint_path: "E:\\seq2seq_regex\\ng_beam_search\\checkpoint\\1504495081\\tf_best_checkpoint"
+all_model_checkpoint_paths: "E:\\seq2seq_regex\\ng_beam_search\\checkpoint\\1504495081\\tf_best_checkpoint"

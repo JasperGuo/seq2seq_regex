@@ -18,6 +18,9 @@ from nltk.tokenize import ToktokTokenizer
 from baseline_with_case_model import Model as BaselineWithCaseModel
 from data_provider import VocabManager
 from data_provider import Batch as BaselineWithCaseBatch
+from ng_beam_search_model import Model as BeamSearchModel
+from beam_search_model_data_provider import VocabManager as BeamSearchModelVocabManager
+from beam_search_model_data_provider import Batch as BeamSearchModelBatch
 
 
 KEYWORD_PATTERN = re.compile('\"(.*?)\"')
@@ -151,6 +154,39 @@ def test_with_case(regex, cases):
     return True
 
 
+def build_beam_search_model_batch(vocab_manager, sentence):
+    s = list()
+    for word in tokenizer.tokenize(sentence):
+        s.append(vocab_manager.encoder_word2id(word)["id"])
+    s = s[::-1]
+    s.append(BeamSearchModelVocabManager.EOS_TOKEN_ID)
+    temp_len = len(s)
+    while temp_len < MAX_SENTENCE_LENGTH:
+        s.insert(0, BeamSearchModelVocabManager.PADDING_TOKEN_ID)
+        temp_len += 1
+
+    weight = [0.0] * MAX_REGEX_LENGTH
+    regex = [BeamSearchModelVocabManager.PADDING_TOKEN_ID] * MAX_REGEX_LENGTH
+
+    return BeamSearchModelBatch(
+        source=[s],
+        weight=[weight],
+        target=[regex]
+    )
+
+
+def recover_regex(regex, keyword_dict):
+    _ = copy.deepcopy(regex)
+    for kw, ph in keyword_dict.items():
+        _ = _.replace(ph, kw.replace('"', ""))
+    _ = _.replace("<VOW>", 'AEIOUaeiou')
+    _ = _.replace("<NUM>", '0-9')
+    _ = _.replace("<LET>", 'A-Za-z')
+    _ = _.replace("<CAP>", 'A-Z')
+    _ = _.replace("<LOW>", 'a-z')
+    return _
+
+
 def main():
 
     sentence_vocab_manager = VocabManager(
@@ -163,7 +199,12 @@ def main():
         "vocab\\regex_vocab.json"
     )
 
-    baseline_with_case_session = tf.Session()
+    beam_search_vocab_manager = BeamSearchModelVocabManager(
+        "vocab\\beam_search_vocab.json"
+    )
+
+    baseline_with_case_graph = tf.Graph()
+    baseline_with_case_session = tf.Session(graph=baseline_with_case_graph)
     baseline_with_case_configuration = read_configuration("baseline_with_case_checkpoint\\config.json")
 
     with baseline_with_case_session.graph.as_default():
@@ -196,8 +237,22 @@ def main():
                 regex_vocab_manager,
                 baseline_with_case_configuration
             )
-            checkpoint_saver = tf.train.Saver()
+            checkpoint_saver = tf.train.Saver(name="baseline_with_case_saver")
             checkpoint_saver.restore(baseline_with_case_session, "baseline_with_case_checkpoint\\tf_best_checkpoint")
+
+    beam_search_graph = tf.Graph()
+    beam_search_model_session = tf.Session(graph=beam_search_graph)
+    beam_search_model_configuration = read_configuration("ng_beam_search_checkpoint\\config.json")
+
+    with beam_search_model_session.graph.as_default():
+        with tf.variable_scope("seq2seq") as scope:
+            beam_search_model = BeamSearchModel(
+                beam_search_vocab_manager,
+                beam_search_model_configuration,
+                is_test=True,
+            )
+            beam_search_model_checkpoint_saver = tf.train.Saver(name="beam_search_saver")
+            beam_search_model_checkpoint_saver.restore(beam_search_model_session, "ng_beam_search_checkpoint\\tf_best_checkpoint")
 
     os.system("cls")
     print("Welcome to Natural Language to Regex System = =")
@@ -248,13 +303,8 @@ def main():
 
             recovered_truth_regex = list()
             for r in predicted_regexes:
-                _ = copy.deepcopy(r)
-                for kw, ph in replaced_keyword_dict.items():
-                    _ = _.replace(ph, kw.replace('"', ""))
+                _ = recover_regex(r, replaced_keyword_dict)
                 recovered_truth_regex.append(_)
-
-            # print("Recovered: ")
-            # pprint(recovered_truth_regex)
 
             print("Passed Case Regex: ")
             passed_regex = list()
@@ -266,8 +316,29 @@ def main():
 
         else:
             # Use NG beam search checkpoint
-            pass
+            batch = build_beam_search_model_batch(
+                beam_search_vocab_manager,
+                replaced_nl
+            )
 
+            last_predictions, _predictions, logprobs, mask, decoder_states, feed_dict = beam_search_model.predict(
+                batch.encoder_seq)
+            last_predictions, predictions, logprobs, mask, decoder_states = beam_search_model_session.run(
+                (last_predictions, _predictions, logprobs, mask, decoder_states), feed_dict=feed_dict)
+
+            predicted_regexes = list()
+            for p in predictions:
+                predicted_regexes.append(beam_search_vocab_manager.decode(p, delimiter=""))
+            # pprint(predicted_regexes)
+
+            recovered_truth_regex = list()
+            for r in predicted_regexes:
+                _ = recover_regex(r, replaced_keyword_dict)
+                recovered_truth_regex.append(_)
+
+            pprint(recovered_truth_regex)
+
+        print("\n\n\n")
 
 if __name__ == "__main__":
     main()

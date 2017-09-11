@@ -11,14 +11,8 @@ from tqdm import tqdm
 
 from model import Model
 from data_provider.data_iterator import VocabManager, DataIterator
-from tools.test_dfa_equality import process as dfa_process
 
 JAR_PATH = os.path.join(os.getcwd(), 'regex_dfa_equals.jar')
-
-
-# np.set_printoptions(threshold=np.nan)
-
-os.listdir()
 
 
 def read_configuration(path):
